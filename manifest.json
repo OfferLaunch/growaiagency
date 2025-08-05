@@ -1,0 +1,35 @@
+{
+    "name": "Grow AI Agency",
+    "short_name": "Grow AI",
+    "description": "We help entrepreneurs build and grow successful AI businesses",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#5CC49D",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "assets/images/favicons/16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/favicons/32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/logos/white and green.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/images/logos/All white.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["business", "productivity"],
+    "lang": "en",
+    "dir": "ltr"
+} 
