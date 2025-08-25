@@ -136,6 +136,7 @@ body.menu-open {
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    gap: 2rem;
 }
 
 .nav-logo a {
@@ -148,8 +149,10 @@ body.menu-open {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 .nav-menu a {
@@ -158,8 +161,10 @@ body.menu-open {
     font-weight: 500;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 8px;
+    white-space: nowrap;
+    font-size: 0.95rem;
 }
 
 .nav-menu a:hover {
@@ -191,10 +196,12 @@ body.menu-open {
 .cta-button {
     background: var(--gradient-primary);
     color: var(--text-primary) !important;
-    padding: 12px 24px;
+    padding: 8px 16px;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 .cta-button:hover {
@@ -1043,6 +1050,22 @@ body.menu-open {
 }
 
 /* Responsive Design */
+@media (min-width: 769px) {
+    .nav-menu {
+        gap: 1rem;
+    }
+    
+    .nav-menu a {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .cta-button {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;

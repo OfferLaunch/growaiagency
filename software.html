@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Software - Grow AI Agency</title>
-    <meta name="description" content="Discover the AI software and tools we recommend for building successful AI businesses.">
+    <meta name="description" content="Access our exclusive suite of AI tools designed to help entrepreneurs build and scale successful AI businesses.">
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#5CC49D">
@@ -14,7 +14,7 @@
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AI Software - Grow AI Agency">
-    <meta property="og:description" content="Discover the AI software and tools we recommend for building successful AI businesses.">
+    <meta property="og:description" content="Access our exclusive suite of AI tools designed to help entrepreneurs build and scale successful AI businesses.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://growai.com/software">
     <meta property="og:image" content="assets/images/logos/white and green.png">
@@ -36,7 +36,12 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="software-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -51,7 +56,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="process.html">Process</a></li>
                 <li><a href="software.html" class="active">AI Software</a></li>
-                <li><a href="#resources">Resources</a></li>
+                <li><a href="resources.html">Resources</a></li>
                 <li><a href="case-studies.html">Case Studies</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="about.html#team">Team</a></li>
@@ -66,27 +71,146 @@
         </div>
     </nav>
 
-    <!-- Software Hero Section -->
-                    <div class="category-count">9 Tools</div>
-                </div>
+    <!-- Hero Section -->
+    <section class="software-hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>The Proprietary AI Suite Built to Dominate Your Market.</h1>
+                <p class="hero-subtitle">We've built a proprietary suite of AI Tools to help businesses and consultants achieve their goals efficiently</p>
+                <a href="#tools" class="btn btn-primary">
+                    <span>Get access to the tools</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
-                </div>
-            </div>
-        </div>
-    </section>
-
-                            <span>Pipedrive</span>
-                        </div>
+    <!-- Tools Grid Section -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- Sales Call Analyzer -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tool-icon">
+                        <i class="fas fa-phone-volume"></i>
                     </div>
+                    <h3>Sales Call Analyzer</h3>
+                    <p>AI-powered sales call analysis and coaching platform to improve your team's performance</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- AI Content Creator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tool-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h3>Odin - AI Content Creator</h3>
+                    <p>Create SEO-optimized, engaging content at scale with advanced AI writing</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- AI Ads Creator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tool-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Loki - AI Ads Creator</h3>
+                    <p>Generate high-converting ad creative for all major platforms in seconds</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Customer Success Agent -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tool-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Blaise AI</h3>
+                    <p>AI-powered customer success agent for education companies, improving support quality while reducing costs</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Pricing Calculator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>AI Pricing Calculator</h3>
+                    <p>Calculate optimal pricing strategies for your products and services using AI-powered market analysis</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Offer Creator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="tool-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>AI Offer Creator</h3>
+                    <p>Create high-converting offers and sales funnels using AI-powered copywriting and optimization</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Niche Finder -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="tool-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>AI Niche Finder</h3>
+                    <p>Discover profitable business niches using AI-powered market research and trend analysis</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- n8n Workflow Creator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="tool-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>AI n8n Workflow Creator</h3>
+                    <p>Create custom n8n workflows to automate your business processes with AI assistance</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Growth Plan Creator -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="900">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>AI Growth Plan Creator</h3>
+                    <p>Generate personalized, step-by-step growth plans for your clients using AI, turning prospects into successful partners</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Cold Email Writer -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="tool-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>AI Cold Email Writer</h3>
+                    <p>Create personalized, high-converting cold emails using AI-powered research and optimization</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- CRM -->
+                <div class="tool-card" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="tool-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Acquisity CRM</h3>
+                    <p>The all-in-one tool to help you acquire clients and deliver results for a Growth Partner Business</p>
+                    <a href="#" class="tool-link">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Software CTA Section -->
+    <!-- CTA Section -->
+    <section class="software-cta">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Get Started With A Free Consultation</h2>
+                <a href="#consultation" class="btn btn-primary">
+                    <span>Apply Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -126,7 +250,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Grow AI Limited | All Rights Reserved</p>
+                <p>&copy; 2025 Grow AI LLC | All Rights Reserved</p>
                 <div class="footer-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <span class="separator">•</span>
@@ -136,5 +260,14 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
 </body>
 </html> 
