@@ -3,58 +3,462 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Grow AI Agency</title>
-    <meta name="description" content="Learn about Grow AI Agency and our mission to help entrepreneurs build successful AI businesses.">
     
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#5CC49D">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Grow AI">
+    <!-- SEO Meta Tags -->
+    <title>About Us | Grow AI Agency - Building AI Arbitrage Systems</title>
+    <meta name="description" content="Learn about Grow AI Agency's mission to empower operators with AI arbitrage systems. Discover our story, values, and how we're building the future of service delivery.">
+    <meta name="canonical" content="https://growaiagency.io/about.html">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="Grow AI Agency">
+    <meta name="publisher" content="Grow AI Agency">
+    <meta name="keywords" content="Grow AI Agency, AI arbitrage, ArbitrageOS, AI systems, business leverage, AI automation">
+    <meta name="geo.region" content="US">
+    <meta name="geo.placename" content="United States">
+    <meta name="language" content="en">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    <meta name="distribution" content="Global">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="About Us - Grow AI Agency">
-    <meta property="og:description" content="Learn about Grow AI Agency and our mission to help entrepreneurs build successful AI businesses.">
+    <meta property="og:title" content="About Us | Grow AI Agency - Building AI Arbitrage Systems">
+    <meta property="og:description" content="Learn about Grow AI Agency's mission to empower operators with AI arbitrage systems. Discover our story, values, and how we're building the future of service delivery.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://growai.com/about">
-    <meta property="og:image" content="assets/images/logos/white and green.png">
+    <meta property="og:url" content="https://growaiagency.io/about.html">
+    <meta property="og:image" content="https://picsum.photos/1200/630">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Grow AI Agency About Us">
+    <meta property="og:site_name" content="Grow AI Agency">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@growaiagency">
+    <meta name="twitter:creator" content="@growaiagency">
+    <meta name="twitter:title" content="About Us | Grow AI Agency - Building AI Arbitrage Systems">
+    <meta name="twitter:description" content="Learn about Grow AI Agency's mission to empower operators with AI arbitrage systems. Discover our story, values, and how we're building the future of service delivery.">
+    <meta name="twitter:image" content="https://picsum.photos/1200/630">
+    <meta name="twitter:image:alt" content="Grow AI Agency About Us">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logos/white and green.png">
-    
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/favicon-32x32.png">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1758294251">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            padding: 120px 0 80px;
+            background: var(--bg-primary);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(92, 196, 157, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 75% 75%, rgba(92, 196, 157, 0.08) 0%, transparent 60%),
+                linear-gradient(135deg, rgba(92, 196, 157, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        
+        .about-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .about-hero .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .about-content {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .about-content .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .content-section {
+            margin-bottom: 4rem;
+        }
+        
+        .content-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .content-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+        
+        .content-section h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1rem 0;
+            line-height: 1.4;
+        }
+        
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-section ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .content-section li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(92, 196, 157, 0.1) 0%, rgba(92, 196, 157, 0.05) 100%);
+            border-left: 4px solid #5CC49D;
+            padding: 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        
+        .highlight-box p {
+            margin-bottom: 0;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-card .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .value-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 3rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #5CC49D 0%, transparent 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #5CC49D;
+            border-radius: 50%;
+            border: 3px solid var(--bg-card);
+        }
+        
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-left: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+        
+        .cta-section .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            color: white;
+            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(92, 196, 157, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #5CC49D;
+            border: 2px solid #5CC49D;
+        }
+        
+        .btn-secondary:hover {
+            background: #5CC49D;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-section h2 {
+                font-size: 2rem;
+            }
+            
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 15px;
+            }
+            
+            .timeline-item {
+                padding-left: 50px;
+            }
+            
+            .timeline-item::before {
+                left: 6px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "headline": "About Us | Grow AI Agency - Building AI Arbitrage Systems",
+        "description": "Learn about Grow AI Agency's mission to empower operators with AI arbitrage systems. Discover our story, values, and how we're building the future of service delivery.",
+        "url": "https://growaiagency.io/about.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Grow AI Agency",
+            "url": "https://growaiagency.io",
+            "logo": "https://growaiagency.io/assets/images/logos/Black emblem.png",
+            "description": "We help entrepreneurs master AI arbitrage to build profitable businesses",
+            "foundingDate": "2024",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "url": "https://growaiagency.io"
+            },
+            "sameAs": [
+                "https://growaiagency.io"
+            ]
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://growaiagency.io"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://growaiagency.io/about.html"
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="/">
+                <a href="index.html">
                     <img src="assets/images/logos/Green emblem.png" alt="Grow AI" class="nav-logo-img">
                 </a>
             </div>
-            <ul class="nav-menu">
-                <li><a href="process">Process</a></li>
-                <li><a href="software">AI Software</a></li>
-                <li><a href="#resources">Resources</a></li>
-                <li><a href="case-studies">Case Studies</a></li>
-                <li><a href="about" class="active">About Us</a></li>
-                <li><a href="about#team">Team</a></li>
-                <li><a href="about#careers">Careers</a></li>
+                                                                                    <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="software.html">AI Software</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="case-studies.html">Case Studies</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=websitehref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=nav"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_campaign=main" class="cta-button">Get in touch</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -64,246 +468,254 @@
         </div>
     </nav>
 
-    <!-- About Hero Section -->
-    <section class="page-header">
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <h1>Our Story</h1>
+            <p class="hero-subtitle">From picking corn in Upstate New York to building AI systems that save businesses $100K+ annually. This is how we discovered the power of AI arbitrage and why we're sharing it with you.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="about-content">
         <div class="container">
-            <div class="header-content" data-aos="fade-up">
-                <h1>About Grow AI</h1>
-                <p>We're on a mission to democratize AI entrepreneurship and help 10,000+ founders build successful AI businesses by 2030.</p>
+            <!-- What We Do Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>What We Do</h2>
+                <p>Grow AI is an info product that individuals can join which hosts a community where they will learn the A-Z about how to build and scale their own AI Agency implementing prebuilt AI tools that we provide and are just readily available on the market into local businesses solving a core issue for them.</p>
+                
+                <p>These businesses need help with getting more leads, creating more content, posting more, replacing receptionists, and even data entry. It is really endless with AI and it is a no brainer for these companies to say no to real problems when they know they will become obsolete if they do not keep up with the times.</p>
+                
+                <p>You also get access to a fully built backend software called Arbitrage OS that hosts native tools that will be used when scaling and building your agency. Lastly is ongoing weekly calls that help in all assets from the actual tech side of things to learning sales.</p>
+                
+                <div class="highlight-box">
+                    <p>We have tested and proved this business model starting off with my stepfather's boring Accounting firm where we replaced 3 roles and saved him nearly $100K in payroll resulting in a much better business and lower overhead.</p>
+                </div>
+            </div>
+
+            <!-- Personal Story Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>My Story: From Farm to AI</h2>
+                
+                <p>I didn't start in tech or had some lavish lifestyle growing up. I came from a working class — my dad worked for the town and my mom was a bank teller.</p>
+                
+                <p>My first job was on a farm in Upstate New York picking corn and garlic, working long hours with my hands. From there, I transitioned into media, running a small content company. That move opened doors. Eventually, I found myself in Miami, working with some of the biggest names in the "make money online" industry, helping them implement AI into their content systems.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Farm Work</h4>
+                            <p>Picking corn and garlic in Upstate New York</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Content Company</h4>
+                            <p>Running a small media business</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Miami & AI</h4>
+                            <p>Working with top "make money online" names</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>The Lightbulb Moment</h4>
+                            <p>My stepdad's boring tax consulting business</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>But the lightbulb moment came from something far less glamorous: my stepdad's boring tax consulting business.</p>
+                
+                <p>Before moving to Miami, I used to help him with spreadsheets, data entry, and even cold LinkedIn outreach. Long, repetitive hours — the kind of work most people hate. Once AI started maturing, I realized I could replace those tedious tasks with workflows and agentic AI systems.</p>
+                
+                <div class="highlight-box">
+                    <p>The result? I saved him the cost of a $50K/year marketing hire plus the $3K/month data entry specialist with benefits, while simultaneously bringing in more leads and revenue. That was nearly $100K in payroll saved every year — and more money in his pocket. More importantly, it gave my mom a better lifestyle.</p>
+                </div>
+                
+                <p>Of course, I didn't charge him at first. But once he saw the impact, he paid me a hefty retainer to keep everything running. I even trained a VA to manage the workflows so I only had to check in a few hours a week.</p>
+                
+                <p>That's when it clicked: If a boring, complicated tax business could win big with AI then every local and small business in America is sitting on this same opportunity.</p>
+                
+                <p>And that's why I launched Grow AI to help others build scalable AI agencies that solve real business problems, charge retainers, and own a future-proof business in the process.</p>
+            </div>
+
+            <!-- Mission Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Our Mission</h2>
+                <p>Grow AI exists to democratize AI arbitrage. We believe every entrepreneur should have access to the tools and systems that can transform their business and create massive value for their clients.</p>
+                
+                <p>We're not here to hand out generic strategies. We're here to equip people with repeatable systems that can be monetized, scaled, and arbitraged into markets that are still inefficient. Every local business needs help with leads, content, automation, and data — and AI makes it all possible at scale.</p>
+                
+                <div class="highlight-box">
+                    <p>Our mission is simple: turn every ambitious person into an AI arbitrage expert who can build a profitable, scalable business solving real problems for real companies.</p>
+                </div>
+            </div>
+
+            <!-- Vision Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Our Vision</h2>
+                <p>We see a future where every local business has access to AI-powered solutions that solve their core problems. Where entrepreneurs can build profitable agencies by simply implementing proven AI systems into businesses that desperately need them.</p>
+                
+                <p>Our vision is to create a world where the barrier to building a successful AI agency isn't technical knowledge or massive capital — it's simply having the right systems and the courage to implement them. We want to see thousands of entrepreneurs building sustainable businesses by solving real problems with AI.</p>
+                
+                <p>Imagine a world where every small business owner knows they can get more leads, create better content, automate their operations, and scale their revenue — all through AI systems that actually work. That's the future we're building.</p>
+            </div>
+
+            <!-- Values Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Our Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Speed</h4>
+                        <p>AI gives us leverage. We move faster than the old way.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Clarity</h4>
+                        <p>Clients and operators know exactly what they are getting.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Innovation</h4>
+                        <p>We push the frontier so others can build on it.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Trust</h4>
+                        <p>Our systems are engineered to deliver measurable results.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Impact</h4>
+                        <p>Everything we build is designed to change trajectories, not just tick boxes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What Makes Us Different Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>What Makes Us Different</h2>
+                <p>Most AI companies talk about potential. We show proven results.</p>
+                
+                <p><strong>ArbitrageOS</strong> isn't a concept — it's a working system that we've tested and proven. It's a toolkit of ready-to-deploy workflows and frameworks that people can take, resell, and scale immediately.</p>
+                
+                <p>We don't just teach you about AI — we give you the exact systems that saved my stepdad $100K annually. We provide the community, the software, and the ongoing support to help you replicate these results in your own market.</p>
+                
+                <div class="highlight-box">
+                    <p>Traditional providers grow by adding more people. We grow by building systems others can use to grow themselves. That's the multiplier effect of Grow AI.</p>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>The Team</h2>
+                <p>We're a mix of builders, operators, and strategists who refused to accept slow processes as the default. Some of us scaled startups from zero to exit. Some came from AI labs, where we saw how raw model power could be shaped into usable systems. Others learned the craft of positioning, copy, and growth hacking.</p>
+                
+                <p>But what unites us is our shared experience: we've all lived the frustration of inefficient systems and the excitement of discovering AI solutions that actually work. We've seen the transformation firsthand — from tedious manual work to automated systems that deliver better results.</p>
+                
+                <p>Different backgrounds, one obsession: helping people turn AI leverage into market wins and real business growth.</p>
+            </div>
+
+            <!-- Trust Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Why Clients and Operators Trust Us</h2>
+                <p>Because we've proven it works. We didn't just theorize about AI arbitrage — we implemented it in a real business and saved $100K annually. Our clients see the same kind of efficiency gains and cost savings that compound over time.</p>
+                
+                <p>Operators who use ArbitrageOS to build service businesses close deals faster and retain clients longer because the systems handle the heavy lifting. They're not selling promises — they're delivering measurable results.</p>
+                
+                <div class="highlight-box">
+                    <p>Trust isn't a buzzword for us. It's earned through real results, proven systems, and the ongoing support that helps our community succeed.</p>
+                </div>
+            </div>
+
+            <!-- Community Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Our Community</h2>
+                <p>Our community is made up of ambitious people who see AI arbitrage as opportunity. Agency owners, consultants, freelancers, and entrepreneurs who take what we build and sell it into their markets.</p>
+                
+                <p>These are people who understand that local businesses desperately need help with leads, content, automation, and data — and they're ready to provide those solutions using AI systems that actually work.</p>
+                
+                <p>We also support direct businesses that want to plug into Grow AI for their own growth. But our heart is with the operators who take our systems and scale them into their own profitable agencies.</p>
+                
+                <div class="highlight-box">
+                    <p>Every week, our community shares success stories, case studies, and real results from implementing AI systems in local businesses. This isn't theory — it's proven practice.</p>
+                </div>
+            </div>
+
+            <!-- Future Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>Where We're Headed</h2>
+                <p>We're just getting started. We'll keep expanding ArbitrageOS with more workflows, deeper automations, and more vertical-specific stacks for different industries. We'll push further into international markets, making it easier for anyone anywhere to launch AI-powered services.</p>
+                
+                <p>Our goal is to create a global network of AI arbitrage experts who are solving real problems for real businesses. We want to see thousands of entrepreneurs building sustainable, profitable agencies using our systems.</p>
+                
+                <p>The endgame is simple: Grow AI becomes the backbone for the next wave of service providers who understand that AI isn't just a tool — it's the key to building scalable, profitable businesses that solve real problems.</p>
+            </div>
+
+            <!-- Work With Us Section -->
+            <div class="content-section" data-aos="fade-up">
+                <h2>What It's Like to Work With Us</h2>
+                <p>Working with us doesn't feel like buying a service. It feels like stepping into an operating system for growth — the same system that saved my stepdad $100K annually.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>First Week</h4>
+                            <p>You get access to ArbitrageOS and see the exact systems we used to save $100K</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>First Month</h4>
+                            <p>You're implementing AI systems in local businesses and seeing real results</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>First Quarter</h4>
+                            <p>You realize you're not just moving faster — you're playing an entirely different game</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>You get weekly calls where we help with everything from the technical side to sales strategies. You get access to our community of successful AI arbitrage experts. And you get the ongoing support to ensure you succeed.</p>
+                
+                <div class="highlight-box">
+                    <p>That's the Grow AI effect — turning ambitious people into successful AI arbitrage experts who build profitable, scalable businesses.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Vision -->
-    <section class="mission-vision">
+    <!-- CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="mission-grid">
-                <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="mission-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Our Mission</h3>
-                    <p>To empower entrepreneurs with the knowledge, tools, and systems needed to build profitable AI businesses that scale.</p>
-                </div>
-                <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="mission-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Our Vision</h3>
-                    <p>A world where anyone with determination can build a successful AI business and achieve financial freedom through technology.</p>
-                </div>
-                <div class="mission-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="mission-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Our Values</h3>
-                    <p>Innovation, transparency, community, and results-driven approaches that put our clients' success first.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Story -->
-    <section class="our-story">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Story</h2>
-                <p>From struggling entrepreneurs to AI business pioneers</p>
-            </div>
-            <div class="story-timeline">
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="timeline-marker">2020</div>
-                    <div class="timeline-content">
-                        <h3>The Beginning</h3>
-                        <p>Our founders, Alex Chen and Sarah Rodriguez, were struggling entrepreneurs trying to make it in the AI space. They realized that while AI technology was powerful, most people didn't know how to monetize it effectively. They spent countless nights researching, testing, and failing.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="timeline-marker">2021</div>
-                    <div class="timeline-content">
-                        <h3>The Discovery</h3>
-                        <p>After months of research and experimentation, they developed a systematic approach to building AI businesses. They helped their first 50 entrepreneurs achieve success, proving that the model worked. The results were incredible - clients were generating $5K-$50K monthly within 6 months.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="timeline-marker">2022</div>
-                    <div class="timeline-content">
-                        <h3>Rapid Growth</h3>
-                        <p>Word spread quickly about our success stories. We expanded our team and helped 300+ entrepreneurs build AI businesses. Our community began to grow organically, and we reached our first $1M in client revenue generated.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="timeline-marker">2023</div>
-                    <div class="timeline-content">
-                        <h3>Scaling Impact</h3>
-                        <p>We've helped entrepreneurs generate over $30M in combined revenue. Our systems became more refined, and we launched our comprehensive AI business playbook.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="timeline-marker">2024</div>
-                    <div class="timeline-content">
-                        <h3>Global Expansion</h3>
-                        <p>Today, we're helping entrepreneurs worldwide build AI businesses. Our goal is to reach 10,000+ entrepreneurs by 2030 and create a new generation of AI business leaders.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Team -->
-    <section id="team" class="our-team">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Meet Our Team</h2>
-                <p>The passionate experts behind Grow AI's success</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
-                    <div class="member-photo">
-                        <img src="https://via.placeholder.com/300x300/5CC49D/FFFFFF?text=Alex+Chen" alt="Alex Chen">
-                    </div>
-                    <div class="member-info">
-                        <h3>Alex Chen</h3>
-                        <p class="member-title">Co-Founder & CEO</p>
-                        <p class="member-bio">Former AI researcher at Google, Alex has helped 500+ entrepreneurs build successful AI businesses. He's passionate about democratizing AI entrepreneurship.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
-                    <div class="member-photo">
-                        <img src="https://via.placeholder.com/300x300/5CC49D/FFFFFF?text=Sarah+Rodriguez" alt="Sarah Rodriguez">
-                    </div>
-                    <div class="member-info">
-                        <h3>Sarah Rodriguez</h3>
-                        <p class="member-title">Co-Founder & CTO</p>
-                        <p class="member-bio">Ex-Meta AI engineer with 10+ years in machine learning. Sarah has built AI systems for Fortune 500 companies and now helps entrepreneurs scale.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
-                    <div class="member-photo">
-                        <img src="https://via.placeholder.com/300x300/5CC49D/FFFFFF?text=David+Kim" alt="David Kim">
-                    </div>
-                    <div class="member-info">
-                        <h3>David Kim</h3>
-                        <p class="member-title">Head of Growth</p>
-                        <p class="member-bio">Former VP of Marketing at a unicorn startup, David has scaled businesses from $0 to $100M+ in revenue. He leads our growth strategies.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
-                    <div class="member-photo">
-                        <img src="https://via.placeholder.com/300x300/5CC49D/FFFFFF?text=Emma+Wilson" alt="Emma Wilson">
-                    </div>
-                    <div class="member-info">
-                        <h3>Emma Wilson</h3>
-                        <p class="member-title">Head of Client Success</p>
-                        <p class="member-bio">Emma has helped 300+ entrepreneurs achieve their goals. She's dedicated to ensuring every client gets the support they need to succeed.</p>
-                        <div class="member-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Impact -->
-    <section class="our-impact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Impact</h2>
-                <p>Real results from real entrepreneurs</p>
-            </div>
-            <div class="impact-grid">
-                <div class="impact-card" data-aos="fade-up" data-aos-delay="100">
-                                            <div class="impact-number">100+</div>
-                    <div class="impact-label">Entrepreneurs Helped</div>
-                </div>
-                <div class="impact-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="impact-number">$30M+</div>
-                    <div class="impact-label">Revenue Generated</div>
-                </div>
-                <div class="impact-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="impact-number">94%</div>
-                    <div class="impact-label">Success Rate</div>
-                </div>
-                <div class="impact-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="impact-number">6.2</div>
-                    <div class="impact-label">Months to Success</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Our Team -->
-    <section id="careers" class="join-team">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Join Our Team</h2>
-                <p>Help us democratize AI entrepreneurship</p>
-            </div>
-            <div class="careers-content">
-                <div class="careers-text" data-aos="fade-up" data-aos-delay="100">
-                    <h3>Why Work With Us?</h3>
-                    <ul>
-                        <li>Remote-first culture with flexible hours</li>
-                        <li>Competitive salary and equity packages</li>
-                        <li>Work with cutting-edge AI technology</li>
-                        <li>Make a real impact on entrepreneurs' lives</li>
-                        <li>Continuous learning and development</li>
-                    </ul>
-                </div>
-                <div class="careers-cta" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Open Positions</h3>
-                    <div class="position-list">
-                        <div class="position-item">
-                            <h4>Senior AI Engineer</h4>
-                            <p>Help us build the next generation of AI tools for entrepreneurs.</p>
-                            <a href="mailto:careers@growai.com" class="btn btn-secondary">Apply Now</a>
-                        </div>
-                        <div class="position-item">
-                            <h4>Growth Marketing Manager</h4>
-                            <p>Scale our reach and help more entrepreneurs discover our services.</p>
-                            <a href="mailto:careers@growai.com" class="btn btn-secondary">Apply Now</a>
-                        </div>
-                        <div class="position-item">
-                            <h4>Client Success Manager</h4>
-                            <p>Support our entrepreneurs and ensure their success with our programs.</p>
-                            <a href="mailto:careers@growai.com" class="btn btn-secondary">Apply Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact CTA -->
-    <section class="contact-cta">
-        <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Ready to Start Your AI Business Journey?</h2>
-                <p>Join entrepreneurs who have already transformed their lives with Grow AI</p>
-                <div class="cta-buttons">
-                    <a href="index#apply" class="btn btn-primary">
-                        <span>Apply Now</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="index#contact" class="btn btn-secondary">
-                        <span>Get in Touch</span>
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
+            <h2>It's Your Move.</h2>
+            <p>Every day you wait, someone else takes the advantage. Don't hand it to them.</p>
+            <div class="cta-buttons">
+                <a href="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=websitehref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=nav"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_campaign=main" class="btn btn-primary">
+                    <i class="fas fa-fire"></i>
+                    🔥 Work With Us
+                </a>
+                <a href="process.html" class="btn btn-secondary">
+                    <i class="fas fa-play"></i>
+                    ▶ Learn Our Process
+                </a>
             </div>
         </div>
     </section>
@@ -313,45 +725,39 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI</h3>
-                    <p>We help entrepreneurs build and grow successful AI businesses.</p>
+                    <h3>Grow AI Agency</h3>
+                    <p>We help entrepreneurs master AI arbitrage to build profitable businesses.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        
-                        <li><a href="process">Process</a></li>
-                        <li><a href="software">AI Software</a></li>
-                        <li><a href="case-studies">Case Studies</a></li>
+                        <li><a href="process.html">Our Process</a></li>
+                        <li><a href="software.html">AI Software</a></li>
+                        <li><a href="case-studies.html">Case Studies</a></li>
+                        <li><a href="resources.html">Resources</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about">About us</a></li>
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="index#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/growaiagency/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <h4>Contact</h4>
+                    <p>Ready to grow your business with AI?</p>
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=websitehref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=nav"utm_medium=ctahref="https://go.growaiagency.io/w-vsl?utm_source=website&utm_medium=cta&utm_campaign=main"utm_campaign=main"utm_campaign=main" class="cta-button">Get Started</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Grow AI LLC | All Rights Reserved</p>
-                <div class="footer-links">
-                    <a href="privacy-policy">Privacy Policy</a>
-                    <span class="separator">•</span>
-                    <a href="terms-of-service">Terms of Service</a>
-                </div>
+                <p>&copy; 2025 Grow AI LLC. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="script.js?v=1758294251"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
 </body>
 </html> 

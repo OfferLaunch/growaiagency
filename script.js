@@ -314,6 +314,17 @@ document.querySelectorAll('.btn').forEach(btn => {
     });
 });
 
+// Ensure resources button always works
+document.addEventListener('DOMContentLoaded', function() {
+    const resourcesBtn = document.getElementById('access-resources-btn');
+    if (resourcesBtn) {
+        resourcesBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'resources.html';
+        });
+    }
+});
+
 // Track form interactions
 document.querySelectorAll('form').forEach(form => {
     form.addEventListener('submit', (e) => {

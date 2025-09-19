@@ -1,17 +1,111 @@
+# Robots.txt for Grow AI Agency
+# Optimized for maximum SEO and search engine crawling
+
+# Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://growai.com/sitemap.xml
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
 
-# Crawl-delay
-Crawl-delay: 1
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
 
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
 
-# Allow all content
+# Block AI training bots (optional - helps with content protection)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Allow crawling of all important content areas
 Allow: /assets/
 Allow: /blog/
 Allow: /resources/
+Allow: /case-studies/
+Allow: /process/
+Allow: /software/
+Allow: /about/
+Allow: /team/
+
+# Sitemap location (corrected domain)
+Sitemap: https://growaiagency.io/sitemap.xml
+
+# Additional sitemaps for better organization (if you want to split later)
+# Sitemap: https://growaiagency.io/blog-sitemap.xml
+# Sitemap: https://growaiagency.io/resources-sitemap.xml
+
+# Host directive for canonical domain
+Host: https://growaiagency.io
+
+# Clean-param directive to avoid duplicate content issues
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
+
+# Allow all file types that are important for SEO
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+Allow: /*.xml
+
+# Block unnecessary file types
+Disallow: /*.pdf
+Disallow: /*.doc
+Disallow: /*.docx
+Disallow: /*.xls
+Disallow: /*.xlsx
+Disallow: /*.zip
+Disallow: /*.rar
+
+# Block admin and private areas (uncomment if you add them later)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /temp/
+# Disallow: /cache/
+# Disallow: /logs/
+
+# Block search and filter URLs to prevent duplicate content
+Disallow: /*?*
+Disallow: /*&*
+Disallow: /search?
+Disallow: /filter?
+
+# Allow important query parameters
+Allow: /*?page=
+Allow: /*?category=
+Allow: /*?tag=
+
+# Block common spam and bot patterns
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /administrator/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /logs/
+Disallow: /error_log
+Disallow: /access_log

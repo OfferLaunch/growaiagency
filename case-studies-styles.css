@@ -1,5 +1,49 @@
 /* Case Studies Page Specific Styles */
 
+/* Coming Soon Section */
+.coming-soon {
+    padding: 250px 0 120px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    text-align: center;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.coming-soon-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #5CC49D;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.coming-soon-content p {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.coming-soon-icon {
+    font-size: 5rem;
+    color: #5CC49D;
+    margin-top: 3rem;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
 /* Case Studies Hero Section */
 .case-studies-hero {
     padding: 120px 0 80px;

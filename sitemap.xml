@@ -1,68 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://growai.com/</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://growai.com/process.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/process.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://growai.com/software.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/software.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://growai.com/resources.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/resources.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://growai.com/case-studies.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/case-studies.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://growai.com/about.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/about.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://growai.com/blog-top-7-business-niches.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/team.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-top-7-business-niches.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://growai.com/blog-ai-arbitrage-vs-consulting.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/blog-ai-arbitrage-vs-consulting.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://growai.com/blog-5-signs-business-model-upgrade.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/blog-5-signs-business-model-upgrade.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://growai.com/privacy-policy.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/blog-ai-arbitrage-sustainable.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-future-arbitrage-aeo-geo.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-arbitrage-bigger-than-content.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-agency-vs-freelance-arbitrage.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ethics-ai-arbitrage.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-hidden-arbitrage-opportunities.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-validate-ai-arbitrage-niches.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-build-ai-arbitrage-pipeline.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-real-time-pricing-arbitrage.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-cold-outreach-ai-arbitrage-script.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-offer-funnel-ai-arbitrage-service.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-train-clients-ai-tools.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-repurposing-methods.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-aeo-optimization-guide.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-sdr-agent-outbound.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-top-10-ai-tools-arbitrage-agencies.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-5-ai-arbitrage-tools-vs-manual.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-stack-built-in-vs-custom.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-content-curation-vs-repurposing-vs-translation.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-vs-human-sdr.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-top-templates-geo-content.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-generative-engine-optimization-geo-agencies.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-answer-engine-optimization-aeo-explained.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-rise-agentic-ai-optimization-business.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-google-vs-openai-ai-discovery-war.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-ai-startups-changing-client-buying-services.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-state-ai-arbitrage-2025-market-headed.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/privacy-policy.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
-        <loc>https://growai.com/terms-of-service.html</loc>
-        <lastmod>2025-03-15</lastmod>
+        <loc>https://growaiagency.io/terms-of-service.html</loc>
+        <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
