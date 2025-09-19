@@ -68,6 +68,7 @@ body {
     font-family: 'Manrope', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 80px;
 }
 
 body.menu-open {
@@ -116,16 +117,20 @@ body.menu-open {
     left: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     z-index: 1000;
     transition: all 0.3s ease;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px solid rgba(92, 196, 157, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar.scrolled {
     background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(25px);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(92, 196, 157, 0.2);
+    border-bottom: 2px solid rgba(92, 196, 157, 0.5);
 }
 
 .nav-container {
@@ -158,19 +163,25 @@ body.menu-open {
 .nav-menu a {
     text-decoration: none;
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
     white-space: nowrap;
     font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-menu a:hover {
-    color: var(--primary-color);
-    background: rgba(92, 196, 157, 0.1);
-    transform: translateY(-2px);
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(92, 196, 157, 0.2) 0%, rgba(92, 196, 157, 0.1) 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(92, 196, 157, 0.3),
+        0 0 20px rgba(92, 196, 157, 0.2);
+    border: 1px solid rgba(92, 196, 157, 0.4);
 }
 
 .nav-menu a::after {
@@ -179,14 +190,16 @@ body.menu-open {
     bottom: -2px;
     left: 50%;
     width: 0;
-    height: 2px;
-    background: var(--primary-color);
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, rgba(92, 196, 157, 0.8) 100%);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(92, 196, 157, 0.5);
 }
 
 .nav-menu a:hover::after {
-    width: 80%;
+    width: 90%;
 }
 
 .nav-menu a.active {
@@ -194,20 +207,26 @@ body.menu-open {
 }
 
 .cta-button {
-    background: var(--gradient-primary);
-    color: var(--text-primary) !important;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 600;
+    background: #5CC49D !important;
+    color: #ffffff !important;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 700;
     transition: all 0.3s ease;
     white-space: nowrap;
     font-size: 0.9rem;
+    border: none !important;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    background: #4a9d7d !important;
 }
+
 
 .hamburger {
     display: none;
@@ -221,6 +240,15 @@ body.menu-open {
     background: var(--text-primary);
     margin: 3px 0;
     transition: 0.3s;
+}
+
+/* Center the Access all resources button */
+.cta-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
 }
 
 /* Hero Section */
@@ -1121,10 +1149,19 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    .nav-container {
+        height: 70px;
+        padding: 0 20px;
+    }
+    
+    body {
+        padding-top: 70px;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 80px;
+        top: 70px;
         flex-direction: column;
         background-color: var(--bg-primary);
         width: 100%;
@@ -1191,6 +1228,7 @@ body.menu-open {
     /* Responsive logo sizing */
     .nav-logo-img {
         height: 35px;
+        content: url('assets/images/logos/white and green.png');
     }
     
     .footer-logo {
@@ -1222,6 +1260,7 @@ body.menu-open {
 
     .nav-logo-img {
         height: 30px;
+        content: url('assets/images/logos/white and green.png');
     }
     
     .footer-logo {
@@ -1912,6 +1951,11 @@ body.menu-open {
     
     .impact-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Center social links on mobile */
+    .social-links {
+        justify-content: center;
     }
 }
 
