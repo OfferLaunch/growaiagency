@@ -5,12 +5,53 @@ const navbar = document.querySelector('.navbar');
 const playbookForm = document.getElementById('playbookForm');
 const formMessage = document.getElementById('formMessage');
 
+// Active Navigation Detection
+function setActiveNavigation() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    // Remove active class from all links
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Determine which page we're on and set active class
+    if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/index') {
+        // Home page
+        const homeLink = document.querySelector('.nav-menu a[href="/"]');
+        if (homeLink) homeLink.classList.add('active');
+    } else if (currentPath.includes('process')) {
+        const processLink = document.querySelector('.nav-menu a[href*="process"]');
+        if (processLink) processLink.classList.add('active');
+    } else if (currentPath.includes('software')) {
+        const softwareLink = document.querySelector('.nav-menu a[href*="software"]');
+        if (softwareLink) softwareLink.classList.add('active');
+    } else if (currentPath.includes('resources')) {
+        const resourcesLink = document.querySelector('.nav-menu a[href*="resources"]');
+        if (resourcesLink) resourcesLink.classList.add('active');
+    } else if (currentPath.includes('case-studies')) {
+        const caseStudiesLink = document.querySelector('.nav-menu a[href*="case-studies"]');
+        if (caseStudiesLink) caseStudiesLink.classList.add('active');
+    } else if (currentPath.includes('about')) {
+        const aboutLink = document.querySelector('.nav-menu a[href*="about"]');
+        if (aboutLink) aboutLink.classList.add('active');
+    } else if (currentPath.includes('team')) {
+        const teamLink = document.querySelector('.nav-menu a[href*="team"]');
+        if (teamLink) teamLink.classList.add('active');
+    }
+}
+
 // Initialize AOS (Animate On Scroll)
 AOS.init({
     duration: 800,
     easing: 'ease-in-out',
     once: true,
     offset: 100
+});
+
+// Set active navigation on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setActiveNavigation();
 });
 
 // Mobile Menu Toggle

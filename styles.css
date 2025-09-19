@@ -203,7 +203,16 @@ body.menu-open {
 }
 
 .nav-menu a.active {
-    color: var(--primary-color);
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(92, 196, 157, 0.15) 0%, rgba(74, 157, 125, 0.15) 100%);
+    border: 1px solid rgba(92, 196, 157, 0.4);
+    box-shadow: 0 4px 15px rgba(92, 196, 157, 0.2);
+}
+
+.nav-menu a.active::after {
+    width: 90%;
+    background: linear-gradient(90deg, #5CC49D 0%, #4a9d7d 100%);
+    box-shadow: 0 0 15px rgba(92, 196, 157, 0.6);
 }
 
 .cta-button {

@@ -576,22 +576,6 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-content" data-aos="fade-up">
-                <h2>Stay Updated with AI Insights</h2>
-                <p>Get the latest strategies, tutorials, and case studies delivered to your inbox every week.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Subscribe</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -648,6 +632,19 @@
 
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Set active navigation
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            // Remove active class from all links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Set active class for resources page
+            const resourcesLink = document.querySelector('.nav-menu a[href*="resources"]');
+            if (resourcesLink) resourcesLink.classList.add('active');
+            
             const filterBtns = document.querySelectorAll('.filter-btn');
             const blogCards = document.querySelectorAll('.blog-card');
 
