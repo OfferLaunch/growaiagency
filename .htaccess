@@ -1,0 +1,25 @@
+# Cache Control Headers for Cache Busting
+<IfModule mod_headers.c>
+    # Force no-cache for HTML files
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Short cache for CSS and JS (with version parameters)
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+    
+    # Cache images for longer
+    <FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|webp)$">
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
+</IfModule>
+
+# ETag removal to prevent caching issues
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None

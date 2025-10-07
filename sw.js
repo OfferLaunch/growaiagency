@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grow-ai-v1';
+const CACHE_NAME = 'grow-ai-v2';
 const urlsToCache = [
     '/',
     '/index.html',
