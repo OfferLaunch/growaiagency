@@ -574,9 +574,14 @@ body.menu-open {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
-    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
     z-index: 2;
+    cursor: pointer;
+}
+
+.vsl-overlay:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .vsl-overlay.hidden {
@@ -585,7 +590,7 @@ body.menu-open {
 }
 
 .vsl-overlay img {
-    max-width: 80px;
+    max-width: 120px;
     height: auto;
     filter: brightness(1.2);
     transition: transform 0.3s ease;
@@ -604,7 +609,7 @@ body.menu-open {
     }
     
     .vsl-overlay img {
-        max-width: 60px;
+        max-width: 100px;
     }
     
     .video-wrap:hover {
