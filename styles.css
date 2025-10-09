@@ -10,6 +10,8 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100vw;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -1197,9 +1199,24 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    /* Prevent horizontal scrolling */
+    html, body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+    
     .nav-container {
         height: 70px;
         padding: 0 20px;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
     body {
@@ -1213,12 +1230,14 @@ body.menu-open {
         flex-direction: column;
         background-color: var(--bg-primary);
         width: 100%;
+        max-width: 100vw;
         max-height: calc(100vh - 70px);
         text-align: center;
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 1rem 0;
         overflow-y: auto;
+        overflow-x: hidden;
         z-index: 999;
     }
 
@@ -1298,7 +1317,8 @@ body.menu-open {
     /* Responsive logo sizing */
     .nav-logo-img {
         height: 35px;
-        content: url('assets/images/logos/white and green.png');
+        width: auto;
+        display: block;
     }
     
     .footer-logo {
@@ -1307,8 +1327,21 @@ body.menu-open {
 }
 
 @media (max-width: 480px) {
+    /* Extra small mobile devices */
+    html, body {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
     .container {
         padding: 0 15px;
+        max-width: 100%;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        max-width: 100%;
     }
 
     .hero {
@@ -1330,7 +1363,8 @@ body.menu-open {
 
     .nav-logo-img {
         height: 30px;
-        content: url('assets/images/logos/white and green.png');
+        width: auto;
+        display: block;
     }
     
     .footer-logo {
@@ -1439,6 +1473,7 @@ body.menu-open {
         top: 80px;
         left: -100%;
         width: 100%;
+        max-width: 100vw;
         max-height: calc(100vh - 80px);
         background: rgba(10, 10, 10, 0.98);
         backdrop-filter: blur(20px);
@@ -1449,6 +1484,7 @@ body.menu-open {
         transition: left 0.3s ease;
         border-top: 1px solid var(--border-color);
         overflow-y: auto;
+        overflow-x: hidden;
         z-index: 999;
     }
 
@@ -1467,6 +1503,10 @@ body.menu-open {
         text-align: center;
         border-radius: 8px;
         transition: all 0.3s ease;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0.2rem 0;
     }
 
     .nav-menu a:hover {
