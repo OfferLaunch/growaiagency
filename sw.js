@@ -1,4 +1,4 @@
-const CACHE_NAME = 'grow-ai-v2';
+const CACHE_NAME = 'grow-ai-v3';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -27,7 +27,23 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => {
-                // Return cached version or fetch from network
+                // For HTML files, always try network first, then fallback to cache
+                if (event.request.url.includes('.html') || event.request.url.endsWith('/')) {
+                    return fetch(event.request)
+                        .then(networkResponse => {
+                            // Update cache with fresh content
+                            const responseClone = networkResponse.clone();
+                            caches.open(CACHE_NAME).then(cache => {
+                                cache.put(event.request, responseClone);
+                            });
+                            return networkResponse;
+                        })
+                        .catch(() => {
+                            // If network fails, return cached version
+                            return response;
+                        });
+                }
+                // For other resources, return cached version or fetch from network
                 return response || fetch(event.request);
             })
     );
