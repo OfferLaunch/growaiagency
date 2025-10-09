@@ -545,50 +545,54 @@ body.menu-open {
     z-index: 2;
 }
 
-/* Video Placeholder Styles */
-.video-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, rgba(92, 196, 157, 0.1) 0%, rgba(74, 157, 125, 0.1) 100%);
-    border: 2px dashed rgba(92, 196, 157, 0.3);
+/* Video Container Styles */
+.vsl-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
     border-radius: 12px;
-    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrap {
+    position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
-    min-height: 300px;
-}
-
-.video-placeholder:hover {
-    background: linear-gradient(135deg, rgba(92, 196, 157, 0.15) 0%, rgba(74, 157, 125, 0.15) 100%);
-    border-color: rgba(92, 196, 157, 0.5);
-    transform: translateY(-2px);
-}
-
-.video-icon {
-    font-size: 4rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
-.video-placeholder:hover .video-icon {
+.video-wrap:hover {
+    transform: scale(1.02);
+}
+
+.vsl-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.vsl-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vsl-overlay img {
+    max-width: 80px;
+    height: auto;
+    filter: brightness(1.2);
+    transition: transform 0.3s ease;
+}
+
+.video-wrap:hover .vsl-overlay img {
     transform: scale(1.1);
-}
-
-.video-placeholder h3 {
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.video-placeholder p {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin: 0;
 }
 
 /* Responsive adjustments for VSL video */
@@ -596,23 +600,15 @@ body.menu-open {
     .vsl-video-container {
         max-width: 100%;
         padding: 0 1rem;
+        border-radius: 8px;
     }
     
-    .video-placeholder {
-        padding: 2rem 1.5rem;
-        min-height: 250px;
+    .vsl-overlay img {
+        max-width: 60px;
     }
     
-    .video-icon {
-        font-size: 3rem;
-    }
-    
-    .video-placeholder h3 {
-        font-size: 1.3rem;
-    }
-    
-    .video-placeholder p {
-        font-size: 0.9rem;
+    .video-wrap:hover {
+        transform: none; /* Disable hover transform on mobile */
     }
 }
 
@@ -1688,12 +1684,7 @@ body.menu-open {
     
     /* Mobile Video Container */
     .vsl-video-container {
-        margin: 0 -15px;
-        border-radius: 0;
-    }
-    
-    .video-placeholder {
-        margin: 0 15px;
+        margin: 0;
         border-radius: 8px;
     }
     
