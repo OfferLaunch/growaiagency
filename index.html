@@ -380,22 +380,18 @@
         }
     </script>
     
-    <!-- Service Worker Registration with Cache Busting -->
+    <!-- Service Worker Registration -->
     <script>
-        if ('serviceWorker' in navigator) {
+        // Prevent multiple service worker registrations
+        if ('serviceWorker' in navigator && !window.serviceWorkerRegistered) {
+            window.serviceWorkerRegistered = true;
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/sw.js?v=1759850000')
                     .then(function(registration) {
                         console.log('SW registered: ', registration);
-                        // Force update if there's a new service worker
+                        // Only check for updates, don't auto-reload
                         registration.addEventListener('updatefound', function() {
-                            const newWorker = registration.installing;
-                            newWorker.addEventListener('statechange', function() {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // New content is available, reload the page
-                                    window.location.reload();
-                                }
-                            });
+                            console.log('Service worker update found, but not auto-reloading');
                         });
                     })
                     .catch(function(registrationError) {
@@ -415,6 +411,25 @@
                 overlay.classList.add("hidden");
             });
         });
+    </script>
+    
+    <!-- Debug script to prevent unwanted reloads -->
+    <script>
+        // Prevent accidental reloads
+        let reloadCount = 0;
+        const maxReloads = 3;
+        
+        window.addEventListener('beforeunload', function(e) {
+            reloadCount++;
+            if (reloadCount > maxReloads) {
+                console.warn('Multiple reloads detected, this might indicate an issue');
+            }
+        });
+        
+        // Reset reload count after 5 seconds
+        setTimeout(function() {
+            reloadCount = 0;
+        }, 5000);
     </script>
 </body>
 </html>
