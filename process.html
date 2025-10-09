@@ -29,15 +29,30 @@
     <link rel="manifest" href="manifest.json">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="styles.css?v=1758294249" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="styles.css?v=1759850000" as="style">
+    <link rel="preload" href="script.js?v=1759850000" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" crossorigin>
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=1758294249">
+    <!-- Critical CSS - Inline for faster rendering -->
+    <style>
+        /* Critical above-the-fold styles */
+        body { font-family: 'Manrope', sans-serif; background: #0a0a0a; color: #FAFBFF; margin: 0; padding: 0; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo-img { height: 40px; width: auto; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger span { width: 25px; height: 3px; background: #FAFBFF; margin: 3px 0; transition: 0.3s; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
+    </style>
+    
+    <!-- Non-critical CSS - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <link rel="stylesheet" href="styles.css?v=1759850000">
     <link rel="stylesheet" href="process-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
     <!-- Navigation -->
@@ -266,6 +281,28 @@
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js?v=1758294249"></script>
+    <script src="script.js?v=1759850000"></script>
+    <script src="performance-optimization.js?v=1759850000"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        // Prevent multiple service worker registrations
+        if ('serviceWorker' in navigator && !window.serviceWorkerRegistered) {
+            window.serviceWorkerRegistered = true;
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js?v=1759850000')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                        // Only check for updates, don't auto-reload
+                        registration.addEventListener('updatefound', function() {
+                            console.log('Service worker update found, but not auto-reloading');
+                        });
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html> 
