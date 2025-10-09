@@ -557,6 +557,9 @@ body.menu-open {
 
 .video-wrap {
     position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
@@ -567,37 +570,31 @@ body.menu-open {
 
 .vsl-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
     background: rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.vsl-overlay:hover {
-    background: rgba(0, 0, 0, 0.5);
 }
 
 .vsl-overlay.hidden {
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
 }
 
 .vsl-overlay img {
-    max-width: 120px;
+    width: 48%; /* Increased size */
+    max-width: 420px; /* slightly bigger max size */
     height: auto;
-    filter: brightness(1.2);
-    transition: transform 0.3s ease;
+    animation: float 3s ease-in-out infinite;
 }
 
-.video-wrap:hover .vsl-overlay img {
-    transform: scale(1.1);
+@keyframes float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
 }
 
 /* Responsive adjustments for VSL video */
@@ -608,8 +605,13 @@ body.menu-open {
         border-radius: 8px;
     }
     
+    .video-wrap {
+        max-width: 100%;
+    }
+    
     .vsl-overlay img {
-        max-width: 100px;
+        width: 60%; /* Larger on mobile for better touch interaction */
+        max-width: 300px;
     }
     
     .video-wrap:hover {
