@@ -41,13 +41,8 @@ function setActiveNavigation() {
     }
 }
 
-// Initialize AOS (Animate On Scroll)
-AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: true,
-    offset: 100
-});
+// Initialize AOS (Animate On Scroll) - Will be loaded asynchronously
+// AOS initialization is now handled in the performance optimization script
 
 // Set active navigation on page load
 document.addEventListener('DOMContentLoaded', function() {

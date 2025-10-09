@@ -545,6 +545,52 @@ body.menu-open {
     z-index: 2;
 }
 
+/* Video Placeholder Styles */
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(92, 196, 157, 0.1) 0%, rgba(74, 157, 125, 0.1) 100%);
+    border: 2px dashed rgba(92, 196, 157, 0.3);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 300px;
+}
+
+.video-placeholder:hover {
+    background: linear-gradient(135deg, rgba(92, 196, 157, 0.15) 0%, rgba(74, 157, 125, 0.15) 100%);
+    border-color: rgba(92, 196, 157, 0.5);
+    transform: translateY(-2px);
+}
+
+.video-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.video-placeholder:hover .video-icon {
+    transform: scale(1.1);
+}
+
+.video-placeholder h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.video-placeholder p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
 /* Responsive adjustments for VSL video */
 @media (max-width: 768px) {
     .vsl-video-container {
@@ -554,6 +600,7 @@ body.menu-open {
     
     .video-placeholder {
         padding: 2rem 1.5rem;
+        min-height: 250px;
     }
     
     .video-icon {

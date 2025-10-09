@@ -44,13 +44,28 @@
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="styles.css?v=1759850000" as="style">
-    <link rel="preload" href="script.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="script.js?v=1759850000" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" crossorigin>
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Critical CSS - Inline for faster rendering -->
+    <style>
+        /* Critical above-the-fold styles */
+        body { font-family: 'Manrope', sans-serif; background: #0a0a0a; color: #FAFBFF; margin: 0; padding: 0; }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-logo-img { height: 40px; width: auto; }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger span { width: 25px; height: 3px; background: #FAFBFF; margin: 3px 0; transition: 0.3s; }
+        @media (max-width: 768px) { .hamburger { display: flex; } }
+    </style>
+    
+    <!-- Non-critical CSS - Load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
     <link rel="stylesheet" href="styles.css?v=1759850000">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 </head>
 <body>
     <!-- Navigation -->
@@ -58,7 +73,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="/">
-                    <img src="assets/images/logos/Green emblem.png" alt="Grow AI" class="nav-logo-img">
+                    <img src="assets/images/logos/Green emblem.png" alt="Grow AI" class="nav-logo-img" loading="eager">
                 </a>
             </div>
                                                                                     <ul class="nav-menu">
@@ -108,23 +123,21 @@
             <div class="hero-visual">
                 <div class="vsl-video-container">
                     <div class="video-wrap">
-                        <!-- New Vidalytics Embed -->
-                        <div id="vidalytics_embed_3pB5a5IY9k2YTEeb" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-                        <script type="text/javascript">
-                            (function (v, i, d, a, l, y, t, c, s) {
-                                y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
-                                if (!vsl){vsl=function(u,cb){
-                                    if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
-                                    if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
-                                    i.getElementsByTagName("head")[0].appendChild(s);
-                                };}
-                                vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
-                            })(window, document, 'Vidalytics', 'vidalytics_embed_3pB5a5IY9k2YTEeb', 'https://fast.vidalytics.com/embeds/fumbuU7I/3pB5a5IY9k2YTEeb/');
-                        </script>
-
+                        <!-- Lazy-loaded Video Placeholder -->
+                        <div class="video-placeholder" id="video-placeholder">
+                            <div class="video-icon">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <h3>Watch Our Success Story</h3>
+                            <p>See how we help entrepreneurs build successful AI businesses</p>
+                        </div>
+                        
+                        <!-- Video will load when user clicks -->
+                        <div id="vidalytics_embed_3pB5a5IY9k2YTEeb" style="width: 100%; position:relative; padding-top: 56.25%; display: none;"></div>
+                        
                         <!-- Overlay -->
-                        <div class="vsl-overlay">
-                            <img src="https://statics.myclickfunnels.com/workspace/vyEXrL/image/17937558/file/5549bcd21deb130906fb0758219a8ea4.png" alt="Play Video" />
+                        <div class="vsl-overlay" id="video-overlay">
+                            <img src="https://statics.myclickfunnels.com/workspace/vyEXrL/image/17937558/file/5549bcd21deb130906fb0758219a8ea4.png" alt="Play Video" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -295,7 +308,7 @@
         <div class="container">
             <div class="footer-content">
                             <div class="footer-section">
-                <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo">
+                <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
                 <p>We help entrepreneurs build and grow successful AI businesses.</p>
             </div>
                 <div class="footer-section">
@@ -333,8 +346,37 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Critical JavaScript - Load immediately -->
     <script src="script.js?v=1759850000"></script>
+    <script src="performance-optimization.js?v=1759850000"></script>
+    
+    <!-- Non-critical JavaScript - Load asynchronously -->
+    <script>
+        // Lazy load AOS and other non-critical scripts
+        function loadNonCriticalScripts() {
+            const aosScript = document.createElement('script');
+            aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            aosScript.async = true;
+            aosScript.onload = function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-in-out',
+                        once: true,
+                        offset: 100
+                    });
+                }
+            };
+            document.head.appendChild(aosScript);
+        }
+        
+        // Load non-critical scripts after page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadNonCriticalScripts);
+        } else {
+            loadNonCriticalScripts();
+        }
+    </script>
     
     <!-- Service Worker Registration with Cache Busting -->
     <script>
@@ -361,14 +403,44 @@
         }
     </script>
     
-    <!-- Video overlay functionality -->
+    <!-- Lazy Video Loading -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const overlay = document.querySelector(".vsl-overlay");
+            const videoPlaceholder = document.getElementById('video-placeholder');
+            const videoContainer = document.getElementById('vidalytics_embed_3pB5a5IY9k2YTEeb');
+            const overlay = document.getElementById('video-overlay');
             const videoWrap = document.querySelector(".video-wrap");
-            if (!overlay || !videoWrap) return;
+            
+            if (!videoPlaceholder || !videoContainer || !overlay || !videoWrap) return;
+            
+            let videoLoaded = false;
+            
             videoWrap.addEventListener("click", function () {
-                overlay.classList.add("hidden");
+                if (!videoLoaded) {
+                    // Load video script only when user clicks
+                    const script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.innerHTML = `
+                        (function (v, i, d, a, l, y, t, c, s) {
+                            y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+                            if (!vsl){vsl=function(u,cb){
+                                if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+                                if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+                                i.getElementsByTagName("head")[0].appendChild(s);
+                            };}
+                            vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+                        })(window, document, 'Vidalytics', 'vidalytics_embed_3pB5a5IY9k2YTEeb', 'https://fast.vidalytics.com/embeds/fumbuU7I/3pB5a5IY9k2YTEeb/');
+                    `;
+                    document.head.appendChild(script);
+                    
+                    // Show video container and hide placeholder
+                    videoContainer.style.display = 'block';
+                    videoPlaceholder.style.display = 'none';
+                    overlay.classList.add("hidden");
+                    videoLoaded = true;
+                } else {
+                    overlay.classList.add("hidden");
+                }
             });
         });
     </script>
