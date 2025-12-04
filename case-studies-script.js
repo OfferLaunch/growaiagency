@@ -103,42 +103,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showStoryModal(storyId) {
         const stories = {
-            jared: {
-                title: "Jared's Journey: From 9-5 to $30K/month",
+            johnd: {
+                title: "John Dellafiora's Fast Track: $28,500 in 33 Days",
                 content: `
-                    <h3>The Beginning</h3>
-                    <p>Jared was working as a marketing manager at a tech company, making $4,000/month. He was frustrated with the corporate grind and wanted financial freedom.</p>
+                    <h3>The Background</h3>
+                    <p>John Dellafiora is a business owner from New York and the founder of an insurance brokerage and a private credit fund for lending opportunities. With a strong background as a former Private Equity Senior at Deloitte, John brought extensive business expertise to the Grow AI program.</p>
                     
                     <h3>The Discovery</h3>
-                    <p>After discovering Grow AI's system, Jared decided to take the leap. He started with our AI automation tools and quickly learned how to sell AI services to businesses.</p>
+                    <p>John discovered Grow AI's system and recognized the opportunity to leverage AI arbitrage to scale his business operations. His financial and business acumen from his Deloitte experience gave him a unique advantage in understanding market opportunities.</p>
                     
-                    <h3>The Process</h3>
+                    <h3>The Rapid Results</h3>
                     <ul>
-                        <li>Month 1-2: Set up his AI automation agency</li>
-                        <li>Month 3-4: Landed his first 5 clients</li>
-                        <li>Month 5-6: Scaled to $15K/month</li>
-                        <li>Month 7-8: Reached $30K/month and quit his job</li>
+                        <li>Day 1-14: Completed core curriculum and set up his AI arbitrage operations</li>
+                        <li>Day 15-30: Implemented prospecting strategies and began outreach</li>
+                        <li>Day 33: Signed his first paying client with a $4,500 setup fee</li>
+                        <li>Day 33: Secured $2,000/month retainer contract</li>
                     </ul>
                     
-                    <h3>The Results</h3>
-                    <p>Today, Jared runs a successful AI automation agency with 15+ recurring clients. He works from anywhere in the world and has complete financial freedom.</p>
+                    <h3>The Success</h3>
+                    <p>In just 33 days, John Dellafiora generated $28,500 in total revenue ($4,500 setup + $2,000/month retainer). His combination of business expertise and Grow AI's proven system created a powerful formula for rapid success.</p>
                     
                     <div class="story-metrics">
                         <div class="metric">
-                            <strong>$30K</strong>
-                            <span>Monthly Revenue</span>
+                            <strong>$28,500</strong>
+                            <span>Total Revenue (33 Days)</span>
                         </div>
                         <div class="metric">
-                            <strong>15+</strong>
-                            <span>Recurring Clients</span>
+                            <strong>$2K/mo</strong>
+                            <span>Monthly Retainer</span>
                         </div>
                         <div class="metric">
-                            <strong>8</strong>
-                            <span>Months to Success</span>
+                            <strong>33</strong>
+                            <span>Days to First Client</span>
                         </div>
                     </div>
                 `,
-                image: "https://via.placeholder.com/400x250/4F46E5/FFFFFF?text=Jared's+Story"
+                image: "https://via.placeholder.com/400x250/4F46E5/FFFFFF?text=John+D.'s+Story"
             },
             james: {
                 title: "James's Transformation: From Bartender to AI Entrepreneur",
@@ -176,43 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `,
                 image: "https://via.placeholder.com/400x250/10B981/FFFFFF?text=James's+Story"
-            },
-            sarah: {
-                title: "Sarah's AI Marketing Agency Success",
-                content: `
-                    <h3>The Background</h3>
-                    <p>Sarah had a strong marketing background but was tired of working for others. She wanted to build her own business and have more control over her income.</p>
-                    
-                    <h3>The Strategy</h3>
-                    <p>Sarah leveraged her marketing expertise with our AI tools to create high-ticket marketing automation services for enterprise clients.</p>
-                    
-                    <h3>The Growth</h3>
-                    <ul>
-                        <li>Month 1-2: Set up her AI marketing agency</li>
-                        <li>Month 3-4: Landed first enterprise client</li>
-                        <li>Month 5-6: Scaled to $20K/month</li>
-                        <li>Month 7-8: Reached $35K/month</li>
-                    </ul>
-                    
-                    <h3>The Success</h3>
-                    <p>Sarah now runs a successful AI marketing agency serving 8 enterprise clients. She has won industry awards and is recognized as a leader in AI marketing.</p>
-                    
-                    <div class="story-metrics">
-                        <div class="metric">
-                            <strong>$35K</strong>
-                            <span>Monthly Revenue</span>
-                        </div>
-                        <div class="metric">
-                            <strong>8</strong>
-                            <span>Enterprise Clients</span>
-                        </div>
-                        <div class="metric">
-                            <strong>6</strong>
-                            <span>Months to Success</span>
-                        </div>
-                    </div>
-                `,
-                image: "https://via.placeholder.com/400x250/7C3AED/FFFFFF?text=Sarah's+Story"
             }
         };
 

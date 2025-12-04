@@ -748,6 +748,38 @@ body.menu-open {
     margin: 0;
 }
 
+/* Arbitrage OS Section */
+.arbitrage-os {
+    padding: 6rem 0;
+    background: #1a1a1a;
+}
+
+.arbitrage-os-box {
+    color: #ffffff;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid #5CC49D;
+    border-radius: 8px;
+    background: transparent;
+}
+
+.arbitrage-os-video {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: #000;
+    border: 1px solid #ffffff;
+    padding: 1px;
+}
+
+.arbitrage-os-video > div {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+}
+
 /* Results Section */
 .results {
     padding: 6rem 0;
@@ -842,6 +874,7 @@ body.menu-open {
 /* Case Studies Section */
 .case-studies {
     padding: 6rem 0;
+    background: #2d2d2d;
 }
 
 .case-studies-grid {
@@ -983,6 +1016,7 @@ body.menu-open {
 /* Resources Section */
 .resources {
     padding: 6rem 0;
+    background: #1a1a1a;
 }
 
 .resources-grid {
@@ -1031,7 +1065,7 @@ body.menu-open {
 /* Final CTA Section */
 .final-cta {
     padding: 6rem 0;
-    background: var(--bg-secondary);
+    background: #2d2d2d;
 }
 
 .cta-content {
