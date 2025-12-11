@@ -107,10 +107,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: "John Dellafiora's Fast Track: $28,500 in 33 Days",
                 content: `
                     <h3>The Background</h3>
-                    <p>John Dellafiora is a business owner from New York and the founder of an insurance brokerage and a private credit fund for lending opportunities. With a strong background as a former Private Equity Senior at Deloitte, John brought extensive business expertise to the Grow AI program.</p>
+                    <p>John Dellafiora is a founder of an Insurance Brokerage in NYC and a Chartered Financial Analyst. With a newborn and a desire to spend more time with his family, John wanted to build another form of income that would provide flexibility and financial freedom.</p>
                     
                     <h3>The Discovery</h3>
-                    <p>John discovered Grow AI's system and recognized the opportunity to leverage AI arbitrage to scale his business operations. His financial and business acumen from his Deloitte experience gave him a unique advantage in understanding market opportunities.</p>
+                    <p>John discovered Grow AI's system and recognized the opportunity to leverage AI arbitrage to build additional income. His financial expertise as a CFA and experience as a business founder gave him a unique advantage in understanding market opportunities and value creation.</p>
                     
                     <h3>The Rapid Results</h3>
                     <ul>
