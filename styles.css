@@ -100,27 +100,6 @@ body.menu-open {
     transform: scale(1.05);
 }
 
-/* Desktop logo (white and green) - show on desktop only */
-.nav-logo-desktop {
-    display: block;
-}
-
-/* Mobile logo (Green emblem) - hide on desktop */
-.nav-logo-mobile {
-    display: none;
-}
-
-/* Mobile: show Green emblem, hide white and green */
-@media (max-width: 768px) {
-    .nav-logo-desktop {
-        display: none !important;
-    }
-    
-    .nav-logo-mobile {
-        display: block !important;
-    }
-}
-
 .footer-logo {
     height: 50px;
     width: auto;
