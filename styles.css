@@ -1465,6 +1465,22 @@ body.menu-open {
 
     .case-studies-grid {
         grid-template-columns: 1fr;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 20px;
+    }
+    
+    /* Make case study card full width on mobile */
+    .case-study-card {
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* Make video full width on mobile */
+    .case-study-video {
+        width: 100% !important;
+        margin: 2rem 0 !important;
     }
 
     .resources-grid {
