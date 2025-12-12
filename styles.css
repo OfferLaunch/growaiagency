@@ -100,6 +100,26 @@ body.menu-open {
     transform: scale(1.05);
 }
 
+/* Desktop logo - show on desktop, hide on mobile */
+.nav-logo-desktop {
+    display: block;
+}
+
+.nav-logo-mobile {
+    display: none;
+}
+
+/* Mobile logo - show on mobile, hide on desktop */
+@media (max-width: 768px) {
+    .nav-logo-desktop {
+        display: none;
+    }
+    
+    .nav-logo-mobile {
+        display: block;
+    }
+}
+
 .footer-logo {
     height: 50px;
     width: auto;
