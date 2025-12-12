@@ -173,6 +173,25 @@
             color: white;
             font-size: 3rem;
             box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+            overflow: hidden;
+        }
+        
+        .team-photo .team-headshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+        
+        /* Zoom in on Andrew Mudd's face - 2x zoom, positioned in top third */
+        .team-card:nth-child(2) .team-photo {
+            overflow: hidden;
+        }
+        
+        .team-card:nth-child(2) .team-photo .team-headshot {
+            object-position: center 20%;
+            transform: scale(2);
+            transform-origin: center 20%;
         }
         
         .team-name {
@@ -356,7 +375,7 @@
                 {
                     "@type": "Person",
                     "name": "Andrew Mudd",
-                    "jobTitle": "Chief Innovation Officer",
+                    "jobTitle": "CTO",
                     "worksFor": {
                         "@type": "Organization",
                         "name": "Grow AI Agency"
@@ -447,15 +466,15 @@
                 <!-- Andrew Mudd -->
                 <div class="team-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-photo">
-                        <i class="fas fa-user"></i>
+                        <img src="assets/images/photos/JCA08700.jpg" alt="Andrew Mudd" class="team-headshot">
                     </div>
                     <h3 class="team-name">Andrew Mudd</h3>
-                    <p class="team-title">Chief Innovation Officer</p>
-                    <p class="team-bio">Innovation expert driving cutting-edge AI arbitrage solutions. Andrew leads our technical strategy and ensures we stay ahead of market trends.</p>
+                    <p class="team-title">CTO</p>
+                    <p class="team-bio">Leading the entire developer team and responsible for building multiple SAAS companies alongside a team of in-house developers. Andrew drives our technical excellence and product innovation.</p>
                     <div class="team-expertise">
-                        <span class="expertise-tag">Innovation</span>
+                        <span class="expertise-tag">SAAS Development</span>
+                        <span class="expertise-tag">Team Leadership</span>
                         <span class="expertise-tag">Technical Strategy</span>
-                        <span class="expertise-tag">AI Development</span>
                     </div>
                 </div>
 
