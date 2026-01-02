@@ -47,6 +47,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css?v=1758294251">
+    <link rel="stylesheet" href="pill-nav-bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -55,13 +56,15 @@
         /* About Page Specific Styles */
         .about-hero {
             padding: 120px 0 80px;
-            background: var(--bg-primary);
+            background: transparent; /* Changed to transparent to show Silk background */
             text-align: center;
             position: relative;
             overflow: hidden;
+            z-index: 1; /* Ensure content is above background */
         }
         
-        .about-hero::before {
+        /* .about-hero::before gradient removed to show Silk background */
+        /* .about-hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -73,7 +76,7 @@
                 radial-gradient(circle at 75% 75%, rgba(92, 196, 157, 0.08) 0%, transparent 60%),
                 linear-gradient(135deg, rgba(92, 196, 157, 0.05) 0%, transparent 40%);
             pointer-events: none;
-        }
+        } */
         
         .about-hero .hero-content {
             position: relative;
@@ -105,70 +108,83 @@
         
         .about-content {
             padding: 80px 0;
-            background: var(--bg-secondary);
+            background: rgba(17, 17, 17, 0.95);
+            position: relative;
+            z-index: 1;
         }
         
         .about-content .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
         
-        .content-section {
-            margin-bottom: 4rem;
+        .about-content .content-section {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
         }
         
-        .content-section:last-child {
+        .about-content .content-section:last-child {
             margin-bottom: 0;
         }
         
-        .content-section h2 {
-            font-size: 2.5rem;
+        .about-content .content-section h2 {
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 2rem;
+            margin: 0 0 1.5rem 0;
             line-height: 1.3;
         }
         
-        .content-section h3 {
-            font-size: 1.8rem;
+        .about-content .content-section h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .about-content .content-section h3 {
+            font-size: 1.6rem;
             font-weight: 600;
             color: var(--text-primary);
             margin: 2.5rem 0 1rem 0;
             line-height: 1.4;
         }
         
-        .content-section p {
+        .about-content .content-section p {
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
         
-        .content-section ul {
+        .about-content .content-section ul {
             margin: 1.5rem 0;
             padding-left: 1.5rem;
         }
         
-        .content-section li {
+        .about-content .content-section li {
             font-size: 1.1rem;
             line-height: 1.7;
             color: var(--text-secondary);
             margin-bottom: 0.75rem;
         }
         
-        .highlight-box {
+        .about-content .content-section .highlight-box {
             background: linear-gradient(135deg, rgba(92, 196, 157, 0.1) 0%, rgba(92, 196, 157, 0.05) 100%);
             border-left: 4px solid #5CC49D;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border-radius: 0 12px 12px 0;
             margin: 2rem 0;
         }
         
-        .highlight-box p {
+        .about-content .content-section .highlight-box p {
             margin-bottom: 0;
             font-weight: 500;
-            font-size: 1.2rem;
         }
         
         .values-grid {
@@ -351,12 +367,20 @@
                 font-size: 1.1rem;
             }
             
-            .content-section h2 {
-                font-size: 2rem;
+            .about-content .content-section {
+                padding: 2rem;
             }
             
-            .content-section h3 {
-                font-size: 1.5rem;
+            .about-content .content-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .about-content .content-section h3 {
+                font-size: 1.4rem;
+            }
+            
+            .about-content .content-section p {
+                font-size: 1rem;
             }
             
             .values-grid {
@@ -386,6 +410,96 @@
                 justify-content: center;
             }
         }
+    
+        /* Final CTA Section */
+        .final-cta {
+            padding: 6rem 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .final-cta .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .final-cta .cta-content {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .final-cta .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .final-cta .cta-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .final-cta .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .final-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+        }
+
+        .final-cta .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
+            background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 4rem 0;
+            }
+            
+            .final-cta .cta-content {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+            
+            .final-cta .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -442,6 +556,12 @@
     </script>
 </head>
 <body>
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -458,7 +578,7 @@
                 <li><a href="case-studies">Case Studies</a></li>
                 <li><a href="about">About Us</a></li>
                 <li><a href="team">Team</a></li>
-                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=about&EL=Website-About" class="cta-button">Get in touch</a></li>
+                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=about&el=Website-About" class="cta-button">Get in touch</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -702,49 +822,63 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Final CTA Section -->
+    <section class="final-cta">
         <div class="container">
-            <h2>It's Your Move.</h2>
-            <p>Every day you wait, someone else takes the advantage. Don't hand it to them.</p>
-            <div class="cta-buttons">
-                <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=about&EL=Website-About" class="btn btn-primary">
-                    <i class="fas fa-fire"></i>
-                    🔥 Work With Us
-                </a>
-                <a href="process" class="btn btn-secondary">
-                    <i class="fas fa-play"></i>
-                    ▶ Learn Our Process
-                </a>
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Build Your AI Arbitrage Business?</h2>
+                <p>Join entrepreneurs who are building successful AI arbitrage businesses with Grow AI's proven system.</p>
+                <div class="cta-buttons">
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=about&el=Website-About" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
-    <footer class="footer">
+        <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI Agency</h3>
-                    <p>We help entrepreneurs master AI arbitrage to build profitable businesses.</p>
+                    <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
+                    <p>We help entrepreneurs build and grow successful AI businesses.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="process">Our Process</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="process">Process</a></li>
                         <li><a href="software">AI Software</a></li>
-                        <li><a href="case-studies">Case Studies</a></li>
                         <li><a href="resources">Resources</a></li>
+                        <li><a href="case-studies">Case Studies</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Ready to grow your business with AI?</p>
-                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=about&EL=Website-About" class="cta-button">Get Started</a>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about">About us</a></li>
+                        <li><a href="team">Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/thejakearnold" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Grow AI LLC. All rights reserved.</p>
+                <p>&copy; 2025 Grow AI LLC | All Rights Reserved</p>
+                <div class="footer-links">
+                    <a href="privacy-policy">Privacy Policy</a>
+                    <span class="separator">•</span>
+                    <a href="terms-of-service">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -759,5 +893,11 @@
             once: true
         });
     </script>
+    
+    <!-- PillNav Bundle (built with npm run build:pillnav) -->
+    <script src="pill-nav-bundle.js"></script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="silk-background-bundle.js"></script>
 </body>
 </html> 

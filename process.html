@@ -43,6 +43,96 @@
         .hamburger { display: none; flex-direction: column; cursor: pointer; }
         .hamburger span { width: 25px; height: 3px; background: #FAFBFF; margin: 3px 0; transition: 0.3s; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
+    
+        /* Final CTA Section */
+        .final-cta {
+            padding: 6rem 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .final-cta .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .final-cta .cta-content {
+            background: transparent;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .final-cta .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .final-cta .cta-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .final-cta .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .final-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+        }
+
+        .final-cta .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
+            background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 4rem 0;
+            }
+            
+            .final-cta .cta-content {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+            
+            .final-cta .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
     </style>
     
     <!-- Non-critical CSS - Load asynchronously -->
@@ -51,6 +141,7 @@
     
     <link rel="stylesheet" href="styles.css?v=1759850000">
     <link rel="stylesheet" href="process-styles.css">
+    <link rel="stylesheet" href="pill-nav-bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
     
@@ -58,6 +149,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -74,7 +171,7 @@
                 <li><a href="case-studies">Case Studies</a></li>
                 <li><a href="about">About Us</a></li>
                 <li><a href="team">Team</a></li>
-                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&EL=Website-Process" class="cta-button">Get in touch</a></li>
+                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&el=Website-Process" class="cta-button">Get in touch</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -221,33 +318,32 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="process-cta">
+    <!-- Final CTA Section -->
+    <section class="final-cta">
         <div class="container">
             <div class="cta-content" data-aos="fade-up">
-                <div class="cta-header">
-                    <span class="cta-badge">The Clock Is Ticking</span>
-                    <h2>The cost of missing the AI wave will be bigger than the cost of starting.</h2>
-                    <h2 class="cta-emphasis"><span class="highlight">Don't miss it.</span></h2>
+                <span class="cta-badge" style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(92, 196, 157, 0.2); border: 1px solid rgba(92, 196, 157, 0.3); border-radius: 50px; color: #5CC49D; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem;">The Clock Is Ticking</span>
+                <h2>The cost of missing the AI wave will be bigger than the cost of starting.</h2>
+                <h2 style="font-size: 2rem; margin-top: 0.5rem; margin-bottom: 1.5rem;"><span style="color: #5CC49D;">Don't miss it.</span></h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6;">Entrepreneurs are already closing clients with the Grow AI model. <strong>The longer you wait, the harder it becomes to catch up.</strong></p>
+                <div class="cta-buttons">
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&el=Website-Process" class="btn btn-primary">
+                        <span>See Grow AI in Action</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="cta-subtext-container">
-                    <p class="cta-subtext">Entrepreneurs are already closing clients with the Grow AI model. <strong>The longer you wait, the harder it becomes to catch up.</strong></p>
-                </div>
-                <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&EL=Website-Process" class="btn btn-primary">
-                    <span>See Grow AI in Action</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <p class="legal-note">GROW is a proprietary method of Grow AI.</p>
+                <p style="font-size: 0.85rem; color: rgba(250, 251, 255, 0.6); margin-top: 2rem; margin-bottom: 0;">GROW is a proprietary method of Grow AI.</p>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
-    <footer class="footer">
+        <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI</h3>
+                    <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
                     <p>We help entrepreneurs build and grow successful AI businesses.</p>
                 </div>
                 <div class="footer-section">
@@ -256,6 +352,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="process">Process</a></li>
                         <li><a href="software">AI Software</a></li>
+                        <li><a href="resources">Resources</a></li>
                         <li><a href="case-studies">Case Studies</a></li>
                     </ul>
                 </div>
@@ -264,14 +361,13 @@
                     <ul>
                         <li><a href="about">About us</a></li>
                         <li><a href="team">Team</a></li>
-                        <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&EL=Website-Process"utm_campaign=footer">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/growaiagency/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/thejakearnold" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -331,5 +427,11 @@
             });
         }
     </script>
+    
+    <!-- PillNav Bundle (built with npm run build:pillnav) -->
+    <script src="pill-nav-bundle.js"></script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="silk-background-bundle.js"></script>
 </body>
 </html> 

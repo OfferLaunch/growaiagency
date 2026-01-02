@@ -203,15 +203,15 @@ document.querySelectorAll('.feature-card, .result-item, .step, .case-study-card,
     observer.observe(el);
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector('.hero-background');
-    
-    if (heroBackground) {
-        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
+// Parallax effect for hero section - DISABLED to prevent interference with Silk background
+// window.addEventListener('scroll', () => {
+//     const scrolled = window.pageYOffset;
+//     const heroBackground = document.querySelector('.hero-background');
+//     
+//     if (heroBackground) {
+//         heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+//     }
+// });
 
 // Stats counter animation
 function animateCounters() {
@@ -288,12 +288,12 @@ const debouncedScrollHandler = debounce(() => {
         navbar.classList.remove('scrolled');
     }
     
-    // Parallax effect
-    const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector('.hero-background');
-    if (heroBackground) {
-        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+    // Parallax effect - DISABLED to prevent interference with Silk background
+    // const scrolled = window.pageYOffset;
+    // const heroBackground = document.querySelector('.hero-background');
+    // if (heroBackground) {
+    //     heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+    // }
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);

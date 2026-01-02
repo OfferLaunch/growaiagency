@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css?v=1759850000">
     <link rel="stylesheet" href="software-styles.css">
+    <link rel="stylesheet" href="pill-nav-bundle.css">
+    <link rel="stylesheet" href="spotlight-card-bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- AOS Animation Library -->
@@ -44,6 +46,12 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <body>
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -60,7 +68,7 @@
                 <li><a href="case-studies">Case Studies</a></li>
                 <li><a href="about">About Us</a></li>
                 <li><a href="team">Team</a></li>
-                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&EL=Website-Software" class="cta-button">Get in touch</a></li>
+                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&el=Website-Software" class="cta-button">Get in touch</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -90,7 +98,7 @@
                         })(window, document, 'Vidalytics', 'vidalytics_embed_uXHhSHhj0s0N5NXF', 'https://fast.vidalytics.com/embeds/fumbuU7I/uXHhSHhj0s0N5NXF/');
                     </script>
                 </div>
-                <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&EL=Website-Software" class="btn btn-primary">
+                <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&el=Website-Software" class="btn btn-primary">
                     <span>Get access to the tools</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -101,6 +109,7 @@
     <!-- Tools Grid Section -->
     <section class="tools-section" id="tools">
         <div class="container">
+            <h2 class="tools-section-title" data-aos="fade-up">Tools Inside</h2>
             <div class="tools-grid">
                 <!-- Sales Call Analyzer -->
                 <div class="tool-card" data-aos="fade-up" data-aos-delay="100">
@@ -188,25 +197,29 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="software-cta">
+    <!-- Final CTA Section -->
+    <section class="final-cta">
         <div class="container">
             <div class="cta-content" data-aos="fade-up">
-                <h2>Get Started With A Free Consultation</h2>
-                <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&EL=Website-Software" class="btn btn-primary">
-                    <span>Apply Now</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+                <h2>Ready to Build Your AI Arbitrage Business?</h2>
+                <p>Join entrepreneurs who are building successful AI arbitrage businesses with Grow AI's proven system.</p>
+                <div class="cta-buttons">
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&el=Website-Software" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
-    <footer class="footer">
+        <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI</h3>
+                    <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
                     <p>We help entrepreneurs build and grow successful AI businesses.</p>
                 </div>
                 <div class="footer-section">
@@ -215,6 +228,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="process">Process</a></li>
                         <li><a href="software">AI Software</a></li>
+                        <li><a href="resources">Resources</a></li>
                         <li><a href="case-studies">Case Studies</a></li>
                     </ul>
                 </div>
@@ -223,14 +237,13 @@
                     <ul>
                         <li><a href="about">About us</a></li>
                         <li><a href="team">Team</a></li>
-                        <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=software&EL=Website-Software"utm_campaign=footer">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/growaiagency/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/thejakearnold" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -255,5 +268,14 @@
             once: true
         });
     </script>
+    
+    <!-- PillNav Bundle (built with npm run build:pillnav) -->
+    <script src="pill-nav-bundle.js"></script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="silk-background-bundle.js"></script>
+    
+    <!-- SpotlightCard Bundle (built with npm run build:spotlight) -->
+    <script src="spotlight-card-bundle.js"></script>
 </body>
 </html> 

@@ -87,6 +87,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css?v=1758294251">
+    <link rel="stylesheet" href="pill-nav-bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -94,33 +95,24 @@
     <style>
         /* Blog Post Specific Styles */
         .blog-post-hero {
-            padding: 120px 0 80px;
-            background: var(--bg-primary);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            z-index: 1;
+            overflow: visible;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .blog-post-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(92, 196, 157, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 75% 75%, rgba(92, 196, 157, 0.08) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(92, 196, 157, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-        }
         
         .blog-post-hero .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
+            width: 100%;
             margin: 0 auto;
             padding: 0 20px;
+            box-sizing: border-box;
+            overflow: visible;
         }
         
         .blog-post-hero .category-badge {
@@ -139,13 +131,16 @@
         .blog-post-hero h1 {
             font-size: 3.2rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            margin-top: 0;
+            padding-bottom: 0.5rem;
             background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
+            line-height: 1.2;
             letter-spacing: -0.02em;
+            overflow: visible;
         }
         
         .blog-post-hero .meta {
@@ -156,6 +151,8 @@
             color: var(--text-secondary);
             font-size: 1rem;
             margin-bottom: 2rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
         }
         
         .blog-post-hero .meta span {
@@ -166,21 +163,26 @@
         
         .blog-post-content {
             padding: 80px 0;
-            background: var(--bg-secondary);
+            background: rgba(17, 17, 17, 0.95);
+            position: relative;
+            z-index: 1;
         }
         
         .blog-post-content .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .blog-post-content .content-wrapper {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 3rem;
             position: relative;
+            backdrop-filter: blur(10px);
         }
         
         .blog-post-content h2 {
@@ -368,6 +370,96 @@
                 font-size: 1rem;
             }
         }
+    
+        /* Final CTA Section */
+        .final-cta {
+            padding: 6rem 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .final-cta .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .final-cta .cta-content {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .final-cta .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .final-cta .cta-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .final-cta .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .final-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+        }
+
+        .final-cta .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
+            background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 4rem 0;
+            }
+            
+            .final-cta .cta-content {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+            
+            .final-cta .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -543,37 +635,20 @@
         },
         "sameAs": [
             "https://www.facebook.com/profile.php?id=61579044325984",
-            "https://www.instagram.com/growaiagency/"
+            "https://www.instagram.com/thejakearnold/"
         ]
     }
     </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="assets/images/logos/white and green.png" alt="Grow AI" class="nav-logo-img" loading="eager">
-                </a>
-            </div>
-                                                                                                <ul class="nav-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="process">Process</a></li>
-                <li><a href="software">AI Software</a></li>
-                <li><a href="resources">Resources</a></li>
-                <li><a href="case-studies">Case Studies</a></li>
-                <li><a href="about">About Us</a></li>
-                <li><a href="team">Team</a></li>
-                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ai-real-time-pricing-arbitrage&EL=Website-AI-Real-Time-Pricing-Arbitrage" class="cta-button">Get in touch</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
         </div>
-    </nav>
+    </div>
+    <!-- Navigation -->
+    
 
     <!-- Blog Post Hero -->
     <section class="blog-post-hero">
@@ -782,75 +857,31 @@
                 
                 <p>Institutions already rely on AI for high-frequency trading. Entrepreneurs can adapt similar methods to consumer markets like retail, tickets, and niche assets. Arbitrage windows will shrink as more automation enters, but inefficiencies will always exist.</p>
 
-                <h2>Conclusion</h2>
-                
-                <p>Arbitrage is as old as markets, but AI makes it modern, fast, and scalable. By building automated pipelines, entrepreneurs can capture inefficiencies in real time, whether in tickets, retail, or other assets.</p>
-                
-                <p>The ticket arbitrage example shows how data collection, cleaning, comparison, execution, monitoring, and feedback combine into a system that runs without constant human labor. That is the essence of an AI arbitrage pipeline — a machine that produces profit by exploiting inefficiency.</p>
-                
-                <p>If you want to move from opportunistic flipping to systematic arbitrage, the path is clear: build your pipeline, validate it, and let AI do the work at scale.</p>
+                </section>
 
-                <div class="faq-section">
-                    <h2>FAQ</h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Is ticket arbitrage legal?</div>
-                        <div class="faq-answer">Yes, reselling tickets is legal in most jurisdictions, though some states or countries regulate resale practices. Always review local laws and platform terms before operating at scale.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">How much capital do I need to start?</div>
-                        <div class="faq-answer">You can begin with as little as a few hundred dollars to test. Serious arbitrageurs often allocate several thousand dollars to spread risk across events.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">What tools are best for ticket arbitrage?</div>
-                        <div class="faq-answer">Scraping tools like Phantombuster, APIs where available, AI models for seat matching, and workflow automation tools like Zapier or Make are common choices.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">How do I avoid losing money to fees?</div>
-                        <div class="faq-answer">Always include platform commissions and payment fees in your calculations. A spread that looks profitable without fees often collapses once costs are factored in.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Can AI really execute faster than humans?</div>
-                        <div class="faq-answer">Yes. AI pipelines can place buy and relist orders instantly. Humans cannot compete with the speed required for real-time arbitrage.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">What are the biggest risks in ticket arbitrage?</div>
-                        <div class="faq-answer">Event demand dropping unexpectedly, unsold inventory close to event date, or platform restrictions on resale. Mitigation comes from diversification, conservative thresholds, and monitoring.</div>
-                    </div>
-                </div>
-
-                <div class="sources-section">
-                    <h3>Sources</h3>
-                    <ul class="sources-list">
-                        <li>Arbitrage overview: Investopedia</li>
-                        <li>Ticket resale industry: Statista</li>
-                        <li>AI and automation in trading: McKinsey</li>
-                    </ul>
+            <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Build Your AI Arbitrage Business?</h2>
+                <p>Join entrepreneurs who are building successful AI arbitrage businesses with Grow AI's proven system.</p>
+                <div class="cta-buttons">
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ai-real-time-pricing-arbitrage&el=Website-Blog-Ai-Real-Time-Pricing-Arbitrage" class="btn btn-primary">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="cta-box" style="text-align: center; margin: 3rem 0; padding: 2.5rem; background: linear-gradient(135deg, rgba(92, 196, 157, 0.15) 0%, rgba(92, 196, 157, 0.05) 100%); border: 2px solid rgba(92, 196, 157, 0.3); border-radius: 16px;">
-            <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">Ready to Build Your AI Arbitrage Business?</h3>
-            <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">Join entrepreneurs who are building successful AI arbitrage businesses with Grow AI's proven system.</p>
-            <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ai-real-time-pricing-arbitrage&EL=Website-AI-Real-Time-Pricing-Arbitrage" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);">
-                <span>Apply Now</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
     </section>
 
+
     <!-- Footer -->
-    <footer class="footer">
+        <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI</h3>
+                    <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
                     <p>We help entrepreneurs build and grow successful AI businesses.</p>
                 </div>
                 <div class="footer-section">
@@ -859,6 +890,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="process">Process</a></li>
                         <li><a href="software">AI Software</a></li>
+                        <li><a href="resources">Resources</a></li>
                         <li><a href="case-studies">Case Studies</a></li>
                     </ul>
                 </div>
@@ -867,14 +899,13 @@
                     <ul>
                         <li><a href="about">About us</a></li>
                         <li><a href="team">Team</a></li>
-                        <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ai-real-time-pricing-arbitrage&EL=Website-AI-Real-Time-Pricing-Arbitrage">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/growaiagency/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/thejakearnold" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -897,6 +928,12 @@
             easing: 'ease-in-out',
             once: true
         });
-    </script>
+        </script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="silk-background-bundle.js"></script>
+    
+    <!-- PillNav Bundle (built with npm run build:pillnav) -->
+    <script src="pill-nav-bundle.js"></script>
 </body>
 </html>

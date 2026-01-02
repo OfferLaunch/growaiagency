@@ -3,13 +3,15 @@
 /* Resources Hero Section */
 .resources-hero {
     padding: 100px 0 60px;
-    background: var(--bg-primary);
+    background: transparent; /* Changed to transparent to show Silk background */
     text-align: center;
     position: relative;
     overflow: hidden;
+    z-index: 1; /* Ensure content is above background */
 }
 
-.resources-hero::before {
+/* .resources-hero::before gradient removed to show Silk background */
+/* .resources-hero::before {
     content: '';
     position: absolute;
     top: 0;
@@ -21,7 +23,7 @@
         radial-gradient(circle at 75% 75%, rgba(92, 196, 157, 0.08) 0%, transparent 60%),
         linear-gradient(135deg, rgba(92, 196, 157, 0.05) 0%, transparent 40%);
     pointer-events: none;
-}
+} */
 
 .resources-hero .hero-content {
     position: relative;
@@ -124,20 +126,29 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     min-height: 280px;
     max-height: 320px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .blog-card.featured:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    border-color: #5CC49D;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .blog-card.featured .blog-image {
@@ -191,8 +202,10 @@
 
 /* Regular Blog Cards */
 .blog-card:not(.featured) {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -201,12 +214,18 @@
     flex-direction: column;
     cursor: pointer;
     pointer-events: auto;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-decoration: none;
 }
 
 .blog-card:not(.featured):hover {
     transform: translateY(-6px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-    border-color: #5CC49D;
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .blog-card:not(.featured) .blog-image {
@@ -304,6 +323,15 @@
     pointer-events: auto;
     position: relative;
     z-index: 5;
+}
+
+/* Make entire blog card clickable */
+.blog-card {
+    cursor: pointer;
+}
+
+.blog-card a {
+    text-decoration: none;
 }
 
 .blog-link:hover {
@@ -547,5 +575,64 @@
     
     .newsletter-content h2 {
         font-size: 1.75rem;
+    }
+}
+
+/* Final CTA Section - Glassmorphism Effect */
+.final-cta {
+    padding: 6rem 0;
+    background: transparent;
+    position: relative;
+}
+
+.final-cta .container {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.final-cta .cta-content {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.final-cta .cta-content h2 {
+    position: relative;
+}
+
+.final-cta .cta-content p {
+    position: relative;
+}
+
+.final-cta .cta-buttons {
+    position: relative;
+}
+
+/* Responsive adjustments for glass CTA */
+@media (max-width: 768px) {
+    .final-cta {
+        padding: 4rem 0;
+    }
+    
+    .final-cta .cta-content {
+        padding: 3rem 2rem;
+        border-radius: 20px;
+    }
+    
+    .final-cta .cta-content h2 {
+        font-size: 2rem;
     }
 }

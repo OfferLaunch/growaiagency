@@ -1,0 +1,224 @@
+/* components/PillNav/PillNav.css */
+.pill-nav-container {
+  position: relative;
+}
+.pill-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  background: #000000;
+  transition: all 0.3s ease;
+  gap: 2rem;
+}
+.pill-nav.scrolled {
+  background: #000000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+.pill-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.pill-logo img {
+  height: 32px;
+  width: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.pill-nav-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pill-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  color: var(--pill-text, #fff);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+}
+.pill.is-active {
+  background: #5CC49D !important;
+  color: #FAFBFF !important;
+}
+.pill.is-active .hover-circle {
+  display: none;
+}
+.pill.is-active .pill-label {
+  color: #FAFBFF !important;
+  transform: none !important;
+  opacity: 1 !important;
+  position: relative;
+}
+.pill.is-active .pill-label-hover {
+  display: none;
+}
+.pill.is-active .label-stack {
+  overflow: visible;
+}
+.pill-cta {
+  background: #5CC49D !important;
+  color: #FAFBFF !important;
+}
+.pill-cta .hover-circle {
+  display: none;
+}
+.pill-cta .pill-label {
+  color: #FAFBFF;
+  transform: none !important;
+  opacity: 1 !important;
+  position: relative;
+}
+.pill-cta .pill-label-hover {
+  display: none;
+}
+.pill-cta .label-stack {
+  overflow: visible;
+}
+.pill-cta:hover {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+.pill-cta:hover .pill-label {
+  color: #000000 !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+.hover-circle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  background: #5CC49D;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+.label-stack {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.pill-label,
+.pill-label-hover {
+  display: block;
+  white-space: nowrap;
+  will-change: transform;
+}
+.pill-label-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #FAFBFF;
+  font-weight: 500;
+}
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+.hamburger-line {
+  width: 24px;
+  height: 2px;
+  background: var(--base, #fff);
+  transition: all 0.3s ease;
+  display: block;
+}
+.mobile-menu-popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  z-index: 999;
+  padding-top: 80px;
+  overflow-y: auto;
+}
+.mobile-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mobile-menu-link {
+  display: block;
+  padding: 1rem;
+  color: var(--pill-text, #fff);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.mobile-menu-link:hover,
+.mobile-menu-link.is-active {
+  background: rgba(92, 196, 157, 0.2);
+  color: #5CC49D;
+}
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+@media (max-width: 768px) {
+  .pill-nav {
+    padding: 1rem;
+  }
+  .pill-logo img {
+    height: 28px;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: flex;
+  }
+  .mobile-menu-button {
+    display: flex;
+  }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+  .pill-list {
+    gap: 0.25rem;
+  }
+  .pill {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

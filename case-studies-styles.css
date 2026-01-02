@@ -46,26 +46,41 @@
 
 /* Case Studies Hero Section */
 .case-studies-hero {
-    padding: 120px 0 80px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: 140px 0 60px;
+    background: transparent;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.case-studies-hero-content h1 {
+.case-studies-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.case-studies-hero h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    line-height: 1.2;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
+.case-studies-hero .hero-subtitle {
     font-size: 1.25rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .hero-stats {
@@ -94,10 +109,49 @@
     opacity: 0.8;
 }
 
+/* Case Studies Hero Section */
+.case-studies-hero {
+    padding: 140px 0 60px;
+    background: transparent;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.case-studies-hero .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.case-studies-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.case-studies-hero .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 /* Featured Case Studies */
 .featured-case-studies {
     padding: 80px 0;
-    background: #1a1a1a;
+    background: transparent;
 }
 
 .featured-case-studies h2 {
@@ -160,11 +214,18 @@
 
 .case-study-image {
     position: relative;
-    height: 250px;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio (720/1280) */
     overflow: hidden;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .case-study-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -219,25 +280,43 @@
 }
 
 .case-study-content {
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
+}
+
+.case-study-headline-link {
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.case-study-headline-link:hover {
+    transform: translateX(5px);
 }
 
 .case-study-content h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0;
     color: #ffffff;
-    line-height: 1.4;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.case-study-headline-link:hover h4 {
+    color: #5CC49D;
 }
 
 .story-excerpt {
     color: #cccccc;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .key-results {
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 .result-item {
@@ -257,6 +336,11 @@
 .case-study-cta {
     display: flex;
     gap: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 1.5rem;
+    justify-content: center;
 }
 
 /* Case Study Categories */
@@ -679,8 +763,16 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .case-studies-hero-content h1 {
+    .case-studies-hero {
+        padding: 120px 0 50px;
+    }
+    
+    .case-studies-hero h1 {
         font-size: 2.5rem;
+    }
+    
+    .case-studies-hero .hero-subtitle {
+        font-size: 1.1rem;
     }
     
     .case-studies-grid {
@@ -719,7 +811,7 @@
 }
 
 @media (max-width: 480px) {
-    .case-studies-hero-content h1 {
+    .case-studies-hero h1 {
         font-size: 2rem;
     }
     
@@ -777,3 +869,92 @@
 .result-card:hover .result-icon {
     transform: scale(1.1);
 } 
+
+/* Final CTA Section */
+.final-cta {
+    padding: 6rem 0;
+    background: transparent;
+    position: relative;
+}
+
+.final-cta .container {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+.final-cta .cta-content {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.final-cta .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.final-cta .cta-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.final-cta .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.final-cta .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+}
+
+.final-cta .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
+    background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
+}
+
+@media (max-width: 768px) {
+    .final-cta {
+        padding: 4rem 0;
+    }
+    
+    .final-cta .cta-content {
+        padding: 3rem 2rem;
+        border-radius: 20px;
+    }
+    
+    .final-cta .cta-content h2 {
+        font-size: 2rem;
+    }
+}

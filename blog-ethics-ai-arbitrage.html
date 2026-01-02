@@ -84,6 +84,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css?v=1758294251">
+    <link rel="stylesheet" href="pill-nav-bundle.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -91,33 +92,23 @@
     <style>
         /* Blog Post Specific Styles */
         .blog-post-hero {
-            padding: 120px 0 80px;
-            background: var(--bg-primary);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .blog-post-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 25% 25%, rgba(92, 196, 157, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 75% 75%, rgba(92, 196, 157, 0.08) 0%, transparent 60%),
-                linear-gradient(135deg, rgba(92, 196, 157, 0.05) 0%, transparent 40%);
-            pointer-events: none;
+            z-index: 1;
+            overflow: visible;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .blog-post-hero .hero-content {
             position: relative;
             z-index: 2;
             max-width: 900px;
+            width: 100%;
             margin: 0 auto;
             padding: 0 20px;
+            box-sizing: border-box;
+            overflow: visible;
         }
         
         .blog-post-hero .category-badge {
@@ -136,13 +127,16 @@
         .blog-post-hero h1 {
             font-size: 3.2rem;
             font-weight: 800;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            margin-top: 0;
+            padding-bottom: 0.5rem;
             background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
+            line-height: 1.2;
             letter-spacing: -0.02em;
+            overflow: visible;
         }
         
         .blog-post-hero .meta {
@@ -153,6 +147,8 @@
             color: var(--text-secondary);
             font-size: 1rem;
             margin-bottom: 2rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
         }
         
         .blog-post-hero .meta span {
@@ -163,21 +159,26 @@
         
         .blog-post-content {
             padding: 80px 0;
-            background: var(--bg-secondary);
+            background: rgba(17, 17, 17, 0.95);
+            position: relative;
+            z-index: 1;
         }
         
         .blog-post-content .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
         }
         
         .blog-post-content .content-wrapper {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 3rem;
             position: relative;
+            backdrop-filter: blur(10px);
         }
         
         .blog-post-content h2 {
@@ -327,6 +328,96 @@
                 font-size: 1rem;
             }
         }
+    
+        /* Final CTA Section */
+        .final-cta {
+            padding: 6rem 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .final-cta .container {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .final-cta .cta-content {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+
+        .final-cta .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .final-cta .cta-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .final-cta .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .final-cta .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
+        }
+
+        .final-cta .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
+            background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .final-cta {
+                padding: 4rem 0;
+            }
+            
+            .final-cta .cta-content {
+                padding: 3rem 2rem;
+                border-radius: 20px;
+            }
+            
+            .final-cta .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -494,37 +585,20 @@
         },
         "sameAs": [
             "https://www.facebook.com/profile.php?id=61579044325984",
-            "https://www.instagram.com/growaiagency/"
+            "https://www.instagram.com/thejakearnold/"
         ]
     }
     </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="assets/images/logos/white and green.png" alt="Grow AI" class="nav-logo-img" loading="eager">
-                </a>
-            </div>
-                                                                                                <ul class="nav-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="process">Process</a></li>
-                <li><a href="software">AI Software</a></li>
-                <li><a href="resources">Resources</a></li>
-                <li><a href="case-studies">Case Studies</a></li>
-                <li><a href="about">About Us</a></li>
-                <li><a href="team">Team</a></li>
-                <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ethics-ai-arbitrage&EL=Website-Ethics-AI-Arbitrage" class="cta-button">Get in touch</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
         </div>
-    </nav>
+    </div>
+    <!-- Navigation -->
+    
 
     <!-- Blog Post Hero -->
     <section class="blog-post-hero">
@@ -690,72 +764,17 @@
                     <p><strong>Conclusion of this section:</strong> Ethics are not a limit. They are leverage.</p>
                 </div>
 
-                <h2>Conclusion</h2>
-                
-                <p>AI arbitrage is not inherently unethical. It is simply a model for capturing inefficiencies. But like any model, it can be run poorly or well.</p>
-                
-                <p>Spammy content farms, misleading claims, and shady data practices represent the dark side. Selling outcomes, being transparent, respecting privacy, and focusing on relationships represent the sustainable side.</p>
-                
-                <p>The line between profitable and exploitative is real. Crossing it may get you a short-term win, but staying on the right side builds long-term wealth.</p>
-                
-                <p>If you want to build a business that lasts, run AI arbitrage ethically. Be aggressive in growth, but disciplined in ethics. That is how you win the long game.</p>
+                </section>
 
-                <div class="faq-section">
-                    <h2>FAQ</h2>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Is AI arbitrage unethical by definition?</div>
-                        <div class="faq-answer">No. AI arbitrage is simply about using AI tools to deliver outcomes businesses cannot achieve themselves. It becomes unethical only when it involves deception, spam, or exploitation.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">How do you compete with shady arbitrage providers?</div>
-                        <div class="faq-answer">By differentiating on trust and outcomes. Clients will leave low-quality providers quickly. If you build relationships, you win by default.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Should I disclose when I use AI?</div>
-                        <div class="faq-answer">Yes, if asked. Most clients don't care as long as results are strong. Transparency positions you as honest and confident.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">What is the risk of using scraped data?</div>
-                        <div class="faq-answer">Scraping without consent risks violating laws like GDPR and CCPA. Always use compliant tools and datasets. The short-term risk is legal trouble, the long-term risk is reputational damage.</div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <div class="faq-question">Can I still be profitable if I take the ethical path?</div>
-                        <div class="faq-answer">Yes. Ethical arbitrage providers often charge more and keep clients longer. Ethics align with profitability when you think in long-term value instead of quick cash.</div>
-                    </div>
-                </div>
-
-                <div class="sources-section">
-                    <h3>Sources</h3>
-                    <ul class="sources-list">
-                        <li>Automation and job impacts: McKinsey</li>
-                        <li>Data privacy regulations: European Commission GDPR</li>
-                        <li>Trust in AI adoption: Accenture</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <div class="cta-box" style="text-align: center; margin: 3rem auto; max-width: 1200px; padding: 2.5rem; background: linear-gradient(135deg, rgba(92, 196, 157, 0.15) 0%, rgba(92, 196, 157, 0.05) 100%); border: 2px solid rgba(92, 196, 157, 0.3); border-radius: 16px;">
-        <h3 style="font-size: 1.8rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">Ready to Build Your AI Arbitrage Business?</h3>
-        <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">Join entrepreneurs who are building successful AI arbitrage businesses with Grow AI's proven system.</p>
-        <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ethics-ai-arbitrage&EL=Website-Ethics-AI-Arbitrage" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);">
-            <span>Apply Now</span>
-            <i class="fas fa-arrow-right"></i>
-        </a>
-    </div>
 
     <!-- Footer -->
-    <footer class="footer">
+        <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Grow AI</h3>
+                    <img src="assets/images/logos/All white.png" alt="Grow AI" class="footer-logo" loading="lazy">
                     <p>We help entrepreneurs build and grow successful AI businesses.</p>
                 </div>
                 <div class="footer-section">
@@ -764,6 +783,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="process">Process</a></li>
                         <li><a href="software">AI Software</a></li>
+                        <li><a href="resources">Resources</a></li>
                         <li><a href="case-studies">Case Studies</a></li>
                     </ul>
                 </div>
@@ -772,14 +792,13 @@
                     <ul>
                         <li><a href="about">About us</a></li>
                         <li><a href="team">Team</a></li>
-                        <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=blog-ethics-ai-arbitrage&EL=Website-Ethics-AI-Arbitrage">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=61579044325984" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/growaiagency/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/thejakearnold" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -803,5 +822,11 @@
             once: true
         });
     </script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="silk-background-bundle.js"></script>
+    
+    <!-- PillNav Bundle (built with npm run build:pillnav) -->
+    <script src="pill-nav-bundle.js"></script>
 </body>
 </html>
