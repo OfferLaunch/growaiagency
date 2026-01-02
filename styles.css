@@ -521,6 +521,10 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    #hero-gradient-text {
+        top: 60px;
+    }
+    
     #hero-gradient-text .hero-gradient-text {
         font-size: 1.5rem;
         padding: 0.4rem 0.8rem;
@@ -528,6 +532,10 @@ body.menu-open {
 }
 
 @media (max-width: 480px) {
+    #hero-gradient-text {
+        top: 50px;
+    }
+    
     #hero-gradient-text .hero-gradient-text {
         font-size: 1.25rem;
         padding: 0.35rem 0.7rem;
@@ -1846,7 +1854,7 @@ body.menu-open {
     .pillar-number-large {
         font-size: 3.5rem;
         font-weight: 800;
-        color: var(--primary-color);
+        color: #ffffff;
         line-height: 1;
     }
 
@@ -2213,6 +2221,7 @@ body.menu-open {
     
     .pillar-number-large {
         font-size: 3rem;
+        color: #ffffff;
     }
     
     .pillar-content h3 {
