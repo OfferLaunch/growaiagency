@@ -522,33 +522,13 @@ body.menu-open {
 
 @media (max-width: 768px) {
     #hero-gradient-text {
-        top: -20px;
-        margin-bottom: 2rem;
-    }
-    
-    #hero-gradient-text .hero-gradient-text {
-        font-size: 1.5rem;
-        padding: 0.4rem 0.8rem;
-    }
-    
-    .hero-content {
-        margin-top: 4rem;
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
     #hero-gradient-text {
-        top: -30px;
-        margin-bottom: 1.5rem;
-    }
-    
-    #hero-gradient-text .hero-gradient-text {
-        font-size: 1.25rem;
-        padding: 0.35rem 0.7rem;
-    }
-    
-    .hero-content {
-        margin-top: 3rem;
+        display: none;
     }
 }
 
