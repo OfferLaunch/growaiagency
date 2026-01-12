@@ -121,12 +121,6 @@
             <div class="hero-visual">
                 <div class="video-wrap">
                     <div id="vidalytics_embed_rAkCYZoQ0E2LXjyx" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-                    <div class="floating-cursor" id="floatingCursor">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-                        </svg>
-                        <div class="cursor-click-indicator"></div>
-                    </div>
                     <script type="text/javascript">
                         (function (v, i, d, a, l, y, t, c, s) {
                             y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
@@ -398,96 +392,6 @@
                     });
             });
         }
-    </script>
-    
-    <!-- Floating Cursor Animation -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cursor = document.getElementById("floatingCursor");
-            const videoWrap = document.querySelector(".video-wrap");
-            
-            if (!cursor || !videoWrap) return;
-            
-            // Hide cursor on mobile
-            if (window.innerWidth <= 768) {
-                cursor.style.display = "none";
-                return;
-            }
-            
-            let currentX = 50; // Start at center
-            let currentY = 50;
-            let targetX = 50;
-            let targetY = 50;
-            let animationFrame;
-            
-            // Get video container bounds
-            function getVideoBounds() {
-                const rect = videoWrap.getBoundingClientRect();
-                return {
-                    left: rect.left,
-                    top: rect.top,
-                    width: rect.width,
-                    height: rect.height
-                };
-            }
-            
-            // Move cursor to random position
-            function moveToRandomPosition() {
-                const bounds = getVideoBounds();
-                const padding = 10; // Padding from edges
-                
-                targetX = padding + Math.random() * (bounds.width - padding * 2);
-                targetY = padding + Math.random() * (bounds.height - padding * 2);
-            }
-            
-            // Animate cursor movement
-            function animate() {
-                const bounds = getVideoBounds();
-                
-                // Smooth interpolation
-                currentX += (targetX - currentX) * 0.05;
-                currentY += (targetY - currentY) * 0.05;
-                
-                // Update cursor position
-                cursor.style.left = currentX + "px";
-                cursor.style.top = currentY + "px";
-                
-                // Check if close to target
-                const distance = Math.sqrt(
-                    Math.pow(targetX - currentX, 2) + Math.pow(targetY - currentY, 2)
-                );
-                
-                if (distance < 5) {
-                    // Trigger click animation
-                    cursor.classList.add("clicking");
-                    setTimeout(() => {
-                        cursor.classList.remove("clicking");
-                        // Move to new position after click
-                        setTimeout(moveToRandomPosition, 500);
-                    }, 200);
-                }
-                
-                animationFrame = requestAnimationFrame(animate);
-            }
-            
-            // Start animation
-            moveToRandomPosition();
-            animate();
-            
-            // Move to new position every 3-5 seconds
-            setInterval(moveToRandomPosition, 3000 + Math.random() * 2000);
-            
-            // Handle window resize
-            window.addEventListener("resize", function() {
-                if (window.innerWidth <= 768) {
-                    cursor.style.display = "none";
-                    cancelAnimationFrame(animationFrame);
-                } else {
-                    cursor.style.display = "block";
-                    moveToRandomPosition();
-                }
-            });
-        });
     </script>
     
     <!-- PillNav Bundle (built with npm run build:pillnav) -->
