@@ -5,15 +5,11 @@
   "main": "about-script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx http-server . -p 3000 -o",
-    "dev:python": "python3 -m http.server 3000",
-    "dev:php": "php -S localhost:3000",
     "build:silk": "esbuild silk-background.js --bundle --format=iife --outfile=silk-background-bundle.js --jsx=automatic",
     "build:gradient": "esbuild gradient-text.js --bundle --format=iife --outfile=gradient-text-bundle.js --jsx=automatic",
     "build:pillnav": "esbuild pill-nav.js --bundle --format=iife --outfile=pill-nav-bundle.js --jsx=automatic",
     "build:spotlight": "esbuild spotlight-card.js --bundle --format=iife --outfile=spotlight-card-bundle.js --jsx=automatic",
-    "build:chroma": "esbuild chroma-grid.js --bundle --format=iife --outfile=chroma-grid-bundle.js --jsx=automatic --loader:.css=css",
-    "build:growprocess": "esbuild grow-process.js --bundle --format=iife --outfile=grow-process-bundle.js --jsx=automatic --loader:.css=css"
+    "build:chroma": "esbuild chroma-grid.js --bundle --format=iife --outfile=chroma-grid-bundle.js --jsx=automatic --loader:.css=css"
   },
   "repository": {
     "type": "git",

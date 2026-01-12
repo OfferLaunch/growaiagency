@@ -2,7 +2,7 @@
 
 /* Process Hero Section */
 .process-hero {
-    padding: 140px 0 40px;
+    padding: 140px 0 60px;
     background: transparent; /* Changed to transparent to show Silk background */
     text-align: center;
     position: relative;
@@ -24,7 +24,16 @@
     pointer-events: none;
 } */
 
-/* Removed ::after gradient to improve flow between hero and body */
+.process-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
+    pointer-events: none;
+}
 
 .process-hero .hero-content {
     max-width: 800px;
@@ -58,7 +67,7 @@
 
 /* Why It Matters Section */
 .why-matters {
-    padding: 40px 0 40px 0;
+    padding: 80px 0 40px 0;
     background: transparent;
 }
 
@@ -66,22 +75,16 @@
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .why-content blockquote {
     position: relative;
     padding: 3rem 2rem;
     margin: 0.5rem 0 2rem 0;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    overflow: hidden;
+    border: none;
+    background: linear-gradient(135deg, rgba(92, 196, 157, 0.08) 0%, rgba(92, 196, 157, 0.03) 100%);
+    border-radius: 20px;
+    border-left: 4px solid #5CC49D;
 }
 
 .why-content blockquote::before {
@@ -123,13 +126,7 @@
 .grow-steps {
     padding: 40px 0 80px 0;
     background: transparent;
-    overflow: visible;
-}
-
-/* When GrowProcess component is loaded, it handles its own styling */
-.grow-steps.grow-process-wrapper {
-    padding: 0;
-    overflow: visible;
+    overflow-x: auto;
 }
 
 .grow-steps .container {
@@ -473,12 +470,7 @@
         font-size: 1.2rem;
     }
     
-    .why-content blockquote {
-        padding: 2.5rem 1.5rem;
-        border-radius: 20px;
-    }
-    
-    .why-content blockquote p {
+    .why-content p {
         font-size: 1.2rem;
     }
     
@@ -537,7 +529,7 @@
 
 @media (max-width: 480px) {
     .process-hero {
-        padding: 80px 0 30px;
+        padding: 80px 0 60px;
     }
     
     .process-hero h1 {
@@ -546,15 +538,6 @@
     
     .process-hero .hero-subtitle {
         font-size: 1.125rem;
-    }
-    
-    .why-matters {
-        padding: 30px 0 40px 0;
-    }
-    
-    .why-content blockquote {
-        padding: 2rem 1.5rem;
-        border-radius: 20px;
     }
     
     .step-card {
