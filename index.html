@@ -121,17 +121,11 @@
             <div class="hero-visual">
                 <div class="video-wrap">
                     <div id="vidalytics_embed_rAkCYZoQ0E2LXjyx" style="width: 100%; position:relative; padding-top: 56.25%;"></div>
-                    <div class="vsl-overlay" id="vslOverlay">
-                        <div class="vsl-overlay-content">
-                            <h2 class="vsl-headline">The AI Growth Blueprint Revealed</h2>
-                            <div class="vsl-play-icon">
-                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="40" cy="40" r="40" fill="white" opacity="0.1"/>
-                                    <path d="M32 24L32 56L56 40L32 24Z" fill="white"/>
-                                </svg>
-                            </div>
-                            <p class="vsl-subheadline">Discover the proven system that's helping businesses scale with AI automation</p>
-                        </div>
+                    <div class="floating-cursor" id="floatingCursor">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="cursor-click-indicator"></div>
                     </div>
                     <script type="text/javascript">
                         (function (v, i, d, a, l, y, t, c, s) {
@@ -406,99 +400,93 @@
         }
     </script>
     
-    <!-- VSL Overlay Functionality -->
+    <!-- Floating Cursor Animation -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const overlay = document.getElementById("vslOverlay");
-            const videoContainer = document.getElementById("vidalytics_embed_rAkCYZoQ0E2LXjyx");
+            const cursor = document.getElementById("floatingCursor");
+            const videoWrap = document.querySelector(".video-wrap");
             
-            if (!overlay || !videoContainer) return;
+            if (!cursor || !videoWrap) return;
             
-            let overlayRemoved = false;
-            
-            // Function to restart and play video
-            function restartAndPlayVideo() {
-                if (overlayRemoved) return;
-                overlayRemoved = true;
-                
-                // Remove overlay instantly - no transition
-                overlay.style.transition = "none";
-                overlay.style.opacity = "0";
-                overlay.style.visibility = "hidden";
-                overlay.style.display = "none";
-                
-                // Wait a moment for Vidalytics to be ready, then send commands
-                setTimeout(function() {
-                    const iframe = videoContainer.querySelector("iframe");
-                    if (iframe && iframe.contentWindow) {
-                        try {
-                            // Send commands to Vidalytics player
-                            // 1. Unmute the video
-                            iframe.contentWindow.postMessage(JSON.stringify({
-                                event: "command",
-                                func: "setVolume",
-                                args: [100]
-                            }), '*');
-                            
-                            iframe.contentWindow.postMessage(JSON.stringify({
-                                event: "command",
-                                func: "unMute",
-                                args: ""
-                            }), '*');
-                            
-                            // 2. Seek to beginning (restart)
-                            iframe.contentWindow.postMessage(JSON.stringify({
-                                event: "command",
-                                func: "seekTo",
-                                args: [0]
-                            }), '*');
-                            
-                            // 3. Play the video
-                            iframe.contentWindow.postMessage(JSON.stringify({
-                                event: "command",
-                                func: "playVideo",
-                                args: ""
-                            }), '*');
-                            
-                            // Also try alternative command formats
-                            iframe.contentWindow.postMessage(JSON.stringify({
-                                event: "command",
-                                func: "play",
-                                args: ""
-                            }), '*');
-                            
-                        } catch (e) {
-                            console.log("Vidalytics commands sent");
-                        }
-                    }
-                    
-                    // Fallback: Try to find video element directly
-                    const video = videoContainer.querySelector("video");
-                    if (video) {
-                        video.currentTime = 0; // Restart
-                        video.muted = false; // Unmute
-                        video.play().catch(function(err) {
-                            console.log("Auto-play may be blocked:", err);
-                        });
-                    }
-                }, 100);
+            // Hide cursor on mobile
+            if (window.innerWidth <= 768) {
+                cursor.style.display = "none";
+                return;
             }
             
-            // Add click handler to overlay
-            overlay.addEventListener("click", restartAndPlayVideo);
+            let currentX = 50; // Start at center
+            let currentY = 50;
+            let targetX = 50;
+            let targetY = 50;
+            let animationFrame;
             
-            // Add keyboard support (Enter/Space to play)
-            overlay.addEventListener("keydown", function(e) {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    restartAndPlayVideo();
+            // Get video container bounds
+            function getVideoBounds() {
+                const rect = videoWrap.getBoundingClientRect();
+                return {
+                    left: rect.left,
+                    top: rect.top,
+                    width: rect.width,
+                    height: rect.height
+                };
+            }
+            
+            // Move cursor to random position
+            function moveToRandomPosition() {
+                const bounds = getVideoBounds();
+                const padding = 10; // Padding from edges
+                
+                targetX = padding + Math.random() * (bounds.width - padding * 2);
+                targetY = padding + Math.random() * (bounds.height - padding * 2);
+            }
+            
+            // Animate cursor movement
+            function animate() {
+                const bounds = getVideoBounds();
+                
+                // Smooth interpolation
+                currentX += (targetX - currentX) * 0.05;
+                currentY += (targetY - currentY) * 0.05;
+                
+                // Update cursor position
+                cursor.style.left = currentX + "px";
+                cursor.style.top = currentY + "px";
+                
+                // Check if close to target
+                const distance = Math.sqrt(
+                    Math.pow(targetX - currentX, 2) + Math.pow(targetY - currentY, 2)
+                );
+                
+                if (distance < 5) {
+                    // Trigger click animation
+                    cursor.classList.add("clicking");
+                    setTimeout(() => {
+                        cursor.classList.remove("clicking");
+                        // Move to new position after click
+                        setTimeout(moveToRandomPosition, 500);
+                    }, 200);
+                }
+                
+                animationFrame = requestAnimationFrame(animate);
+            }
+            
+            // Start animation
+            moveToRandomPosition();
+            animate();
+            
+            // Move to new position every 3-5 seconds
+            setInterval(moveToRandomPosition, 3000 + Math.random() * 2000);
+            
+            // Handle window resize
+            window.addEventListener("resize", function() {
+                if (window.innerWidth <= 768) {
+                    cursor.style.display = "none";
+                    cancelAnimationFrame(animationFrame);
+                } else {
+                    cursor.style.display = "block";
+                    moveToRandomPosition();
                 }
             });
-            
-            // Make overlay focusable for accessibility
-            overlay.setAttribute("tabindex", "0");
-            overlay.setAttribute("role", "button");
-            overlay.setAttribute("aria-label", "Play video: The AI Growth Blueprint Revealed");
         });
     </script>
     
