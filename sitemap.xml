@@ -1,249 +1,622 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <!-- Homepage -->
     <url>
         <loc>https://growaiagency.io/</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+        <image:image>
+            <image:title>Grow AI Agency - AI Business Solutions</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Process Page -->
     <url>
         <loc>https://growaiagency.io/process.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+        <image:image>
+            <image:title>The GROW Method - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Software Page -->
     <url>
         <loc>https://growaiagency.io/software.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
+        <image:image>
+            <image:title>AI Software - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Resources Page -->
     <url>
         <loc>https://growaiagency.io/resources.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>Resources - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Case Studies Page -->
     <url>
         <loc>https://growaiagency.io/case-studies.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+        <image:image>
+            <image:title>Case Studies - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- About Page -->
     <url>
         <loc>https://growaiagency.io/about.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
+        <image:image>
+            <image:title>About Us | Grow AI Agency - Building AI Arbitrage Systems</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Team Page -->
     <url>
         <loc>https://growaiagency.io/team.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+        <image:image>
+            <image:title>Meet Our Team | Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
+    <!-- Blog Posts (marked as news articles) -->
     <url>
         <loc>https://growaiagency.io/blog-top-7-business-niches.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-15T08:00:00Z</news:publication_date>
+            <news:title>Top 7 Business Niches Perfect for AI Arbitrage Right Now</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-arbitrage-vs-consulting.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-20T08:00:00Z</news:publication_date>
+            <news:title>AI Arbitrage vs. Traditional Consulting: What Yields Faster Growth?</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-5-signs-business-model-upgrade.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-08T08:00:00Z</news:publication_date>
+            <news:title>5 Signs Your Business Model Needs an AI Arbitrage Upgrade</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-arbitrage-sustainable.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-12T08:00:00Z</news:publication_date>
+            <news:title>Is AI Arbitrage Sustainable or Just a Short-Term Exploit?</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-future-arbitrage-aeo-geo.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-30T08:00:00Z</news:publication_date>
+            <news:title>The Future of Arbitrage: How AEO & GEO Are Disrupting Discovery</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-arbitrage-bigger-than-content.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-05T08:00:00Z</news:publication_date>
+            <news:title>Why AI Arbitrage Isn't Just Content Arbitrage (It's Bigger)</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-agency-vs-freelance-arbitrage.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-18T08:00:00Z</news:publication_date>
+            <news:title>Agency-Building vs. Freelance Arbitrage: Which Model Wins Faster?</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ethics-ai-arbitrage.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-26T08:00:00Z</news:publication_date>
+            <news:title>The Ethics of AI Arbitrage: How to Stay Profitable Without Crossing the Line</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-hidden-arbitrage-opportunities.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-28T08:00:00Z</news:publication_date>
+            <news:title>How to Spot Hidden Arbitrage Opportunities with AI Tools</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-validate-ai-arbitrage-niches.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-10T08:00:00Z</news:publication_date>
+            <news:title>How to Validate AI Arbitrage Niches Using Market Search Data</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-build-ai-arbitrage-pipeline.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-15T08:00:00Z</news:publication_date>
+            <news:title>Step-by-Step: Build a Fully Automated AI Arbitrage Pipeline</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-real-time-pricing-arbitrage.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-22T08:00:00Z</news:publication_date>
+            <news:title>How to Use AI for Real-Time Pricing Arbitrage Across Platforms</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-cold-outreach-ai-arbitrage-script.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-10T08:00:00Z</news:publication_date>
+            <news:title>Cold Outreach with AI Arbitrage: A 3-Step Script That Works</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-offer-funnel-ai-arbitrage-service.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-08T08:00:00Z</news:publication_date>
+            <news:title>How to Build an Offer Funnel That Sells Your AI Arbitrage Service</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-train-clients-ai-tools.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-05T08:00:00Z</news:publication_date>
+            <news:title>How to Train Clients on AI Tools Without Overwhelming Them</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-repurposing-methods.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-14T08:00:00Z</news:publication_date>
+            <news:title>How to Turn One Blog Post into Ten Assets Using AI Repurposing Methods</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-aeo-optimization-guide.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-20T08:00:00:00Z</news:publication_date>
+            <news:title>How to Structure Blog Posts for Answer Engine Optimization (AEO)</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-sdr-agent-outbound.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-24T08:00:00Z</news:publication_date>
+            <news:title>How to Build and Scale Your First AI SDR Agent for Outbound Introduction</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-top-10-ai-tools-arbitrage-agencies.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-12T08:00:00Z</news:publication_date>
+            <news:title>Top 10 AI Tools That Actually Help Arbitrage Agencies Scale Fast</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-5-ai-arbitrage-tools-vs-manual.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-18T08:00:00Z</news:publication_date>
+            <news:title>5 AI Arbitrage Tools vs. Doing It Manually: A Real-Time Comparison</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-stack-built-in-vs-custom.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-28T08:00:00Z</news:publication_date>
+            <news:title>The AI Stack: Built-In Platform Tools vs. Custom Pipelines</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-content-curation-vs-repurposing-vs-translation.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-01T08:00:00Z</news:publication_date>
+            <news:title>Content Curation vs. Repurposing vs. Translation in AI Arbitrage</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-vs-human-sdr.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-02-16T08:00:00Z</news:publication_date>
+            <news:title>AI vs. Human SDR: When to Let AI Pitch for You</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-top-templates-geo-content.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-25T08:00:00Z</news:publication_date>
+            <news:title>Top Templates to Engineer Your Site's Content for GEO</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-generative-engine-optimization-geo-agencies.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-22T08:00:00Z</news:publication_date>
+            <news:title>Generative Engine Optimization (GEO): What It Means for Agencies</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-answer-engine-optimization-aeo-explained.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-18T08:00:00Z</news:publication_date>
+            <news:title>Answer Engine Optimization (AEO) Explained: Why SEO Is Changing</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-rise-agentic-ai-optimization-business.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-15T08:00:00Z</news:publication_date>
+            <news:title>The Rise of Agentic AI Optimization: How to Prepare Your Business</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-google-vs-openai-ai-discovery-war.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-12T08:00:00Z</news:publication_date>
+            <news:title>Google vs. OpenAI: Who's Winning the AI Discovery War?</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-startups-changing-client-buying-services.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-10T08:00:00Z</news:publication_date>
+            <news:title>How AI Startups Are Changing the Way Clients Buy Services</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-state-ai-arbitrage-2025-market-headed.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-08T08:00:00Z</news:publication_date>
+            <news:title>The State of AI Arbitrage in 2025: Where the Market's Headed</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-rise-ai-arbitrage-agency.html</loc>
         <lastmod>2026-01-09</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-01-09T08:00:00Z</news:publication_date>
+            <news:title>The Rise of the AI Arbitrage Agency: How to Build a High-Ticket Service Business in 2026</news:title>
+        </news:news>
     </url>
     <url>
         <loc>https://growaiagency.io/blog-ai-arbitrage-agency-medical-practices-voice-receptionists.html</loc>
         <lastmod>2026-01-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-01-12T08:00:00Z</news:publication_date>
+            <news:title>The AI Arbitrage Agency: Why Medical Practices are Paying $2k+/mo for AI Voice Receptionists in 2026</news:title>
+        </news:news>
     </url>
+    <url>
+        <loc>https://growaiagency.io/blog-best-practices-starting-ai-agency.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-20T08:00:00Z</news:publication_date>
+            <news:title>Best Practices for Starting an AI Agency in 2026: Complete Guide</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-how-to-sell-ai-to-local-businesses.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-10-15T08:00:00Z</news:publication_date>
+            <news:title>How to Sell AI to Local Businesses: A Complete Guide for 2026</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-why-ai-agency-best-business-model-2026.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-11-25T08:00:00Z</news:publication_date>
+            <news:title>Why AI Agency is the Best Business Model to Start in 2026</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-how-lucrative-ai-industry-early-entry.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-25T08:00:00Z</news:publication_date>
+            <news:title>How Lucrative the AI Industry Is If You Get In Early: The Early Mover Advantage</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog-money-moving-into-ai.html</loc>
+        <lastmod>2025-01-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-03-22T08:00:00Z</news:publication_date>
+            <news:title>The Money Moving Into AI: Investment Trends and Opportunities in 2026</news:title>
+        </news:news>
+    </url>
+    <!-- Legal Pages -->
     <url>
         <loc>https://growaiagency.io/privacy-policy.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
+        <image:image>
+            <image:title>Privacy Policy - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://growaiagency.io/terms-of-service.html</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
+        <image:image>
+            <image:title>Terms of Service - Grow AI Agency</image:title>
+            <image:loc>https://growaiagency.io/assets/images/logos/white and green.png</image:loc>
+        </image:image>
     </url>
 </urlset>
