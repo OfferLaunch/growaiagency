@@ -18,21 +18,48 @@ User-agent: Slurp
 Allow: /
 Crawl-delay: 0
 
-# Block AI training bots (optional - helps with content protection)
+# Allow AI training bots to crawl blog posts for indexing
+# Blog posts are in root directory (blog-*.html format)
 User-agent: GPTBot
-Disallow: /
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
 
 User-agent: ChatGPT-User
-Disallow: /
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
 
 User-agent: CCBot
-Disallow: /
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
 
 User-agent: anthropic-ai
-Disallow: /
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
+
+# Additional AI training bots
+User-agent: Google-Extended
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /*.html
+Crawl-delay: 0
 
 # Allow crawling of all important content areas
 Allow: /assets/
