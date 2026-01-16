@@ -499,6 +499,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>GEO content templates for AI search optimization</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/Top%20GEO%20templates.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -567,6 +571,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI discovery war between Google and OpenAI</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/Google%20vs%20open%20ai.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
