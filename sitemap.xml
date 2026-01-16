@@ -531,6 +531,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AEO optimization for search engines</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/AEO%20Explained.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -577,6 +581,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI startups changing client buying behavior</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/How%20AI%20Startups%20are%20changing.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
