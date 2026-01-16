@@ -513,6 +513,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>GEO optimization for marketing agencies</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/GEO%20for%20Agencies.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -541,6 +545,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>Agentic AI optimization for business</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/Rise%20of%20Ai%20Agencies.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
