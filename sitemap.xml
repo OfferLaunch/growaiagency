@@ -171,6 +171,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Arbitrage Beyond Content</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/bigger%20than%20content.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -199,6 +203,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Arbitrage Ethics and Profitability</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/ethics%20of%20AI%20arb.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -241,6 +249,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Arbitrage Pipeline Automation</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/Build%20AI%20pipeline.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
