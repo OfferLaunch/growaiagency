@@ -139,6 +139,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Arbitrage Sustainability Analysis</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/is%20ai%20arbitrage%20sustainable.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -333,6 +337,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Client Training</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/train%20your%20clients.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -563,6 +571,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI arbitrage market trends 2025</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/state%20of%20market.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
