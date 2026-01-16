@@ -243,6 +243,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Arbitrage Niche Validation with Market Search Data</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/how%20to%20validate%20niche.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -343,6 +347,10 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>AI Content Repurposing</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/ai%20content%20repurposing.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
@@ -357,12 +365,16 @@
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <image:image>
+            <image:title>Answer Engine Optimization Guide</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/aeo%20optimization.png</image:loc>
+        </image:image>
         <news:news>
             <news:publication>
                 <news:name>Grow AI Agency</news:name>
                 <news:language>en</news:language>
             </news:publication>
-            <news:publication_date>2025-01-20T08:00:00:00Z</news:publication_date>
+            <news:publication_date>2025-01-20T08:00:00Z</news:publication_date>
             <news:title>How to Structure Blog Posts for Answer Engine Optimization (AEO)</news:title>
         </news:news>
     </url>
