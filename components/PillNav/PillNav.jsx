@@ -274,9 +274,12 @@ const PillNav = ({
               // Check if this item is active
               const itemHref = item.href.replace(/\/$/, '') || '/';
               const normalizedItemHref = itemHref === '/' ? '/' : itemHref.split('/').filter(Boolean)[0];
+              const activeNorm = (resolvedActiveHref || '').replace(/\/$/, '') || '/';
+              const itemNorm = itemHref.replace(/\/$/, '') || '/';
               const isActive = !isCTA && (resolvedActiveHref === normalizedItemHref || 
                 (resolvedActiveHref === '/' && itemHref === '/') ||
-                (resolvedActiveHref !== '/' && itemHref.includes(resolvedActiveHref)));
+                (resolvedActiveHref !== '/' && itemHref.includes(resolvedActiveHref)) ||
+                (activeNorm !== '/' && activeNorm === itemNorm));
               
               return (
               <li key={item.href || `item-${i}`} role="none">

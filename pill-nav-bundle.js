@@ -26239,7 +26239,9 @@
           const isCTA = item.label?.toLowerCase().includes("get in touch") || isExternalLink(item.href);
           const itemHref = item.href.replace(/\/$/, "") || "/";
           const normalizedItemHref = itemHref === "/" ? "/" : itemHref.split("/").filter(Boolean)[0];
-          const isActive = !isCTA && (resolvedActiveHref === normalizedItemHref || resolvedActiveHref === "/" && itemHref === "/" || resolvedActiveHref !== "/" && itemHref.includes(resolvedActiveHref));
+          const activeNorm = (resolvedActiveHref || "").replace(/\/$/, "") || "/";
+          const itemNorm = itemHref.replace(/\/$/, "") || "/";
+          const isActive = !isCTA && (resolvedActiveHref === normalizedItemHref || resolvedActiveHref === "/" && itemHref === "/" || resolvedActiveHref !== "/" && itemHref.includes(resolvedActiveHref) || activeNorm !== "/" && activeNorm === itemNorm);
           return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { role: "none", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
             "a",
             {
