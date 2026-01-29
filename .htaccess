@@ -23,3 +23,17 @@
     Header unset ETag
 </IfModule>
 FileETag None
+
+# Redirect old URLs to new folder structure (SEO)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    # Blog posts: /blog-xxx.html -> /blog/blog-xxx.html
+    RewriteRule ^blog-([a-z0-9-]+)\.html$ blog/blog-$1.html [L,R=301]
+    # Case studies
+    RewriteRule ^case-studies\.html$ case-studies/ [L,R=301]
+    RewriteRule ^case-study-john-d\.html$ case-studies/case-study-john-d.html [L,R=301]
+    # Legal
+    RewriteRule ^privacy-policy\.html$ legal/privacy-policy.html [L,R=301]
+    RewriteRule ^terms-of-service\.html$ legal/terms-of-service.html [L,R=301]
+</IfModule>

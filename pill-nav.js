@@ -42,18 +42,22 @@ if (typeof window !== 'undefined') {
     
     // Get current path for active state
     const currentPath = window.location.pathname;
-    const fileName = currentPath.split('/').pop() || '';
+    const pathSegments = currentPath.split('/').filter(Boolean);
+    const fileName = pathSegments[pathSegments.length - 1] || '';
     
     // Determine active href based on page type
     let activeHref;
     
     // Blog posts should show "Resources" as active
     if (fileName.startsWith('blog-') && fileName.endsWith('.html')) {
-      activeHref = 'resources';
+      activeHref = '/resources.html';
     }
-    // Case studies should show "Case Studies" as active
+    // Case studies listing or detail should show "Case Studies" as active
     else if (fileName.startsWith('case-study-') && fileName.endsWith('.html')) {
-      activeHref = 'case-studies';
+      activeHref = '/case-studies/';
+    }
+    else if (pathSegments[pathSegments.length - 2] === 'case-studies') {
+      activeHref = '/case-studies/';
     }
     // Home page
     else if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/index' || fileName === 'index.html' || fileName === '') {
@@ -61,14 +65,13 @@ if (typeof window !== 'undefined') {
     }
     // Other pages - get the first path segment or filename without extension
     else {
-      const pathSegments = currentPath.split('/').filter(Boolean);
       if (pathSegments.length > 0) {
         const firstSegment = pathSegments[pathSegments.length - 1].replace('.html', '');
         // Map common page names
         if (firstSegment === 'index') {
           activeHref = '/';
         } else {
-          activeHref = firstSegment;
+          activeHref = '/' + firstSegment + '.html';
         }
       } else {
         activeHref = '/';
@@ -84,16 +87,16 @@ if (typeof window !== 'undefined') {
       // Create root and render PillNav
       const root = ReactDOM.createRoot(navContainer);
       root.render(React.createElement(PillNav, {
-        logo: 'assets/images/logos/white and green.png',
+        logo: '/assets/images/logos/white and green.png',
         logoAlt: 'Grow AI',
         items: [
           { label: 'Home', href: '/' },
-          { label: 'Process', href: 'process' },
-          { label: 'AI Software', href: 'software' },
-          { label: 'Resources', href: 'resources' },
-          { label: 'Case Studies', href: 'case-studies' },
-          { label: 'About Us', href: 'about' },
-          { label: 'Team', href: 'team' },
+          { label: 'Process', href: '/process.html' },
+          { label: 'AI Software', href: '/software.html' },
+          { label: 'Resources', href: '/resources.html' },
+          { label: 'Case Studies', href: '/case-studies/' },
+          { label: 'About Us', href: '/about.html' },
+          { label: 'Team', href: '/team.html' },
           { label: 'Get in Touch', href: ctaUrl }
         ],
         activeHref: activeHref,
