@@ -49,15 +49,13 @@ if (typeof window !== 'undefined') {
     let activeHref;
     
     // Blog posts should show "Resources" as active
-    if (fileName.startsWith('blog-') && fileName.endsWith('.html')) {
-      activeHref = '/resources.html';
+    if (fileName.startsWith('blog-') && (fileName.endsWith('.html') || pathSegments[0] === 'blog')) {
+      activeHref = '/resources';
     }
     // Case studies listing or detail should show "Case Studies" as active
-    else if (fileName.startsWith('case-study-') && fileName.endsWith('.html')) {
-      activeHref = '/case-studies/';
-    }
-    else if (pathSegments[pathSegments.length - 2] === 'case-studies') {
-      activeHref = '/case-studies/';
+    else if (currentPath === '/case-studies' || currentPath === '/case-studies/' ||
+             pathSegments[0] === 'case-studies' || fileName.startsWith('case-study-')) {
+      activeHref = '/case-studies';
     }
     // Home page
     else if (currentPath === '/' || currentPath === '/index.html' || currentPath === '/index' || fileName === 'index.html' || fileName === '') {
@@ -71,7 +69,7 @@ if (typeof window !== 'undefined') {
         if (firstSegment === 'index') {
           activeHref = '/';
         } else {
-          activeHref = '/' + firstSegment + '.html';
+          activeHref = '/' + firstSegment;
         }
       } else {
         activeHref = '/';
@@ -91,12 +89,12 @@ if (typeof window !== 'undefined') {
         logoAlt: 'Grow AI',
         items: [
           { label: 'Home', href: '/' },
-          { label: 'Process', href: '/process.html' },
-          { label: 'AI Software', href: '/software.html' },
-          { label: 'Resources', href: '/resources.html' },
+          { label: 'Process', href: '/process' },
+          { label: 'AI Software', href: '/software' },
+          { label: 'Resources', href: '/resources' },
           { label: 'Case Studies', href: '/case-studies/' },
-          { label: 'About Us', href: '/about.html' },
-          { label: 'Team', href: '/team.html' },
+          { label: 'About Us', href: '/about' },
+          { label: 'Team', href: '/team' },
           { label: 'Get in Touch', href: ctaUrl }
         ],
         activeHref: activeHref,

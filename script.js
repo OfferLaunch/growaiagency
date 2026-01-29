@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (resourcesBtn) {
         resourcesBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = '/resources.html';
+            window.location.href = '/resources';
         });
     }
 });

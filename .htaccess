@@ -47,6 +47,13 @@ FileETag None
     # Case studies (root-level old URLs)
     RewriteRule ^case-studies\.html$ /case-studies/ [L,R=301]
     RewriteRule ^case-study-john-d\.html$ /case-studies/case-study-john-d [L,R=301]
+    # Root-level pages: redirect .html to clean URL
+    RewriteCond %{THE_REQUEST} \s/(process|software|resources|about|team)\.html [NC]
+    RewriteRule ^(process|software|resources|about|team)\.html$ /$1 [L,R=301]
+    # Root-level pages: serve .html when clean URL is requested
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(process|software|resources|about|team)/?$ $1.html [L]
     # Legal
     RewriteRule ^privacy-policy\.html$ legal/privacy-policy.html [L,R=301]
     RewriteRule ^terms-of-service\.html$ legal/terms-of-service.html [L,R=301]
