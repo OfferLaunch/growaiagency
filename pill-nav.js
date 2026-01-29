@@ -87,7 +87,7 @@ if (typeof window !== 'undefined') {
       // Create root and render PillNav
       const root = ReactDOM.createRoot(navContainer);
       root.render(React.createElement(PillNav, {
-        logo: '/assets/images/logos/white and green.png',
+        logo: 'https://growaiagency.io/assets/images/logos/white%20and%20green.png',
         logoAlt: 'Grow AI',
         items: [
           { label: 'Home', href: '/' },

@@ -30,7 +30,7 @@ function setActiveNavigation() {
         const resourcesLink = document.querySelector('.nav-menu a[href*="resources"]');
         if (resourcesLink) resourcesLink.classList.add('active');
     } else if (currentPath.includes('case-studies')) {
-        const caseStudiesLink = document.querySelector('.nav-menu a[href*="case-studies"]');
+        const caseStudiesLink = document.querySelector('.nav-menu a[href="/case-studies/"]');
         if (caseStudiesLink) caseStudiesLink.classList.add('active');
     } else if (currentPath.includes('about')) {
         const aboutLink = document.querySelector('.nav-menu a[href*="about"]');

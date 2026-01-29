@@ -26319,22 +26319,24 @@
         }
       }
       const currentPath = window.location.pathname;
-      const fileName = currentPath.split("/").pop() || "";
+      const pathSegments = currentPath.split("/").filter(Boolean);
+      const fileName = pathSegments[pathSegments.length - 1] || "";
       let activeHref;
       if (fileName.startsWith("blog-") && fileName.endsWith(".html")) {
-        activeHref = "resources";
+        activeHref = "/resources.html";
       } else if (fileName.startsWith("case-study-") && fileName.endsWith(".html")) {
-        activeHref = "case-studies";
+        activeHref = "/case-studies/";
+      } else if (pathSegments[pathSegments.length - 2] === "case-studies") {
+        activeHref = "/case-studies/";
       } else if (currentPath === "/" || currentPath === "/index.html" || currentPath === "/index" || fileName === "index.html" || fileName === "") {
         activeHref = "/";
       } else {
-        const pathSegments = currentPath.split("/").filter(Boolean);
         if (pathSegments.length > 0) {
           const firstSegment = pathSegments[pathSegments.length - 1].replace(".html", "");
           if (firstSegment === "index") {
             activeHref = "/";
           } else {
-            activeHref = firstSegment;
+            activeHref = "/" + firstSegment + ".html";
           }
         } else {
           activeHref = "/";
@@ -26346,16 +26348,16 @@
         console.log("Initializing PillNav...");
         const root = import_client.default.createRoot(navContainer);
         root.render(import_react2.default.createElement(PillNav_default, {
-          logo: "assets/images/logos/white and green.png",
+          logo: "https://growaiagency.io/assets/images/logos/white%20and%20green.png",
           logoAlt: "Grow AI",
           items: [
             { label: "Home", href: "/" },
-            { label: "Process", href: "process" },
-            { label: "AI Software", href: "software" },
-            { label: "Resources", href: "resources" },
-            { label: "Case Studies", href: "case-studies" },
-            { label: "About Us", href: "about" },
-            { label: "Team", href: "team" },
+            { label: "Process", href: "/process.html" },
+            { label: "AI Software", href: "/software.html" },
+            { label: "Resources", href: "/resources.html" },
+            { label: "Case Studies", href: "/case-studies/" },
+            { label: "About Us", href: "/about.html" },
+            { label: "Team", href: "/team.html" },
             { label: "Get in Touch", href: ctaUrl }
           ],
           activeHref,
