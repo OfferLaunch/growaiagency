@@ -26,7 +26,7 @@ function setActiveNavigation() {
     } else if (currentPath.includes('software')) {
         const softwareLink = document.querySelector('.nav-menu a[href*="software"]');
         if (softwareLink) softwareLink.classList.add('active');
-    } else if (currentPath.includes('resources')) {
+    } else if (currentPath.includes('resources') || currentPath.includes('/blog/')) {
         const resourcesLink = document.querySelector('.nav-menu a[href*="resources"]');
         if (resourcesLink) resourcesLink.classList.add('active');
     } else if (currentPath.includes('case-studies')) {
@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (resourcesBtn) {
         resourcesBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'resources.html';
+            window.location.href = '/resources.html';
         });
     }
 });
