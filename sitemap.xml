@@ -81,6 +81,42 @@
     </url>
     <!-- Blog Posts (marked as news articles) -->
     <url>
+        <loc>https://growaiagency.io/blog/blog-appointment-setting-automation-2026</loc>
+        <lastmod>2026-01-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:title>Why Appointment-Setting Automation is the $2M Opportunity in 2026</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/appointment-setting-automation-blog-image.png</image:loc>
+        </image:image>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-01-28T08:00:00Z</news:publication_date>
+            <news:title>Why Appointment-Setting Automation is the $2M Opportunity Businesses Are Leaving on the Table in 2026</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://growaiagency.io/blog/blog-outcome-based-pricing-time-materials-2026</loc>
+        <lastmod>2026-01-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:title>Why Outcome-Based Pricing is Replacing Time-and-Materials in 2026</image:title>
+            <image:loc>https://growaiagency.io/assets/images/blog-post-thumbnails/AI-Arbitrage-Agency-Outcome-Based-Pricing-Hero-Image.png</image:loc>
+        </image:image>
+        <news:news>
+            <news:publication>
+                <news:name>Grow AI Agency</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-01-28T08:00:00Z</news:publication_date>
+            <news:title>Why Outcome-Based Pricing is Replacing Time-and-Materials in 2026</news:title>
+        </news:news>
+    </url>
+    <url>
         <loc>https://growaiagency.io/blog/blog-top-7-business-niches</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>monthly</changefreq>
