@@ -28,15 +28,19 @@ FileETag None
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
-    # Blog: redirect .html to clean URL (e.g. /blog/blog-name.html -> /blog/blog-name)
+    # Blog: redirect old slug to new (is-grow-ai-legit -> is-grow-ai-legit-and-not-a-scam)
+    RewriteRule ^blog/is-grow-ai-legit/?$ /blog/is-grow-ai-legit-and-not-a-scam [L,R=301]
+    # Blog: redirect old /blog/blog-* URLs to new /blog/* (drop blog- prefix)
+    RewriteRule ^blog/blog-(.+)$ /blog/$1 [L,R=301]
+    # Blog: redirect .html to clean URL (e.g. /blog/name.html -> /blog/name)
     RewriteCond %{THE_REQUEST} \s/blog/([a-z0-9-]+)\.html [NC]
     RewriteRule ^blog/([a-z0-9-]+)\.html$ /blog/$1 [L,R=301]
     # Blog: serve .html when clean URL is requested
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^blog/([a-z0-9-]+)/?$ blog/$1.html [L]
-    # Blog posts: /blog-xxx.html -> /blog/blog-xxx (root-level old URLs)
-    RewriteRule ^blog-([a-z0-9-]+)\.html$ /blog/blog-$1 [L,R=301]
+    # Blog posts (root-level old URLs): /blog-xxx.html -> /blog/xxx
+    RewriteRule ^blog-([a-z0-9-]+)\.html$ /blog/$1 [L,R=301]
     # Case studies: redirect .html to clean URL
     RewriteCond %{THE_REQUEST} \s/case-studies/([a-z0-9-]+)\.html [NC]
     RewriteRule ^case-studies/([a-z0-9-]+)\.html$ /case-studies/$1 [L,R=301]
