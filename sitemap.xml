@@ -812,7 +812,7 @@
     </url>
     <!-- Legal Pages -->
     <url>
-        <loc>https://growaiagency.io/legal/privacy-policy.html</loc>
+        <loc>https://growaiagency.io/privacy-policy</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
@@ -822,7 +822,7 @@
         </image:image>
     </url>
     <url>
-        <loc>https://growaiagency.io/legal/terms-of-service.html</loc>
+        <loc>https://growaiagency.io/terms-of-service</loc>
         <lastmod>2025-01-25</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>

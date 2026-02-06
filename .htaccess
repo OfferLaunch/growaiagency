@@ -58,7 +58,14 @@ FileETag None
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(process|software|resources|about|team)/?$ $1.html [L]
-    # Legal
-    RewriteRule ^privacy-policy\.html$ legal/privacy-policy.html [L,R=301]
-    RewriteRule ^terms-of-service\.html$ legal/terms-of-service.html [L,R=301]
+    # Legal: redirect old /legal/* URLs to clean root URLs
+    RewriteRule ^legal/privacy-policy\.html?$ /privacy-policy [L,R=301]
+    RewriteRule ^legal/terms-of-service\.html?$ /terms-of-service [L,R=301]
+    # Legal: redirect .html to clean URL
+    RewriteCond %{THE_REQUEST} \s/(privacy-policy|terms-of-service)\.html [NC]
+    RewriteRule ^(privacy-policy|terms-of-service)\.html$ /$1 [L,R=301]
+    # Legal: serve .html when clean URL is requested
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(privacy-policy|terms-of-service)/?$ $1.html [L]
 </IfModule>
