@@ -387,5 +387,31 @@ document.querySelectorAll('form').forEach(form => {
     });
 });
 
+// Hide UTM (and other tracking) params from address bar after tracking has run
+// Runs on load so tr.growaiagency.io and other scripts see the full URL first
+(function() {
+    function cleanTrackingParamsFromUrl() {
+        var search = window.location.search;
+        if (!search) return;
+        var params = new URLSearchParams(search);
+        var utmKeys = [];
+        params.forEach(function(_, key) {
+            if (key.toLowerCase().indexOf('utm_') === 0 || key.toLowerCase() === 'fbclid' || key.toLowerCase() === 'gclid') {
+                utmKeys.push(key);
+            }
+        });
+        if (utmKeys.length === 0) return;
+        utmKeys.forEach(function(k) { params.delete(k); });
+        var newSearch = params.toString();
+        var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + (window.location.hash || '');
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+    if (document.readyState === 'complete') {
+        cleanTrackingParamsFromUrl();
+    } else {
+        window.addEventListener('load', cleanTrackingParamsFromUrl);
+    }
+})();
+
 console.log('Grow AI website loaded successfully!');
 
