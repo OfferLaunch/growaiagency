@@ -388,28 +388,31 @@ document.querySelectorAll('form').forEach(form => {
 });
 
 // Hide UTM (and other tracking) params from address bar after tracking has run
-// Runs on load so tr.growaiagency.io and other scripts see the full URL first
 (function() {
     function cleanTrackingParamsFromUrl() {
         var search = window.location.search;
         if (!search) return;
         var params = new URLSearchParams(search);
-        var utmKeys = [];
+        var keysToRemove = [];
         params.forEach(function(_, key) {
-            if (key.toLowerCase().indexOf('utm_') === 0 || key.toLowerCase() === 'fbclid' || key.toLowerCase() === 'gclid') {
-                utmKeys.push(key);
+            var k = key.toLowerCase();
+            if (k.indexOf('utm_') === 0 || k === 'fbclid' || k === 'gclid' || k === 'aaid') {
+                keysToRemove.push(key);
             }
         });
-        if (utmKeys.length === 0) return;
-        utmKeys.forEach(function(k) { params.delete(k); });
+        if (keysToRemove.length === 0) return;
+        keysToRemove.forEach(function(k) { params.delete(k); });
         var newSearch = params.toString();
         var cleanUrl = window.location.pathname + (newSearch ? '?' + newSearch : '') + (window.location.hash || '');
         window.history.replaceState({}, document.title, cleanUrl);
     }
+    function runCleanup() {
+        setTimeout(cleanTrackingParamsFromUrl, 100);
+    }
     if (document.readyState === 'complete') {
-        cleanTrackingParamsFromUrl();
+        runCleanup();
     } else {
-        window.addEventListener('load', cleanTrackingParamsFromUrl);
+        window.addEventListener('load', runCleanup);
     }
 })();
 
