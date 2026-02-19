@@ -16,7 +16,7 @@
     <meta property="og:title" content="Privacy Policy - Grow AI Agency">
     <meta property="og:description" content="Privacy Policy for Grow AI Agency. Learn how we collect, use, and protect your personal information.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://growai.com/privacypolicy2">
+    <meta property="og:url" content="https://growaiagency.io/legal/privacypolicy2.html">
     <meta property="og:image" content="https://growaiagency.io/assets/images/photos/aiagenc.jpg">
     
     <!-- Favicon -->
@@ -28,161 +28,294 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="../manifest.json">
     
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="../styles.css?v=1758294249" as="style">
-    <link rel="preload" href="../script.js" as="script">
+    <link rel="preload" href="../styles.css?v=1759850000" as="style">
+    <link rel="preload" href="../script.js?v=1759850000" as="script">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../styles.css?v=1758294249">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <!-- Critical CSS Inline -->
     <style>
-        .top-bar {
-            background-color: #000000;
-            padding: 10px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+        /* Critical CSS for faster rendering */
+        body { margin: 0; font-family: 'Manrope', sans-serif; background: transparent; color: #ffffff; }
+        .policy-hero {
+            padding: 140px 0 60px;
+            background: transparent;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        
-        .top-bar-container {
-            max-width: 1200px;
+        .policy-hero .hero-content {
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
-            display: flex;
-            align-items: center;
+            position: relative;
+            z-index: 2;
         }
-        
-        .top-bar-logo {
-            height: 25px;
-            width: auto;
-        }
-        
-        .policy-title {
-            color: white;
-            font-size: 2.5rem;
+        .policy-hero h1 {
+            font-size: 3.5rem;
             font-weight: 700;
-            margin: 80px 0 20px 0;
-            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
-        
-        .policy-date {
-            color: #888;
-            font-size: 1rem;
-            text-align: center;
-            margin-bottom: 40px;
+        .policy-hero .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .policy-content {
+            padding: 80px 0;
+            background: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        .policy-content .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .content-wrapper {
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        .content-wrapper h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #5CC49D;
+            margin: 3rem 0 1.5rem 0;
+            line-height: 1.3;
+        }
+        .content-wrapper h2:first-of-type {
+            margin-top: 0;
+        }
+        .content-wrapper h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #5CC49D;
+            margin: 2.5rem 0 1rem 0;
+            line-height: 1.4;
+        }
+        .content-wrapper p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .content-wrapper ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        .content-wrapper li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .contact-info {
+            background: linear-gradient(135deg, rgba(92, 196, 157, 0.1) 0%, rgba(92, 196, 157, 0.05) 100%);
+            border-left: 4px solid #5CC49D;
+            padding: 1.5rem 2rem;
+            border-radius: 0 12px 12px 0;
+            margin: 2rem 0;
+        }
+        .contact-info p {
+            margin: 0.5rem 0;
+            color: #ffffff;
+        }
+        @media (max-width: 768px) {
+            .policy-hero h1 {
+                font-size: 2.5rem;
+            }
+            .policy-hero .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .content-wrapper {
+                padding: 2rem;
+            }
+            .content-wrapper h2 {
+                font-size: 1.8rem;
+            }
+            .content-wrapper h3 {
+                font-size: 1.4rem;
+            }
         }
     </style>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../styles.css?v=1759850000">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <!-- Tracking Script -->
     <script src="https://tr.growaiagency.io/api/v1/tracking.js"></script>
+    <script>
+    (function(){function c(){var s=window.location.search;if(!s)return;var p=new URLSearchParams(s),r=[];p.forEach(function(_,k){var l=k.toLowerCase();if(l.indexOf('utm_')===0||l==='fbclid'||l==='gclid'||l==='aaid')r.push(k);});if(!r.length)return;r.forEach(function(k){p.delete(k);});var u=window.location.pathname+(p.toString()?'?'+p.toString():'')+(window.location.hash||'');history.replaceState({},document.title,u);}setTimeout(c,900);})();
+    </script>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <img src="../assets/images/logos/white%20and%20green.png" alt="Grow AI" class="top-bar-logo">
+    <!-- Silk Background for all pages -->
+    <div class="page-background">
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
+            <!-- Silk background will be rendered here -->
         </div>
     </div>
 
+    <!-- Logo at Top -->
+    <div style="text-align: center; padding: 2rem 0; position: relative; z-index: 2;">
+        <img src="../assets/images/logos/white%20and%20green.png" alt="Grow AI" style="height: 60px; width: auto; display: inline-block;">
+    </div>
 
+    <!-- Hero Section -->
+    <section class="policy-hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Privacy Policy</h1>
+                <p class="hero-subtitle">Last updated: August 18, 2025</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Privacy Policy Content -->
     <section class="policy-content">
         <div class="container">
-            <h1 class="policy-title">Privacy Policy</h1>
-            <p class="policy-date">Last updated: August 18, 2025</p>
             <div class="content-wrapper" data-aos="fade-up">
-                <div class="policy-section">
-                    <h2>Introduction</h2>
-                    <p>This Privacy Policy ("Privacy Policy") applies to all who use the website accessible at https://www.growaiagency.io (the "Site"), which is owned and operated by GrowAI LLC, a Delaware limited liability company, and its subsidiaries, representatives, affiliates, officers, and directors (collectively, "Grow AI Agency"). For purposes of this Privacy Policy, the words "you" and "your" refer to each individual accessing and using the Site, and "Grow AI Agency" may sometimes be referred to herein as "us," "our," or "we." The purpose of this Privacy Policy is to inform you what information we may collect, how we use such information, and who we will share such information with, if at all, when you access and use the Site.</p>
-                    <p>This Privacy Policy does not address the privacy practices of any third parties that we do not own, control, or are affiliated with. By accessing or using the Site, you confirm your agreement to be bound by the terms of this Privacy Policy. If you do not agree to the Privacy Policy, you may not access or use the Site. This Privacy Policy applies only to our online activities and is valid for visitors to the Site with regard to the information that they share and that we collect on the Site. This Privacy Policy is not applicable to any information collected offline or via channels other than the Site.</p>
-                    <p>We take the privacy concerns of our Site visitors seriously. Therefore, if you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at team@growaiagency.io.</p>
-                </div>
+                <h2>Introduction</h2>
+                <p>This Privacy Policy ("Privacy Policy") applies to all who use the website accessible at https://www.growaiagency.io (the "Site"), which is owned and operated by GrowAI LLC, a Delaware limited liability company, and its subsidiaries, representatives, affiliates, officers, and directors (collectively, "Grow AI Agency"). For purposes of this Privacy Policy, the words "you" and "your" refer to each individual accessing and using the Site, and "Grow AI Agency" may sometimes be referred to herein as "us," "our," or "we." The purpose of this Privacy Policy is to inform you what information we may collect, how we use such information, and who we will share such information with, if at all, when you access and use the Site.</p>
+                <p>This Privacy Policy does not address the privacy practices of any third parties that we do not own, control, or are affiliated with. By accessing or using the Site, you confirm your agreement to be bound by the terms of this Privacy Policy. If you do not agree to the Privacy Policy, you may not access or use the Site. This Privacy Policy applies only to our online activities and is valid for visitors to the Site with regard to the information that they share and that we collect on the Site. This Privacy Policy is not applicable to any information collected offline or via channels other than the Site.</p>
+                <p>We take the privacy concerns of our Site visitors seriously. Therefore, if you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us at team@growaiagency.io.</p>
 
-                <div class="policy-section">
-                    <h2>Information We Collect</h2>
-                    <p>When you access and use our Site, we collect the information that you choose to provide to us. This may include, without limitation, your name, email address, phone number, address, responses to personal financial questions, and any message and/or attachments you may send us.</p>
-                    <p>Like most website operators, we also collect non-personally identifying information such as browser type, language preference, referring site, and the date and time of each visitor request. Our purpose in collecting this information is to better understand how our visitors use our Site. We may also gather certain information automatically, such as Internet protocol (IP) addresses, browser type, ISP, operating system, and your Site activity (including content viewed, mouse activity, and clickstream data) to analyze trends, administer the Site, and enforce our Terms of Use. We use cookies, web beacons, session replay, and similar technologies to collect this information.</p>
-                    <p>We may also collect precise location data, such as GPS coordinates, cell tower information, or Wi-Fi signals. You can disable location tracking in your device settings if you do not want us to collect this data.</p>
-                </div>
+                <h2>Information We Collect</h2>
+                <p>When you access and use our Site, we collect the information that you choose to provide to us. This may include, without limitation, your name, email address, phone number, address, responses to personal financial questions, and any message and/or attachments you may send us.</p>
+                <p>Like most website operators, we also collect non-personally identifying information such as browser type, language preference, referring site, and the date and time of each visitor request. Our purpose in collecting this information is to better understand how our visitors use our Site. We may also gather certain information automatically, such as Internet protocol (IP) addresses, browser type, ISP, operating system, and your Site activity (including content viewed, mouse activity, and clickstream data) to analyze trends, administer the Site, and enforce our Terms of Use. We use cookies, web beacons, session replay, and similar technologies to collect this information.</p>
+                <p>We may also collect precise location data, such as GPS coordinates, cell tower information, or Wi-Fi signals. You can disable location tracking in your device settings if you do not want us to collect this data.</p>
 
-                <div class="policy-section">
-                    <h2>Children Under 13</h2>
-                    <p>Our Site and services are not intended for children under the age of 13. If we learn that a child under 13 has provided us with personal information, we will delete such information immediately.</p>
-                </div>
+                <h2>Children Under 13</h2>
+                <p>Our Site and services are not intended for children under the age of 13. If we learn that a child under 13 has provided us with personal information, we will delete such information immediately.</p>
 
-                <div class="policy-section">
-                    <h2>How We Use Your Information</h2>
-                    <p>We may use your data to:</p>
-                    <ul>
-                        <li>Send you information, updates, and promotions about the specific product or service you opted into.</li>
-                        <li>Provide relevant content, offers, and support.</li>
-                        <li>Improve our websites, ads, and user experience.</li>
-                        <li>Cross-market other offers or services we own or manage, including those in different verticals (e.g. real estate, e-commerce, investing, digital marketing, etc.).</li>
-                        <li>Comply with legal obligations and enforce terms.</li>
-                    </ul>
-                </div>
+                <h2>How We Use Your Information</h2>
+                <p>We may use your data to:</p>
+                <ul>
+                    <li>Send you information, updates, and promotions about the specific product or service you opted into.</li>
+                    <li>Provide relevant content, offers, and support.</li>
+                    <li>Improve our websites, ads, and user experience.</li>
+                    <li>Cross-market other offers or services we own or manage, including those in different verticals (e.g. real estate, e-commerce, investing, digital marketing, etc.).</li>
+                    <li>Comply with legal obligations and enforce terms.</li>
+                </ul>
 
-                <div class="policy-section">
-                    <h2>Cross-Brand Communication & Ownership</h2>
-                    <p>By submitting your information, you acknowledge and agree that your data may be shared between brands, products, or entities operated by the same owners or management team. You may receive promotional communication from these other businesses, even if you originally opted into a different brand's list. All such communication will contain an option to opt-out at any time.</p>
-                </div>
+                <h2>Cross-Brand Communication & Ownership</h2>
+                <p>By submitting your information, you acknowledge and agree that your data may be shared between brands, products, or entities operated by the same owners or management team. You may receive promotional communication from these other businesses, even if you originally opted into a different brand's list. All such communication will contain an option to opt-out at any time.</p>
 
-                <div class="policy-section">
-                    <h2>How We Share Information</h2>
-                    <p>We do not sell, rent, or share your personal information with any third parties for any reason, including for marketing, advertising, or referral purposes. Your information is only used internally to provide and improve the services and offerings on this Site.</p>
-                </div>
+                <h2>How We Share Information</h2>
+                <p>We do not sell, rent, or share your personal information with any third parties for any reason, including for marketing, advertising, or referral purposes. Your information is only used internally to provide and improve the services and offerings on this Site.</p>
 
-                <div class="policy-section">
-                    <h2>Cookies and Tracking</h2>
-                    <p>We use cookies and similar technologies to improve user experience. You may choose to reject cookies via your browser settings, but this may limit your ability to use certain features of the Site.</p>
-                    <p>Learn more about cookies here: <a href="https://www.cookieconsent.com/what-are-cookies/" target="_blank" rel="noopener noreferrer">https://www.cookieconsent.com/what-are-cookies/</a></p>
-                </div>
+                <h2>Cookies and Tracking</h2>
+                <p>We use cookies and similar technologies to improve user experience. You may choose to reject cookies via your browser settings, but this may limit your ability to use certain features of the Site.</p>
+                <p>Learn more about cookies here: <a href="https://www.cookieconsent.com/what-are-cookies/" target="_blank" rel="noopener noreferrer">https://www.cookieconsent.com/what-are-cookies/</a></p>
 
-                <div class="policy-section">
-                    <h2>Third-Party Links</h2>
-                    <p>Our Site may contain links to external websites that are not controlled by us. Please review their respective privacy policies before sharing any personal information. We are not responsible for their actions, content, or privacy practices.</p>
-                </div>
+                <h2>Third-Party Links</h2>
+                <p>Our Site may contain links to external websites that are not controlled by us. Please review their respective privacy policies before sharing any personal information. We are not responsible for their actions, content, or privacy practices.</p>
 
-                <div class="policy-section">
-                    <h2>Google AdWords for Remarketing</h2>
-                    <p>We use Google Ads to remarket to users who have visited our Site. This means we may show you ads on Google or its partner sites based on your past interactions. Google and other vendors use cookies for this purpose. You can adjust your ad settings at Google Ad Preferences.</p>
-                </div>
+                <h2>Google AdWords for Remarketing</h2>
+                <p>We use Google Ads to remarket to users who have visited our Site. This means we may show you ads on Google or its partner sites based on your past interactions. Google and other vendors use cookies for this purpose. You can adjust your ad settings at Google Ad Preferences.</p>
 
-                <div class="policy-section">
-                    <h2>Opting-Out From Communications</h2>
-                    <p>You may opt out of marketing emails or prevent your personal contact information from being used by emailing us at team@growaiagency.io.</p>
-                </div>
+                <h2>Opting-Out From Communications</h2>
+                <p>You may opt out of marketing emails or prevent your personal contact information from being used by emailing us at team@growaiagency.io.</p>
 
-                <div class="policy-section">
-                    <h2>California Privacy Rights (CCPA)</h2>
-                    <p>If you are a California resident, you may have rights under the California Consumer Privacy Act (CCPA), including:</p>
-                    <ul>
-                        <li>The right to request details about the categories and specific pieces of personal information we have collected about you.</li>
-                        <li>The right to request the deletion of your personal information, subject to certain exceptions.</li>
-                        <li>The right to know the business or commercial purpose for collecting your information.</li>
-                        <li>The right to know the categories of third parties with whom your information has been shared (Note: we do not share your personal information with third parties for marketing or sales purposes).</li>
-                        <li>The right to not be discriminated against for exercising your privacy rights.</li>
-                    </ul>
-                    <p>To exercise any of these rights, you may submit a request by emailing us at team@growaiagency.io We may need to verify your identity before processing your request. You may also designate an authorized agent to make these requests on your behalf.</p>
-                    <p>We do not sell your personal information, and we do not knowingly collect personal information from individuals under 16 years of age.</p>
-                </div>
+                <h2>California Privacy Rights (CCPA)</h2>
+                <p>If you are a California resident, you may have rights under the California Consumer Privacy Act (CCPA), including:</p>
+                <ul>
+                    <li>The right to request details about the categories and specific pieces of personal information we have collected about you.</li>
+                    <li>The right to request the deletion of your personal information, subject to certain exceptions.</li>
+                    <li>The right to know the business or commercial purpose for collecting your information.</li>
+                    <li>The right to know the categories of third parties with whom your information has been shared (Note: we do not share your personal information with third parties for marketing or sales purposes).</li>
+                    <li>The right to not be discriminated against for exercising your privacy rights.</li>
+                </ul>
+                <p>To exercise any of these rights, you may submit a request by emailing us at team@growaiagency.io. We may need to verify your identity before processing your request. You may also designate an authorized agent to make these requests on your behalf.</p>
+                <p>We do not sell your personal information, and we do not knowingly collect personal information from individuals under 16 years of age.</p>
 
-                <div class="policy-section">
-                    <h2>Updates to This Policy</h2>
-                    <p>We may update this Privacy Policy periodically. If changes are significant, we'll notify you via the Site or other means. Continued use of the Site after updates implies your acceptance of the revised policy. We encourage you to review this page regularly.</p>
+                <h2>Updates to This Policy</h2>
+                <p>We may update this Privacy Policy periodically. If changes are significant, we'll notify you via the Site or other means. Continued use of the Site after updates implies your acceptance of the revised policy. We encourage you to review this page regularly.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> team@growaiagency.io</p>
+                    <p><strong>Address:</strong> Grow AI Limited, Remote - Worldwide</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    
 
-
+    <!-- Performance Optimization Script -->
+    <script src="../performance-optimization.js?v=1759850000"></script>
+    
+    <!-- AOS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../script.js?v=1758294249"></script>
+    
+    <!-- Main Scripts -->
+    <script src="../script.js?v=1759850000"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator && !window.serviceWorkerRegistered) {
+            window.serviceWorkerRegistered = true;
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('../sw.js?v=1759850000')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                        
+                        // Check for updates
+                        registration.addEventListener('updatefound', function() {
+                            console.log('New service worker found, but not auto-reloading');
+                        });
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+    
+    <!-- AOS Initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Privacy Policy: DOM loaded, initializing AOS');
+            setTimeout(function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 800,
+                        once: true,
+                        offset: 100
+                    });
+                    console.log('AOS initialized on privacy policy');
+                } else {
+                    console.warn('AOS not loaded on privacy policy');
+                }
+            }, 100);
+        });
+    </script>
+    
+    <!-- Silk Background Bundle -->
+    <script src="../silk-background-bundle.js"></script>
 </body>
 </html>
