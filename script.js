@@ -35,9 +35,6 @@ function setActiveNavigation() {
     } else if (currentPath.includes('about')) {
         const aboutLink = document.querySelector('.nav-menu a[href*="about"]');
         if (aboutLink) aboutLink.classList.add('active');
-    } else if (currentPath.includes('team')) {
-        const teamLink = document.querySelector('.nav-menu a[href*="team"]');
-        if (teamLink) teamLink.classList.add('active');
     }
 }
 

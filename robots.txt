@@ -69,7 +69,6 @@ Allow: /case-studies/
 Allow: /process/
 Allow: /software/
 Allow: /about/
-Allow: /team/
 
 # Sitemap location (corrected domain)
 Sitemap: https://growaiagency.io/sitemap.xml

@@ -26357,7 +26357,6 @@
             { label: "Resources", href: "/resources" },
             { label: "Case Studies", href: "/case-studies/" },
             { label: "About Us", href: "/about" },
-            { label: "Team", href: "/team" },
             { label: "Get in Touch", href: ctaUrl }
           ],
           activeHref,

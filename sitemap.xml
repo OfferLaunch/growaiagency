@@ -68,17 +68,6 @@
             <image:loc>https://growaiagency.io/assets/images/logos/white%20and%20green.png</image:loc>
         </image:image>
     </url>
-    <!-- Team Page -->
-    <url>
-        <loc>https://growaiagency.io/team</loc>
-        <lastmod>2025-01-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image>
-            <image:title>Meet Our Team | Grow AI Agency</image:title>
-            <image:loc>https://growaiagency.io/assets/images/logos/white%20and%20green.png</image:loc>
-        </image:image>
-    </url>
     <!-- Blog Posts (marked as news articles) -->
     <url>
         <loc>https://growaiagency.io/blog/appointment-setting-automation-2026</loc>
