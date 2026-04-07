@@ -3,7 +3,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import PillNav from './components/PillNav/PillNav';
+import SimpleNav from './components/SimpleNav/SimpleNav';
 
 // Make React available globally for JSX transformation
 if (typeof window !== 'undefined') {
@@ -81,10 +81,10 @@ if (typeof window !== 'undefined') {
     const ctaUrl = `https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=${pageName}&el=Website-${pageName}`;
     
     try {
-      console.log('Initializing PillNav...');
-      // Create root and render PillNav
+      console.log('Initializing SimpleNav...');
+      // Create root and render SimpleNav
       const root = ReactDOM.createRoot(navContainer);
-      root.render(React.createElement(PillNav, {
+      root.render(React.createElement(SimpleNav, {
         logo: 'https://growaiagency.io/assets/images/logos/white%20and%20green.png',
         logoAlt: 'Grow AI',
         items: [
@@ -94,20 +94,14 @@ if (typeof window !== 'undefined') {
           { label: 'Resources', href: '/resources' },
           { label: 'Case Studies', href: '/case-studies/' },
           { label: 'About Us', href: '/about' },
-          { label: 'Get in Touch', href: ctaUrl }
+          { label: 'Get in Touch', href: ctaUrl },
+          { label: 'Client Portal', href: 'https://app.arbitrageos.ai/login' }
         ],
-        activeHref: activeHref,
-        initialLoadAnimation: true,
-        baseColor: '#FAFBFF',
-        pillColor: '#5CC49D',
-        hoveredPillTextColor: '#FAFBFF',
-        pillTextColor: '#FAFBFF',
-        ease: 'power3.easeOut',
-        className: 'custom-nav'
+        activeHref: activeHref
       }));
-      console.log('✅ PillNav initialized successfully');
+      console.log('✅ SimpleNav initialized successfully');
     } catch (error) {
-      console.error('❌ Error initializing PillNav:', error);
+      console.error('❌ Error initializing SimpleNav:', error);
       setTimeout(init, 200);
     }
   }

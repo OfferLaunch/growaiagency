@@ -1,7 +1,7 @@
-/* components/SimpleNav/SimpleNav.css */
 .simple-nav-container {
   position: relative;
 }
+
 .simple-nav {
   position: fixed;
   top: 0;
@@ -13,6 +13,7 @@
   transition: all 0.3s ease;
   animation: fadeIn 0.5s ease-out;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -23,6 +24,7 @@
     transform: translateY(0);
   }
 }
+
 .simple-nav-scrolled {
   background: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(12px);
@@ -30,6 +32,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
+
 .nav-content {
   max-width: 1400px;
   margin: 0 auto;
@@ -39,6 +42,7 @@
   justify-content: space-between;
   height: 70px;
 }
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -46,14 +50,17 @@
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
+
 .nav-logo img {
   height: 32px;
   width: auto;
   display: block;
 }
+
 .nav-logo:hover {
   transform: scale(1.05);
 }
+
 .nav-menu {
   display: flex;
   list-style: none;
@@ -64,6 +71,7 @@
   flex: 1;
   justify-content: center;
 }
+
 .nav-link {
   display: inline-block;
   color: #fafbff;
@@ -75,30 +83,38 @@
   transition: all 0.3s ease;
   white-space: nowrap;
 }
+
 .nav-link:hover {
   background: rgba(92, 196, 157, 0.2);
   color: #5CC49D;
 }
+
 .nav-link.active {
   background: #5CC49D;
   color: #000000;
 }
+
 .cta-button {
   background: #5CC49D !important;
   color: #000000 !important;
 }
+
 .nav-menu .cta-button {
   margin-left: 0.5rem;
 }
+
 .nav-menu .cta-button:not(:last-child) {
   margin-right: 0.5rem;
 }
+
 .cta-button:hover {
   background: #FAFBFF !important;
   color: #000000 !important;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
+
+/* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -109,6 +125,7 @@
   padding: 0.5rem;
   z-index: 1001;
 }
+
 .mobile-menu-btn span {
   width: 24px;
   height: 2px;
@@ -116,6 +133,8 @@
   transition: all 0.3s ease;
   display: block;
 }
+
+/* Mobile Menu */
 .mobile-menu {
   display: none;
   position: fixed;
@@ -130,6 +149,7 @@
   gap: 1rem;
   animation: slideDown 0.3s ease-out;
 }
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -140,6 +160,7 @@
     transform: translateY(0);
   }
 }
+
 .mobile-menu-link {
   display: block;
   color: #fafbff;
@@ -150,46 +171,60 @@
   font-size: 1rem;
   transition: all 0.3s ease;
 }
+
 .mobile-menu-link:hover {
   background: rgba(92, 196, 157, 0.2);
   color: #5CC49D;
 }
+
 .mobile-menu-link.cta-button {
   background: #5CC49D;
   color: #000000;
   text-align: center;
   margin-top: 0.5rem;
 }
+
 .mobile-menu-link.cta-button:hover {
   background: #FAFBFF;
 }
+
+/* Desktop only */
 .desktop-only {
   display: block;
 }
+
 .mobile-only {
   display: none;
 }
+
+/* Mobile responsive */
 @media (max-width: 768px) {
   .nav-content {
     padding: 1rem 1.5rem;
     height: auto;
     min-height: 60px;
   }
+
   .nav-logo img {
     height: 28px;
   }
+
   .desktop-only {
     display: none;
   }
+
   .mobile-only {
     display: flex;
   }
+
   .mobile-menu-btn {
     display: flex;
   }
+
   .mobile-menu {
     display: flex;
   }
+
   .nav-menu {
     margin: 0;
     padding: 0;
