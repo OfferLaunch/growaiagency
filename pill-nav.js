@@ -104,14 +104,23 @@ function injectStyles() {
         logoAlt: 'Grow AI',
         items: [
           { label: 'Home', href: '/' },
-          { label: 'Process', href: '/process' },
+          {
+            label: 'Learn',
+            href: '/resources',
+            submenu: [
+              { label: 'Process', href: '/process', description: 'Our proven methodology' },
+              { label: 'Resources', href: '/resources', description: 'Content & guides' },
+              { label: 'Case Studies', href: '/case-studies/', description: 'Real client results' }
+            ]
+          },
           { label: 'AI Software', href: '/software' },
-          { label: 'Resources', href: '/resources' },
-          { label: 'Case Studies', href: '/case-studies/' },
-          { label: 'About Us', href: '/about' },
-          { label: 'Get in Touch', href: ctaUrl },
-          { label: 'Client Portal', href: 'https://app.arbitrageos.ai/login' }
+          { label: 'About Us', href: '/about' }
         ],
+        ctaButton: {
+          label: 'Get in Touch',
+          href: ctaUrl
+        },
+        loginHref: 'https://app.arbitrageos.ai/login',
         activeHref: activeHref
       }));
       console.log('✅ SimpleNav initialized successfully');

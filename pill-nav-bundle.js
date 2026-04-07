@@ -21728,12 +21728,16 @@
   var SimpleNav = ({
     logo,
     logoAlt = "Logo",
-    items,
+    items = [],
+    ctaButton,
+    loginHref = "#",
     activeHref,
     className = ""
   }) => {
     const [isScrolled, setIsScrolled] = (0, import_react.useState)(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = (0, import_react.useState)(false);
+    const [openDropdown, setOpenDropdown] = (0, import_react.useState)(null);
+    const hoverTimeoutRef = (0, import_react.useRef)(null);
     (0, import_react.useEffect)(() => {
       const handleScroll = () => {
         setIsScrolled(window.scrollY > 10);
@@ -21772,27 +21776,109 @@
       return resolvedActiveHref === href || resolvedActiveHref.includes(href.replace("/", ""));
     };
     const isExternalLink = (href) => href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//") || href.startsWith("mailto:") || href.startsWith("tel:");
+    const handleMenuItemEnter = (itemLabel) => {
+      if (typeof window !== "undefined" && window.innerWidth < 768) {
+        return;
+      }
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+      hoverTimeoutRef.current = setTimeout(() => {
+        setOpenDropdown(itemLabel);
+      }, 90);
+    };
+    const handleMenuItemLeave = () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+      hoverTimeoutRef.current = setTimeout(() => {
+        setOpenDropdown(null);
+      }, 220);
+    };
+    const handleKeyDown = (e, itemLabel) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        setOpenDropdown(openDropdown === itemLabel ? null : itemLabel);
+      } else if (e.key === "Escape") {
+        setOpenDropdown(null);
+      }
+    };
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "simple-nav-container", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", { className: `simple-nav ${isScrolled ? "simple-nav-scrolled" : ""} ${className}`, children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "nav-content", children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: "/", className: "nav-logo", children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", { src: logo, alt: logoAlt }) }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "nav-menu desktop-only", children: items.map((item) => {
-          const isCTA = item.label?.toLowerCase().includes("get in touch") || isExternalLink(item.href);
-          const isActive = !isCTA && isLinkActive(item.href);
-          return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-            "a",
+          const isActive = isLinkActive(item.href);
+          const hasDropdown = item.submenu && item.submenu.length > 0;
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+            "li",
             {
-              href: item.href,
-              className: `nav-link ${isActive ? "active" : ""} ${isCTA ? "cta-button" : ""}`,
-              children: item.label
-            }
-          ) }, item.href || item.label);
+              className: `nav-item ${hasDropdown ? "has-dropdown" : ""}`,
+              onMouseEnter: () => hasDropdown && handleMenuItemEnter(item.label),
+              onMouseLeave: handleMenuItemLeave,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+                  "a",
+                  {
+                    href: item.href,
+                    className: `nav-link ${isActive ? "active" : ""}`,
+                    onKeyDown: (e) => hasDropdown && handleKeyDown(e, item.label),
+                    "aria-expanded": openDropdown === item.label,
+                    "aria-haspopup": hasDropdown,
+                    children: [
+                      item.label,
+                      hasDropdown && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+                        "svg",
+                        {
+                          className: `chevron ${openDropdown === item.label ? "open" : ""}`,
+                          width: "16",
+                          height: "16",
+                          viewBox: "0 0 16 16",
+                          fill: "none",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", { d: "M4 6L8 10L12 6", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" })
+                        }
+                      )
+                    ]
+                  }
+                ),
+                hasDropdown && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+                  "div",
+                  {
+                    className: `dropdown-menu ${openDropdown === item.label ? "open" : ""}`,
+                    role: "menu",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "dropdown-content", children: item.submenu.map((subitem) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+                      "a",
+                      {
+                        href: subitem.href,
+                        className: "dropdown-link",
+                        role: "menuitem",
+                        children: [
+                          subitem.icon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "dropdown-icon", children: subitem.icon }),
+                          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "dropdown-link-content", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "dropdown-link-title", children: subitem.label }),
+                            subitem.description && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "dropdown-link-desc", children: subitem.description })
+                          ] })
+                        ]
+                      },
+                      subitem.label
+                    )) })
+                  }
+                )
+              ]
+            },
+            item.label
+          );
         }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "nav-right desktop-only", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: loginHref, className: "nav-link login-link", children: "Login" }),
+          ctaButton && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: ctaButton.href, className: "nav-cta", children: ctaButton.label })
+        ] }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
           "button",
           {
             className: "mobile-menu-btn mobile-only",
             onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
             "aria-label": "Toggle menu",
+            "aria-expanded": isMobileMenuOpen,
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {}),
               /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {}),
@@ -21801,18 +21887,43 @@
           }
         )
       ] }),
-      isMobileMenuOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "mobile-menu mobile-only", children: items.map((item) => {
-        const isCTA = item.label?.toLowerCase().includes("get in touch") || isExternalLink(item.href);
-        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
-          "a",
-          {
-            href: item.href,
-            className: `mobile-menu-link ${isCTA ? "cta-button" : ""}`,
-            onClick: () => setIsMobileMenuOpen(false),
-            children: item.label
-          }
-        ) }, item.href || item.label);
-      }) })
+      isMobileMenuOpen && /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "mobile-menu mobile-only", children: [
+        items.map((item) => {
+          const hasDropdown = item.submenu && item.submenu.length > 0;
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "mobile-menu-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+              "a",
+              {
+                href: item.href,
+                className: "mobile-menu-link",
+                onClick: () => {
+                  if (!hasDropdown) {
+                    setIsMobileMenuOpen(false);
+                  }
+                },
+                children: [
+                  item.label,
+                  hasDropdown && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "mobile-dropdown-toggle", children: "\u203A" })
+                ]
+              }
+            ),
+            hasDropdown && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mobile-dropdown", children: item.submenu.map((subitem) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              "a",
+              {
+                href: subitem.href,
+                className: "mobile-dropdown-link",
+                onClick: () => setIsMobileMenuOpen(false),
+                children: subitem.label
+              },
+              subitem.label
+            )) })
+          ] }, item.label);
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "mobile-menu-cta", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: loginHref, className: "mobile-menu-link", children: "Login" }),
+          ctaButton && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("a", { href: ctaButton.href, className: "mobile-cta-button", children: ctaButton.label })
+        ] })
+      ] })
     ] }) });
   };
   var SimpleNav_default = SimpleNav;
@@ -21883,14 +21994,23 @@
           logoAlt: "Grow AI",
           items: [
             { label: "Home", href: "/" },
-            { label: "Process", href: "/process" },
+            {
+              label: "Learn",
+              href: "/resources",
+              submenu: [
+                { label: "Process", href: "/process", description: "Our proven methodology" },
+                { label: "Resources", href: "/resources", description: "Content & guides" },
+                { label: "Case Studies", href: "/case-studies/", description: "Real client results" }
+              ]
+            },
             { label: "AI Software", href: "/software" },
-            { label: "Resources", href: "/resources" },
-            { label: "Case Studies", href: "/case-studies/" },
-            { label: "About Us", href: "/about" },
-            { label: "Get in Touch", href: ctaUrl },
-            { label: "Client Portal", href: "https://app.arbitrageos.ai/login" }
+            { label: "About Us", href: "/about" }
           ],
+          ctaButton: {
+            label: "Get in Touch",
+            href: ctaUrl
+          },
+          loginHref: "https://app.arbitrageos.ai/login",
           activeHref
         }));
         console.log("\u2705 SimpleNav initialized successfully");
