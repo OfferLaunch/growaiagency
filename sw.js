@@ -1,8 +1,10 @@
-const CACHE_NAME = 'grow-ai-v3';
+const CACHE_NAME = 'grow-ai-v4';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/process.html',
     '/styles.css',
+    '/process-styles.css',
     '/script.js',
     '/assets/images/logos/white and green.png',
     '/assets/images/logos/All white.png',
