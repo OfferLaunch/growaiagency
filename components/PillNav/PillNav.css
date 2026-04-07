@@ -17,9 +17,12 @@
   gap: 2rem;
 }
 
-.pill-nav.scrolled {
-  background: #000000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+.pill-nav.pill-nav-scrolled {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .pill-logo {

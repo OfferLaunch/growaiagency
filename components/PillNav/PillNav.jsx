@@ -18,6 +18,7 @@ const PillNav = ({
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
@@ -60,6 +61,16 @@ const PillNav = ({
   };
 
   const resolvedActiveHref = activeHref || getActiveHref();
+
+  // Scroll listener for glassmorphic effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const layout = () => {
@@ -254,7 +265,7 @@ const PillNav = ({
 
   return (
     <div className="pill-nav-container">
-      <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
+      <nav className={`pill-nav ${isScrolled ? 'pill-nav-scrolled' : ''} ${className}`} aria-label="Primary" style={cssVars}>
         <a
           className="pill-logo"
           href={items?.[0]?.href || '/'}

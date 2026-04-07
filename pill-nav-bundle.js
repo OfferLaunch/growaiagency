@@ -56,17 +56,17 @@
             publicInstance
           ), didWarnStateUpdateForUnmountedComponent[warningKey] = true);
         }
-        function Component(props, context, updater) {
+        function Component(props, context3, updater) {
           this.props = props;
-          this.context = context;
+          this.context = context3;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
         function ComponentDummy() {
         }
-        function PureComponent(props, context, updater) {
+        function PureComponent(props, context3, updater) {
           this.props = props;
-          this.context = context;
+          this.context = context3;
           this.refs = emptyObject;
           this.updater = updater || ReactNoopUpdateQueue;
         }
@@ -130,7 +130,7 @@
                 return type;
               case REACT_MEMO_TYPE:
                 return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-              case REACT_LAZY_TYPE2:
+              case REACT_LAZY_TYPE:
                 innerType = type._payload;
                 type = type._init;
                 try {
@@ -142,7 +142,7 @@
         }
         function getTaskName(type) {
           if (type === REACT_FRAGMENT_TYPE) return "<>";
-          if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE2)
+          if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE)
             return "<...>";
           try {
             var name = getComponentNameFromType(type);
@@ -158,12 +158,12 @@
         function UnknownOwner() {
           return Error("react-stack-top-frame");
         }
-        function hasValidKey(config) {
-          if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+        function hasValidKey(config3) {
+          if (hasOwnProperty.call(config3, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config3, "key").get;
             if (getter && getter.isReactWarning) return false;
           }
-          return void 0 !== config.key;
+          return void 0 !== config3.key;
         }
         function defineKeyPropWarningGetter(props, displayName) {
           function warnAboutAccessingKey() {
@@ -240,9 +240,9 @@
           return newKey;
         }
         function validateChildKeys(node) {
-          isValidElement2(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement2(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+          isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
         }
-        function isValidElement2(object) {
+        function isValidElement(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
         function escape(key) {
@@ -295,7 +295,7 @@
                   case REACT_PORTAL_TYPE:
                     invokeCallback = true;
                     break;
-                  case REACT_LAZY_TYPE2:
+                  case REACT_LAZY_TYPE:
                     return invokeCallback = children._init, mapIntoArray(
                       invokeCallback(children._payload),
                       array,
@@ -311,13 +311,13 @@
             var childKey = "" === nameSoFar ? "." + getElementKey(invokeCallback, 0) : nameSoFar;
             isArrayImpl(callback) ? (escapedPrefix = "", null != childKey && (escapedPrefix = childKey.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
               return c;
-            })) : null != callback && (isValidElement2(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
+            })) : null != callback && (isValidElement(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
               callback,
               escapedPrefix + (null == callback.key || invokeCallback && invokeCallback.key === callback.key ? "" : ("" + callback.key).replace(
                 userProvidedKeyEscapeRegex,
                 "$&/"
               ) + "/") + childKey
-            ), "" !== nameSoFar && null != invokeCallback && isValidElement2(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
+            ), "" !== nameSoFar && null != invokeCallback && isValidElement(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
             return 1;
           }
           invokeCallback = 0;
@@ -358,11 +358,11 @@
           }
           return invokeCallback;
         }
-        function mapChildren(children, func, context) {
+        function mapChildren(children, func, context3) {
           if (null == children) return children;
           var result = [], count = 0;
           mapIntoArray(children, result, "", "", function(child) {
-            return func.call(context, child, count++);
+            return func.call(context3, child, count++);
           });
           return result;
         }
@@ -494,7 +494,7 @@
           }
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
+        var REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, didWarnStateUpdateForUnmountedComponent = {}, ReactNoopUpdateQueue = {
           isMounted: function() {
             return false;
           },
@@ -614,7 +614,7 @@
             }) || [];
           },
           only: function(children) {
-            if (!isValidElement2(children))
+            if (!isValidElement(children))
               throw Error(
                 "React.Children.only expected to receive a single React element child."
               );
@@ -720,28 +720,28 @@
           var getCurrentStack = ReactSharedInternals.getCurrentStack;
           return null === getCurrentStack ? null : getCurrentStack();
         };
-        exports.cloneElement = function(element, config, children) {
+        exports.cloneElement = function(element, config3, children) {
           if (null === element || void 0 === element)
             throw Error(
               "The argument must be a React element, but you passed " + element + "."
             );
           var props = assign({}, element.props), key = element.key, owner = element._owner;
-          if (null != config) {
+          if (null != config3) {
             var JSCompiler_inline_result;
             a: {
-              if (hasOwnProperty.call(config, "ref") && (JSCompiler_inline_result = Object.getOwnPropertyDescriptor(
-                config,
+              if (hasOwnProperty.call(config3, "ref") && (JSCompiler_inline_result = Object.getOwnPropertyDescriptor(
+                config3,
                 "ref"
               ).get) && JSCompiler_inline_result.isReactWarning) {
                 JSCompiler_inline_result = false;
                 break a;
               }
-              JSCompiler_inline_result = void 0 !== config.ref;
+              JSCompiler_inline_result = void 0 !== config3.ref;
             }
             JSCompiler_inline_result && (owner = getOwner());
-            hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key);
-            for (propName in config)
-              !hasOwnProperty.call(config, propName) || "key" === propName || "__self" === propName || "__source" === propName || "ref" === propName && void 0 === config.ref || (props[propName] = config[propName]);
+            hasValidKey(config3) && (checkKeyStringCoercion(config3.key), key = "" + config3.key);
+            for (propName in config3)
+              !hasOwnProperty.call(config3, propName) || "key" === propName || "__self" === propName || "__source" === propName || "ref" === propName && void 0 === config3.ref || (props[propName] = config3[propName]);
           }
           var propName = arguments.length - 2;
           if (1 === propName) props.children = children;
@@ -781,16 +781,16 @@
           defaultValue._currentRenderer2 = null;
           return defaultValue;
         };
-        exports.createElement = function(type, config, children) {
+        exports.createElement = function(type, config3, children) {
           for (var i = 2; i < arguments.length; i++)
             validateChildKeys(arguments[i]);
           i = {};
           var key = null;
-          if (null != config)
-            for (propName in didWarnAboutOldJSXRuntime || !("__self" in config) || "key" in config || (didWarnAboutOldJSXRuntime = true, console.warn(
+          if (null != config3)
+            for (propName in didWarnAboutOldJSXRuntime || !("__self" in config3) || "key" in config3 || (didWarnAboutOldJSXRuntime = true, console.warn(
               "Your app (or one of its dependencies) is using an outdated JSX transform. Update to the modern JSX transform for faster performance: https://react.dev/link/new-jsx-transform"
-            )), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), config)
-              hasOwnProperty.call(config, propName) && "key" !== propName && "__self" !== propName && "__source" !== propName && (i[propName] = config[propName]);
+            )), hasValidKey(config3) && (checkKeyStringCoercion(config3.key), key = "" + config3.key), config3)
+              hasOwnProperty.call(config3, propName) && "key" !== propName && "__self" !== propName && "__source" !== propName && (i[propName] = config3[propName]);
           var childrenLength = arguments.length - 2;
           if (1 === childrenLength) i.children = children;
           else if (1 < childrenLength) {
@@ -821,20 +821,20 @@
           Object.seal(refObject);
           return refObject;
         };
-        exports.forwardRef = function(render) {
-          null != render && render.$$typeof === REACT_MEMO_TYPE ? console.error(
+        exports.forwardRef = function(render3) {
+          null != render3 && render3.$$typeof === REACT_MEMO_TYPE ? console.error(
             "forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...))."
-          ) : "function" !== typeof render ? console.error(
+          ) : "function" !== typeof render3 ? console.error(
             "forwardRef requires a render function but was given %s.",
-            null === render ? "null" : typeof render
-          ) : 0 !== render.length && 2 !== render.length && console.error(
+            null === render3 ? "null" : typeof render3
+          ) : 0 !== render3.length && 2 !== render3.length && console.error(
             "forwardRef render functions accept exactly two parameters: props and ref. %s",
-            1 === render.length ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined."
+            1 === render3.length ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined."
           );
-          null != render && null != render.defaultProps && console.error(
+          null != render3 && null != render3.defaultProps && console.error(
             "forwardRef render functions do not support defaultProps. Did you accidentally pass a React component?"
           );
-          var elementType = { $$typeof: REACT_FORWARD_REF_TYPE, render }, ownName;
+          var elementType = { $$typeof: REACT_FORWARD_REF_TYPE, render: render3 }, ownName;
           Object.defineProperty(elementType, "displayName", {
             enumerable: false,
             configurable: true,
@@ -843,16 +843,16 @@
             },
             set: function(name) {
               ownName = name;
-              render.name || render.displayName || (Object.defineProperty(render, "name", { value: name }), render.displayName = name);
+              render3.name || render3.displayName || (Object.defineProperty(render3, "name", { value: name }), render3.displayName = name);
             }
           });
           return elementType;
         };
-        exports.isValidElement = isValidElement2;
+        exports.isValidElement = isValidElement;
         exports.lazy = function(ctor) {
           ctor = { _status: -1, _result: ctor };
           var lazyType = {
-            $$typeof: REACT_LAZY_TYPE2,
+            $$typeof: REACT_LAZY_TYPE,
             _payload: ctor,
             _init: lazyInitializer
           }, ioInfo = {
@@ -926,12 +926,12 @@
         exports.useCallback = function(callback, deps) {
           return resolveDispatcher().useCallback(callback, deps);
         };
-        exports.useContext = function(Context) {
+        exports.useContext = function(Context2) {
           var dispatcher = resolveDispatcher();
-          Context.$$typeof === REACT_CONSUMER_TYPE && console.error(
+          Context2.$$typeof === REACT_CONSUMER_TYPE && console.error(
             "Calling useContext(Context.Consumer) is not supported and will cause bugs. Did you mean to call useContext(Context) instead?"
           );
-          return dispatcher.useContext(Context);
+          return dispatcher.useContext(Context2);
         };
         exports.useDebugValue = function(value, formatterFn) {
           return resolveDispatcher().useDebugValue(value, formatterFn);
@@ -972,8 +972,8 @@
         exports.useOptimistic = function(passthrough, reducer) {
           return resolveDispatcher().useOptimistic(passthrough, reducer);
         };
-        exports.useReducer = function(reducer, initialArg, init) {
-          return resolveDispatcher().useReducer(reducer, initialArg, init);
+        exports.useReducer = function(reducer, initialArg, init4) {
+          return resolveDispatcher().useReducer(reducer, initialArg, init4);
         };
         exports.useRef = function(initialValue) {
           return resolveDispatcher().useRef(initialValue);
@@ -1329,7 +1329,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React6 = require_react(), Internals = {
+        var React2 = require_react(), Internals = {
           d: {
             f: noop,
             r: function() {
@@ -1347,7 +1347,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -1795,7 +1795,7 @@
                 return type;
               case REACT_MEMO_TYPE:
                 return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-              case REACT_LAZY_TYPE2:
+              case REACT_LAZY_TYPE:
                 innerType = type._payload;
                 type = type._init;
                 try {
@@ -1936,12 +1936,12 @@
         }
         function pushHostContext(fiber) {
           null !== fiber.memoizedState && push(hostTransitionProviderCursor, fiber, fiber);
-          var context = requiredContext(contextStackCursor.current);
+          var context3 = requiredContext(contextStackCursor.current);
           var type = fiber.type;
-          var nextContext = getChildHostContextProd(context.context, type);
-          type = updatedAncestorInfoDev(context.ancestorInfo, type);
+          var nextContext = getChildHostContextProd(context3.context, type);
+          type = updatedAncestorInfoDev(context3.ancestorInfo, type);
           nextContext = { context: nextContext, ancestorInfo: type };
-          context !== nextContext && (push(contextFiberStackCursor, fiber, fiber), push(contextStackCursor, nextContext, fiber));
+          context3 !== nextContext && (push(contextFiberStackCursor, fiber, fiber), push(contextStackCursor, nextContext, fiber));
         }
         function popHostContext(fiber) {
           contextFiberStackCursor.current === fiber && (pop(contextStackCursor, fiber), pop(contextFiberStackCursor, fiber));
@@ -2882,7 +2882,7 @@
           "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React6.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React2.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -4812,14 +4812,14 @@
               "function" === typeof element && (needsCompareFamilies = true);
               break;
             case 0:
-              "function" === typeof element ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE2 && (needsCompareFamilies = true);
+              "function" === typeof element ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE && (needsCompareFamilies = true);
               break;
             case 11:
-              $$typeofNextType === REACT_FORWARD_REF_TYPE ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE2 && (needsCompareFamilies = true);
+              $$typeofNextType === REACT_FORWARD_REF_TYPE ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE && (needsCompareFamilies = true);
               break;
             case 14:
             case 15:
-              $$typeofNextType === REACT_MEMO_TYPE ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE2 && (needsCompareFamilies = true);
+              $$typeofNextType === REACT_MEMO_TYPE ? needsCompareFamilies = true : $$typeofNextType === REACT_LAZY_TYPE && (needsCompareFamilies = true);
               break;
             default:
               return false;
@@ -4985,7 +4985,7 @@
                     case REACT_MEMO_TYPE:
                       fiberTag = 14;
                       break a;
-                    case REACT_LAZY_TYPE2:
+                    case REACT_LAZY_TYPE:
                       fiberTag = 16;
                       resolvedType = null;
                       break a;
@@ -5340,20 +5340,20 @@
           lastContextDependency = currentlyRenderingFiber$1 = null;
           isDisallowedContextReadInDEV = false;
         }
-        function pushProvider(providerFiber, context, nextValue) {
-          push(valueCursor, context._currentValue, providerFiber);
-          context._currentValue = nextValue;
-          push(rendererCursorDEV, context._currentRenderer, providerFiber);
-          void 0 !== context._currentRenderer && null !== context._currentRenderer && context._currentRenderer !== rendererSigil && console.error(
+        function pushProvider(providerFiber, context3, nextValue) {
+          push(valueCursor, context3._currentValue, providerFiber);
+          context3._currentValue = nextValue;
+          push(rendererCursorDEV, context3._currentRenderer, providerFiber);
+          void 0 !== context3._currentRenderer && null !== context3._currentRenderer && context3._currentRenderer !== rendererSigil && console.error(
             "Detected multiple renderers concurrently rendering the same context provider. This is currently unsupported."
           );
-          context._currentRenderer = rendererSigil;
+          context3._currentRenderer = rendererSigil;
         }
-        function popProvider(context, providerFiber) {
-          context._currentValue = valueCursor.current;
+        function popProvider(context3, providerFiber) {
+          context3._currentValue = valueCursor.current;
           var currentRenderer = rendererCursorDEV.current;
           pop(rendererCursorDEV, providerFiber);
-          context._currentRenderer = currentRenderer;
+          context3._currentRenderer = currentRenderer;
           pop(valueCursor, providerFiber);
         }
         function scheduleContextWorkOnParentPath(parent, renderLanes2, propagationRoot) {
@@ -5440,8 +5440,8 @@
                 throw Error("Should have a current fiber. This is a bug in React.");
               currentParent = currentParent.memoizedProps;
               if (null !== currentParent) {
-                var context = parent.type;
-                objectIs(parent.pendingProps.value, currentParent.value) || (null !== current2 ? current2.push(context) : current2 = [context]);
+                var context3 = parent.type;
+                objectIs(parent.pendingProps.value, currentParent.value) || (null !== current2 ? current2.push(context3) : current2 = [context3]);
               }
             } else if (parent === hostTransitionProviderCursor.current) {
               currentParent = parent.alternate;
@@ -5476,32 +5476,32 @@
           workInProgress2 = workInProgress2.dependencies;
           null !== workInProgress2 && (workInProgress2.firstContext = null);
         }
-        function readContext(context) {
+        function readContext(context3) {
           isDisallowedContextReadInDEV && console.error(
             "Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."
           );
-          return readContextForConsumer(currentlyRenderingFiber$1, context);
+          return readContextForConsumer(currentlyRenderingFiber$1, context3);
         }
-        function readContextDuringReconciliation(consumer, context) {
+        function readContextDuringReconciliation(consumer, context3) {
           null === currentlyRenderingFiber$1 && prepareToReadContext(consumer);
-          return readContextForConsumer(consumer, context);
+          return readContextForConsumer(consumer, context3);
         }
-        function readContextForConsumer(consumer, context) {
-          var value = context._currentValue;
-          context = { context, memoizedValue: value, next: null };
+        function readContextForConsumer(consumer, context3) {
+          var value = context3._currentValue;
+          context3 = { context: context3, memoizedValue: value, next: null };
           if (null === lastContextDependency) {
             if (null === consumer)
               throw Error(
                 "Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."
               );
-            lastContextDependency = context;
+            lastContextDependency = context3;
             consumer.dependencies = {
               lanes: 0,
-              firstContext: context,
+              firstContext: context3,
               _debugThenableState: null
             };
             consumer.flags |= 524288;
-          } else lastContextDependency = lastContextDependency.next = context;
+          } else lastContextDependency = lastContextDependency.next = context3;
           return value;
         }
         function createCache() {
@@ -5963,7 +5963,7 @@
                 lanes,
                 element.key
               ), validateFragmentProps(element, current2, returnFiber), current2;
-            if (null !== current2 && (current2.elementType === elementType || isCompatibleFamilyForHotReloading(current2, element) || "object" === typeof elementType && null !== elementType && elementType.$$typeof === REACT_LAZY_TYPE2 && resolveLazy(elementType) === current2.type))
+            if (null !== current2 && (current2.elementType === elementType || isCompatibleFamilyForHotReloading(current2, element) || "object" === typeof elementType && null !== elementType && elementType.$$typeof === REACT_LAZY_TYPE && resolveLazy(elementType) === current2.type))
               return current2 = useFiber(current2, element.props), coerceRef(current2, element), current2.return = returnFiber, current2._debugOwner = element._owner, current2._debugInfo = currentDebugInfo, current2;
             current2 = createFiberFromElement(element, returnFiber.mode, lanes);
             coerceRef(current2, element);
@@ -6013,7 +6013,7 @@
                     returnFiber.mode,
                     lanes
                   ), newChild.return = returnFiber, newChild._debugInfo = currentDebugInfo, newChild;
-                case REACT_LAZY_TYPE2:
+                case REACT_LAZY_TYPE:
                   var _prevDebugInfo = pushDebugInfo(newChild._debugInfo);
                   newChild = resolveLazy(newChild);
                   returnFiber = createChild(returnFiber, newChild, lanes);
@@ -6060,7 +6060,7 @@
                   ), currentDebugInfo = key, returnFiber) : null;
                 case REACT_PORTAL_TYPE:
                   return newChild.key === key ? updatePortal(returnFiber, oldFiber, newChild, lanes) : null;
-                case REACT_LAZY_TYPE2:
+                case REACT_LAZY_TYPE:
                   return key = pushDebugInfo(newChild._debugInfo), newChild = resolveLazy(newChild), returnFiber = updateSlot(
                     returnFiber,
                     oldFiber,
@@ -6119,7 +6119,7 @@
                   return existingChildren = existingChildren.get(
                     null === newChild.key ? newIdx : newChild.key
                   ) || null, updatePortal(returnFiber, existingChildren, newChild, lanes);
-                case REACT_LAZY_TYPE2:
+                case REACT_LAZY_TYPE:
                   var _prevDebugInfo7 = pushDebugInfo(newChild._debugInfo);
                   newChild = resolveLazy(newChild);
                   returnFiber = updateFromMap(
@@ -6186,7 +6186,7 @@
                   );
                 });
                 break;
-              case REACT_LAZY_TYPE2:
+              case REACT_LAZY_TYPE:
                 child = resolveLazy(child), warnOnInvalidKey(returnFiber, workInProgress2, child, knownKeys);
             }
             return knownKeys;
@@ -6352,7 +6352,7 @@
                         } else if (currentFirstChild.elementType === key || isCompatibleFamilyForHotReloading(
                           currentFirstChild,
                           newChild
-                        ) || "object" === typeof key && null !== key && key.$$typeof === REACT_LAZY_TYPE2 && resolveLazy(key) === currentFirstChild.type) {
+                        ) || "object" === typeof key && null !== key && key.$$typeof === REACT_LAZY_TYPE && resolveLazy(key) === currentFirstChild.type) {
                           deleteRemainingChildren(
                             returnFiber,
                             currentFirstChild.sibling
@@ -6417,7 +6417,7 @@
                     returnFiber = lanes;
                   }
                   return placeSingleChild(returnFiber);
-                case REACT_LAZY_TYPE2:
+                case REACT_LAZY_TYPE:
                   return prevDebugInfo = pushDebugInfo(newChild._debugInfo), newChild = resolveLazy(newChild), returnFiber = reconcileChildFibersImpl(
                     returnFiber,
                     currentFirstChild,
@@ -6741,30 +6741,30 @@
           }
           currentlyProcessingQueue = null;
         }
-        function callCallback(callback, context) {
+        function callCallback(callback, context3) {
           if ("function" !== typeof callback)
             throw Error(
               "Invalid argument passed as callback. Expected a function. Instead received: " + callback
             );
-          callback.call(context);
+          callback.call(context3);
         }
-        function commitHiddenCallbacks(updateQueue, context) {
+        function commitHiddenCallbacks(updateQueue, context3) {
           var hiddenCallbacks = updateQueue.shared.hiddenCallbacks;
           if (null !== hiddenCallbacks)
             for (updateQueue.shared.hiddenCallbacks = null, updateQueue = 0; updateQueue < hiddenCallbacks.length; updateQueue++)
-              callCallback(hiddenCallbacks[updateQueue], context);
+              callCallback(hiddenCallbacks[updateQueue], context3);
         }
-        function commitCallbacks(updateQueue, context) {
+        function commitCallbacks(updateQueue, context3) {
           var callbacks = updateQueue.callbacks;
           if (null !== callbacks)
             for (updateQueue.callbacks = null, updateQueue = 0; updateQueue < callbacks.length; updateQueue++)
-              callCallback(callbacks[updateQueue], context);
+              callCallback(callbacks[updateQueue], context3);
         }
-        function pushHiddenContext(fiber, context) {
+        function pushHiddenContext(fiber, context3) {
           var prevEntangledRenderLanes = entangledRenderLanes;
           push(prevEntangledRenderLanesCursor, prevEntangledRenderLanes, fiber);
-          push(currentTreeHiddenStackCursor, context, fiber);
-          entangledRenderLanes = prevEntangledRenderLanes | context.baseLanes;
+          push(currentTreeHiddenStackCursor, context3, fiber);
+          entangledRenderLanes = prevEntangledRenderLanes | context3.baseLanes;
         }
         function reuseHiddenContextOnStack(fiber) {
           push(prevEntangledRenderLanesCursor, entangledRenderLanes, fiber);
@@ -7073,7 +7073,7 @@
           null === (null === workInProgressHook ? index.memoizedState : workInProgressHook.next) && (index = index.alternate, ReactSharedInternals.H = null !== index && null !== index.memoizedState ? HooksDispatcherOnUpdateInDEV : HooksDispatcherOnMountInDEV);
           return thenable;
         }
-        function use2(usable) {
+        function use(usable) {
           if (null !== usable && "object" === typeof usable) {
             if ("function" === typeof usable.then) return useThenable(usable);
             if (usable.$$typeof === REACT_CONTEXT_TYPE) return readContext(usable);
@@ -7111,14 +7111,14 @@
         function basicStateReducer(state, action) {
           return "function" === typeof action ? action(state) : action;
         }
-        function mountReducer(reducer, initialArg, init) {
+        function mountReducer(reducer, initialArg, init4) {
           var hook = mountWorkInProgressHook();
-          if (void 0 !== init) {
-            var initialState = init(initialArg);
+          if (void 0 !== init4) {
+            var initialState = init4(initialArg);
             if (shouldDoubleInvokeUserFnsInHooksDEV) {
               setIsStrictModeForDevtools(true);
               try {
-                init(initialArg);
+                init4(initialArg);
               } finally {
                 setIsStrictModeForDevtools(false);
               }
@@ -9772,7 +9772,7 @@
                   }
                 }
                 workInProgress2 = "";
-                null !== current2 && "object" === typeof current2 && current2.$$typeof === REACT_LAZY_TYPE2 && (workInProgress2 = " Did you wrap a component in React.lazy() more than once?");
+                null !== current2 && "object" === typeof current2 && current2.$$typeof === REACT_LAZY_TYPE && (workInProgress2 = " Did you wrap a component in React.lazy() more than once?");
                 renderLanes2 = getComponentNameFromType(current2) || current2;
                 throw Error(
                   "Element type is invalid. Received a promise that resolves to: " + renderLanes2 + ". Lazy element type must resolve to a class or function." + workInProgress2
@@ -18514,14 +18514,14 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React6 = require_react(), ReactDOM2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React2 = require_react(), ReactDOM2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
         /* @__PURE__ */ Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
         /* @__PURE__ */ Symbol.for("react.legacy_hidden");
         /* @__PURE__ */ Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
         /* @__PURE__ */ Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -19835,8 +19835,8 @@
           }
         }, callDestroyInDEV = callDestroy.react_stack_bottom_frame.bind(callDestroy), callLazyInit = {
           react_stack_bottom_frame: function(lazy) {
-            var init = lazy._init;
-            return init(lazy._payload);
+            var init4 = lazy._init;
+            return init4(lazy._payload);
           }
         }, callLazyInitInDEV = callLazyInit.react_stack_bottom_frame.bind(callLazyInit), SuspenseException = Error(
           "Suspense Exception: This is not a real error! It's an implementation detail of `use` to interrupt the current render. You must either rethrow it immediately, or move the `use` call outside of the `try/catch` block. Capturing without rethrowing will lead to unexpected behavior.\n\nTo handle async errors, wrap your component in an error boundary, or call the promise's `.catch` method and pass the result to `use`."
@@ -19892,7 +19892,7 @@
         var didWarnAboutUseFormState = /* @__PURE__ */ new Set();
         var renderLanes = 0, currentlyRenderingFiber = null, currentHook = null, workInProgressHook = null, didScheduleRenderPhaseUpdate = false, didScheduleRenderPhaseUpdateDuringThisPass = false, shouldDoubleInvokeUserFnsInHooksDEV = false, localIdCounter = 0, thenableIndexCounter = 0, thenableState = null, globalClientIdCounter = 0, RE_RENDER_LIMIT = 25, currentHookNameInDev = null, hookTypesDev = null, hookTypesUpdateIndexDev = -1, ignorePreviousDependencies = false, ContextOnlyDispatcher = {
           readContext,
-          use: use2,
+          use,
           useCallback: throwInvalidHookError,
           useContext: throwInvalidHookError,
           useEffect: throwInvalidHookError,
@@ -19918,20 +19918,20 @@
         ContextOnlyDispatcher.useEffectEvent = throwInvalidHookError;
         var HooksDispatcherOnMountInDEV = null, HooksDispatcherOnMountWithHookTypesInDEV = null, HooksDispatcherOnUpdateInDEV = null, HooksDispatcherOnRerenderInDEV = null, InvalidNestedHooksDispatcherOnMountInDEV = null, InvalidNestedHooksDispatcherOnUpdateInDEV = null, InvalidNestedHooksDispatcherOnRerenderInDEV = null;
         HooksDispatcherOnMountInDEV = {
-          readContext: function(context) {
-            return readContext(context);
+          readContext: function(context3) {
+            return readContext(context3);
           },
-          use: use2,
+          use,
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
             mountHookTypesDev();
             checkDepsAreArrayDev(deps);
             return mountCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             mountHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -19969,13 +19969,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             mountHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init);
+              return mountReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20054,19 +20054,19 @@
           }
         };
         HooksDispatcherOnMountWithHookTypesInDEV = {
-          readContext: function(context) {
-            return readContext(context);
+          readContext: function(context3) {
+            return readContext(context3);
           },
-          use: use2,
+          use,
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
             updateHookTypesDev();
             return mountCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             updateHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20099,13 +20099,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init);
+              return mountReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20184,19 +20184,19 @@
           }
         };
         HooksDispatcherOnUpdateInDEV = {
-          readContext: function(context) {
-            return readContext(context);
+          readContext: function(context3) {
+            return readContext(context3);
           },
-          use: use2,
+          use,
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
             updateHookTypesDev();
             return updateCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             updateHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20229,13 +20229,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return updateReducer(reducer, initialArg, init);
+              return updateReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20314,19 +20314,19 @@
           }
         };
         HooksDispatcherOnRerenderInDEV = {
-          readContext: function(context) {
-            return readContext(context);
+          readContext: function(context3) {
+            return readContext(context3);
           },
-          use: use2,
+          use,
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
             updateHookTypesDev();
             return updateCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             updateHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20359,13 +20359,13 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnRerenderInDEV;
             try {
-              return rerenderReducer(reducer, initialArg, init);
+              return rerenderReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20444,13 +20444,13 @@
           }
         };
         InvalidNestedHooksDispatcherOnMountInDEV = {
-          readContext: function(context) {
+          readContext: function(context3) {
             warnInvalidContextAccess();
-            return readContext(context);
+            return readContext(context3);
           },
           use: function(usable) {
             warnInvalidHookAccess();
-            return use2(usable);
+            return use(usable);
           },
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
@@ -20458,11 +20458,11 @@
             mountHookTypesDev();
             return mountCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             warnInvalidHookAccess();
             mountHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20500,14 +20500,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             mountHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnMountInDEV;
             try {
-              return mountReducer(reducer, initialArg, init);
+              return mountReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20599,13 +20599,13 @@
           }
         };
         InvalidNestedHooksDispatcherOnUpdateInDEV = {
-          readContext: function(context) {
+          readContext: function(context3) {
             warnInvalidContextAccess();
-            return readContext(context);
+            return readContext(context3);
           },
           use: function(usable) {
             warnInvalidHookAccess();
-            return use2(usable);
+            return use(usable);
           },
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
@@ -20613,11 +20613,11 @@
             updateHookTypesDev();
             return updateCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             warnInvalidHookAccess();
             updateHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20655,14 +20655,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return updateReducer(reducer, initialArg, init);
+              return updateReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -20754,13 +20754,13 @@
           }
         };
         InvalidNestedHooksDispatcherOnRerenderInDEV = {
-          readContext: function(context) {
+          readContext: function(context3) {
             warnInvalidContextAccess();
-            return readContext(context);
+            return readContext(context3);
           },
           use: function(usable) {
             warnInvalidHookAccess();
-            return use2(usable);
+            return use(usable);
           },
           useCallback: function(callback, deps) {
             currentHookNameInDev = "useCallback";
@@ -20768,11 +20768,11 @@
             updateHookTypesDev();
             return updateCallback(callback, deps);
           },
-          useContext: function(context) {
+          useContext: function(context3) {
             currentHookNameInDev = "useContext";
             warnInvalidHookAccess();
             updateHookTypesDev();
-            return readContext(context);
+            return readContext(context3);
           },
           useEffect: function(create, deps) {
             currentHookNameInDev = "useEffect";
@@ -20810,14 +20810,14 @@
               ReactSharedInternals.H = prevDispatcher;
             }
           },
-          useReducer: function(reducer, initialArg, init) {
+          useReducer: function(reducer, initialArg, init4) {
             currentHookNameInDev = "useReducer";
             warnInvalidHookAccess();
             updateHookTypesDev();
             var prevDispatcher = ReactSharedInternals.H;
             ReactSharedInternals.H = InvalidNestedHooksDispatcherOnUpdateInDEV;
             try {
-              return rerenderReducer(reducer, initialArg, init);
+              return rerenderReducer(reducer, initialArg, init4);
             } finally {
               ReactSharedInternals.H = prevDispatcher;
             }
@@ -21309,7 +21309,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React6.version;
+          var isomorphicReactPackageVersion = React2.version;
           if ("19.2.3" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.3\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21490,7 +21490,7 @@
                 return type;
               case REACT_MEMO_TYPE:
                 return innerType = type.displayName || null, null !== innerType ? innerType : getComponentNameFromType(type.type) || "Memo";
-              case REACT_LAZY_TYPE2:
+              case REACT_LAZY_TYPE:
                 innerType = type._payload;
                 type = type._init;
                 try {
@@ -21524,7 +21524,7 @@
         }
         function getTaskName(type) {
           if (type === REACT_FRAGMENT_TYPE) return "<>";
-          if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE2)
+          if ("object" === typeof type && null !== type && type.$$typeof === REACT_LAZY_TYPE)
             return "<...>";
           try {
             var name = getComponentNameFromType(type);
@@ -21540,12 +21540,12 @@
         function UnknownOwner() {
           return Error("react-stack-top-frame");
         }
-        function hasValidKey(config) {
-          if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+        function hasValidKey(config3) {
+          if (hasOwnProperty.call(config3, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config3, "key").get;
             if (getter && getter.isReactWarning) return false;
           }
-          return void 0 !== config.key;
+          return void 0 !== config3.key;
         }
         function defineKeyPropWarningGetter(props, displayName) {
           function warnAboutAccessingKey() {
@@ -21609,8 +21609,8 @@
           Object.freeze && (Object.freeze(type.props), Object.freeze(type));
           return type;
         }
-        function jsxDEVImpl(type, config, maybeKey, isStaticChildren, debugStack, debugTask) {
-          var children = config.children;
+        function jsxDEVImpl(type, config3, maybeKey, isStaticChildren, debugStack, debugTask) {
+          var children = config3.children;
           if (void 0 !== children)
             if (isStaticChildren)
               if (isArrayImpl(children)) {
@@ -21622,9 +21622,9 @@
                   "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
                 );
             else validateChildKeys(children);
-          if (hasOwnProperty.call(config, "key")) {
+          if (hasOwnProperty.call(config3, "key")) {
             children = getComponentNameFromType(type);
-            var keys = Object.keys(config).filter(function(k) {
+            var keys = Object.keys(config3).filter(function(k) {
               return "key" !== k;
             });
             isStaticChildren = 0 < keys.length ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
@@ -21638,12 +21638,12 @@
           }
           children = null;
           void 0 !== maybeKey && (checkKeyStringCoercion(maybeKey), children = "" + maybeKey);
-          hasValidKey(config) && (checkKeyStringCoercion(config.key), children = "" + config.key);
-          if ("key" in config) {
+          hasValidKey(config3) && (checkKeyStringCoercion(config3.key), children = "" + config3.key);
+          if ("key" in config3) {
             maybeKey = {};
-            for (var propName in config)
-              "key" !== propName && (maybeKey[propName] = config[propName]);
-          } else maybeKey = config;
+            for (var propName in config3)
+              "key" !== propName && (maybeKey[propName] = config3[propName]);
+          } else maybeKey = config3;
           children && defineKeyPropWarningGetter(
             maybeKey,
             "function" === typeof type ? type.displayName || type.name || "Unknown" : type
@@ -21658,44 +21658,44 @@
           );
         }
         function validateChildKeys(node) {
-          isValidElement2(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement2(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+          isValidElement(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE && ("fulfilled" === node._payload.status ? isValidElement(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
         }
-        function isValidElement2(object) {
+        function isValidElement(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
-        var React6 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+        var React2 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
           return null;
         };
-        React6 = {
+        React2 = {
           react_stack_bottom_frame: function(callStackForError) {
             return callStackForError();
           }
         };
         var specialPropKeyWarningShown;
         var didWarnAboutElementRef = {};
-        var unknownOwnerDebugStack = React6.react_stack_bottom_frame.bind(
-          React6,
+        var unknownOwnerDebugStack = React2.react_stack_bottom_frame.bind(
+          React2,
           UnknownOwner
         )();
         var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
         var didWarnAboutKeySpread = {};
         exports.Fragment = REACT_FRAGMENT_TYPE;
-        exports.jsx = function(type, config, maybeKey) {
+        exports.jsx = function(type, config3, maybeKey) {
           var trackActualOwner = 1e4 > ReactSharedInternals.recentlyCreatedOwnerStacks++;
           return jsxDEVImpl(
             type,
-            config,
+            config3,
             maybeKey,
             false,
             trackActualOwner ? Error("react-stack-top-frame") : unknownOwnerDebugStack,
             trackActualOwner ? createTask(getTaskName(type)) : unknownOwnerDebugTask
           );
         };
-        exports.jsxs = function(type, config, maybeKey) {
+        exports.jsxs = function(type, config3, maybeKey) {
           var trackActualOwner = 1e4 > ReactSharedInternals.recentlyCreatedOwnerStacks++;
           return jsxDEVImpl(
             type,
-            config,
+            config3,
             maybeKey,
             true,
             trackActualOwner ? Error("react-stack-top-frame") : unknownOwnerDebugStack,
@@ -21718,3653 +21718,4599 @@
     }
   });
 
-  // header-nav.tsx
+  // pill-nav.js
   var import_react2 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
-  // components/ui/header-3.tsx
+  // components/PillNav/PillNav.jsx
   var import_react = __toESM(require_react());
 
-  // components/ui/button.tsx
-  var React3 = __toESM(require_react());
-
-  // node_modules/@radix-ui/react-slot/dist/index.mjs
-  var React2 = __toESM(require_react(), 1);
-
-  // node_modules/@radix-ui/react-compose-refs/dist/index.mjs
-  var React = __toESM(require_react(), 1);
-  function setRef(ref, value) {
-    if (typeof ref === "function") {
-      return ref(value);
-    } else if (ref !== null && ref !== void 0) {
-      ref.current = value;
+  // node_modules/gsap/gsap-core.js
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
     }
+    return self;
   }
-  function composeRefs(...refs) {
-    return (node) => {
-      let hasCleanup = false;
-      const cleanups = refs.map((ref) => {
-        const cleanup = setRef(ref, node);
-        if (!hasCleanup && typeof cleanup == "function") {
-          hasCleanup = true;
+  function _inheritsLoose(subClass, superClass) {
+    subClass.prototype = Object.create(superClass.prototype);
+    subClass.prototype.constructor = subClass;
+    subClass.__proto__ = superClass;
+  }
+  var _config = {
+    autoSleep: 120,
+    force3D: "auto",
+    nullTargetWarn: 1,
+    units: {
+      lineHeight: ""
+    }
+  };
+  var _defaults = {
+    duration: 0.5,
+    overwrite: false,
+    delay: 0
+  };
+  var _suppressOverwrites;
+  var _reverting;
+  var _context;
+  var _bigNum = 1e8;
+  var _tinyNum = 1 / _bigNum;
+  var _2PI = Math.PI * 2;
+  var _HALF_PI = _2PI / 4;
+  var _gsID = 0;
+  var _sqrt = Math.sqrt;
+  var _cos = Math.cos;
+  var _sin = Math.sin;
+  var _isString = function _isString2(value) {
+    return typeof value === "string";
+  };
+  var _isFunction = function _isFunction2(value) {
+    return typeof value === "function";
+  };
+  var _isNumber = function _isNumber2(value) {
+    return typeof value === "number";
+  };
+  var _isUndefined = function _isUndefined2(value) {
+    return typeof value === "undefined";
+  };
+  var _isObject = function _isObject2(value) {
+    return typeof value === "object";
+  };
+  var _isNotFalse = function _isNotFalse2(value) {
+    return value !== false;
+  };
+  var _windowExists = function _windowExists2() {
+    return typeof window !== "undefined";
+  };
+  var _isFuncOrString = function _isFuncOrString2(value) {
+    return _isFunction(value) || _isString(value);
+  };
+  var _isTypedArray = typeof ArrayBuffer === "function" && ArrayBuffer.isView || function() {
+  };
+  var _isArray = Array.isArray;
+  var _randomExp = /random\([^)]+\)/g;
+  var _commaDelimExp = /,\s*/g;
+  var _strictNumExp = /(?:-?\.?\d|\.)+/gi;
+  var _numExp = /[-+=.]*\d+[.e\-+]*\d*[e\-+]*\d*/g;
+  var _numWithUnitExp = /[-+=.]*\d+[.e-]*\d*[a-z%]*/g;
+  var _complexStringNumExp = /[-+=.]*\d+\.?\d*(?:e-|e\+)?\d*/gi;
+  var _relExp = /[+-]=-?[.\d]+/;
+  var _delimitedValueExp = /[^,'"\[\]\s]+/gi;
+  var _unitExp = /^[+\-=e\s\d]*\d+[.\d]*([a-z]*|%)\s*$/i;
+  var _globalTimeline;
+  var _win;
+  var _coreInitted;
+  var _doc;
+  var _globals = {};
+  var _installScope = {};
+  var _coreReady;
+  var _install = function _install2(scope) {
+    return (_installScope = _merge(scope, _globals)) && gsap;
+  };
+  var _missingPlugin = function _missingPlugin2(property, value) {
+    return console.warn("Invalid property", property, "set to", value, "Missing plugin? gsap.registerPlugin()");
+  };
+  var _warn = function _warn2(message, suppress) {
+    return !suppress && console.warn(message);
+  };
+  var _addGlobal = function _addGlobal2(name, obj) {
+    return name && (_globals[name] = obj) && _installScope && (_installScope[name] = obj) || _globals;
+  };
+  var _emptyFunc = function _emptyFunc2() {
+    return 0;
+  };
+  var _startAtRevertConfig = {
+    suppressEvents: true,
+    isStart: true,
+    kill: false
+  };
+  var _revertConfigNoKill = {
+    suppressEvents: true,
+    kill: false
+  };
+  var _revertConfig = {
+    suppressEvents: true
+  };
+  var _reservedProps = {};
+  var _lazyTweens = [];
+  var _lazyLookup = {};
+  var _lastRenderedFrame;
+  var _plugins = {};
+  var _effects = {};
+  var _nextGCFrame = 30;
+  var _harnessPlugins = [];
+  var _callbackNames = "";
+  var _harness = function _harness2(targets) {
+    var target = targets[0], harnessPlugin, i;
+    _isObject(target) || _isFunction(target) || (targets = [targets]);
+    if (!(harnessPlugin = (target._gsap || {}).harness)) {
+      i = _harnessPlugins.length;
+      while (i-- && !_harnessPlugins[i].targetTest(target)) {
+      }
+      harnessPlugin = _harnessPlugins[i];
+    }
+    i = targets.length;
+    while (i--) {
+      targets[i] && (targets[i]._gsap || (targets[i]._gsap = new GSCache(targets[i], harnessPlugin))) || targets.splice(i, 1);
+    }
+    return targets;
+  };
+  var _getCache = function _getCache2(target) {
+    return target._gsap || _harness(toArray(target))[0]._gsap;
+  };
+  var _getProperty = function _getProperty2(target, property, v) {
+    return (v = target[property]) && _isFunction(v) ? target[property]() : _isUndefined(v) && target.getAttribute && target.getAttribute(property) || v;
+  };
+  var _forEachName = function _forEachName2(names, func) {
+    return (names = names.split(",")).forEach(func) || names;
+  };
+  var _round = function _round2(value) {
+    return Math.round(value * 1e5) / 1e5 || 0;
+  };
+  var _roundPrecise = function _roundPrecise2(value) {
+    return Math.round(value * 1e7) / 1e7 || 0;
+  };
+  var _parseRelative = function _parseRelative2(start, value) {
+    var operator = value.charAt(0), end = parseFloat(value.substr(2));
+    start = parseFloat(start);
+    return operator === "+" ? start + end : operator === "-" ? start - end : operator === "*" ? start * end : start / end;
+  };
+  var _arrayContainsAny = function _arrayContainsAny2(toSearch, toFind) {
+    var l = toFind.length, i = 0;
+    for (; toSearch.indexOf(toFind[i]) < 0 && ++i < l; ) {
+    }
+    return i < l;
+  };
+  var _lazyRender = function _lazyRender2() {
+    var l = _lazyTweens.length, a = _lazyTweens.slice(0), i, tween;
+    _lazyLookup = {};
+    _lazyTweens.length = 0;
+    for (i = 0; i < l; i++) {
+      tween = a[i];
+      tween && tween._lazy && (tween.render(tween._lazy[0], tween._lazy[1], true)._lazy = 0);
+    }
+  };
+  var _isRevertWorthy = function _isRevertWorthy2(animation) {
+    return !!(animation._initted || animation._startAt || animation.add);
+  };
+  var _lazySafeRender = function _lazySafeRender2(animation, time, suppressEvents, force) {
+    _lazyTweens.length && !_reverting && _lazyRender();
+    animation.render(time, suppressEvents, force || !!(_reverting && time < 0 && _isRevertWorthy(animation)));
+    _lazyTweens.length && !_reverting && _lazyRender();
+  };
+  var _numericIfPossible = function _numericIfPossible2(value) {
+    var n = parseFloat(value);
+    return (n || n === 0) && (value + "").match(_delimitedValueExp).length < 2 ? n : _isString(value) ? value.trim() : value;
+  };
+  var _passThrough = function _passThrough2(p) {
+    return p;
+  };
+  var _setDefaults = function _setDefaults2(obj, defaults2) {
+    for (var p in defaults2) {
+      p in obj || (obj[p] = defaults2[p]);
+    }
+    return obj;
+  };
+  var _setKeyframeDefaults = function _setKeyframeDefaults2(excludeDuration) {
+    return function(obj, defaults2) {
+      for (var p in defaults2) {
+        p in obj || p === "duration" && excludeDuration || p === "ease" || (obj[p] = defaults2[p]);
+      }
+    };
+  };
+  var _merge = function _merge2(base, toMerge) {
+    for (var p in toMerge) {
+      base[p] = toMerge[p];
+    }
+    return base;
+  };
+  var _mergeDeep = function _mergeDeep2(base, toMerge) {
+    for (var p in toMerge) {
+      p !== "__proto__" && p !== "constructor" && p !== "prototype" && (base[p] = _isObject(toMerge[p]) ? _mergeDeep2(base[p] || (base[p] = {}), toMerge[p]) : toMerge[p]);
+    }
+    return base;
+  };
+  var _copyExcluding = function _copyExcluding2(obj, excluding) {
+    var copy = {}, p;
+    for (p in obj) {
+      p in excluding || (copy[p] = obj[p]);
+    }
+    return copy;
+  };
+  var _inheritDefaults = function _inheritDefaults2(vars) {
+    var parent = vars.parent || _globalTimeline, func = vars.keyframes ? _setKeyframeDefaults(_isArray(vars.keyframes)) : _setDefaults;
+    if (_isNotFalse(vars.inherit)) {
+      while (parent) {
+        func(vars, parent.vars.defaults);
+        parent = parent.parent || parent._dp;
+      }
+    }
+    return vars;
+  };
+  var _arraysMatch = function _arraysMatch2(a1, a2) {
+    var i = a1.length, match = i === a2.length;
+    while (match && i-- && a1[i] === a2[i]) {
+    }
+    return i < 0;
+  };
+  var _addLinkedListItem = function _addLinkedListItem2(parent, child, firstProp, lastProp, sortBy) {
+    if (firstProp === void 0) {
+      firstProp = "_first";
+    }
+    if (lastProp === void 0) {
+      lastProp = "_last";
+    }
+    var prev = parent[lastProp], t;
+    if (sortBy) {
+      t = child[sortBy];
+      while (prev && prev[sortBy] > t) {
+        prev = prev._prev;
+      }
+    }
+    if (prev) {
+      child._next = prev._next;
+      prev._next = child;
+    } else {
+      child._next = parent[firstProp];
+      parent[firstProp] = child;
+    }
+    if (child._next) {
+      child._next._prev = child;
+    } else {
+      parent[lastProp] = child;
+    }
+    child._prev = prev;
+    child.parent = child._dp = parent;
+    return child;
+  };
+  var _removeLinkedListItem = function _removeLinkedListItem2(parent, child, firstProp, lastProp) {
+    if (firstProp === void 0) {
+      firstProp = "_first";
+    }
+    if (lastProp === void 0) {
+      lastProp = "_last";
+    }
+    var prev = child._prev, next = child._next;
+    if (prev) {
+      prev._next = next;
+    } else if (parent[firstProp] === child) {
+      parent[firstProp] = next;
+    }
+    if (next) {
+      next._prev = prev;
+    } else if (parent[lastProp] === child) {
+      parent[lastProp] = prev;
+    }
+    child._next = child._prev = child.parent = null;
+  };
+  var _removeFromParent = function _removeFromParent2(child, onlyIfParentHasAutoRemove) {
+    child.parent && (!onlyIfParentHasAutoRemove || child.parent.autoRemoveChildren) && child.parent.remove && child.parent.remove(child);
+    child._act = 0;
+  };
+  var _uncache = function _uncache2(animation, child) {
+    if (animation && (!child || child._end > animation._dur || child._start < 0)) {
+      var a = animation;
+      while (a) {
+        a._dirty = 1;
+        a = a.parent;
+      }
+    }
+    return animation;
+  };
+  var _recacheAncestors = function _recacheAncestors2(animation) {
+    var parent = animation.parent;
+    while (parent && parent.parent) {
+      parent._dirty = 1;
+      parent.totalDuration();
+      parent = parent.parent;
+    }
+    return animation;
+  };
+  var _rewindStartAt = function _rewindStartAt2(tween, totalTime, suppressEvents, force) {
+    return tween._startAt && (_reverting ? tween._startAt.revert(_revertConfigNoKill) : tween.vars.immediateRender && !tween.vars.autoRevert || tween._startAt.render(totalTime, true, force));
+  };
+  var _hasNoPausedAncestors = function _hasNoPausedAncestors2(animation) {
+    return !animation || animation._ts && _hasNoPausedAncestors2(animation.parent);
+  };
+  var _elapsedCycleDuration = function _elapsedCycleDuration2(animation) {
+    return animation._repeat ? _animationCycle(animation._tTime, animation = animation.duration() + animation._rDelay) * animation : 0;
+  };
+  var _animationCycle = function _animationCycle2(tTime, cycleDuration) {
+    var whole = Math.floor(tTime = _roundPrecise(tTime / cycleDuration));
+    return tTime && whole === tTime ? whole - 1 : whole;
+  };
+  var _parentToChildTotalTime = function _parentToChildTotalTime2(parentTime, child) {
+    return (parentTime - child._start) * child._ts + (child._ts >= 0 ? 0 : child._dirty ? child.totalDuration() : child._tDur);
+  };
+  var _setEnd = function _setEnd2(animation) {
+    return animation._end = _roundPrecise(animation._start + (animation._tDur / Math.abs(animation._ts || animation._rts || _tinyNum) || 0));
+  };
+  var _alignPlayhead = function _alignPlayhead2(animation, totalTime) {
+    var parent = animation._dp;
+    if (parent && parent.smoothChildTiming && animation._ts) {
+      animation._start = _roundPrecise(parent._time - (animation._ts > 0 ? totalTime / animation._ts : ((animation._dirty ? animation.totalDuration() : animation._tDur) - totalTime) / -animation._ts));
+      _setEnd(animation);
+      parent._dirty || _uncache(parent, animation);
+    }
+    return animation;
+  };
+  var _postAddChecks = function _postAddChecks2(timeline2, child) {
+    var t;
+    if (child._time || !child._dur && child._initted || child._start < timeline2._time && (child._dur || !child.add)) {
+      t = _parentToChildTotalTime(timeline2.rawTime(), child);
+      if (!child._dur || _clamp(0, child.totalDuration(), t) - child._tTime > _tinyNum) {
+        child.render(t, true);
+      }
+    }
+    if (_uncache(timeline2, child)._dp && timeline2._initted && timeline2._time >= timeline2._dur && timeline2._ts) {
+      if (timeline2._dur < timeline2.duration()) {
+        t = timeline2;
+        while (t._dp) {
+          t.rawTime() >= 0 && t.totalTime(t._tTime);
+          t = t._dp;
         }
-        return cleanup;
+      }
+      timeline2._zTime = -_tinyNum;
+    }
+  };
+  var _addToTimeline = function _addToTimeline2(timeline2, child, position, skipChecks) {
+    child.parent && _removeFromParent(child);
+    child._start = _roundPrecise((_isNumber(position) ? position : position || timeline2 !== _globalTimeline ? _parsePosition(timeline2, position, child) : timeline2._time) + child._delay);
+    child._end = _roundPrecise(child._start + (child.totalDuration() / Math.abs(child.timeScale()) || 0));
+    _addLinkedListItem(timeline2, child, "_first", "_last", timeline2._sort ? "_start" : 0);
+    _isFromOrFromStart(child) || (timeline2._recent = child);
+    skipChecks || _postAddChecks(timeline2, child);
+    timeline2._ts < 0 && _alignPlayhead(timeline2, timeline2._tTime);
+    return timeline2;
+  };
+  var _scrollTrigger = function _scrollTrigger2(animation, trigger) {
+    return (_globals.ScrollTrigger || _missingPlugin("scrollTrigger", trigger)) && _globals.ScrollTrigger.create(trigger, animation);
+  };
+  var _attemptInitTween = function _attemptInitTween2(tween, time, force, suppressEvents, tTime) {
+    _initTween(tween, time, tTime);
+    if (!tween._initted) {
+      return 1;
+    }
+    if (!force && tween._pt && !_reverting && (tween._dur && tween.vars.lazy !== false || !tween._dur && tween.vars.lazy) && _lastRenderedFrame !== _ticker.frame) {
+      _lazyTweens.push(tween);
+      tween._lazy = [tTime, suppressEvents];
+      return 1;
+    }
+  };
+  var _parentPlayheadIsBeforeStart = function _parentPlayheadIsBeforeStart2(_ref) {
+    var parent = _ref.parent;
+    return parent && parent._ts && parent._initted && !parent._lock && (parent.rawTime() < 0 || _parentPlayheadIsBeforeStart2(parent));
+  };
+  var _isFromOrFromStart = function _isFromOrFromStart2(_ref2) {
+    var data = _ref2.data;
+    return data === "isFromStart" || data === "isStart";
+  };
+  var _renderZeroDurationTween = function _renderZeroDurationTween2(tween, totalTime, suppressEvents, force) {
+    var prevRatio = tween.ratio, ratio = totalTime < 0 || !totalTime && (!tween._start && _parentPlayheadIsBeforeStart(tween) && !(!tween._initted && _isFromOrFromStart(tween)) || (tween._ts < 0 || tween._dp._ts < 0) && !_isFromOrFromStart(tween)) ? 0 : 1, repeatDelay = tween._rDelay, tTime = 0, pt, iteration, prevIteration;
+    if (repeatDelay && tween._repeat) {
+      tTime = _clamp(0, tween._tDur, totalTime);
+      iteration = _animationCycle(tTime, repeatDelay);
+      tween._yoyo && iteration & 1 && (ratio = 1 - ratio);
+      if (iteration !== _animationCycle(tween._tTime, repeatDelay)) {
+        prevRatio = 1 - ratio;
+        tween.vars.repeatRefresh && tween._initted && tween.invalidate();
+      }
+    }
+    if (ratio !== prevRatio || _reverting || force || tween._zTime === _tinyNum || !totalTime && tween._zTime) {
+      if (!tween._initted && _attemptInitTween(tween, totalTime, force, suppressEvents, tTime)) {
+        return;
+      }
+      prevIteration = tween._zTime;
+      tween._zTime = totalTime || (suppressEvents ? _tinyNum : 0);
+      suppressEvents || (suppressEvents = totalTime && !prevIteration);
+      tween.ratio = ratio;
+      tween._from && (ratio = 1 - ratio);
+      tween._time = 0;
+      tween._tTime = tTime;
+      pt = tween._pt;
+      while (pt) {
+        pt.r(ratio, pt.d);
+        pt = pt._next;
+      }
+      totalTime < 0 && _rewindStartAt(tween, totalTime, suppressEvents, true);
+      tween._onUpdate && !suppressEvents && _callback(tween, "onUpdate");
+      tTime && tween._repeat && !suppressEvents && tween.parent && _callback(tween, "onRepeat");
+      if ((totalTime >= tween._tDur || totalTime < 0) && tween.ratio === ratio) {
+        ratio && _removeFromParent(tween, 1);
+        if (!suppressEvents && !_reverting) {
+          _callback(tween, ratio ? "onComplete" : "onReverseComplete", true);
+          tween._prom && tween._prom();
+        }
+      }
+    } else if (!tween._zTime) {
+      tween._zTime = totalTime;
+    }
+  };
+  var _findNextPauseTween = function _findNextPauseTween2(animation, prevTime, time) {
+    var child;
+    if (time > prevTime) {
+      child = animation._first;
+      while (child && child._start <= time) {
+        if (child.data === "isPause" && child._start > prevTime) {
+          return child;
+        }
+        child = child._next;
+      }
+    } else {
+      child = animation._last;
+      while (child && child._start >= time) {
+        if (child.data === "isPause" && child._start < prevTime) {
+          return child;
+        }
+        child = child._prev;
+      }
+    }
+  };
+  var _setDuration = function _setDuration2(animation, duration, skipUncache, leavePlayhead) {
+    var repeat = animation._repeat, dur = _roundPrecise(duration) || 0, totalProgress = animation._tTime / animation._tDur;
+    totalProgress && !leavePlayhead && (animation._time *= dur / animation._dur);
+    animation._dur = dur;
+    animation._tDur = !repeat ? dur : repeat < 0 ? 1e10 : _roundPrecise(dur * (repeat + 1) + animation._rDelay * repeat);
+    totalProgress > 0 && !leavePlayhead && _alignPlayhead(animation, animation._tTime = animation._tDur * totalProgress);
+    animation.parent && _setEnd(animation);
+    skipUncache || _uncache(animation.parent, animation);
+    return animation;
+  };
+  var _onUpdateTotalDuration = function _onUpdateTotalDuration2(animation) {
+    return animation instanceof Timeline ? _uncache(animation) : _setDuration(animation, animation._dur);
+  };
+  var _zeroPosition = {
+    _start: 0,
+    endTime: _emptyFunc,
+    totalDuration: _emptyFunc
+  };
+  var _parsePosition = function _parsePosition2(animation, position, percentAnimation) {
+    var labels = animation.labels, recent = animation._recent || _zeroPosition, clippedDuration = animation.duration() >= _bigNum ? recent.endTime(false) : animation._dur, i, offset, isPercent;
+    if (_isString(position) && (isNaN(position) || position in labels)) {
+      offset = position.charAt(0);
+      isPercent = position.substr(-1) === "%";
+      i = position.indexOf("=");
+      if (offset === "<" || offset === ">") {
+        i >= 0 && (position = position.replace(/=/, ""));
+        return (offset === "<" ? recent._start : recent.endTime(recent._repeat >= 0)) + (parseFloat(position.substr(1)) || 0) * (isPercent ? (i < 0 ? recent : percentAnimation).totalDuration() / 100 : 1);
+      }
+      if (i < 0) {
+        position in labels || (labels[position] = clippedDuration);
+        return labels[position];
+      }
+      offset = parseFloat(position.charAt(i - 1) + position.substr(i + 1));
+      if (isPercent && percentAnimation) {
+        offset = offset / 100 * (_isArray(percentAnimation) ? percentAnimation[0] : percentAnimation).totalDuration();
+      }
+      return i > 1 ? _parsePosition2(animation, position.substr(0, i - 1), percentAnimation) + offset : clippedDuration + offset;
+    }
+    return position == null ? clippedDuration : +position;
+  };
+  var _createTweenType = function _createTweenType2(type, params, timeline2) {
+    var isLegacy = _isNumber(params[1]), varsIndex = (isLegacy ? 2 : 1) + (type < 2 ? 0 : 1), vars = params[varsIndex], irVars, parent;
+    isLegacy && (vars.duration = params[1]);
+    vars.parent = timeline2;
+    if (type) {
+      irVars = vars;
+      parent = timeline2;
+      while (parent && !("immediateRender" in irVars)) {
+        irVars = parent.vars.defaults || {};
+        parent = _isNotFalse(parent.vars.inherit) && parent.parent;
+      }
+      vars.immediateRender = _isNotFalse(irVars.immediateRender);
+      type < 2 ? vars.runBackwards = 1 : vars.startAt = params[varsIndex - 1];
+    }
+    return new Tween(params[0], vars, params[varsIndex + 1]);
+  };
+  var _conditionalReturn = function _conditionalReturn2(value, func) {
+    return value || value === 0 ? func(value) : func;
+  };
+  var _clamp = function _clamp2(min, max, value) {
+    return value < min ? min : value > max ? max : value;
+  };
+  var getUnit = function getUnit2(value, v) {
+    return !_isString(value) || !(v = _unitExp.exec(value)) ? "" : v[1];
+  };
+  var clamp = function clamp2(min, max, value) {
+    return _conditionalReturn(value, function(v) {
+      return _clamp(min, max, v);
+    });
+  };
+  var _slice = [].slice;
+  var _isArrayLike = function _isArrayLike2(value, nonEmpty) {
+    return value && _isObject(value) && "length" in value && (!nonEmpty && !value.length || value.length - 1 in value && _isObject(value[0])) && !value.nodeType && value !== _win;
+  };
+  var _flatten = function _flatten2(ar, leaveStrings, accumulator) {
+    if (accumulator === void 0) {
+      accumulator = [];
+    }
+    return ar.forEach(function(value) {
+      var _accumulator;
+      return _isString(value) && !leaveStrings || _isArrayLike(value, 1) ? (_accumulator = accumulator).push.apply(_accumulator, toArray(value)) : accumulator.push(value);
+    }) || accumulator;
+  };
+  var toArray = function toArray2(value, scope, leaveStrings) {
+    return _context && !scope && _context.selector ? _context.selector(value) : _isString(value) && !leaveStrings && (_coreInitted || !_wake()) ? _slice.call((scope || _doc).querySelectorAll(value), 0) : _isArray(value) ? _flatten(value, leaveStrings) : _isArrayLike(value) ? _slice.call(value, 0) : value ? [value] : [];
+  };
+  var selector = function selector2(value) {
+    value = toArray(value)[0] || _warn("Invalid scope") || {};
+    return function(v) {
+      var el = value.current || value.nativeElement || value;
+      return toArray(v, el.querySelectorAll ? el : el === value ? _warn("Invalid scope") || _doc.createElement("div") : value);
+    };
+  };
+  var shuffle = function shuffle2(a) {
+    return a.sort(function() {
+      return 0.5 - Math.random();
+    });
+  };
+  var distribute = function distribute2(v) {
+    if (_isFunction(v)) {
+      return v;
+    }
+    var vars = _isObject(v) ? v : {
+      each: v
+    }, ease = _parseEase(vars.ease), from = vars.from || 0, base = parseFloat(vars.base) || 0, cache = {}, isDecimal = from > 0 && from < 1, ratios = isNaN(from) || isDecimal, axis = vars.axis, ratioX = from, ratioY = from;
+    if (_isString(from)) {
+      ratioX = ratioY = {
+        center: 0.5,
+        edges: 0.5,
+        end: 1
+      }[from] || 0;
+    } else if (!isDecimal && ratios) {
+      ratioX = from[0];
+      ratioY = from[1];
+    }
+    return function(i, target, a) {
+      var l = (a || vars).length, distances = cache[l], originX, originY, x, y, d, j, max, min, wrapAt;
+      if (!distances) {
+        wrapAt = vars.grid === "auto" ? 0 : (vars.grid || [1, _bigNum])[1];
+        if (!wrapAt) {
+          max = -_bigNum;
+          while (max < (max = a[wrapAt++].getBoundingClientRect().left) && wrapAt < l) {
+          }
+          wrapAt < l && wrapAt--;
+        }
+        distances = cache[l] = [];
+        originX = ratios ? Math.min(wrapAt, l) * ratioX - 0.5 : from % wrapAt;
+        originY = wrapAt === _bigNum ? 0 : ratios ? l * ratioY / wrapAt - 0.5 : from / wrapAt | 0;
+        max = 0;
+        min = _bigNum;
+        for (j = 0; j < l; j++) {
+          x = j % wrapAt - originX;
+          y = originY - (j / wrapAt | 0);
+          distances[j] = d = !axis ? _sqrt(x * x + y * y) : Math.abs(axis === "y" ? y : x);
+          d > max && (max = d);
+          d < min && (min = d);
+        }
+        from === "random" && shuffle(distances);
+        distances.max = max - min;
+        distances.min = min;
+        distances.v = l = (parseFloat(vars.amount) || parseFloat(vars.each) * (wrapAt > l ? l - 1 : !axis ? Math.max(wrapAt, l / wrapAt) : axis === "y" ? l / wrapAt : wrapAt) || 0) * (from === "edges" ? -1 : 1);
+        distances.b = l < 0 ? base - l : base;
+        distances.u = getUnit(vars.amount || vars.each) || 0;
+        ease = ease && l < 0 ? _invertEase(ease) : ease;
+      }
+      l = (distances[i] - distances.min) / distances.max || 0;
+      return _roundPrecise(distances.b + (ease ? ease(l) : l) * distances.v) + distances.u;
+    };
+  };
+  var _roundModifier = function _roundModifier2(v) {
+    var p = Math.pow(10, ((v + "").split(".")[1] || "").length);
+    return function(raw) {
+      var n = _roundPrecise(Math.round(parseFloat(raw) / v) * v * p);
+      return (n - n % 1) / p + (_isNumber(raw) ? 0 : getUnit(raw));
+    };
+  };
+  var snap = function snap2(snapTo, value) {
+    var isArray = _isArray(snapTo), radius, is2D;
+    if (!isArray && _isObject(snapTo)) {
+      radius = isArray = snapTo.radius || _bigNum;
+      if (snapTo.values) {
+        snapTo = toArray(snapTo.values);
+        if (is2D = !_isNumber(snapTo[0])) {
+          radius *= radius;
+        }
+      } else {
+        snapTo = _roundModifier(snapTo.increment);
+      }
+    }
+    return _conditionalReturn(value, !isArray ? _roundModifier(snapTo) : _isFunction(snapTo) ? function(raw) {
+      is2D = snapTo(raw);
+      return Math.abs(is2D - raw) <= radius ? is2D : raw;
+    } : function(raw) {
+      var x = parseFloat(is2D ? raw.x : raw), y = parseFloat(is2D ? raw.y : 0), min = _bigNum, closest = 0, i = snapTo.length, dx, dy;
+      while (i--) {
+        if (is2D) {
+          dx = snapTo[i].x - x;
+          dy = snapTo[i].y - y;
+          dx = dx * dx + dy * dy;
+        } else {
+          dx = Math.abs(snapTo[i] - x);
+        }
+        if (dx < min) {
+          min = dx;
+          closest = i;
+        }
+      }
+      closest = !radius || min <= radius ? snapTo[closest] : raw;
+      return is2D || closest === raw || _isNumber(raw) ? closest : closest + getUnit(raw);
+    });
+  };
+  var random = function random2(min, max, roundingIncrement, returnFunction) {
+    return _conditionalReturn(_isArray(min) ? !max : roundingIncrement === true ? !!(roundingIncrement = 0) : !returnFunction, function() {
+      return _isArray(min) ? min[~~(Math.random() * min.length)] : (roundingIncrement = roundingIncrement || 1e-5) && (returnFunction = roundingIncrement < 1 ? Math.pow(10, (roundingIncrement + "").length - 2) : 1) && Math.floor(Math.round((min - roundingIncrement / 2 + Math.random() * (max - min + roundingIncrement * 0.99)) / roundingIncrement) * roundingIncrement * returnFunction) / returnFunction;
+    });
+  };
+  var pipe = function pipe2() {
+    for (var _len = arguments.length, functions = new Array(_len), _key = 0; _key < _len; _key++) {
+      functions[_key] = arguments[_key];
+    }
+    return function(value) {
+      return functions.reduce(function(v, f) {
+        return f(v);
+      }, value);
+    };
+  };
+  var unitize = function unitize2(func, unit) {
+    return function(value) {
+      return func(parseFloat(value)) + (unit || getUnit(value));
+    };
+  };
+  var normalize = function normalize2(min, max, value) {
+    return mapRange(min, max, 0, 1, value);
+  };
+  var _wrapArray = function _wrapArray2(a, wrapper, value) {
+    return _conditionalReturn(value, function(index) {
+      return a[~~wrapper(index)];
+    });
+  };
+  var wrap = function wrap2(min, max, value) {
+    var range = max - min;
+    return _isArray(min) ? _wrapArray(min, wrap2(0, min.length), max) : _conditionalReturn(value, function(value2) {
+      return (range + (value2 - min) % range) % range + min;
+    });
+  };
+  var wrapYoyo = function wrapYoyo2(min, max, value) {
+    var range = max - min, total = range * 2;
+    return _isArray(min) ? _wrapArray(min, wrapYoyo2(0, min.length - 1), max) : _conditionalReturn(value, function(value2) {
+      value2 = (total + (value2 - min) % total) % total || 0;
+      return min + (value2 > range ? total - value2 : value2);
+    });
+  };
+  var _replaceRandom = function _replaceRandom2(s) {
+    return s.replace(_randomExp, function(match) {
+      var arIndex = match.indexOf("[") + 1, values = match.substring(arIndex || 7, arIndex ? match.indexOf("]") : match.length - 1).split(_commaDelimExp);
+      return random(arIndex ? values : +values[0], arIndex ? 0 : +values[1], +values[2] || 1e-5);
+    });
+  };
+  var mapRange = function mapRange2(inMin, inMax, outMin, outMax, value) {
+    var inRange = inMax - inMin, outRange = outMax - outMin;
+    return _conditionalReturn(value, function(value2) {
+      return outMin + ((value2 - inMin) / inRange * outRange || 0);
+    });
+  };
+  var interpolate = function interpolate2(start, end, progress, mutate) {
+    var func = isNaN(start + end) ? 0 : function(p2) {
+      return (1 - p2) * start + p2 * end;
+    };
+    if (!func) {
+      var isString = _isString(start), master = {}, p, i, interpolators, l, il;
+      progress === true && (mutate = 1) && (progress = null);
+      if (isString) {
+        start = {
+          p: start
+        };
+        end = {
+          p: end
+        };
+      } else if (_isArray(start) && !_isArray(end)) {
+        interpolators = [];
+        l = start.length;
+        il = l - 2;
+        for (i = 1; i < l; i++) {
+          interpolators.push(interpolate2(start[i - 1], start[i]));
+        }
+        l--;
+        func = function func2(p2) {
+          p2 *= l;
+          var i2 = Math.min(il, ~~p2);
+          return interpolators[i2](p2 - i2);
+        };
+        progress = end;
+      } else if (!mutate) {
+        start = _merge(_isArray(start) ? [] : {}, start);
+      }
+      if (!interpolators) {
+        for (p in end) {
+          _addPropTween.call(master, start, p, "get", end[p]);
+        }
+        func = function func2(p2) {
+          return _renderPropTweens(p2, master) || (isString ? start.p : start);
+        };
+      }
+    }
+    return _conditionalReturn(progress, func);
+  };
+  var _getLabelInDirection = function _getLabelInDirection2(timeline2, fromTime, backward) {
+    var labels = timeline2.labels, min = _bigNum, p, distance, label;
+    for (p in labels) {
+      distance = labels[p] - fromTime;
+      if (distance < 0 === !!backward && distance && min > (distance = Math.abs(distance))) {
+        label = p;
+        min = distance;
+      }
+    }
+    return label;
+  };
+  var _callback = function _callback2(animation, type, executeLazyFirst) {
+    var v = animation.vars, callback = v[type], prevContext = _context, context3 = animation._ctx, params, scope, result;
+    if (!callback) {
+      return;
+    }
+    params = v[type + "Params"];
+    scope = v.callbackScope || animation;
+    executeLazyFirst && _lazyTweens.length && _lazyRender();
+    context3 && (_context = context3);
+    result = params ? callback.apply(scope, params) : callback.call(scope);
+    _context = prevContext;
+    return result;
+  };
+  var _interrupt = function _interrupt2(animation) {
+    _removeFromParent(animation);
+    animation.scrollTrigger && animation.scrollTrigger.kill(!!_reverting);
+    animation.progress() < 1 && _callback(animation, "onInterrupt");
+    return animation;
+  };
+  var _quickTween;
+  var _registerPluginQueue = [];
+  var _createPlugin = function _createPlugin2(config3) {
+    if (!config3) return;
+    config3 = !config3.name && config3["default"] || config3;
+    if (_windowExists() || config3.headless) {
+      var name = config3.name, isFunc = _isFunction(config3), Plugin = name && !isFunc && config3.init ? function() {
+        this._props = [];
+      } : config3, instanceDefaults = {
+        init: _emptyFunc,
+        render: _renderPropTweens,
+        add: _addPropTween,
+        kill: _killPropTweensOf,
+        modifier: _addPluginModifier,
+        rawVars: 0
+      }, statics = {
+        targetTest: 0,
+        get: 0,
+        getSetter: _getSetter,
+        aliases: {},
+        register: 0
+      };
+      _wake();
+      if (config3 !== Plugin) {
+        if (_plugins[name]) {
+          return;
+        }
+        _setDefaults(Plugin, _setDefaults(_copyExcluding(config3, instanceDefaults), statics));
+        _merge(Plugin.prototype, _merge(instanceDefaults, _copyExcluding(config3, statics)));
+        _plugins[Plugin.prop = name] = Plugin;
+        if (config3.targetTest) {
+          _harnessPlugins.push(Plugin);
+          _reservedProps[name] = 1;
+        }
+        name = (name === "css" ? "CSS" : name.charAt(0).toUpperCase() + name.substr(1)) + "Plugin";
+      }
+      _addGlobal(name, Plugin);
+      config3.register && config3.register(gsap, Plugin, PropTween);
+    } else {
+      _registerPluginQueue.push(config3);
+    }
+  };
+  var _255 = 255;
+  var _colorLookup = {
+    aqua: [0, _255, _255],
+    lime: [0, _255, 0],
+    silver: [192, 192, 192],
+    black: [0, 0, 0],
+    maroon: [128, 0, 0],
+    teal: [0, 128, 128],
+    blue: [0, 0, _255],
+    navy: [0, 0, 128],
+    white: [_255, _255, _255],
+    olive: [128, 128, 0],
+    yellow: [_255, _255, 0],
+    orange: [_255, 165, 0],
+    gray: [128, 128, 128],
+    purple: [128, 0, 128],
+    green: [0, 128, 0],
+    red: [_255, 0, 0],
+    pink: [_255, 192, 203],
+    cyan: [0, _255, _255],
+    transparent: [_255, _255, _255, 0]
+  };
+  var _hue = function _hue2(h, m1, m2) {
+    h += h < 0 ? 1 : h > 1 ? -1 : 0;
+    return (h * 6 < 1 ? m1 + (m2 - m1) * h * 6 : h < 0.5 ? m2 : h * 3 < 2 ? m1 + (m2 - m1) * (2 / 3 - h) * 6 : m1) * _255 + 0.5 | 0;
+  };
+  var splitColor = function splitColor2(v, toHSL, forceAlpha) {
+    var a = !v ? _colorLookup.black : _isNumber(v) ? [v >> 16, v >> 8 & _255, v & _255] : 0, r, g, b, h, s, l, max, min, d, wasHSL;
+    if (!a) {
+      if (v.substr(-1) === ",") {
+        v = v.substr(0, v.length - 1);
+      }
+      if (_colorLookup[v]) {
+        a = _colorLookup[v];
+      } else if (v.charAt(0) === "#") {
+        if (v.length < 6) {
+          r = v.charAt(1);
+          g = v.charAt(2);
+          b = v.charAt(3);
+          v = "#" + r + r + g + g + b + b + (v.length === 5 ? v.charAt(4) + v.charAt(4) : "");
+        }
+        if (v.length === 9) {
+          a = parseInt(v.substr(1, 6), 16);
+          return [a >> 16, a >> 8 & _255, a & _255, parseInt(v.substr(7), 16) / 255];
+        }
+        v = parseInt(v.substr(1), 16);
+        a = [v >> 16, v >> 8 & _255, v & _255];
+      } else if (v.substr(0, 3) === "hsl") {
+        a = wasHSL = v.match(_strictNumExp);
+        if (!toHSL) {
+          h = +a[0] % 360 / 360;
+          s = +a[1] / 100;
+          l = +a[2] / 100;
+          g = l <= 0.5 ? l * (s + 1) : l + s - l * s;
+          r = l * 2 - g;
+          a.length > 3 && (a[3] *= 1);
+          a[0] = _hue(h + 1 / 3, r, g);
+          a[1] = _hue(h, r, g);
+          a[2] = _hue(h - 1 / 3, r, g);
+        } else if (~v.indexOf("=")) {
+          a = v.match(_numExp);
+          forceAlpha && a.length < 4 && (a[3] = 1);
+          return a;
+        }
+      } else {
+        a = v.match(_strictNumExp) || _colorLookup.transparent;
+      }
+      a = a.map(Number);
+    }
+    if (toHSL && !wasHSL) {
+      r = a[0] / _255;
+      g = a[1] / _255;
+      b = a[2] / _255;
+      max = Math.max(r, g, b);
+      min = Math.min(r, g, b);
+      l = (max + min) / 2;
+      if (max === min) {
+        h = s = 0;
+      } else {
+        d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        h = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+        h *= 60;
+      }
+      a[0] = ~~(h + 0.5);
+      a[1] = ~~(s * 100 + 0.5);
+      a[2] = ~~(l * 100 + 0.5);
+    }
+    forceAlpha && a.length < 4 && (a[3] = 1);
+    return a;
+  };
+  var _colorOrderData = function _colorOrderData2(v) {
+    var values = [], c = [], i = -1;
+    v.split(_colorExp).forEach(function(v2) {
+      var a = v2.match(_numWithUnitExp) || [];
+      values.push.apply(values, a);
+      c.push(i += a.length + 1);
+    });
+    values.c = c;
+    return values;
+  };
+  var _formatColors = function _formatColors2(s, toHSL, orderMatchData) {
+    var result = "", colors = (s + result).match(_colorExp), type = toHSL ? "hsla(" : "rgba(", i = 0, c, shell, d, l;
+    if (!colors) {
+      return s;
+    }
+    colors = colors.map(function(color) {
+      return (color = splitColor(color, toHSL, 1)) && type + (toHSL ? color[0] + "," + color[1] + "%," + color[2] + "%," + color[3] : color.join(",")) + ")";
+    });
+    if (orderMatchData) {
+      d = _colorOrderData(s);
+      c = orderMatchData.c;
+      if (c.join(result) !== d.c.join(result)) {
+        shell = s.replace(_colorExp, "1").split(_numWithUnitExp);
+        l = shell.length - 1;
+        for (; i < l; i++) {
+          result += shell[i] + (~c.indexOf(i) ? colors.shift() || type + "0,0,0,0)" : (d.length ? d : colors.length ? colors : orderMatchData).shift());
+        }
+      }
+    }
+    if (!shell) {
+      shell = s.split(_colorExp);
+      l = shell.length - 1;
+      for (; i < l; i++) {
+        result += shell[i] + colors[i];
+      }
+    }
+    return result + shell[l];
+  };
+  var _colorExp = (function() {
+    var s = "(?:\\b(?:(?:rgb|rgba|hsl|hsla)\\(.+?\\))|\\B#(?:[0-9a-f]{3,4}){1,2}\\b", p;
+    for (p in _colorLookup) {
+      s += "|" + p + "\\b";
+    }
+    return new RegExp(s + ")", "gi");
+  })();
+  var _hslExp = /hsl[a]?\(/;
+  var _colorStringFilter = function _colorStringFilter2(a) {
+    var combined = a.join(" "), toHSL;
+    _colorExp.lastIndex = 0;
+    if (_colorExp.test(combined)) {
+      toHSL = _hslExp.test(combined);
+      a[1] = _formatColors(a[1], toHSL);
+      a[0] = _formatColors(a[0], toHSL, _colorOrderData(a[1]));
+      return true;
+    }
+  };
+  var _tickerActive;
+  var _ticker = (function() {
+    var _getTime = Date.now, _lagThreshold = 500, _adjustedLag = 33, _startTime = _getTime(), _lastUpdate = _startTime, _gap = 1e3 / 240, _nextTime = _gap, _listeners2 = [], _id, _req, _raf, _self, _delta, _i, _tick = function _tick2(v) {
+      var elapsed = _getTime() - _lastUpdate, manual = v === true, overlap, dispatch, time, frame;
+      (elapsed > _lagThreshold || elapsed < 0) && (_startTime += elapsed - _adjustedLag);
+      _lastUpdate += elapsed;
+      time = _lastUpdate - _startTime;
+      overlap = time - _nextTime;
+      if (overlap > 0 || manual) {
+        frame = ++_self.frame;
+        _delta = time - _self.time * 1e3;
+        _self.time = time = time / 1e3;
+        _nextTime += overlap + (overlap >= _gap ? 4 : _gap - overlap);
+        dispatch = 1;
+      }
+      manual || (_id = _req(_tick2));
+      if (dispatch) {
+        for (_i = 0; _i < _listeners2.length; _i++) {
+          _listeners2[_i](time, _delta, frame, v);
+        }
+      }
+    };
+    _self = {
+      time: 0,
+      frame: 0,
+      tick: function tick() {
+        _tick(true);
+      },
+      deltaRatio: function deltaRatio(fps) {
+        return _delta / (1e3 / (fps || 60));
+      },
+      wake: function wake() {
+        if (_coreReady) {
+          if (!_coreInitted && _windowExists()) {
+            _win = _coreInitted = window;
+            _doc = _win.document || {};
+            _globals.gsap = gsap;
+            (_win.gsapVersions || (_win.gsapVersions = [])).push(gsap.version);
+            _install(_installScope || _win.GreenSockGlobals || !_win.gsap && _win || {});
+            _registerPluginQueue.forEach(_createPlugin);
+          }
+          _raf = typeof requestAnimationFrame !== "undefined" && requestAnimationFrame;
+          _id && _self.sleep();
+          _req = _raf || function(f) {
+            return setTimeout(f, _nextTime - _self.time * 1e3 + 1 | 0);
+          };
+          _tickerActive = 1;
+          _tick(2);
+        }
+      },
+      sleep: function sleep() {
+        (_raf ? cancelAnimationFrame : clearTimeout)(_id);
+        _tickerActive = 0;
+        _req = _emptyFunc;
+      },
+      lagSmoothing: function lagSmoothing(threshold, adjustedLag) {
+        _lagThreshold = threshold || Infinity;
+        _adjustedLag = Math.min(adjustedLag || 33, _lagThreshold);
+      },
+      fps: function fps(_fps) {
+        _gap = 1e3 / (_fps || 240);
+        _nextTime = _self.time * 1e3 + _gap;
+      },
+      add: function add(callback, once, prioritize) {
+        var func = once ? function(t, d, f, v) {
+          callback(t, d, f, v);
+          _self.remove(func);
+        } : callback;
+        _self.remove(callback);
+        _listeners2[prioritize ? "unshift" : "push"](func);
+        _wake();
+        return func;
+      },
+      remove: function remove(callback, i) {
+        ~(i = _listeners2.indexOf(callback)) && _listeners2.splice(i, 1) && _i >= i && _i--;
+      },
+      _listeners: _listeners2
+    };
+    return _self;
+  })();
+  var _wake = function _wake2() {
+    return !_tickerActive && _ticker.wake();
+  };
+  var _easeMap = {};
+  var _customEaseExp = /^[\d.\-M][\d.\-,\s]/;
+  var _quotesExp = /["']/g;
+  var _parseObjectInString = function _parseObjectInString2(value) {
+    var obj = {}, split = value.substr(1, value.length - 3).split(":"), key = split[0], i = 1, l = split.length, index, val, parsedVal;
+    for (; i < l; i++) {
+      val = split[i];
+      index = i !== l - 1 ? val.lastIndexOf(",") : val.length;
+      parsedVal = val.substr(0, index);
+      obj[key] = isNaN(parsedVal) ? parsedVal.replace(_quotesExp, "").trim() : +parsedVal;
+      key = val.substr(index + 1).trim();
+    }
+    return obj;
+  };
+  var _valueInParentheses = function _valueInParentheses2(value) {
+    var open = value.indexOf("(") + 1, close = value.indexOf(")"), nested = value.indexOf("(", open);
+    return value.substring(open, ~nested && nested < close ? value.indexOf(")", close + 1) : close);
+  };
+  var _configEaseFromString = function _configEaseFromString2(name) {
+    var split = (name + "").split("("), ease = _easeMap[split[0]];
+    return ease && split.length > 1 && ease.config ? ease.config.apply(null, ~name.indexOf("{") ? [_parseObjectInString(split[1])] : _valueInParentheses(name).split(",").map(_numericIfPossible)) : _easeMap._CE && _customEaseExp.test(name) ? _easeMap._CE("", name) : ease;
+  };
+  var _invertEase = function _invertEase2(ease) {
+    return function(p) {
+      return 1 - ease(1 - p);
+    };
+  };
+  var _propagateYoyoEase = function _propagateYoyoEase2(timeline2, isYoyo) {
+    var child = timeline2._first, ease;
+    while (child) {
+      if (child instanceof Timeline) {
+        _propagateYoyoEase2(child, isYoyo);
+      } else if (child.vars.yoyoEase && (!child._yoyo || !child._repeat) && child._yoyo !== isYoyo) {
+        if (child.timeline) {
+          _propagateYoyoEase2(child.timeline, isYoyo);
+        } else {
+          ease = child._ease;
+          child._ease = child._yEase;
+          child._yEase = ease;
+          child._yoyo = isYoyo;
+        }
+      }
+      child = child._next;
+    }
+  };
+  var _parseEase = function _parseEase2(ease, defaultEase) {
+    return !ease ? defaultEase : (_isFunction(ease) ? ease : _easeMap[ease] || _configEaseFromString(ease)) || defaultEase;
+  };
+  var _insertEase = function _insertEase2(names, easeIn, easeOut, easeInOut) {
+    if (easeOut === void 0) {
+      easeOut = function easeOut2(p) {
+        return 1 - easeIn(1 - p);
+      };
+    }
+    if (easeInOut === void 0) {
+      easeInOut = function easeInOut2(p) {
+        return p < 0.5 ? easeIn(p * 2) / 2 : 1 - easeIn((1 - p) * 2) / 2;
+      };
+    }
+    var ease = {
+      easeIn,
+      easeOut,
+      easeInOut
+    }, lowercaseName;
+    _forEachName(names, function(name) {
+      _easeMap[name] = _globals[name] = ease;
+      _easeMap[lowercaseName = name.toLowerCase()] = easeOut;
+      for (var p in ease) {
+        _easeMap[lowercaseName + (p === "easeIn" ? ".in" : p === "easeOut" ? ".out" : ".inOut")] = _easeMap[name + "." + p] = ease[p];
+      }
+    });
+    return ease;
+  };
+  var _easeInOutFromOut = function _easeInOutFromOut2(easeOut) {
+    return function(p) {
+      return p < 0.5 ? (1 - easeOut(1 - p * 2)) / 2 : 0.5 + easeOut((p - 0.5) * 2) / 2;
+    };
+  };
+  var _configElastic = function _configElastic2(type, amplitude, period) {
+    var p1 = amplitude >= 1 ? amplitude : 1, p2 = (period || (type ? 0.3 : 0.45)) / (amplitude < 1 ? amplitude : 1), p3 = p2 / _2PI * (Math.asin(1 / p1) || 0), easeOut = function easeOut2(p) {
+      return p === 1 ? 1 : p1 * Math.pow(2, -10 * p) * _sin((p - p3) * p2) + 1;
+    }, ease = type === "out" ? easeOut : type === "in" ? function(p) {
+      return 1 - easeOut(1 - p);
+    } : _easeInOutFromOut(easeOut);
+    p2 = _2PI / p2;
+    ease.config = function(amplitude2, period2) {
+      return _configElastic2(type, amplitude2, period2);
+    };
+    return ease;
+  };
+  var _configBack = function _configBack2(type, overshoot) {
+    if (overshoot === void 0) {
+      overshoot = 1.70158;
+    }
+    var easeOut = function easeOut2(p) {
+      return p ? --p * p * ((overshoot + 1) * p + overshoot) + 1 : 0;
+    }, ease = type === "out" ? easeOut : type === "in" ? function(p) {
+      return 1 - easeOut(1 - p);
+    } : _easeInOutFromOut(easeOut);
+    ease.config = function(overshoot2) {
+      return _configBack2(type, overshoot2);
+    };
+    return ease;
+  };
+  _forEachName("Linear,Quad,Cubic,Quart,Quint,Strong", function(name, i) {
+    var power = i < 5 ? i + 1 : i;
+    _insertEase(name + ",Power" + (power - 1), i ? function(p) {
+      return Math.pow(p, power);
+    } : function(p) {
+      return p;
+    }, function(p) {
+      return 1 - Math.pow(1 - p, power);
+    }, function(p) {
+      return p < 0.5 ? Math.pow(p * 2, power) / 2 : 1 - Math.pow((1 - p) * 2, power) / 2;
+    });
+  });
+  _easeMap.Linear.easeNone = _easeMap.none = _easeMap.Linear.easeIn;
+  _insertEase("Elastic", _configElastic("in"), _configElastic("out"), _configElastic());
+  (function(n, c) {
+    var n1 = 1 / c, n2 = 2 * n1, n3 = 2.5 * n1, easeOut = function easeOut2(p) {
+      return p < n1 ? n * p * p : p < n2 ? n * Math.pow(p - 1.5 / c, 2) + 0.75 : p < n3 ? n * (p -= 2.25 / c) * p + 0.9375 : n * Math.pow(p - 2.625 / c, 2) + 0.984375;
+    };
+    _insertEase("Bounce", function(p) {
+      return 1 - easeOut(1 - p);
+    }, easeOut);
+  })(7.5625, 2.75);
+  _insertEase("Expo", function(p) {
+    return Math.pow(2, 10 * (p - 1)) * p + p * p * p * p * p * p * (1 - p);
+  });
+  _insertEase("Circ", function(p) {
+    return -(_sqrt(1 - p * p) - 1);
+  });
+  _insertEase("Sine", function(p) {
+    return p === 1 ? 1 : -_cos(p * _HALF_PI) + 1;
+  });
+  _insertEase("Back", _configBack("in"), _configBack("out"), _configBack());
+  _easeMap.SteppedEase = _easeMap.steps = _globals.SteppedEase = {
+    config: function config(steps, immediateStart) {
+      if (steps === void 0) {
+        steps = 1;
+      }
+      var p1 = 1 / steps, p2 = steps + (immediateStart ? 0 : 1), p3 = immediateStart ? 1 : 0, max = 1 - _tinyNum;
+      return function(p) {
+        return ((p2 * _clamp(0, max, p) | 0) + p3) * p1;
+      };
+    }
+  };
+  _defaults.ease = _easeMap["quad.out"];
+  _forEachName("onComplete,onUpdate,onStart,onRepeat,onReverseComplete,onInterrupt", function(name) {
+    return _callbackNames += name + "," + name + "Params,";
+  });
+  var GSCache = function GSCache2(target, harness) {
+    this.id = _gsID++;
+    target._gsap = this;
+    this.target = target;
+    this.harness = harness;
+    this.get = harness ? harness.get : _getProperty;
+    this.set = harness ? harness.getSetter : _getSetter;
+  };
+  var Animation = /* @__PURE__ */ (function() {
+    function Animation2(vars) {
+      this.vars = vars;
+      this._delay = +vars.delay || 0;
+      if (this._repeat = vars.repeat === Infinity ? -2 : vars.repeat || 0) {
+        this._rDelay = vars.repeatDelay || 0;
+        this._yoyo = !!vars.yoyo || !!vars.yoyoEase;
+      }
+      this._ts = 1;
+      _setDuration(this, +vars.duration, 1, 1);
+      this.data = vars.data;
+      if (_context) {
+        this._ctx = _context;
+        _context.data.push(this);
+      }
+      _tickerActive || _ticker.wake();
+    }
+    var _proto = Animation2.prototype;
+    _proto.delay = function delay(value) {
+      if (value || value === 0) {
+        this.parent && this.parent.smoothChildTiming && this.startTime(this._start + value - this._delay);
+        this._delay = value;
+        return this;
+      }
+      return this._delay;
+    };
+    _proto.duration = function duration(value) {
+      return arguments.length ? this.totalDuration(this._repeat > 0 ? value + (value + this._rDelay) * this._repeat : value) : this.totalDuration() && this._dur;
+    };
+    _proto.totalDuration = function totalDuration(value) {
+      if (!arguments.length) {
+        return this._tDur;
+      }
+      this._dirty = 0;
+      return _setDuration(this, this._repeat < 0 ? value : (value - this._repeat * this._rDelay) / (this._repeat + 1));
+    };
+    _proto.totalTime = function totalTime(_totalTime, suppressEvents) {
+      _wake();
+      if (!arguments.length) {
+        return this._tTime;
+      }
+      var parent = this._dp;
+      if (parent && parent.smoothChildTiming && this._ts) {
+        _alignPlayhead(this, _totalTime);
+        !parent._dp || parent.parent || _postAddChecks(parent, this);
+        while (parent && parent.parent) {
+          if (parent.parent._time !== parent._start + (parent._ts >= 0 ? parent._tTime / parent._ts : (parent.totalDuration() - parent._tTime) / -parent._ts)) {
+            parent.totalTime(parent._tTime, true);
+          }
+          parent = parent.parent;
+        }
+        if (!this.parent && this._dp.autoRemoveChildren && (this._ts > 0 && _totalTime < this._tDur || this._ts < 0 && _totalTime > 0 || !this._tDur && !_totalTime)) {
+          _addToTimeline(this._dp, this, this._start - this._delay);
+        }
+      }
+      if (this._tTime !== _totalTime || !this._dur && !suppressEvents || this._initted && Math.abs(this._zTime) === _tinyNum || !this._initted && this._dur && _totalTime || !_totalTime && !this._initted && (this.add || this._ptLookup)) {
+        this._ts || (this._pTime = _totalTime);
+        _lazySafeRender(this, _totalTime, suppressEvents);
+      }
+      return this;
+    };
+    _proto.time = function time(value, suppressEvents) {
+      return arguments.length ? this.totalTime(Math.min(this.totalDuration(), value + _elapsedCycleDuration(this)) % (this._dur + this._rDelay) || (value ? this._dur : 0), suppressEvents) : this._time;
+    };
+    _proto.totalProgress = function totalProgress(value, suppressEvents) {
+      return arguments.length ? this.totalTime(this.totalDuration() * value, suppressEvents) : this.totalDuration() ? Math.min(1, this._tTime / this._tDur) : this.rawTime() >= 0 && this._initted ? 1 : 0;
+    };
+    _proto.progress = function progress(value, suppressEvents) {
+      return arguments.length ? this.totalTime(this.duration() * (this._yoyo && !(this.iteration() & 1) ? 1 - value : value) + _elapsedCycleDuration(this), suppressEvents) : this.duration() ? Math.min(1, this._time / this._dur) : this.rawTime() > 0 ? 1 : 0;
+    };
+    _proto.iteration = function iteration(value, suppressEvents) {
+      var cycleDuration = this.duration() + this._rDelay;
+      return arguments.length ? this.totalTime(this._time + (value - 1) * cycleDuration, suppressEvents) : this._repeat ? _animationCycle(this._tTime, cycleDuration) + 1 : 1;
+    };
+    _proto.timeScale = function timeScale(value, suppressEvents) {
+      if (!arguments.length) {
+        return this._rts === -_tinyNum ? 0 : this._rts;
+      }
+      if (this._rts === value) {
+        return this;
+      }
+      var tTime = this.parent && this._ts ? _parentToChildTotalTime(this.parent._time, this) : this._tTime;
+      this._rts = +value || 0;
+      this._ts = this._ps || value === -_tinyNum ? 0 : this._rts;
+      this.totalTime(_clamp(-Math.abs(this._delay), this.totalDuration(), tTime), suppressEvents !== false);
+      _setEnd(this);
+      return _recacheAncestors(this);
+    };
+    _proto.paused = function paused(value) {
+      if (!arguments.length) {
+        return this._ps;
+      }
+      if (this._ps !== value) {
+        this._ps = value;
+        if (value) {
+          this._pTime = this._tTime || Math.max(-this._delay, this.rawTime());
+          this._ts = this._act = 0;
+        } else {
+          _wake();
+          this._ts = this._rts;
+          this.totalTime(this.parent && !this.parent.smoothChildTiming ? this.rawTime() : this._tTime || this._pTime, this.progress() === 1 && Math.abs(this._zTime) !== _tinyNum && (this._tTime -= _tinyNum));
+        }
+      }
+      return this;
+    };
+    _proto.startTime = function startTime(value) {
+      if (arguments.length) {
+        this._start = _roundPrecise(value);
+        var parent = this.parent || this._dp;
+        parent && (parent._sort || !this.parent) && _addToTimeline(parent, this, this._start - this._delay);
+        return this;
+      }
+      return this._start;
+    };
+    _proto.endTime = function endTime(includeRepeats) {
+      return this._start + (_isNotFalse(includeRepeats) ? this.totalDuration() : this.duration()) / Math.abs(this._ts || 1);
+    };
+    _proto.rawTime = function rawTime(wrapRepeats) {
+      var parent = this.parent || this._dp;
+      return !parent ? this._tTime : wrapRepeats && (!this._ts || this._repeat && this._time && this.totalProgress() < 1) ? this._tTime % (this._dur + this._rDelay) : !this._ts ? this._tTime : _parentToChildTotalTime(parent.rawTime(wrapRepeats), this);
+    };
+    _proto.revert = function revert(config3) {
+      if (config3 === void 0) {
+        config3 = _revertConfig;
+      }
+      var prevIsReverting = _reverting;
+      _reverting = config3;
+      if (_isRevertWorthy(this)) {
+        this.timeline && this.timeline.revert(config3);
+        this.totalTime(-0.01, config3.suppressEvents);
+      }
+      this.data !== "nested" && config3.kill !== false && this.kill();
+      _reverting = prevIsReverting;
+      return this;
+    };
+    _proto.globalTime = function globalTime(rawTime) {
+      var animation = this, time = arguments.length ? rawTime : animation.rawTime();
+      while (animation) {
+        time = animation._start + time / (Math.abs(animation._ts) || 1);
+        animation = animation._dp;
+      }
+      return !this.parent && this._sat ? this._sat.globalTime(rawTime) : time;
+    };
+    _proto.repeat = function repeat(value) {
+      if (arguments.length) {
+        this._repeat = value === Infinity ? -2 : value;
+        return _onUpdateTotalDuration(this);
+      }
+      return this._repeat === -2 ? Infinity : this._repeat;
+    };
+    _proto.repeatDelay = function repeatDelay(value) {
+      if (arguments.length) {
+        var time = this._time;
+        this._rDelay = value;
+        _onUpdateTotalDuration(this);
+        return time ? this.time(time) : this;
+      }
+      return this._rDelay;
+    };
+    _proto.yoyo = function yoyo(value) {
+      if (arguments.length) {
+        this._yoyo = value;
+        return this;
+      }
+      return this._yoyo;
+    };
+    _proto.seek = function seek(position, suppressEvents) {
+      return this.totalTime(_parsePosition(this, position), _isNotFalse(suppressEvents));
+    };
+    _proto.restart = function restart(includeDelay, suppressEvents) {
+      this.play().totalTime(includeDelay ? -this._delay : 0, _isNotFalse(suppressEvents));
+      this._dur || (this._zTime = -_tinyNum);
+      return this;
+    };
+    _proto.play = function play(from, suppressEvents) {
+      from != null && this.seek(from, suppressEvents);
+      return this.reversed(false).paused(false);
+    };
+    _proto.reverse = function reverse(from, suppressEvents) {
+      from != null && this.seek(from || this.totalDuration(), suppressEvents);
+      return this.reversed(true).paused(false);
+    };
+    _proto.pause = function pause(atTime, suppressEvents) {
+      atTime != null && this.seek(atTime, suppressEvents);
+      return this.paused(true);
+    };
+    _proto.resume = function resume() {
+      return this.paused(false);
+    };
+    _proto.reversed = function reversed(value) {
+      if (arguments.length) {
+        !!value !== this.reversed() && this.timeScale(-this._rts || (value ? -_tinyNum : 0));
+        return this;
+      }
+      return this._rts < 0;
+    };
+    _proto.invalidate = function invalidate() {
+      this._initted = this._act = 0;
+      this._zTime = -_tinyNum;
+      return this;
+    };
+    _proto.isActive = function isActive() {
+      var parent = this.parent || this._dp, start = this._start, rawTime;
+      return !!(!parent || this._ts && this._initted && parent.isActive() && (rawTime = parent.rawTime(true)) >= start && rawTime < this.endTime(true) - _tinyNum);
+    };
+    _proto.eventCallback = function eventCallback(type, callback, params) {
+      var vars = this.vars;
+      if (arguments.length > 1) {
+        if (!callback) {
+          delete vars[type];
+        } else {
+          vars[type] = callback;
+          params && (vars[type + "Params"] = params);
+          type === "onUpdate" && (this._onUpdate = callback);
+        }
+        return this;
+      }
+      return vars[type];
+    };
+    _proto.then = function then(onFulfilled) {
+      var self = this, prevProm = self._prom;
+      return new Promise(function(resolve) {
+        var f = _isFunction(onFulfilled) ? onFulfilled : _passThrough, _resolve = function _resolve2() {
+          var _then = self.then;
+          self.then = null;
+          prevProm && prevProm();
+          _isFunction(f) && (f = f(self)) && (f.then || f === self) && (self.then = _then);
+          resolve(f);
+          self.then = _then;
+        };
+        if (self._initted && self.totalProgress() === 1 && self._ts >= 0 || !self._tTime && self._ts < 0) {
+          _resolve();
+        } else {
+          self._prom = _resolve;
+        }
       });
-      if (hasCleanup) {
-        return () => {
-          for (let i = 0; i < cleanups.length; i++) {
-            const cleanup = cleanups[i];
-            if (typeof cleanup == "function") {
-              cleanup();
-            } else {
-              setRef(refs[i], null);
+    };
+    _proto.kill = function kill() {
+      _interrupt(this);
+    };
+    return Animation2;
+  })();
+  _setDefaults(Animation.prototype, {
+    _time: 0,
+    _start: 0,
+    _end: 0,
+    _tTime: 0,
+    _tDur: 0,
+    _dirty: 0,
+    _repeat: 0,
+    _yoyo: false,
+    parent: null,
+    _initted: false,
+    _rDelay: 0,
+    _ts: 1,
+    _dp: 0,
+    ratio: 0,
+    _zTime: -_tinyNum,
+    _prom: 0,
+    _ps: false,
+    _rts: 1
+  });
+  var Timeline = /* @__PURE__ */ (function(_Animation) {
+    _inheritsLoose(Timeline2, _Animation);
+    function Timeline2(vars, position) {
+      var _this;
+      if (vars === void 0) {
+        vars = {};
+      }
+      _this = _Animation.call(this, vars) || this;
+      _this.labels = {};
+      _this.smoothChildTiming = !!vars.smoothChildTiming;
+      _this.autoRemoveChildren = !!vars.autoRemoveChildren;
+      _this._sort = _isNotFalse(vars.sortChildren);
+      _globalTimeline && _addToTimeline(vars.parent || _globalTimeline, _assertThisInitialized(_this), position);
+      vars.reversed && _this.reverse();
+      vars.paused && _this.paused(true);
+      vars.scrollTrigger && _scrollTrigger(_assertThisInitialized(_this), vars.scrollTrigger);
+      return _this;
+    }
+    var _proto2 = Timeline2.prototype;
+    _proto2.to = function to(targets, vars, position) {
+      _createTweenType(0, arguments, this);
+      return this;
+    };
+    _proto2.from = function from(targets, vars, position) {
+      _createTweenType(1, arguments, this);
+      return this;
+    };
+    _proto2.fromTo = function fromTo(targets, fromVars, toVars, position) {
+      _createTweenType(2, arguments, this);
+      return this;
+    };
+    _proto2.set = function set(targets, vars, position) {
+      vars.duration = 0;
+      vars.parent = this;
+      _inheritDefaults(vars).repeatDelay || (vars.repeat = 0);
+      vars.immediateRender = !!vars.immediateRender;
+      new Tween(targets, vars, _parsePosition(this, position), 1);
+      return this;
+    };
+    _proto2.call = function call(callback, params, position) {
+      return _addToTimeline(this, Tween.delayedCall(0, callback, params), position);
+    };
+    _proto2.staggerTo = function staggerTo(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams) {
+      vars.duration = duration;
+      vars.stagger = vars.stagger || stagger;
+      vars.onComplete = onCompleteAll;
+      vars.onCompleteParams = onCompleteAllParams;
+      vars.parent = this;
+      new Tween(targets, vars, _parsePosition(this, position));
+      return this;
+    };
+    _proto2.staggerFrom = function staggerFrom(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams) {
+      vars.runBackwards = 1;
+      _inheritDefaults(vars).immediateRender = _isNotFalse(vars.immediateRender);
+      return this.staggerTo(targets, duration, vars, stagger, position, onCompleteAll, onCompleteAllParams);
+    };
+    _proto2.staggerFromTo = function staggerFromTo(targets, duration, fromVars, toVars, stagger, position, onCompleteAll, onCompleteAllParams) {
+      toVars.startAt = fromVars;
+      _inheritDefaults(toVars).immediateRender = _isNotFalse(toVars.immediateRender);
+      return this.staggerTo(targets, duration, toVars, stagger, position, onCompleteAll, onCompleteAllParams);
+    };
+    _proto2.render = function render3(totalTime, suppressEvents, force) {
+      var prevTime = this._time, tDur = this._dirty ? this.totalDuration() : this._tDur, dur = this._dur, tTime = totalTime <= 0 ? 0 : _roundPrecise(totalTime), crossingStart = this._zTime < 0 !== totalTime < 0 && (this._initted || !dur), time, child, next, iteration, cycleDuration, prevPaused, pauseTween, timeScale, prevStart, prevIteration, yoyo, isYoyo;
+      this !== _globalTimeline && tTime > tDur && totalTime >= 0 && (tTime = tDur);
+      if (tTime !== this._tTime || force || crossingStart) {
+        if (prevTime !== this._time && dur) {
+          tTime += this._time - prevTime;
+          totalTime += this._time - prevTime;
+        }
+        time = tTime;
+        prevStart = this._start;
+        timeScale = this._ts;
+        prevPaused = !timeScale;
+        if (crossingStart) {
+          dur || (prevTime = this._zTime);
+          (totalTime || !suppressEvents) && (this._zTime = totalTime);
+        }
+        if (this._repeat) {
+          yoyo = this._yoyo;
+          cycleDuration = dur + this._rDelay;
+          if (this._repeat < -1 && totalTime < 0) {
+            return this.totalTime(cycleDuration * 100 + totalTime, suppressEvents, force);
+          }
+          time = _roundPrecise(tTime % cycleDuration);
+          if (tTime === tDur) {
+            iteration = this._repeat;
+            time = dur;
+          } else {
+            prevIteration = _roundPrecise(tTime / cycleDuration);
+            iteration = ~~prevIteration;
+            if (iteration && iteration === prevIteration) {
+              time = dur;
+              iteration--;
             }
+            time > dur && (time = dur);
+          }
+          prevIteration = _animationCycle(this._tTime, cycleDuration);
+          !prevTime && this._tTime && prevIteration !== iteration && this._tTime - prevIteration * cycleDuration - this._dur <= 0 && (prevIteration = iteration);
+          if (yoyo && iteration & 1) {
+            time = dur - time;
+            isYoyo = 1;
+          }
+          if (iteration !== prevIteration && !this._lock) {
+            var rewinding = yoyo && prevIteration & 1, doesWrap = rewinding === (yoyo && iteration & 1);
+            iteration < prevIteration && (rewinding = !rewinding);
+            prevTime = rewinding ? 0 : tTime % dur ? dur : tTime;
+            this._lock = 1;
+            this.render(prevTime || (isYoyo ? 0 : _roundPrecise(iteration * cycleDuration)), suppressEvents, !dur)._lock = 0;
+            this._tTime = tTime;
+            !suppressEvents && this.parent && _callback(this, "onRepeat");
+            if (this.vars.repeatRefresh && !isYoyo) {
+              this.invalidate()._lock = 1;
+              prevIteration = iteration;
+            }
+            if (prevTime && prevTime !== this._time || prevPaused !== !this._ts || this.vars.onRepeat && !this.parent && !this._act) {
+              return this;
+            }
+            dur = this._dur;
+            tDur = this._tDur;
+            if (doesWrap) {
+              this._lock = 2;
+              prevTime = rewinding ? dur : -1e-4;
+              this.render(prevTime, true);
+              this.vars.repeatRefresh && !isYoyo && this.invalidate();
+            }
+            this._lock = 0;
+            if (!this._ts && !prevPaused) {
+              return this;
+            }
+            _propagateYoyoEase(this, isYoyo);
+          }
+        }
+        if (this._hasPause && !this._forcing && this._lock < 2) {
+          pauseTween = _findNextPauseTween(this, _roundPrecise(prevTime), _roundPrecise(time));
+          if (pauseTween) {
+            tTime -= time - (time = pauseTween._start);
+          }
+        }
+        this._tTime = tTime;
+        this._time = time;
+        this._act = !timeScale;
+        if (!this._initted) {
+          this._onUpdate = this.vars.onUpdate;
+          this._initted = 1;
+          this._zTime = totalTime;
+          prevTime = 0;
+        }
+        if (!prevTime && tTime && dur && !suppressEvents && !prevIteration) {
+          _callback(this, "onStart");
+          if (this._tTime !== tTime) {
+            return this;
+          }
+        }
+        if (time >= prevTime && totalTime >= 0) {
+          child = this._first;
+          while (child) {
+            next = child._next;
+            if ((child._act || time >= child._start) && child._ts && pauseTween !== child) {
+              if (child.parent !== this) {
+                return this.render(totalTime, suppressEvents, force);
+              }
+              child.render(child._ts > 0 ? (time - child._start) * child._ts : (child._dirty ? child.totalDuration() : child._tDur) + (time - child._start) * child._ts, suppressEvents, force);
+              if (time !== this._time || !this._ts && !prevPaused) {
+                pauseTween = 0;
+                next && (tTime += this._zTime = -_tinyNum);
+                break;
+              }
+            }
+            child = next;
+          }
+        } else {
+          child = this._last;
+          var adjustedTime = totalTime < 0 ? totalTime : time;
+          while (child) {
+            next = child._prev;
+            if ((child._act || adjustedTime <= child._end) && child._ts && pauseTween !== child) {
+              if (child.parent !== this) {
+                return this.render(totalTime, suppressEvents, force);
+              }
+              child.render(child._ts > 0 ? (adjustedTime - child._start) * child._ts : (child._dirty ? child.totalDuration() : child._tDur) + (adjustedTime - child._start) * child._ts, suppressEvents, force || _reverting && _isRevertWorthy(child));
+              if (time !== this._time || !this._ts && !prevPaused) {
+                pauseTween = 0;
+                next && (tTime += this._zTime = adjustedTime ? -_tinyNum : _tinyNum);
+                break;
+              }
+            }
+            child = next;
+          }
+        }
+        if (pauseTween && !suppressEvents) {
+          this.pause();
+          pauseTween.render(time >= prevTime ? 0 : -_tinyNum)._zTime = time >= prevTime ? 1 : -1;
+          if (this._ts) {
+            this._start = prevStart;
+            _setEnd(this);
+            return this.render(totalTime, suppressEvents, force);
+          }
+        }
+        this._onUpdate && !suppressEvents && _callback(this, "onUpdate", true);
+        if (tTime === tDur && this._tTime >= this.totalDuration() || !tTime && prevTime) {
+          if (prevStart === this._start || Math.abs(timeScale) !== Math.abs(this._ts)) {
+            if (!this._lock) {
+              (totalTime || !dur) && (tTime === tDur && this._ts > 0 || !tTime && this._ts < 0) && _removeFromParent(this, 1);
+              if (!suppressEvents && !(totalTime < 0 && !prevTime) && (tTime || prevTime || !tDur)) {
+                _callback(this, tTime === tDur && totalTime >= 0 ? "onComplete" : "onReverseComplete", true);
+                this._prom && !(tTime < tDur && this.timeScale() > 0) && this._prom();
+              }
+            }
+          }
+        }
+      }
+      return this;
+    };
+    _proto2.add = function add(child, position) {
+      var _this2 = this;
+      _isNumber(position) || (position = _parsePosition(this, position, child));
+      if (!(child instanceof Animation)) {
+        if (_isArray(child)) {
+          child.forEach(function(obj) {
+            return _this2.add(obj, position);
+          });
+          return this;
+        }
+        if (_isString(child)) {
+          return this.addLabel(child, position);
+        }
+        if (_isFunction(child)) {
+          child = Tween.delayedCall(0, child);
+        } else {
+          return this;
+        }
+      }
+      return this !== child ? _addToTimeline(this, child, position) : this;
+    };
+    _proto2.getChildren = function getChildren(nested, tweens, timelines, ignoreBeforeTime) {
+      if (nested === void 0) {
+        nested = true;
+      }
+      if (tweens === void 0) {
+        tweens = true;
+      }
+      if (timelines === void 0) {
+        timelines = true;
+      }
+      if (ignoreBeforeTime === void 0) {
+        ignoreBeforeTime = -_bigNum;
+      }
+      var a = [], child = this._first;
+      while (child) {
+        if (child._start >= ignoreBeforeTime) {
+          if (child instanceof Tween) {
+            tweens && a.push(child);
+          } else {
+            timelines && a.push(child);
+            nested && a.push.apply(a, child.getChildren(true, tweens, timelines));
+          }
+        }
+        child = child._next;
+      }
+      return a;
+    };
+    _proto2.getById = function getById2(id) {
+      var animations = this.getChildren(1, 1, 1), i = animations.length;
+      while (i--) {
+        if (animations[i].vars.id === id) {
+          return animations[i];
+        }
+      }
+    };
+    _proto2.remove = function remove(child) {
+      if (_isString(child)) {
+        return this.removeLabel(child);
+      }
+      if (_isFunction(child)) {
+        return this.killTweensOf(child);
+      }
+      child.parent === this && _removeLinkedListItem(this, child);
+      if (child === this._recent) {
+        this._recent = this._last;
+      }
+      return _uncache(this);
+    };
+    _proto2.totalTime = function totalTime(_totalTime2, suppressEvents) {
+      if (!arguments.length) {
+        return this._tTime;
+      }
+      this._forcing = 1;
+      if (!this._dp && this._ts) {
+        this._start = _roundPrecise(_ticker.time - (this._ts > 0 ? _totalTime2 / this._ts : (this.totalDuration() - _totalTime2) / -this._ts));
+      }
+      _Animation.prototype.totalTime.call(this, _totalTime2, suppressEvents);
+      this._forcing = 0;
+      return this;
+    };
+    _proto2.addLabel = function addLabel(label, position) {
+      this.labels[label] = _parsePosition(this, position);
+      return this;
+    };
+    _proto2.removeLabel = function removeLabel(label) {
+      delete this.labels[label];
+      return this;
+    };
+    _proto2.addPause = function addPause(position, callback, params) {
+      var t = Tween.delayedCall(0, callback || _emptyFunc, params);
+      t.data = "isPause";
+      this._hasPause = 1;
+      return _addToTimeline(this, t, _parsePosition(this, position));
+    };
+    _proto2.removePause = function removePause(position) {
+      var child = this._first;
+      position = _parsePosition(this, position);
+      while (child) {
+        if (child._start === position && child.data === "isPause") {
+          _removeFromParent(child);
+        }
+        child = child._next;
+      }
+    };
+    _proto2.killTweensOf = function killTweensOf(targets, props, onlyActive) {
+      var tweens = this.getTweensOf(targets, onlyActive), i = tweens.length;
+      while (i--) {
+        _overwritingTween !== tweens[i] && tweens[i].kill(targets, props);
+      }
+      return this;
+    };
+    _proto2.getTweensOf = function getTweensOf2(targets, onlyActive) {
+      var a = [], parsedTargets = toArray(targets), child = this._first, isGlobalTime = _isNumber(onlyActive), children;
+      while (child) {
+        if (child instanceof Tween) {
+          if (_arrayContainsAny(child._targets, parsedTargets) && (isGlobalTime ? (!_overwritingTween || child._initted && child._ts) && child.globalTime(0) <= onlyActive && child.globalTime(child.totalDuration()) > onlyActive : !onlyActive || child.isActive())) {
+            a.push(child);
+          }
+        } else if ((children = child.getTweensOf(parsedTargets, onlyActive)).length) {
+          a.push.apply(a, children);
+        }
+        child = child._next;
+      }
+      return a;
+    };
+    _proto2.tweenTo = function tweenTo(position, vars) {
+      vars = vars || {};
+      var tl = this, endTime = _parsePosition(tl, position), _vars = vars, startAt = _vars.startAt, _onStart = _vars.onStart, onStartParams = _vars.onStartParams, immediateRender = _vars.immediateRender, initted, tween = Tween.to(tl, _setDefaults({
+        ease: vars.ease || "none",
+        lazy: false,
+        immediateRender: false,
+        time: endTime,
+        overwrite: "auto",
+        duration: vars.duration || Math.abs((endTime - (startAt && "time" in startAt ? startAt.time : tl._time)) / tl.timeScale()) || _tinyNum,
+        onStart: function onStart() {
+          tl.pause();
+          if (!initted) {
+            var duration = vars.duration || Math.abs((endTime - (startAt && "time" in startAt ? startAt.time : tl._time)) / tl.timeScale());
+            tween._dur !== duration && _setDuration(tween, duration, 0, 1).render(tween._time, true, true);
+            initted = 1;
+          }
+          _onStart && _onStart.apply(tween, onStartParams || []);
+        }
+      }, vars));
+      return immediateRender ? tween.render(0) : tween;
+    };
+    _proto2.tweenFromTo = function tweenFromTo(fromPosition, toPosition, vars) {
+      return this.tweenTo(toPosition, _setDefaults({
+        startAt: {
+          time: _parsePosition(this, fromPosition)
+        }
+      }, vars));
+    };
+    _proto2.recent = function recent() {
+      return this._recent;
+    };
+    _proto2.nextLabel = function nextLabel(afterTime) {
+      if (afterTime === void 0) {
+        afterTime = this._time;
+      }
+      return _getLabelInDirection(this, _parsePosition(this, afterTime));
+    };
+    _proto2.previousLabel = function previousLabel(beforeTime) {
+      if (beforeTime === void 0) {
+        beforeTime = this._time;
+      }
+      return _getLabelInDirection(this, _parsePosition(this, beforeTime), 1);
+    };
+    _proto2.currentLabel = function currentLabel(value) {
+      return arguments.length ? this.seek(value, true) : this.previousLabel(this._time + _tinyNum);
+    };
+    _proto2.shiftChildren = function shiftChildren(amount, adjustLabels, ignoreBeforeTime) {
+      if (ignoreBeforeTime === void 0) {
+        ignoreBeforeTime = 0;
+      }
+      var child = this._first, labels = this.labels, p;
+      amount = _roundPrecise(amount);
+      while (child) {
+        if (child._start >= ignoreBeforeTime) {
+          child._start += amount;
+          child._end += amount;
+        }
+        child = child._next;
+      }
+      if (adjustLabels) {
+        for (p in labels) {
+          if (labels[p] >= ignoreBeforeTime) {
+            labels[p] += amount;
+          }
+        }
+      }
+      return _uncache(this);
+    };
+    _proto2.invalidate = function invalidate(soft) {
+      var child = this._first;
+      this._lock = 0;
+      while (child) {
+        child.invalidate(soft);
+        child = child._next;
+      }
+      return _Animation.prototype.invalidate.call(this, soft);
+    };
+    _proto2.clear = function clear(includeLabels) {
+      if (includeLabels === void 0) {
+        includeLabels = true;
+      }
+      var child = this._first, next;
+      while (child) {
+        next = child._next;
+        this.remove(child);
+        child = next;
+      }
+      this._dp && (this._time = this._tTime = this._pTime = 0);
+      includeLabels && (this.labels = {});
+      return _uncache(this);
+    };
+    _proto2.totalDuration = function totalDuration(value) {
+      var max = 0, self = this, child = self._last, prevStart = _bigNum, prev, start, parent;
+      if (arguments.length) {
+        return self.timeScale((self._repeat < 0 ? self.duration() : self.totalDuration()) / (self.reversed() ? -value : value));
+      }
+      if (self._dirty) {
+        parent = self.parent;
+        while (child) {
+          prev = child._prev;
+          child._dirty && child.totalDuration();
+          start = child._start;
+          if (start > prevStart && self._sort && child._ts && !self._lock) {
+            self._lock = 1;
+            _addToTimeline(self, child, start - child._delay, 1)._lock = 0;
+          } else {
+            prevStart = start;
+          }
+          if (start < 0 && child._ts) {
+            max -= start;
+            if (!parent && !self._dp || parent && parent.smoothChildTiming) {
+              self._start += _roundPrecise(start / self._ts);
+              self._time -= start;
+              self._tTime -= start;
+            }
+            self.shiftChildren(-start, false, -Infinity);
+            prevStart = 0;
+          }
+          child._end > max && child._ts && (max = child._end);
+          child = prev;
+        }
+        _setDuration(self, self === _globalTimeline && self._time > max ? self._time : max, 1, 1);
+        self._dirty = 0;
+      }
+      return self._tDur;
+    };
+    Timeline2.updateRoot = function updateRoot(time) {
+      if (_globalTimeline._ts) {
+        _lazySafeRender(_globalTimeline, _parentToChildTotalTime(time, _globalTimeline));
+        _lastRenderedFrame = _ticker.frame;
+      }
+      if (_ticker.frame >= _nextGCFrame) {
+        _nextGCFrame += _config.autoSleep || 120;
+        var child = _globalTimeline._first;
+        if (!child || !child._ts) {
+          if (_config.autoSleep && _ticker._listeners.length < 2) {
+            while (child && !child._ts) {
+              child = child._next;
+            }
+            child || _ticker.sleep();
+          }
+        }
+      }
+    };
+    return Timeline2;
+  })(Animation);
+  _setDefaults(Timeline.prototype, {
+    _lock: 0,
+    _hasPause: 0,
+    _forcing: 0
+  });
+  var _addComplexStringPropTween = function _addComplexStringPropTween2(target, prop, start, end, setter, stringFilter, funcParam) {
+    var pt = new PropTween(this._pt, target, prop, 0, 1, _renderComplexString, null, setter), index = 0, matchIndex = 0, result, startNums, color, endNum, chunk, startNum, hasRandom, a;
+    pt.b = start;
+    pt.e = end;
+    start += "";
+    end += "";
+    if (hasRandom = ~end.indexOf("random(")) {
+      end = _replaceRandom(end);
+    }
+    if (stringFilter) {
+      a = [start, end];
+      stringFilter(a, target, prop);
+      start = a[0];
+      end = a[1];
+    }
+    startNums = start.match(_complexStringNumExp) || [];
+    while (result = _complexStringNumExp.exec(end)) {
+      endNum = result[0];
+      chunk = end.substring(index, result.index);
+      if (color) {
+        color = (color + 1) % 5;
+      } else if (chunk.substr(-5) === "rgba(") {
+        color = 1;
+      }
+      if (endNum !== startNums[matchIndex++]) {
+        startNum = parseFloat(startNums[matchIndex - 1]) || 0;
+        pt._pt = {
+          _next: pt._pt,
+          p: chunk || matchIndex === 1 ? chunk : ",",
+          //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
+          s: startNum,
+          c: endNum.charAt(1) === "=" ? _parseRelative(startNum, endNum) - startNum : parseFloat(endNum) - startNum,
+          m: color && color < 4 ? Math.round : 0
+        };
+        index = _complexStringNumExp.lastIndex;
+      }
+    }
+    pt.c = index < end.length ? end.substring(index, end.length) : "";
+    pt.fp = funcParam;
+    if (_relExp.test(end) || hasRandom) {
+      pt.e = 0;
+    }
+    this._pt = pt;
+    return pt;
+  };
+  var _addPropTween = function _addPropTween2(target, prop, start, end, index, targets, modifier, stringFilter, funcParam, optional) {
+    _isFunction(end) && (end = end(index || 0, target, targets));
+    var currentValue = target[prop], parsedStart = start !== "get" ? start : !_isFunction(currentValue) ? currentValue : funcParam ? target[prop.indexOf("set") || !_isFunction(target["get" + prop.substr(3)]) ? prop : "get" + prop.substr(3)](funcParam) : target[prop](), setter = !_isFunction(currentValue) ? _setterPlain : funcParam ? _setterFuncWithParam : _setterFunc, pt;
+    if (_isString(end)) {
+      if (~end.indexOf("random(")) {
+        end = _replaceRandom(end);
+      }
+      if (end.charAt(1) === "=") {
+        pt = _parseRelative(parsedStart, end) + (getUnit(parsedStart) || 0);
+        if (pt || pt === 0) {
+          end = pt;
+        }
+      }
+    }
+    if (!optional || parsedStart !== end || _forceAllPropTweens) {
+      if (!isNaN(parsedStart * end) && end !== "") {
+        pt = new PropTween(this._pt, target, prop, +parsedStart || 0, end - (parsedStart || 0), typeof currentValue === "boolean" ? _renderBoolean : _renderPlain, 0, setter);
+        funcParam && (pt.fp = funcParam);
+        modifier && pt.modifier(modifier, this, target);
+        return this._pt = pt;
+      }
+      !currentValue && !(prop in target) && _missingPlugin(prop, end);
+      return _addComplexStringPropTween.call(this, target, prop, parsedStart, end, setter, stringFilter || _config.stringFilter, funcParam);
+    }
+  };
+  var _processVars = function _processVars2(vars, index, target, targets, tween) {
+    _isFunction(vars) && (vars = _parseFuncOrString(vars, tween, index, target, targets));
+    if (!_isObject(vars) || vars.style && vars.nodeType || _isArray(vars) || _isTypedArray(vars)) {
+      return _isString(vars) ? _parseFuncOrString(vars, tween, index, target, targets) : vars;
+    }
+    var copy = {}, p;
+    for (p in vars) {
+      copy[p] = _parseFuncOrString(vars[p], tween, index, target, targets);
+    }
+    return copy;
+  };
+  var _checkPlugin = function _checkPlugin2(property, vars, tween, index, target, targets) {
+    var plugin, pt, ptLookup, i;
+    if (_plugins[property] && (plugin = new _plugins[property]()).init(target, plugin.rawVars ? vars[property] : _processVars(vars[property], index, target, targets, tween), tween, index, targets) !== false) {
+      tween._pt = pt = new PropTween(tween._pt, target, property, 0, 1, plugin.render, plugin, 0, plugin.priority);
+      if (tween !== _quickTween) {
+        ptLookup = tween._ptLookup[tween._targets.indexOf(target)];
+        i = plugin._props.length;
+        while (i--) {
+          ptLookup[plugin._props[i]] = pt;
+        }
+      }
+    }
+    return plugin;
+  };
+  var _overwritingTween;
+  var _forceAllPropTweens;
+  var _initTween = function _initTween2(tween, time, tTime) {
+    var vars = tween.vars, ease = vars.ease, startAt = vars.startAt, immediateRender = vars.immediateRender, lazy = vars.lazy, onUpdate = vars.onUpdate, runBackwards = vars.runBackwards, yoyoEase = vars.yoyoEase, keyframes = vars.keyframes, autoRevert = vars.autoRevert, dur = tween._dur, prevStartAt = tween._startAt, targets = tween._targets, parent = tween.parent, fullTargets = parent && parent.data === "nested" ? parent.vars.targets : targets, autoOverwrite = tween._overwrite === "auto" && !_suppressOverwrites, tl = tween.timeline, cleanVars, i, p, pt, target, hasPriority, gsData, harness, plugin, ptLookup, index, harnessVars, overwritten;
+    tl && (!keyframes || !ease) && (ease = "none");
+    tween._ease = _parseEase(ease, _defaults.ease);
+    tween._yEase = yoyoEase ? _invertEase(_parseEase(yoyoEase === true ? ease : yoyoEase, _defaults.ease)) : 0;
+    if (yoyoEase && tween._yoyo && !tween._repeat) {
+      yoyoEase = tween._yEase;
+      tween._yEase = tween._ease;
+      tween._ease = yoyoEase;
+    }
+    tween._from = !tl && !!vars.runBackwards;
+    if (!tl || keyframes && !vars.stagger) {
+      harness = targets[0] ? _getCache(targets[0]).harness : 0;
+      harnessVars = harness && vars[harness.prop];
+      cleanVars = _copyExcluding(vars, _reservedProps);
+      if (prevStartAt) {
+        prevStartAt._zTime < 0 && prevStartAt.progress(1);
+        time < 0 && runBackwards && immediateRender && !autoRevert ? prevStartAt.render(-1, true) : prevStartAt.revert(runBackwards && dur ? _revertConfigNoKill : _startAtRevertConfig);
+        prevStartAt._lazy = 0;
+      }
+      if (startAt) {
+        _removeFromParent(tween._startAt = Tween.set(targets, _setDefaults({
+          data: "isStart",
+          overwrite: false,
+          parent,
+          immediateRender: true,
+          lazy: !prevStartAt && _isNotFalse(lazy),
+          startAt: null,
+          delay: 0,
+          onUpdate: onUpdate && function() {
+            return _callback(tween, "onUpdate");
+          },
+          stagger: 0
+        }, startAt)));
+        tween._startAt._dp = 0;
+        tween._startAt._sat = tween;
+        time < 0 && (_reverting || !immediateRender && !autoRevert) && tween._startAt.revert(_revertConfigNoKill);
+        if (immediateRender) {
+          if (dur && time <= 0 && tTime <= 0) {
+            time && (tween._zTime = time);
+            return;
+          }
+        }
+      } else if (runBackwards && dur) {
+        if (!prevStartAt) {
+          time && (immediateRender = false);
+          p = _setDefaults({
+            overwrite: false,
+            data: "isFromStart",
+            //we tag the tween with as "isFromStart" so that if [inside a plugin] we need to only do something at the very END of a tween, we have a way of identifying this tween as merely the one that's setting the beginning values for a "from()" tween. For example, clearProps in CSSPlugin should only get applied at the very END of a tween and without this tag, from(...{height:100, clearProps:"height", delay:1}) would wipe the height at the beginning of the tween and after 1 second, it'd kick back in.
+            lazy: immediateRender && !prevStartAt && _isNotFalse(lazy),
+            immediateRender,
+            //zero-duration tweens render immediately by default, but if we're not specifically instructed to render this tween immediately, we should skip this and merely _init() to record the starting values (rendering them immediately would push them to completion which is wasteful in that case - we'd have to render(-1) immediately after)
+            stagger: 0,
+            parent
+            //ensures that nested tweens that had a stagger are handled properly, like gsap.from(".class", {y: gsap.utils.wrap([-100,100]), stagger: 0.5})
+          }, cleanVars);
+          harnessVars && (p[harness.prop] = harnessVars);
+          _removeFromParent(tween._startAt = Tween.set(targets, p));
+          tween._startAt._dp = 0;
+          tween._startAt._sat = tween;
+          time < 0 && (_reverting ? tween._startAt.revert(_revertConfigNoKill) : tween._startAt.render(-1, true));
+          tween._zTime = time;
+          if (!immediateRender) {
+            _initTween2(tween._startAt, _tinyNum, _tinyNum);
+          } else if (!time) {
+            return;
+          }
+        }
+      }
+      tween._pt = tween._ptCache = 0;
+      lazy = dur && _isNotFalse(lazy) || lazy && !dur;
+      for (i = 0; i < targets.length; i++) {
+        target = targets[i];
+        gsData = target._gsap || _harness(targets)[i]._gsap;
+        tween._ptLookup[i] = ptLookup = {};
+        _lazyLookup[gsData.id] && _lazyTweens.length && _lazyRender();
+        index = fullTargets === targets ? i : fullTargets.indexOf(target);
+        if (harness && (plugin = new harness()).init(target, harnessVars || cleanVars, tween, index, fullTargets) !== false) {
+          tween._pt = pt = new PropTween(tween._pt, target, plugin.name, 0, 1, plugin.render, plugin, 0, plugin.priority);
+          plugin._props.forEach(function(name) {
+            ptLookup[name] = pt;
+          });
+          plugin.priority && (hasPriority = 1);
+        }
+        if (!harness || harnessVars) {
+          for (p in cleanVars) {
+            if (_plugins[p] && (plugin = _checkPlugin(p, cleanVars, tween, index, target, fullTargets))) {
+              plugin.priority && (hasPriority = 1);
+            } else {
+              ptLookup[p] = pt = _addPropTween.call(tween, target, p, "get", cleanVars[p], index, fullTargets, 0, vars.stringFilter);
+            }
+          }
+        }
+        tween._op && tween._op[i] && tween.kill(target, tween._op[i]);
+        if (autoOverwrite && tween._pt) {
+          _overwritingTween = tween;
+          _globalTimeline.killTweensOf(target, ptLookup, tween.globalTime(time));
+          overwritten = !tween.parent;
+          _overwritingTween = 0;
+        }
+        tween._pt && lazy && (_lazyLookup[gsData.id] = 1);
+      }
+      hasPriority && _sortPropTweensByPriority(tween);
+      tween._onInit && tween._onInit(tween);
+    }
+    tween._onUpdate = onUpdate;
+    tween._initted = (!tween._op || tween._pt) && !overwritten;
+    keyframes && time <= 0 && tl.render(_bigNum, true, true);
+  };
+  var _updatePropTweens = function _updatePropTweens2(tween, property, value, start, startIsRelative, ratio, time, skipRecursion) {
+    var ptCache = (tween._pt && tween._ptCache || (tween._ptCache = {}))[property], pt, rootPT, lookup, i;
+    if (!ptCache) {
+      ptCache = tween._ptCache[property] = [];
+      lookup = tween._ptLookup;
+      i = tween._targets.length;
+      while (i--) {
+        pt = lookup[i][property];
+        if (pt && pt.d && pt.d._pt) {
+          pt = pt.d._pt;
+          while (pt && pt.p !== property && pt.fp !== property) {
+            pt = pt._next;
+          }
+        }
+        if (!pt) {
+          _forceAllPropTweens = 1;
+          tween.vars[property] = "+=0";
+          _initTween(tween, time);
+          _forceAllPropTweens = 0;
+          return skipRecursion ? _warn(property + " not eligible for reset") : 1;
+        }
+        ptCache.push(pt);
+      }
+    }
+    i = ptCache.length;
+    while (i--) {
+      rootPT = ptCache[i];
+      pt = rootPT._pt || rootPT;
+      pt.s = (start || start === 0) && !startIsRelative ? start : pt.s + (start || 0) + ratio * pt.c;
+      pt.c = value - pt.s;
+      rootPT.e && (rootPT.e = _round(value) + getUnit(rootPT.e));
+      rootPT.b && (rootPT.b = pt.s + getUnit(rootPT.b));
+    }
+  };
+  var _addAliasesToVars = function _addAliasesToVars2(targets, vars) {
+    var harness = targets[0] ? _getCache(targets[0]).harness : 0, propertyAliases = harness && harness.aliases, copy, p, i, aliases;
+    if (!propertyAliases) {
+      return vars;
+    }
+    copy = _merge({}, vars);
+    for (p in propertyAliases) {
+      if (p in copy) {
+        aliases = propertyAliases[p].split(",");
+        i = aliases.length;
+        while (i--) {
+          copy[aliases[i]] = copy[p];
+        }
+      }
+    }
+    return copy;
+  };
+  var _parseKeyframe = function _parseKeyframe2(prop, obj, allProps, easeEach) {
+    var ease = obj.ease || easeEach || "power1.inOut", p, a;
+    if (_isArray(obj)) {
+      a = allProps[prop] || (allProps[prop] = []);
+      obj.forEach(function(value, i) {
+        return a.push({
+          t: i / (obj.length - 1) * 100,
+          v: value,
+          e: ease
+        });
+      });
+    } else {
+      for (p in obj) {
+        a = allProps[p] || (allProps[p] = []);
+        p === "ease" || a.push({
+          t: parseFloat(prop),
+          v: obj[p],
+          e: ease
+        });
+      }
+    }
+  };
+  var _parseFuncOrString = function _parseFuncOrString2(value, tween, i, target, targets) {
+    return _isFunction(value) ? value.call(tween, i, target, targets) : _isString(value) && ~value.indexOf("random(") ? _replaceRandom(value) : value;
+  };
+  var _staggerTweenProps = _callbackNames + "repeat,repeatDelay,yoyo,repeatRefresh,yoyoEase,autoRevert";
+  var _staggerPropsToSkip = {};
+  _forEachName(_staggerTweenProps + ",id,stagger,delay,duration,paused,scrollTrigger", function(name) {
+    return _staggerPropsToSkip[name] = 1;
+  });
+  var Tween = /* @__PURE__ */ (function(_Animation2) {
+    _inheritsLoose(Tween2, _Animation2);
+    function Tween2(targets, vars, position, skipInherit) {
+      var _this3;
+      if (typeof vars === "number") {
+        position.duration = vars;
+        vars = position;
+        position = null;
+      }
+      _this3 = _Animation2.call(this, skipInherit ? vars : _inheritDefaults(vars)) || this;
+      var _this3$vars = _this3.vars, duration = _this3$vars.duration, delay = _this3$vars.delay, immediateRender = _this3$vars.immediateRender, stagger = _this3$vars.stagger, overwrite = _this3$vars.overwrite, keyframes = _this3$vars.keyframes, defaults2 = _this3$vars.defaults, scrollTrigger = _this3$vars.scrollTrigger, yoyoEase = _this3$vars.yoyoEase, parent = vars.parent || _globalTimeline, parsedTargets = (_isArray(targets) || _isTypedArray(targets) ? _isNumber(targets[0]) : "length" in vars) ? [targets] : toArray(targets), tl, i, copy, l, p, curTarget, staggerFunc, staggerVarsToMerge;
+      _this3._targets = parsedTargets.length ? _harness(parsedTargets) : _warn("GSAP target " + targets + " not found. https://gsap.com", !_config.nullTargetWarn) || [];
+      _this3._ptLookup = [];
+      _this3._overwrite = overwrite;
+      if (keyframes || stagger || _isFuncOrString(duration) || _isFuncOrString(delay)) {
+        vars = _this3.vars;
+        tl = _this3.timeline = new Timeline({
+          data: "nested",
+          defaults: defaults2 || {},
+          targets: parent && parent.data === "nested" ? parent.vars.targets : parsedTargets
+        });
+        tl.kill();
+        tl.parent = tl._dp = _assertThisInitialized(_this3);
+        tl._start = 0;
+        if (stagger || _isFuncOrString(duration) || _isFuncOrString(delay)) {
+          l = parsedTargets.length;
+          staggerFunc = stagger && distribute(stagger);
+          if (_isObject(stagger)) {
+            for (p in stagger) {
+              if (~_staggerTweenProps.indexOf(p)) {
+                staggerVarsToMerge || (staggerVarsToMerge = {});
+                staggerVarsToMerge[p] = stagger[p];
+              }
+            }
+          }
+          for (i = 0; i < l; i++) {
+            copy = _copyExcluding(vars, _staggerPropsToSkip);
+            copy.stagger = 0;
+            yoyoEase && (copy.yoyoEase = yoyoEase);
+            staggerVarsToMerge && _merge(copy, staggerVarsToMerge);
+            curTarget = parsedTargets[i];
+            copy.duration = +_parseFuncOrString(duration, _assertThisInitialized(_this3), i, curTarget, parsedTargets);
+            copy.delay = (+_parseFuncOrString(delay, _assertThisInitialized(_this3), i, curTarget, parsedTargets) || 0) - _this3._delay;
+            if (!stagger && l === 1 && copy.delay) {
+              _this3._delay = delay = copy.delay;
+              _this3._start += delay;
+              copy.delay = 0;
+            }
+            tl.to(curTarget, copy, staggerFunc ? staggerFunc(i, curTarget, parsedTargets) : 0);
+            tl._ease = _easeMap.none;
+          }
+          tl.duration() ? duration = delay = 0 : _this3.timeline = 0;
+        } else if (keyframes) {
+          _inheritDefaults(_setDefaults(tl.vars.defaults, {
+            ease: "none"
+          }));
+          tl._ease = _parseEase(keyframes.ease || vars.ease || "none");
+          var time = 0, a, kf, v;
+          if (_isArray(keyframes)) {
+            keyframes.forEach(function(frame) {
+              return tl.to(parsedTargets, frame, ">");
+            });
+            tl.duration();
+          } else {
+            copy = {};
+            for (p in keyframes) {
+              p === "ease" || p === "easeEach" || _parseKeyframe(p, keyframes[p], copy, keyframes.easeEach);
+            }
+            for (p in copy) {
+              a = copy[p].sort(function(a2, b) {
+                return a2.t - b.t;
+              });
+              time = 0;
+              for (i = 0; i < a.length; i++) {
+                kf = a[i];
+                v = {
+                  ease: kf.e,
+                  duration: (kf.t - (i ? a[i - 1].t : 0)) / 100 * duration
+                };
+                v[p] = kf.v;
+                tl.to(parsedTargets, v, time);
+                time += v.duration;
+              }
+            }
+            tl.duration() < duration && tl.to({}, {
+              duration: duration - tl.duration()
+            });
+          }
+        }
+        duration || _this3.duration(duration = tl.duration());
+      } else {
+        _this3.timeline = 0;
+      }
+      if (overwrite === true && !_suppressOverwrites) {
+        _overwritingTween = _assertThisInitialized(_this3);
+        _globalTimeline.killTweensOf(parsedTargets);
+        _overwritingTween = 0;
+      }
+      _addToTimeline(parent, _assertThisInitialized(_this3), position);
+      vars.reversed && _this3.reverse();
+      vars.paused && _this3.paused(true);
+      if (immediateRender || !duration && !keyframes && _this3._start === _roundPrecise(parent._time) && _isNotFalse(immediateRender) && _hasNoPausedAncestors(_assertThisInitialized(_this3)) && parent.data !== "nested") {
+        _this3._tTime = -_tinyNum;
+        _this3.render(Math.max(0, -delay) || 0);
+      }
+      scrollTrigger && _scrollTrigger(_assertThisInitialized(_this3), scrollTrigger);
+      return _this3;
+    }
+    var _proto3 = Tween2.prototype;
+    _proto3.render = function render3(totalTime, suppressEvents, force) {
+      var prevTime = this._time, tDur = this._tDur, dur = this._dur, isNegative = totalTime < 0, tTime = totalTime > tDur - _tinyNum && !isNegative ? tDur : totalTime < _tinyNum ? 0 : totalTime, time, pt, iteration, cycleDuration, prevIteration, isYoyo, ratio, timeline2, yoyoEase;
+      if (!dur) {
+        _renderZeroDurationTween(this, totalTime, suppressEvents, force);
+      } else if (tTime !== this._tTime || !totalTime || force || !this._initted && this._tTime || this._startAt && this._zTime < 0 !== isNegative || this._lazy) {
+        time = tTime;
+        timeline2 = this.timeline;
+        if (this._repeat) {
+          cycleDuration = dur + this._rDelay;
+          if (this._repeat < -1 && isNegative) {
+            return this.totalTime(cycleDuration * 100 + totalTime, suppressEvents, force);
+          }
+          time = _roundPrecise(tTime % cycleDuration);
+          if (tTime === tDur) {
+            iteration = this._repeat;
+            time = dur;
+          } else {
+            prevIteration = _roundPrecise(tTime / cycleDuration);
+            iteration = ~~prevIteration;
+            if (iteration && iteration === prevIteration) {
+              time = dur;
+              iteration--;
+            } else if (time > dur) {
+              time = dur;
+            }
+          }
+          isYoyo = this._yoyo && iteration & 1;
+          if (isYoyo) {
+            yoyoEase = this._yEase;
+            time = dur - time;
+          }
+          prevIteration = _animationCycle(this._tTime, cycleDuration);
+          if (time === prevTime && !force && this._initted && iteration === prevIteration) {
+            this._tTime = tTime;
+            return this;
+          }
+          if (iteration !== prevIteration) {
+            timeline2 && this._yEase && _propagateYoyoEase(timeline2, isYoyo);
+            if (this.vars.repeatRefresh && !isYoyo && !this._lock && time !== cycleDuration && this._initted) {
+              this._lock = force = 1;
+              this.render(_roundPrecise(cycleDuration * iteration), true).invalidate()._lock = 0;
+            }
+          }
+        }
+        if (!this._initted) {
+          if (_attemptInitTween(this, isNegative ? totalTime : time, force, suppressEvents, tTime)) {
+            this._tTime = 0;
+            return this;
+          }
+          if (prevTime !== this._time && !(force && this.vars.repeatRefresh && iteration !== prevIteration)) {
+            return this;
+          }
+          if (dur !== this._dur) {
+            return this.render(totalTime, suppressEvents, force);
+          }
+        }
+        this._tTime = tTime;
+        this._time = time;
+        if (!this._act && this._ts) {
+          this._act = 1;
+          this._lazy = 0;
+        }
+        this.ratio = ratio = (yoyoEase || this._ease)(time / dur);
+        if (this._from) {
+          this.ratio = ratio = 1 - ratio;
+        }
+        if (!prevTime && tTime && !suppressEvents && !prevIteration) {
+          _callback(this, "onStart");
+          if (this._tTime !== tTime) {
+            return this;
+          }
+        }
+        pt = this._pt;
+        while (pt) {
+          pt.r(ratio, pt.d);
+          pt = pt._next;
+        }
+        timeline2 && timeline2.render(totalTime < 0 ? totalTime : timeline2._dur * timeline2._ease(time / this._dur), suppressEvents, force) || this._startAt && (this._zTime = totalTime);
+        if (this._onUpdate && !suppressEvents) {
+          isNegative && _rewindStartAt(this, totalTime, suppressEvents, force);
+          _callback(this, "onUpdate");
+        }
+        this._repeat && iteration !== prevIteration && this.vars.onRepeat && !suppressEvents && this.parent && _callback(this, "onRepeat");
+        if ((tTime === this._tDur || !tTime) && this._tTime === tTime) {
+          isNegative && !this._onUpdate && _rewindStartAt(this, totalTime, true, true);
+          (totalTime || !dur) && (tTime === this._tDur && this._ts > 0 || !tTime && this._ts < 0) && _removeFromParent(this, 1);
+          if (!suppressEvents && !(isNegative && !prevTime) && (tTime || prevTime || isYoyo)) {
+            _callback(this, tTime === tDur ? "onComplete" : "onReverseComplete", true);
+            this._prom && !(tTime < tDur && this.timeScale() > 0) && this._prom();
+          }
+        }
+      }
+      return this;
+    };
+    _proto3.targets = function targets() {
+      return this._targets;
+    };
+    _proto3.invalidate = function invalidate(soft) {
+      (!soft || !this.vars.runBackwards) && (this._startAt = 0);
+      this._pt = this._op = this._onUpdate = this._lazy = this.ratio = 0;
+      this._ptLookup = [];
+      this.timeline && this.timeline.invalidate(soft);
+      return _Animation2.prototype.invalidate.call(this, soft);
+    };
+    _proto3.resetTo = function resetTo(property, value, start, startIsRelative, skipRecursion) {
+      _tickerActive || _ticker.wake();
+      this._ts || this.play();
+      var time = Math.min(this._dur, (this._dp._time - this._start) * this._ts), ratio;
+      this._initted || _initTween(this, time);
+      ratio = this._ease(time / this._dur);
+      if (_updatePropTweens(this, property, value, start, startIsRelative, ratio, time, skipRecursion)) {
+        return this.resetTo(property, value, start, startIsRelative, 1);
+      }
+      _alignPlayhead(this, 0);
+      this.parent || _addLinkedListItem(this._dp, this, "_first", "_last", this._dp._sort ? "_start" : 0);
+      return this.render(0);
+    };
+    _proto3.kill = function kill(targets, vars) {
+      if (vars === void 0) {
+        vars = "all";
+      }
+      if (!targets && (!vars || vars === "all")) {
+        this._lazy = this._pt = 0;
+        this.parent ? _interrupt(this) : this.scrollTrigger && this.scrollTrigger.kill(!!_reverting);
+        return this;
+      }
+      if (this.timeline) {
+        var tDur = this.timeline.totalDuration();
+        this.timeline.killTweensOf(targets, vars, _overwritingTween && _overwritingTween.vars.overwrite !== true)._first || _interrupt(this);
+        this.parent && tDur !== this.timeline.totalDuration() && _setDuration(this, this._dur * this.timeline._tDur / tDur, 0, 1);
+        return this;
+      }
+      var parsedTargets = this._targets, killingTargets = targets ? toArray(targets) : parsedTargets, propTweenLookup = this._ptLookup, firstPT = this._pt, overwrittenProps, curLookup, curOverwriteProps, props, p, pt, i;
+      if ((!vars || vars === "all") && _arraysMatch(parsedTargets, killingTargets)) {
+        vars === "all" && (this._pt = 0);
+        return _interrupt(this);
+      }
+      overwrittenProps = this._op = this._op || [];
+      if (vars !== "all") {
+        if (_isString(vars)) {
+          p = {};
+          _forEachName(vars, function(name) {
+            return p[name] = 1;
+          });
+          vars = p;
+        }
+        vars = _addAliasesToVars(parsedTargets, vars);
+      }
+      i = parsedTargets.length;
+      while (i--) {
+        if (~killingTargets.indexOf(parsedTargets[i])) {
+          curLookup = propTweenLookup[i];
+          if (vars === "all") {
+            overwrittenProps[i] = vars;
+            props = curLookup;
+            curOverwriteProps = {};
+          } else {
+            curOverwriteProps = overwrittenProps[i] = overwrittenProps[i] || {};
+            props = vars;
+          }
+          for (p in props) {
+            pt = curLookup && curLookup[p];
+            if (pt) {
+              if (!("kill" in pt.d) || pt.d.kill(p) === true) {
+                _removeLinkedListItem(this, pt, "_pt");
+              }
+              delete curLookup[p];
+            }
+            if (curOverwriteProps !== "all") {
+              curOverwriteProps[p] = 1;
+            }
+          }
+        }
+      }
+      this._initted && !this._pt && firstPT && _interrupt(this);
+      return this;
+    };
+    Tween2.to = function to(targets, vars) {
+      return new Tween2(targets, vars, arguments[2]);
+    };
+    Tween2.from = function from(targets, vars) {
+      return _createTweenType(1, arguments);
+    };
+    Tween2.delayedCall = function delayedCall(delay, callback, params, scope) {
+      return new Tween2(callback, 0, {
+        immediateRender: false,
+        lazy: false,
+        overwrite: false,
+        delay,
+        onComplete: callback,
+        onReverseComplete: callback,
+        onCompleteParams: params,
+        onReverseCompleteParams: params,
+        callbackScope: scope
+      });
+    };
+    Tween2.fromTo = function fromTo(targets, fromVars, toVars) {
+      return _createTweenType(2, arguments);
+    };
+    Tween2.set = function set(targets, vars) {
+      vars.duration = 0;
+      vars.repeatDelay || (vars.repeat = 0);
+      return new Tween2(targets, vars);
+    };
+    Tween2.killTweensOf = function killTweensOf(targets, props, onlyActive) {
+      return _globalTimeline.killTweensOf(targets, props, onlyActive);
+    };
+    return Tween2;
+  })(Animation);
+  _setDefaults(Tween.prototype, {
+    _targets: [],
+    _lazy: 0,
+    _startAt: 0,
+    _op: 0,
+    _onInit: 0
+  });
+  _forEachName("staggerTo,staggerFrom,staggerFromTo", function(name) {
+    Tween[name] = function() {
+      var tl = new Timeline(), params = _slice.call(arguments, 0);
+      params.splice(name === "staggerFromTo" ? 5 : 4, 0, 0);
+      return tl[name].apply(tl, params);
+    };
+  });
+  var _setterPlain = function _setterPlain2(target, property, value) {
+    return target[property] = value;
+  };
+  var _setterFunc = function _setterFunc2(target, property, value) {
+    return target[property](value);
+  };
+  var _setterFuncWithParam = function _setterFuncWithParam2(target, property, value, data) {
+    return target[property](data.fp, value);
+  };
+  var _setterAttribute = function _setterAttribute2(target, property, value) {
+    return target.setAttribute(property, value);
+  };
+  var _getSetter = function _getSetter2(target, property) {
+    return _isFunction(target[property]) ? _setterFunc : _isUndefined(target[property]) && target.setAttribute ? _setterAttribute : _setterPlain;
+  };
+  var _renderPlain = function _renderPlain2(ratio, data) {
+    return data.set(data.t, data.p, Math.round((data.s + data.c * ratio) * 1e6) / 1e6, data);
+  };
+  var _renderBoolean = function _renderBoolean2(ratio, data) {
+    return data.set(data.t, data.p, !!(data.s + data.c * ratio), data);
+  };
+  var _renderComplexString = function _renderComplexString2(ratio, data) {
+    var pt = data._pt, s = "";
+    if (!ratio && data.b) {
+      s = data.b;
+    } else if (ratio === 1 && data.e) {
+      s = data.e;
+    } else {
+      while (pt) {
+        s = pt.p + (pt.m ? pt.m(pt.s + pt.c * ratio) : Math.round((pt.s + pt.c * ratio) * 1e4) / 1e4) + s;
+        pt = pt._next;
+      }
+      s += data.c;
+    }
+    data.set(data.t, data.p, s, data);
+  };
+  var _renderPropTweens = function _renderPropTweens2(ratio, data) {
+    var pt = data._pt;
+    while (pt) {
+      pt.r(ratio, pt.d);
+      pt = pt._next;
+    }
+  };
+  var _addPluginModifier = function _addPluginModifier2(modifier, tween, target, property) {
+    var pt = this._pt, next;
+    while (pt) {
+      next = pt._next;
+      pt.p === property && pt.modifier(modifier, tween, target);
+      pt = next;
+    }
+  };
+  var _killPropTweensOf = function _killPropTweensOf2(property) {
+    var pt = this._pt, hasNonDependentRemaining, next;
+    while (pt) {
+      next = pt._next;
+      if (pt.p === property && !pt.op || pt.op === property) {
+        _removeLinkedListItem(this, pt, "_pt");
+      } else if (!pt.dep) {
+        hasNonDependentRemaining = 1;
+      }
+      pt = next;
+    }
+    return !hasNonDependentRemaining;
+  };
+  var _setterWithModifier = function _setterWithModifier2(target, property, value, data) {
+    data.mSet(target, property, data.m.call(data.tween, value, data.mt), data);
+  };
+  var _sortPropTweensByPriority = function _sortPropTweensByPriority2(parent) {
+    var pt = parent._pt, next, pt2, first, last;
+    while (pt) {
+      next = pt._next;
+      pt2 = first;
+      while (pt2 && pt2.pr > pt.pr) {
+        pt2 = pt2._next;
+      }
+      if (pt._prev = pt2 ? pt2._prev : last) {
+        pt._prev._next = pt;
+      } else {
+        first = pt;
+      }
+      if (pt._next = pt2) {
+        pt2._prev = pt;
+      } else {
+        last = pt;
+      }
+      pt = next;
+    }
+    parent._pt = first;
+  };
+  var PropTween = /* @__PURE__ */ (function() {
+    function PropTween2(next, target, prop, start, change, renderer, data, setter, priority) {
+      this.t = target;
+      this.s = start;
+      this.c = change;
+      this.p = prop;
+      this.r = renderer || _renderPlain;
+      this.d = data || this;
+      this.set = setter || _setterPlain;
+      this.pr = priority || 0;
+      this._next = next;
+      if (next) {
+        next._prev = this;
+      }
+    }
+    var _proto4 = PropTween2.prototype;
+    _proto4.modifier = function modifier(func, tween, target) {
+      this.mSet = this.mSet || this.set;
+      this.set = _setterWithModifier;
+      this.m = func;
+      this.mt = target;
+      this.tween = tween;
+    };
+    return PropTween2;
+  })();
+  _forEachName(_callbackNames + "parent,duration,ease,delay,overwrite,runBackwards,startAt,yoyo,immediateRender,repeat,repeatDelay,data,paused,reversed,lazy,callbackScope,stringFilter,id,yoyoEase,stagger,inherit,repeatRefresh,keyframes,autoRevert,scrollTrigger", function(name) {
+    return _reservedProps[name] = 1;
+  });
+  _globals.TweenMax = _globals.TweenLite = Tween;
+  _globals.TimelineLite = _globals.TimelineMax = Timeline;
+  _globalTimeline = new Timeline({
+    sortChildren: false,
+    defaults: _defaults,
+    autoRemoveChildren: true,
+    id: "root",
+    smoothChildTiming: true
+  });
+  _config.stringFilter = _colorStringFilter;
+  var _media = [];
+  var _listeners = {};
+  var _emptyArray = [];
+  var _lastMediaTime = 0;
+  var _contextID = 0;
+  var _dispatch = function _dispatch2(type) {
+    return (_listeners[type] || _emptyArray).map(function(f) {
+      return f();
+    });
+  };
+  var _onMediaChange = function _onMediaChange2() {
+    var time = Date.now(), matches = [];
+    if (time - _lastMediaTime > 2) {
+      _dispatch("matchMediaInit");
+      _media.forEach(function(c) {
+        var queries = c.queries, conditions = c.conditions, match, p, anyMatch, toggled;
+        for (p in queries) {
+          match = _win.matchMedia(queries[p]).matches;
+          match && (anyMatch = 1);
+          if (match !== conditions[p]) {
+            conditions[p] = match;
+            toggled = 1;
+          }
+        }
+        if (toggled) {
+          c.revert();
+          anyMatch && matches.push(c);
+        }
+      });
+      _dispatch("matchMediaRevert");
+      matches.forEach(function(c) {
+        return c.onMatch(c, function(func) {
+          return c.add(null, func);
+        });
+      });
+      _lastMediaTime = time;
+      _dispatch("matchMedia");
+    }
+  };
+  var Context = /* @__PURE__ */ (function() {
+    function Context2(func, scope) {
+      this.selector = scope && selector(scope);
+      this.data = [];
+      this._r = [];
+      this.isReverted = false;
+      this.id = _contextID++;
+      func && this.add(func);
+    }
+    var _proto5 = Context2.prototype;
+    _proto5.add = function add(name, func, scope) {
+      if (_isFunction(name)) {
+        scope = func;
+        func = name;
+        name = _isFunction;
+      }
+      var self = this, f = function f2() {
+        var prev = _context, prevSelector = self.selector, result;
+        prev && prev !== self && prev.data.push(self);
+        scope && (self.selector = selector(scope));
+        _context = self;
+        result = func.apply(self, arguments);
+        _isFunction(result) && self._r.push(result);
+        _context = prev;
+        self.selector = prevSelector;
+        self.isReverted = false;
+        return result;
+      };
+      self.last = f;
+      return name === _isFunction ? f(self, function(func2) {
+        return self.add(null, func2);
+      }) : name ? self[name] = f : f;
+    };
+    _proto5.ignore = function ignore(func) {
+      var prev = _context;
+      _context = null;
+      func(this);
+      _context = prev;
+    };
+    _proto5.getTweens = function getTweens() {
+      var a = [];
+      this.data.forEach(function(e) {
+        return e instanceof Context2 ? a.push.apply(a, e.getTweens()) : e instanceof Tween && !(e.parent && e.parent.data === "nested") && a.push(e);
+      });
+      return a;
+    };
+    _proto5.clear = function clear() {
+      this._r.length = this.data.length = 0;
+    };
+    _proto5.kill = function kill(revert, matchMedia3) {
+      var _this4 = this;
+      if (revert) {
+        (function() {
+          var tweens = _this4.getTweens(), i2 = _this4.data.length, t;
+          while (i2--) {
+            t = _this4.data[i2];
+            if (t.data === "isFlip") {
+              t.revert();
+              t.getChildren(true, true, false).forEach(function(tween) {
+                return tweens.splice(tweens.indexOf(tween), 1);
+              });
+            }
+          }
+          tweens.map(function(t2) {
+            return {
+              g: t2._dur || t2._delay || t2._sat && !t2._sat.vars.immediateRender ? t2.globalTime(0) : -Infinity,
+              t: t2
+            };
+          }).sort(function(a, b) {
+            return b.g - a.g || -Infinity;
+          }).forEach(function(o) {
+            return o.t.revert(revert);
+          });
+          i2 = _this4.data.length;
+          while (i2--) {
+            t = _this4.data[i2];
+            if (t instanceof Timeline) {
+              if (t.data !== "nested") {
+                t.scrollTrigger && t.scrollTrigger.revert();
+                t.kill();
+              }
+            } else {
+              !(t instanceof Tween) && t.revert && t.revert(revert);
+            }
+          }
+          _this4._r.forEach(function(f) {
+            return f(revert, _this4);
+          });
+          _this4.isReverted = true;
+        })();
+      } else {
+        this.data.forEach(function(e) {
+          return e.kill && e.kill();
+        });
+      }
+      this.clear();
+      if (matchMedia3) {
+        var i = _media.length;
+        while (i--) {
+          _media[i].id === this.id && _media.splice(i, 1);
+        }
+      }
+    };
+    _proto5.revert = function revert(config3) {
+      this.kill(config3 || {});
+    };
+    return Context2;
+  })();
+  var MatchMedia = /* @__PURE__ */ (function() {
+    function MatchMedia2(scope) {
+      this.contexts = [];
+      this.scope = scope;
+      _context && _context.data.push(this);
+    }
+    var _proto6 = MatchMedia2.prototype;
+    _proto6.add = function add(conditions, func, scope) {
+      _isObject(conditions) || (conditions = {
+        matches: conditions
+      });
+      var context3 = new Context(0, scope || this.scope), cond = context3.conditions = {}, mq, p, active;
+      _context && !context3.selector && (context3.selector = _context.selector);
+      this.contexts.push(context3);
+      func = context3.add("onMatch", func);
+      context3.queries = conditions;
+      for (p in conditions) {
+        if (p === "all") {
+          active = 1;
+        } else {
+          mq = _win.matchMedia(conditions[p]);
+          if (mq) {
+            _media.indexOf(context3) < 0 && _media.push(context3);
+            (cond[p] = mq.matches) && (active = 1);
+            mq.addListener ? mq.addListener(_onMediaChange) : mq.addEventListener("change", _onMediaChange);
+          }
+        }
+      }
+      active && func(context3, function(f) {
+        return context3.add(null, f);
+      });
+      return this;
+    };
+    _proto6.revert = function revert(config3) {
+      this.kill(config3 || {});
+    };
+    _proto6.kill = function kill(revert) {
+      this.contexts.forEach(function(c) {
+        return c.kill(revert, true);
+      });
+    };
+    return MatchMedia2;
+  })();
+  var _gsap = {
+    registerPlugin: function registerPlugin() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+      args.forEach(function(config3) {
+        return _createPlugin(config3);
+      });
+    },
+    timeline: function timeline(vars) {
+      return new Timeline(vars);
+    },
+    getTweensOf: function getTweensOf(targets, onlyActive) {
+      return _globalTimeline.getTweensOf(targets, onlyActive);
+    },
+    getProperty: function getProperty(target, property, unit, uncache) {
+      _isString(target) && (target = toArray(target)[0]);
+      var getter = _getCache(target || {}).get, format = unit ? _passThrough : _numericIfPossible;
+      unit === "native" && (unit = "");
+      return !target ? target : !property ? function(property2, unit2, uncache2) {
+        return format((_plugins[property2] && _plugins[property2].get || getter)(target, property2, unit2, uncache2));
+      } : format((_plugins[property] && _plugins[property].get || getter)(target, property, unit, uncache));
+    },
+    quickSetter: function quickSetter(target, property, unit) {
+      target = toArray(target);
+      if (target.length > 1) {
+        var setters = target.map(function(t) {
+          return gsap.quickSetter(t, property, unit);
+        }), l = setters.length;
+        return function(value) {
+          var i = l;
+          while (i--) {
+            setters[i](value);
           }
         };
       }
-    };
-  }
-
-  // node_modules/@radix-ui/react-slot/dist/index.mjs
-  var import_jsx_runtime = __toESM(require_jsx_runtime(), 1);
-  var REACT_LAZY_TYPE = /* @__PURE__ */ Symbol.for("react.lazy");
-  var use = React2[" use ".trim().toString()];
-  function isPromiseLike(value) {
-    return typeof value === "object" && value !== null && "then" in value;
-  }
-  function isLazyComponent(element) {
-    return element != null && typeof element === "object" && "$$typeof" in element && element.$$typeof === REACT_LAZY_TYPE && "_payload" in element && isPromiseLike(element._payload);
-  }
-  // @__NO_SIDE_EFFECTS__
-  function createSlot(ownerName) {
-    const SlotClone = /* @__PURE__ */ createSlotClone(ownerName);
-    const Slot2 = React2.forwardRef((props, forwardedRef) => {
-      let { children, ...slotProps } = props;
-      if (isLazyComponent(children) && typeof use === "function") {
-        children = use(children._payload);
-      }
-      const childrenArray = React2.Children.toArray(children);
-      const slottable = childrenArray.find(isSlottable);
-      if (slottable) {
-        const newElement = slottable.props.children;
-        const newChildren = childrenArray.map((child) => {
-          if (child === slottable) {
-            if (React2.Children.count(newElement) > 1) return React2.Children.only(null);
-            return React2.isValidElement(newElement) ? newElement.props.children : null;
-          } else {
-            return child;
-          }
-        });
-        return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children: React2.isValidElement(newElement) ? React2.cloneElement(newElement, void 0, newChildren) : null });
-      }
-      return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children });
-    });
-    Slot2.displayName = `${ownerName}.Slot`;
-    return Slot2;
-  }
-  var Slot = /* @__PURE__ */ createSlot("Slot");
-  // @__NO_SIDE_EFFECTS__
-  function createSlotClone(ownerName) {
-    const SlotClone = React2.forwardRef((props, forwardedRef) => {
-      let { children, ...slotProps } = props;
-      if (isLazyComponent(children) && typeof use === "function") {
-        children = use(children._payload);
-      }
-      if (React2.isValidElement(children)) {
-        const childrenRef = getElementRef(children);
-        const props2 = mergeProps(slotProps, children.props);
-        if (children.type !== React2.Fragment) {
-          props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-        }
-        return React2.cloneElement(children, props2);
-      }
-      return React2.Children.count(children) > 1 ? React2.Children.only(null) : null;
-    });
-    SlotClone.displayName = `${ownerName}.SlotClone`;
-    return SlotClone;
-  }
-  var SLOTTABLE_IDENTIFIER = /* @__PURE__ */ Symbol("radix.slottable");
-  function isSlottable(child) {
-    return React2.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER;
-  }
-  function mergeProps(slotProps, childProps) {
-    const overrideProps = { ...childProps };
-    for (const propName in childProps) {
-      const slotPropValue = slotProps[propName];
-      const childPropValue = childProps[propName];
-      const isHandler = /^on[A-Z]/.test(propName);
-      if (isHandler) {
-        if (slotPropValue && childPropValue) {
-          overrideProps[propName] = (...args) => {
-            const result = childPropValue(...args);
-            slotPropValue(...args);
-            return result;
-          };
-        } else if (slotPropValue) {
-          overrideProps[propName] = slotPropValue;
-        }
-      } else if (propName === "style") {
-        overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-      } else if (propName === "className") {
-        overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-      }
-    }
-    return { ...slotProps, ...overrideProps };
-  }
-  function getElementRef(element) {
-    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.ref;
-    }
-    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.props.ref;
-    }
-    return element.props.ref || element.ref;
-  }
-
-  // node_modules/clsx/dist/clsx.mjs
-  function r(e) {
-    var t, f, n = "";
-    if ("string" == typeof e || "number" == typeof e) n += e;
-    else if ("object" == typeof e) if (Array.isArray(e)) {
-      var o = e.length;
-      for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-    } else for (f in e) e[f] && (n && (n += " "), n += f);
-    return n;
-  }
-  function clsx() {
-    for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
-    return n;
-  }
-
-  // node_modules/class-variance-authority/dist/index.mjs
-  var falsyToString = (value) => typeof value === "boolean" ? `${value}` : value === 0 ? "0" : value;
-  var cx = clsx;
-  var cva = (base, config) => (props) => {
-    var _config_compoundVariants;
-    if ((config === null || config === void 0 ? void 0 : config.variants) == null) return cx(base, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-    const { variants, defaultVariants } = config;
-    const getVariantClassNames = Object.keys(variants).map((variant) => {
-      const variantProp = props === null || props === void 0 ? void 0 : props[variant];
-      const defaultVariantProp = defaultVariants === null || defaultVariants === void 0 ? void 0 : defaultVariants[variant];
-      if (variantProp === null) return null;
-      const variantKey = falsyToString(variantProp) || falsyToString(defaultVariantProp);
-      return variants[variant][variantKey];
-    });
-    const propsWithoutUndefined = props && Object.entries(props).reduce((acc, param) => {
-      let [key, value] = param;
-      if (value === void 0) {
-        return acc;
-      }
-      acc[key] = value;
-      return acc;
-    }, {});
-    const getCompoundVariantClassNames = config === null || config === void 0 ? void 0 : (_config_compoundVariants = config.compoundVariants) === null || _config_compoundVariants === void 0 ? void 0 : _config_compoundVariants.reduce((acc, param) => {
-      let { class: cvClass, className: cvClassName, ...compoundVariantOptions } = param;
-      return Object.entries(compoundVariantOptions).every((param2) => {
-        let [key, value] = param2;
-        return Array.isArray(value) ? value.includes({
-          ...defaultVariants,
-          ...propsWithoutUndefined
-        }[key]) : {
-          ...defaultVariants,
-          ...propsWithoutUndefined
-        }[key] === value;
-      }) ? [
-        ...acc,
-        cvClass,
-        cvClassName
-      ] : acc;
-    }, []);
-    return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-  };
-
-  // node_modules/tailwind-merge/dist/bundle-mjs.mjs
-  var concatArrays = (array1, array2) => {
-    const combinedArray = new Array(array1.length + array2.length);
-    for (let i = 0; i < array1.length; i++) {
-      combinedArray[i] = array1[i];
-    }
-    for (let i = 0; i < array2.length; i++) {
-      combinedArray[array1.length + i] = array2[i];
-    }
-    return combinedArray;
-  };
-  var createClassValidatorObject = (classGroupId, validator) => ({
-    classGroupId,
-    validator
-  });
-  var createClassPartObject = (nextPart = /* @__PURE__ */ new Map(), validators = null, classGroupId) => ({
-    nextPart,
-    validators,
-    classGroupId
-  });
-  var CLASS_PART_SEPARATOR = "-";
-  var EMPTY_CONFLICTS = [];
-  var ARBITRARY_PROPERTY_PREFIX = "arbitrary..";
-  var createClassGroupUtils = (config) => {
-    const classMap = createClassMap(config);
-    const {
-      conflictingClassGroups,
-      conflictingClassGroupModifiers
-    } = config;
-    const getClassGroupId = (className) => {
-      if (className.startsWith("[") && className.endsWith("]")) {
-        return getGroupIdForArbitraryProperty(className);
-      }
-      const classParts = className.split(CLASS_PART_SEPARATOR);
-      const startIndex = classParts[0] === "" && classParts.length > 1 ? 1 : 0;
-      return getGroupRecursive(classParts, startIndex, classMap);
-    };
-    const getConflictingClassGroupIds = (classGroupId, hasPostfixModifier) => {
-      if (hasPostfixModifier) {
-        const modifierConflicts = conflictingClassGroupModifiers[classGroupId];
-        const baseConflicts = conflictingClassGroups[classGroupId];
-        if (modifierConflicts) {
-          if (baseConflicts) {
-            return concatArrays(baseConflicts, modifierConflicts);
-          }
-          return modifierConflicts;
-        }
-        return baseConflicts || EMPTY_CONFLICTS;
-      }
-      return conflictingClassGroups[classGroupId] || EMPTY_CONFLICTS;
-    };
-    return {
-      getClassGroupId,
-      getConflictingClassGroupIds
-    };
-  };
-  var getGroupRecursive = (classParts, startIndex, classPartObject) => {
-    const classPathsLength = classParts.length - startIndex;
-    if (classPathsLength === 0) {
-      return classPartObject.classGroupId;
-    }
-    const currentClassPart = classParts[startIndex];
-    const nextClassPartObject = classPartObject.nextPart.get(currentClassPart);
-    if (nextClassPartObject) {
-      const result = getGroupRecursive(classParts, startIndex + 1, nextClassPartObject);
-      if (result) return result;
-    }
-    const validators = classPartObject.validators;
-    if (validators === null) {
-      return void 0;
-    }
-    const classRest = startIndex === 0 ? classParts.join(CLASS_PART_SEPARATOR) : classParts.slice(startIndex).join(CLASS_PART_SEPARATOR);
-    const validatorsLength = validators.length;
-    for (let i = 0; i < validatorsLength; i++) {
-      const validatorObj = validators[i];
-      if (validatorObj.validator(classRest)) {
-        return validatorObj.classGroupId;
-      }
-    }
-    return void 0;
-  };
-  var getGroupIdForArbitraryProperty = (className) => className.slice(1, -1).indexOf(":") === -1 ? void 0 : (() => {
-    const content = className.slice(1, -1);
-    const colonIndex = content.indexOf(":");
-    const property = content.slice(0, colonIndex);
-    return property ? ARBITRARY_PROPERTY_PREFIX + property : void 0;
-  })();
-  var createClassMap = (config) => {
-    const {
-      theme,
-      classGroups
-    } = config;
-    return processClassGroups(classGroups, theme);
-  };
-  var processClassGroups = (classGroups, theme) => {
-    const classMap = createClassPartObject();
-    for (const classGroupId in classGroups) {
-      const group = classGroups[classGroupId];
-      processClassesRecursively(group, classMap, classGroupId, theme);
-    }
-    return classMap;
-  };
-  var processClassesRecursively = (classGroup, classPartObject, classGroupId, theme) => {
-    const len = classGroup.length;
-    for (let i = 0; i < len; i++) {
-      const classDefinition = classGroup[i];
-      processClassDefinition(classDefinition, classPartObject, classGroupId, theme);
-    }
-  };
-  var processClassDefinition = (classDefinition, classPartObject, classGroupId, theme) => {
-    if (typeof classDefinition === "string") {
-      processStringDefinition(classDefinition, classPartObject, classGroupId);
-      return;
-    }
-    if (typeof classDefinition === "function") {
-      processFunctionDefinition(classDefinition, classPartObject, classGroupId, theme);
-      return;
-    }
-    processObjectDefinition(classDefinition, classPartObject, classGroupId, theme);
-  };
-  var processStringDefinition = (classDefinition, classPartObject, classGroupId) => {
-    const classPartObjectToEdit = classDefinition === "" ? classPartObject : getPart(classPartObject, classDefinition);
-    classPartObjectToEdit.classGroupId = classGroupId;
-  };
-  var processFunctionDefinition = (classDefinition, classPartObject, classGroupId, theme) => {
-    if (isThemeGetter(classDefinition)) {
-      processClassesRecursively(classDefinition(theme), classPartObject, classGroupId, theme);
-      return;
-    }
-    if (classPartObject.validators === null) {
-      classPartObject.validators = [];
-    }
-    classPartObject.validators.push(createClassValidatorObject(classGroupId, classDefinition));
-  };
-  var processObjectDefinition = (classDefinition, classPartObject, classGroupId, theme) => {
-    const entries = Object.entries(classDefinition);
-    const len = entries.length;
-    for (let i = 0; i < len; i++) {
-      const [key, value] = entries[i];
-      processClassesRecursively(value, getPart(classPartObject, key), classGroupId, theme);
-    }
-  };
-  var getPart = (classPartObject, path) => {
-    let current = classPartObject;
-    const parts = path.split(CLASS_PART_SEPARATOR);
-    const len = parts.length;
-    for (let i = 0; i < len; i++) {
-      const part = parts[i];
-      let next = current.nextPart.get(part);
-      if (!next) {
-        next = createClassPartObject();
-        current.nextPart.set(part, next);
-      }
-      current = next;
-    }
-    return current;
-  };
-  var isThemeGetter = (func) => "isThemeGetter" in func && func.isThemeGetter === true;
-  var createLruCache = (maxCacheSize) => {
-    if (maxCacheSize < 1) {
-      return {
-        get: () => void 0,
-        set: () => {
-        }
+      target = target[0] || {};
+      var Plugin = _plugins[property], cache = _getCache(target), p = cache.harness && (cache.harness.aliases || {})[property] || property, setter = Plugin ? function(value) {
+        var p2 = new Plugin();
+        _quickTween._pt = 0;
+        p2.init(target, unit ? value + unit : value, _quickTween, 0, [target]);
+        p2.render(1, p2);
+        _quickTween._pt && _renderPropTweens(1, _quickTween);
+      } : cache.set(target, p);
+      return Plugin ? setter : function(value) {
+        return setter(target, p, unit ? value + unit : value, cache, 1);
       };
-    }
-    let cacheSize = 0;
-    let cache = /* @__PURE__ */ Object.create(null);
-    let previousCache = /* @__PURE__ */ Object.create(null);
-    const update = (key, value) => {
-      cache[key] = value;
-      cacheSize++;
-      if (cacheSize > maxCacheSize) {
-        cacheSize = 0;
-        previousCache = cache;
-        cache = /* @__PURE__ */ Object.create(null);
-      }
-    };
-    return {
-      get(key) {
-        let value = cache[key];
-        if (value !== void 0) {
-          return value;
-        }
-        if ((value = previousCache[key]) !== void 0) {
-          update(key, value);
-          return value;
-        }
-      },
-      set(key, value) {
-        if (key in cache) {
-          cache[key] = value;
-        } else {
-          update(key, value);
-        }
-      }
-    };
-  };
-  var IMPORTANT_MODIFIER = "!";
-  var MODIFIER_SEPARATOR = ":";
-  var EMPTY_MODIFIERS = [];
-  var createResultObject = (modifiers, hasImportantModifier, baseClassName, maybePostfixModifierPosition, isExternal) => ({
-    modifiers,
-    hasImportantModifier,
-    baseClassName,
-    maybePostfixModifierPosition,
-    isExternal
-  });
-  var createParseClassName = (config) => {
-    const {
-      prefix,
-      experimentalParseClassName
-    } = config;
-    let parseClassName = (className) => {
-      const modifiers = [];
-      let bracketDepth = 0;
-      let parenDepth = 0;
-      let modifierStart = 0;
-      let postfixModifierPosition;
-      const len = className.length;
-      for (let index = 0; index < len; index++) {
-        const currentCharacter = className[index];
-        if (bracketDepth === 0 && parenDepth === 0) {
-          if (currentCharacter === MODIFIER_SEPARATOR) {
-            modifiers.push(className.slice(modifierStart, index));
-            modifierStart = index + 1;
-            continue;
-          }
-          if (currentCharacter === "/") {
-            postfixModifierPosition = index;
-            continue;
-          }
-        }
-        if (currentCharacter === "[") bracketDepth++;
-        else if (currentCharacter === "]") bracketDepth--;
-        else if (currentCharacter === "(") parenDepth++;
-        else if (currentCharacter === ")") parenDepth--;
-      }
-      const baseClassNameWithImportantModifier = modifiers.length === 0 ? className : className.slice(modifierStart);
-      let baseClassName = baseClassNameWithImportantModifier;
-      let hasImportantModifier = false;
-      if (baseClassNameWithImportantModifier.endsWith(IMPORTANT_MODIFIER)) {
-        baseClassName = baseClassNameWithImportantModifier.slice(0, -1);
-        hasImportantModifier = true;
-      } else if (
-        /**
-         * In Tailwind CSS v3 the important modifier was at the start of the base class name. This is still supported for legacy reasons.
-         * @see https://github.com/dcastil/tailwind-merge/issues/513#issuecomment-2614029864
-         */
-        baseClassNameWithImportantModifier.startsWith(IMPORTANT_MODIFIER)
-      ) {
-        baseClassName = baseClassNameWithImportantModifier.slice(1);
-        hasImportantModifier = true;
-      }
-      const maybePostfixModifierPosition = postfixModifierPosition && postfixModifierPosition > modifierStart ? postfixModifierPosition - modifierStart : void 0;
-      return createResultObject(modifiers, hasImportantModifier, baseClassName, maybePostfixModifierPosition);
-    };
-    if (prefix) {
-      const fullPrefix = prefix + MODIFIER_SEPARATOR;
-      const parseClassNameOriginal = parseClassName;
-      parseClassName = (className) => className.startsWith(fullPrefix) ? parseClassNameOriginal(className.slice(fullPrefix.length)) : createResultObject(EMPTY_MODIFIERS, false, className, void 0, true);
-    }
-    if (experimentalParseClassName) {
-      const parseClassNameOriginal = parseClassName;
-      parseClassName = (className) => experimentalParseClassName({
-        className,
-        parseClassName: parseClassNameOriginal
+    },
+    quickTo: function quickTo(target, property, vars) {
+      var _setDefaults22;
+      var tween = gsap.to(target, _setDefaults((_setDefaults22 = {}, _setDefaults22[property] = "+=0.1", _setDefaults22.paused = true, _setDefaults22.stagger = 0, _setDefaults22), vars || {})), func = function func2(value, start, startIsRelative) {
+        return tween.resetTo(property, value, start, startIsRelative);
+      };
+      func.tween = tween;
+      return func;
+    },
+    isTweening: function isTweening(targets) {
+      return _globalTimeline.getTweensOf(targets, true).length > 0;
+    },
+    defaults: function defaults(value) {
+      value && value.ease && (value.ease = _parseEase(value.ease, _defaults.ease));
+      return _mergeDeep(_defaults, value || {});
+    },
+    config: function config2(value) {
+      return _mergeDeep(_config, value || {});
+    },
+    registerEffect: function registerEffect(_ref3) {
+      var name = _ref3.name, effect = _ref3.effect, plugins = _ref3.plugins, defaults2 = _ref3.defaults, extendTimeline = _ref3.extendTimeline;
+      (plugins || "").split(",").forEach(function(pluginName) {
+        return pluginName && !_plugins[pluginName] && !_globals[pluginName] && _warn(name + " effect requires " + pluginName + " plugin.");
       });
-    }
-    return parseClassName;
-  };
-  var createSortModifiers = (config) => {
-    const modifierWeights = /* @__PURE__ */ new Map();
-    config.orderSensitiveModifiers.forEach((mod, index) => {
-      modifierWeights.set(mod, 1e6 + index);
-    });
-    return (modifiers) => {
-      const result = [];
-      let currentSegment = [];
-      for (let i = 0; i < modifiers.length; i++) {
-        const modifier = modifiers[i];
-        const isArbitrary = modifier[0] === "[";
-        const isOrderSensitive = modifierWeights.has(modifier);
-        if (isArbitrary || isOrderSensitive) {
-          if (currentSegment.length > 0) {
-            currentSegment.sort();
-            result.push(...currentSegment);
-            currentSegment = [];
-          }
-          result.push(modifier);
-        } else {
-          currentSegment.push(modifier);
-        }
-      }
-      if (currentSegment.length > 0) {
-        currentSegment.sort();
-        result.push(...currentSegment);
-      }
-      return result;
-    };
-  };
-  var createConfigUtils = (config) => ({
-    cache: createLruCache(config.cacheSize),
-    parseClassName: createParseClassName(config),
-    sortModifiers: createSortModifiers(config),
-    ...createClassGroupUtils(config)
-  });
-  var SPLIT_CLASSES_REGEX = /\s+/;
-  var mergeClassList = (classList, configUtils) => {
-    const {
-      parseClassName,
-      getClassGroupId,
-      getConflictingClassGroupIds,
-      sortModifiers
-    } = configUtils;
-    const classGroupsInConflict = [];
-    const classNames = classList.trim().split(SPLIT_CLASSES_REGEX);
-    let result = "";
-    for (let index = classNames.length - 1; index >= 0; index -= 1) {
-      const originalClassName = classNames[index];
-      const {
-        isExternal,
-        modifiers,
-        hasImportantModifier,
-        baseClassName,
-        maybePostfixModifierPosition
-      } = parseClassName(originalClassName);
-      if (isExternal) {
-        result = originalClassName + (result.length > 0 ? " " + result : result);
-        continue;
-      }
-      let hasPostfixModifier = !!maybePostfixModifierPosition;
-      let classGroupId = getClassGroupId(hasPostfixModifier ? baseClassName.substring(0, maybePostfixModifierPosition) : baseClassName);
-      if (!classGroupId) {
-        if (!hasPostfixModifier) {
-          result = originalClassName + (result.length > 0 ? " " + result : result);
-          continue;
-        }
-        classGroupId = getClassGroupId(baseClassName);
-        if (!classGroupId) {
-          result = originalClassName + (result.length > 0 ? " " + result : result);
-          continue;
-        }
-        hasPostfixModifier = false;
-      }
-      const variantModifier = modifiers.length === 0 ? "" : modifiers.length === 1 ? modifiers[0] : sortModifiers(modifiers).join(":");
-      const modifierId = hasImportantModifier ? variantModifier + IMPORTANT_MODIFIER : variantModifier;
-      const classId = modifierId + classGroupId;
-      if (classGroupsInConflict.indexOf(classId) > -1) {
-        continue;
-      }
-      classGroupsInConflict.push(classId);
-      const conflictGroups = getConflictingClassGroupIds(classGroupId, hasPostfixModifier);
-      for (let i = 0; i < conflictGroups.length; ++i) {
-        const group = conflictGroups[i];
-        classGroupsInConflict.push(modifierId + group);
-      }
-      result = originalClassName + (result.length > 0 ? " " + result : result);
-    }
-    return result;
-  };
-  var twJoin = (...classLists) => {
-    let index = 0;
-    let argument;
-    let resolvedValue;
-    let string = "";
-    while (index < classLists.length) {
-      if (argument = classLists[index++]) {
-        if (resolvedValue = toValue(argument)) {
-          string && (string += " ");
-          string += resolvedValue;
-        }
-      }
-    }
-    return string;
-  };
-  var toValue = (mix) => {
-    if (typeof mix === "string") {
-      return mix;
-    }
-    let resolvedValue;
-    let string = "";
-    for (let k = 0; k < mix.length; k++) {
-      if (mix[k]) {
-        if (resolvedValue = toValue(mix[k])) {
-          string && (string += " ");
-          string += resolvedValue;
-        }
-      }
-    }
-    return string;
-  };
-  var createTailwindMerge = (createConfigFirst, ...createConfigRest) => {
-    let configUtils;
-    let cacheGet;
-    let cacheSet;
-    let functionToCall;
-    const initTailwindMerge = (classList) => {
-      const config = createConfigRest.reduce((previousConfig, createConfigCurrent) => createConfigCurrent(previousConfig), createConfigFirst());
-      configUtils = createConfigUtils(config);
-      cacheGet = configUtils.cache.get;
-      cacheSet = configUtils.cache.set;
-      functionToCall = tailwindMerge;
-      return tailwindMerge(classList);
-    };
-    const tailwindMerge = (classList) => {
-      const cachedResult = cacheGet(classList);
-      if (cachedResult) {
-        return cachedResult;
-      }
-      const result = mergeClassList(classList, configUtils);
-      cacheSet(classList, result);
-      return result;
-    };
-    functionToCall = initTailwindMerge;
-    return (...args) => functionToCall(twJoin(...args));
-  };
-  var fallbackThemeArr = [];
-  var fromTheme = (key) => {
-    const themeGetter = (theme) => theme[key] || fallbackThemeArr;
-    themeGetter.isThemeGetter = true;
-    return themeGetter;
-  };
-  var arbitraryValueRegex = /^\[(?:(\w[\w-]*):)?(.+)\]$/i;
-  var arbitraryVariableRegex = /^\((?:(\w[\w-]*):)?(.+)\)$/i;
-  var fractionRegex = /^\d+(?:\.\d+)?\/\d+(?:\.\d+)?$/;
-  var tshirtUnitRegex = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/;
-  var lengthUnitRegex = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/;
-  var colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/;
-  var shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
-  var imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
-  var isFraction = (value) => fractionRegex.test(value);
-  var isNumber = (value) => !!value && !Number.isNaN(Number(value));
-  var isInteger = (value) => !!value && Number.isInteger(Number(value));
-  var isPercent = (value) => value.endsWith("%") && isNumber(value.slice(0, -1));
-  var isTshirtSize = (value) => tshirtUnitRegex.test(value);
-  var isAny = () => true;
-  var isLengthOnly = (value) => (
-    // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
-    // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
-    // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
-    lengthUnitRegex.test(value) && !colorFunctionRegex.test(value)
-  );
-  var isNever = () => false;
-  var isShadow = (value) => shadowRegex.test(value);
-  var isImage = (value) => imageRegex.test(value);
-  var isAnyNonArbitrary = (value) => !isArbitraryValue(value) && !isArbitraryVariable(value);
-  var isArbitrarySize = (value) => getIsArbitraryValue(value, isLabelSize, isNever);
-  var isArbitraryValue = (value) => arbitraryValueRegex.test(value);
-  var isArbitraryLength = (value) => getIsArbitraryValue(value, isLabelLength, isLengthOnly);
-  var isArbitraryNumber = (value) => getIsArbitraryValue(value, isLabelNumber, isNumber);
-  var isArbitraryWeight = (value) => getIsArbitraryValue(value, isLabelWeight, isAny);
-  var isArbitraryFamilyName = (value) => getIsArbitraryValue(value, isLabelFamilyName, isNever);
-  var isArbitraryPosition = (value) => getIsArbitraryValue(value, isLabelPosition, isNever);
-  var isArbitraryImage = (value) => getIsArbitraryValue(value, isLabelImage, isImage);
-  var isArbitraryShadow = (value) => getIsArbitraryValue(value, isLabelShadow, isShadow);
-  var isArbitraryVariable = (value) => arbitraryVariableRegex.test(value);
-  var isArbitraryVariableLength = (value) => getIsArbitraryVariable(value, isLabelLength);
-  var isArbitraryVariableFamilyName = (value) => getIsArbitraryVariable(value, isLabelFamilyName);
-  var isArbitraryVariablePosition = (value) => getIsArbitraryVariable(value, isLabelPosition);
-  var isArbitraryVariableSize = (value) => getIsArbitraryVariable(value, isLabelSize);
-  var isArbitraryVariableImage = (value) => getIsArbitraryVariable(value, isLabelImage);
-  var isArbitraryVariableShadow = (value) => getIsArbitraryVariable(value, isLabelShadow, true);
-  var isArbitraryVariableWeight = (value) => getIsArbitraryVariable(value, isLabelWeight, true);
-  var getIsArbitraryValue = (value, testLabel, testValue) => {
-    const result = arbitraryValueRegex.exec(value);
-    if (result) {
-      if (result[1]) {
-        return testLabel(result[1]);
-      }
-      return testValue(result[2]);
-    }
-    return false;
-  };
-  var getIsArbitraryVariable = (value, testLabel, shouldMatchNoLabel = false) => {
-    const result = arbitraryVariableRegex.exec(value);
-    if (result) {
-      if (result[1]) {
-        return testLabel(result[1]);
-      }
-      return shouldMatchNoLabel;
-    }
-    return false;
-  };
-  var isLabelPosition = (label) => label === "position" || label === "percentage";
-  var isLabelImage = (label) => label === "image" || label === "url";
-  var isLabelSize = (label) => label === "length" || label === "size" || label === "bg-size";
-  var isLabelLength = (label) => label === "length";
-  var isLabelNumber = (label) => label === "number";
-  var isLabelFamilyName = (label) => label === "family-name";
-  var isLabelWeight = (label) => label === "number" || label === "weight";
-  var isLabelShadow = (label) => label === "shadow";
-  var getDefaultConfig = () => {
-    const themeColor = fromTheme("color");
-    const themeFont = fromTheme("font");
-    const themeText = fromTheme("text");
-    const themeFontWeight = fromTheme("font-weight");
-    const themeTracking = fromTheme("tracking");
-    const themeLeading = fromTheme("leading");
-    const themeBreakpoint = fromTheme("breakpoint");
-    const themeContainer = fromTheme("container");
-    const themeSpacing = fromTheme("spacing");
-    const themeRadius = fromTheme("radius");
-    const themeShadow = fromTheme("shadow");
-    const themeInsetShadow = fromTheme("inset-shadow");
-    const themeTextShadow = fromTheme("text-shadow");
-    const themeDropShadow = fromTheme("drop-shadow");
-    const themeBlur = fromTheme("blur");
-    const themePerspective = fromTheme("perspective");
-    const themeAspect = fromTheme("aspect");
-    const themeEase = fromTheme("ease");
-    const themeAnimate = fromTheme("animate");
-    const scaleBreak = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-    const scalePosition = () => [
-      "center",
-      "top",
-      "bottom",
-      "left",
-      "right",
-      "top-left",
-      // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-      "left-top",
-      "top-right",
-      // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-      "right-top",
-      "bottom-right",
-      // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-      "right-bottom",
-      "bottom-left",
-      // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-      "left-bottom"
-    ];
-    const scalePositionWithArbitrary = () => [...scalePosition(), isArbitraryVariable, isArbitraryValue];
-    const scaleOverflow = () => ["auto", "hidden", "clip", "visible", "scroll"];
-    const scaleOverscroll = () => ["auto", "contain", "none"];
-    const scaleUnambiguousSpacing = () => [isArbitraryVariable, isArbitraryValue, themeSpacing];
-    const scaleInset = () => [isFraction, "full", "auto", ...scaleUnambiguousSpacing()];
-    const scaleGridTemplateColsRows = () => [isInteger, "none", "subgrid", isArbitraryVariable, isArbitraryValue];
-    const scaleGridColRowStartAndEnd = () => ["auto", {
-      span: ["full", isInteger, isArbitraryVariable, isArbitraryValue]
-    }, isInteger, isArbitraryVariable, isArbitraryValue];
-    const scaleGridColRowStartOrEnd = () => [isInteger, "auto", isArbitraryVariable, isArbitraryValue];
-    const scaleGridAutoColsRows = () => ["auto", "min", "max", "fr", isArbitraryVariable, isArbitraryValue];
-    const scaleAlignPrimaryAxis = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"];
-    const scaleAlignSecondaryAxis = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"];
-    const scaleMargin = () => ["auto", ...scaleUnambiguousSpacing()];
-    const scaleSizing = () => [isFraction, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...scaleUnambiguousSpacing()];
-    const scaleSizingInline = () => [isFraction, "screen", "full", "dvw", "lvw", "svw", "min", "max", "fit", ...scaleUnambiguousSpacing()];
-    const scaleSizingBlock = () => [isFraction, "screen", "full", "lh", "dvh", "lvh", "svh", "min", "max", "fit", ...scaleUnambiguousSpacing()];
-    const scaleColor = () => [themeColor, isArbitraryVariable, isArbitraryValue];
-    const scaleBgPosition = () => [...scalePosition(), isArbitraryVariablePosition, isArbitraryPosition, {
-      position: [isArbitraryVariable, isArbitraryValue]
-    }];
-    const scaleBgRepeat = () => ["no-repeat", {
-      repeat: ["", "x", "y", "space", "round"]
-    }];
-    const scaleBgSize = () => ["auto", "cover", "contain", isArbitraryVariableSize, isArbitrarySize, {
-      size: [isArbitraryVariable, isArbitraryValue]
-    }];
-    const scaleGradientStopPosition = () => [isPercent, isArbitraryVariableLength, isArbitraryLength];
-    const scaleRadius = () => [
-      // Deprecated since Tailwind CSS v4.0.0
-      "",
-      "none",
-      "full",
-      themeRadius,
-      isArbitraryVariable,
-      isArbitraryValue
-    ];
-    const scaleBorderWidth = () => ["", isNumber, isArbitraryVariableLength, isArbitraryLength];
-    const scaleLineStyle = () => ["solid", "dashed", "dotted", "double"];
-    const scaleBlendMode = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"];
-    const scaleMaskImagePosition = () => [isNumber, isPercent, isArbitraryVariablePosition, isArbitraryPosition];
-    const scaleBlur = () => [
-      // Deprecated since Tailwind CSS v4.0.0
-      "",
-      "none",
-      themeBlur,
-      isArbitraryVariable,
-      isArbitraryValue
-    ];
-    const scaleRotate = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-    const scaleScale = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-    const scaleSkew = () => [isNumber, isArbitraryVariable, isArbitraryValue];
-    const scaleTranslate = () => [isFraction, "full", ...scaleUnambiguousSpacing()];
-    return {
-      cacheSize: 500,
-      theme: {
-        animate: ["spin", "ping", "pulse", "bounce"],
-        aspect: ["video"],
-        blur: [isTshirtSize],
-        breakpoint: [isTshirtSize],
-        color: [isAny],
-        container: [isTshirtSize],
-        "drop-shadow": [isTshirtSize],
-        ease: ["in", "out", "in-out"],
-        font: [isAnyNonArbitrary],
-        "font-weight": ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"],
-        "inset-shadow": [isTshirtSize],
-        leading: ["none", "tight", "snug", "normal", "relaxed", "loose"],
-        perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
-        radius: [isTshirtSize],
-        shadow: [isTshirtSize],
-        spacing: ["px", isNumber],
-        text: [isTshirtSize],
-        "text-shadow": [isTshirtSize],
-        tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
-      },
-      classGroups: {
-        // --------------
-        // --- Layout ---
-        // --------------
-        /**
-         * Aspect Ratio
-         * @see https://tailwindcss.com/docs/aspect-ratio
-         */
-        aspect: [{
-          aspect: ["auto", "square", isFraction, isArbitraryValue, isArbitraryVariable, themeAspect]
-        }],
-        /**
-         * Container
-         * @see https://tailwindcss.com/docs/container
-         * @deprecated since Tailwind CSS v4.0.0
-         */
-        container: ["container"],
-        /**
-         * Columns
-         * @see https://tailwindcss.com/docs/columns
-         */
-        columns: [{
-          columns: [isNumber, isArbitraryValue, isArbitraryVariable, themeContainer]
-        }],
-        /**
-         * Break After
-         * @see https://tailwindcss.com/docs/break-after
-         */
-        "break-after": [{
-          "break-after": scaleBreak()
-        }],
-        /**
-         * Break Before
-         * @see https://tailwindcss.com/docs/break-before
-         */
-        "break-before": [{
-          "break-before": scaleBreak()
-        }],
-        /**
-         * Break Inside
-         * @see https://tailwindcss.com/docs/break-inside
-         */
-        "break-inside": [{
-          "break-inside": ["auto", "avoid", "avoid-page", "avoid-column"]
-        }],
-        /**
-         * Box Decoration Break
-         * @see https://tailwindcss.com/docs/box-decoration-break
-         */
-        "box-decoration": [{
-          "box-decoration": ["slice", "clone"]
-        }],
-        /**
-         * Box Sizing
-         * @see https://tailwindcss.com/docs/box-sizing
-         */
-        box: [{
-          box: ["border", "content"]
-        }],
-        /**
-         * Display
-         * @see https://tailwindcss.com/docs/display
-         */
-        display: ["block", "inline-block", "inline", "flex", "inline-flex", "table", "inline-table", "table-caption", "table-cell", "table-column", "table-column-group", "table-footer-group", "table-header-group", "table-row-group", "table-row", "flow-root", "grid", "inline-grid", "contents", "list-item", "hidden"],
-        /**
-         * Screen Reader Only
-         * @see https://tailwindcss.com/docs/display#screen-reader-only
-         */
-        sr: ["sr-only", "not-sr-only"],
-        /**
-         * Floats
-         * @see https://tailwindcss.com/docs/float
-         */
-        float: [{
-          float: ["right", "left", "none", "start", "end"]
-        }],
-        /**
-         * Clear
-         * @see https://tailwindcss.com/docs/clear
-         */
-        clear: [{
-          clear: ["left", "right", "both", "none", "start", "end"]
-        }],
-        /**
-         * Isolation
-         * @see https://tailwindcss.com/docs/isolation
-         */
-        isolation: ["isolate", "isolation-auto"],
-        /**
-         * Object Fit
-         * @see https://tailwindcss.com/docs/object-fit
-         */
-        "object-fit": [{
-          object: ["contain", "cover", "fill", "none", "scale-down"]
-        }],
-        /**
-         * Object Position
-         * @see https://tailwindcss.com/docs/object-position
-         */
-        "object-position": [{
-          object: scalePositionWithArbitrary()
-        }],
-        /**
-         * Overflow
-         * @see https://tailwindcss.com/docs/overflow
-         */
-        overflow: [{
-          overflow: scaleOverflow()
-        }],
-        /**
-         * Overflow X
-         * @see https://tailwindcss.com/docs/overflow
-         */
-        "overflow-x": [{
-          "overflow-x": scaleOverflow()
-        }],
-        /**
-         * Overflow Y
-         * @see https://tailwindcss.com/docs/overflow
-         */
-        "overflow-y": [{
-          "overflow-y": scaleOverflow()
-        }],
-        /**
-         * Overscroll Behavior
-         * @see https://tailwindcss.com/docs/overscroll-behavior
-         */
-        overscroll: [{
-          overscroll: scaleOverscroll()
-        }],
-        /**
-         * Overscroll Behavior X
-         * @see https://tailwindcss.com/docs/overscroll-behavior
-         */
-        "overscroll-x": [{
-          "overscroll-x": scaleOverscroll()
-        }],
-        /**
-         * Overscroll Behavior Y
-         * @see https://tailwindcss.com/docs/overscroll-behavior
-         */
-        "overscroll-y": [{
-          "overscroll-y": scaleOverscroll()
-        }],
-        /**
-         * Position
-         * @see https://tailwindcss.com/docs/position
-         */
-        position: ["static", "fixed", "absolute", "relative", "sticky"],
-        /**
-         * Inset
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        inset: [{
-          inset: scaleInset()
-        }],
-        /**
-         * Inset Inline
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        "inset-x": [{
-          "inset-x": scaleInset()
-        }],
-        /**
-         * Inset Block
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        "inset-y": [{
-          "inset-y": scaleInset()
-        }],
-        /**
-         * Inset Inline Start
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         * @todo class group will be renamed to `inset-s` in next major release
-         */
-        start: [{
-          "inset-s": scaleInset(),
-          /**
-           * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-s-*` utilities.
-           * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
-           */
-          start: scaleInset()
-        }],
-        /**
-         * Inset Inline End
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         * @todo class group will be renamed to `inset-e` in next major release
-         */
-        end: [{
-          "inset-e": scaleInset(),
-          /**
-           * @deprecated since Tailwind CSS v4.2.0 in favor of `inset-e-*` utilities.
-           * @see https://github.com/tailwindlabs/tailwindcss/pull/19613
-           */
-          end: scaleInset()
-        }],
-        /**
-         * Inset Block Start
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        "inset-bs": [{
-          "inset-bs": scaleInset()
-        }],
-        /**
-         * Inset Block End
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        "inset-be": [{
-          "inset-be": scaleInset()
-        }],
-        /**
-         * Top
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        top: [{
-          top: scaleInset()
-        }],
-        /**
-         * Right
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        right: [{
-          right: scaleInset()
-        }],
-        /**
-         * Bottom
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        bottom: [{
-          bottom: scaleInset()
-        }],
-        /**
-         * Left
-         * @see https://tailwindcss.com/docs/top-right-bottom-left
-         */
-        left: [{
-          left: scaleInset()
-        }],
-        /**
-         * Visibility
-         * @see https://tailwindcss.com/docs/visibility
-         */
-        visibility: ["visible", "invisible", "collapse"],
-        /**
-         * Z-Index
-         * @see https://tailwindcss.com/docs/z-index
-         */
-        z: [{
-          z: [isInteger, "auto", isArbitraryVariable, isArbitraryValue]
-        }],
-        // ------------------------
-        // --- Flexbox and Grid ---
-        // ------------------------
-        /**
-         * Flex Basis
-         * @see https://tailwindcss.com/docs/flex-basis
-         */
-        basis: [{
-          basis: [isFraction, "full", "auto", themeContainer, ...scaleUnambiguousSpacing()]
-        }],
-        /**
-         * Flex Direction
-         * @see https://tailwindcss.com/docs/flex-direction
-         */
-        "flex-direction": [{
-          flex: ["row", "row-reverse", "col", "col-reverse"]
-        }],
-        /**
-         * Flex Wrap
-         * @see https://tailwindcss.com/docs/flex-wrap
-         */
-        "flex-wrap": [{
-          flex: ["nowrap", "wrap", "wrap-reverse"]
-        }],
-        /**
-         * Flex
-         * @see https://tailwindcss.com/docs/flex
-         */
-        flex: [{
-          flex: [isNumber, isFraction, "auto", "initial", "none", isArbitraryValue]
-        }],
-        /**
-         * Flex Grow
-         * @see https://tailwindcss.com/docs/flex-grow
-         */
-        grow: [{
-          grow: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Flex Shrink
-         * @see https://tailwindcss.com/docs/flex-shrink
-         */
-        shrink: [{
-          shrink: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Order
-         * @see https://tailwindcss.com/docs/order
-         */
-        order: [{
-          order: [isInteger, "first", "last", "none", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Grid Template Columns
-         * @see https://tailwindcss.com/docs/grid-template-columns
-         */
-        "grid-cols": [{
-          "grid-cols": scaleGridTemplateColsRows()
-        }],
-        /**
-         * Grid Column Start / End
-         * @see https://tailwindcss.com/docs/grid-column
-         */
-        "col-start-end": [{
-          col: scaleGridColRowStartAndEnd()
-        }],
-        /**
-         * Grid Column Start
-         * @see https://tailwindcss.com/docs/grid-column
-         */
-        "col-start": [{
-          "col-start": scaleGridColRowStartOrEnd()
-        }],
-        /**
-         * Grid Column End
-         * @see https://tailwindcss.com/docs/grid-column
-         */
-        "col-end": [{
-          "col-end": scaleGridColRowStartOrEnd()
-        }],
-        /**
-         * Grid Template Rows
-         * @see https://tailwindcss.com/docs/grid-template-rows
-         */
-        "grid-rows": [{
-          "grid-rows": scaleGridTemplateColsRows()
-        }],
-        /**
-         * Grid Row Start / End
-         * @see https://tailwindcss.com/docs/grid-row
-         */
-        "row-start-end": [{
-          row: scaleGridColRowStartAndEnd()
-        }],
-        /**
-         * Grid Row Start
-         * @see https://tailwindcss.com/docs/grid-row
-         */
-        "row-start": [{
-          "row-start": scaleGridColRowStartOrEnd()
-        }],
-        /**
-         * Grid Row End
-         * @see https://tailwindcss.com/docs/grid-row
-         */
-        "row-end": [{
-          "row-end": scaleGridColRowStartOrEnd()
-        }],
-        /**
-         * Grid Auto Flow
-         * @see https://tailwindcss.com/docs/grid-auto-flow
-         */
-        "grid-flow": [{
-          "grid-flow": ["row", "col", "dense", "row-dense", "col-dense"]
-        }],
-        /**
-         * Grid Auto Columns
-         * @see https://tailwindcss.com/docs/grid-auto-columns
-         */
-        "auto-cols": [{
-          "auto-cols": scaleGridAutoColsRows()
-        }],
-        /**
-         * Grid Auto Rows
-         * @see https://tailwindcss.com/docs/grid-auto-rows
-         */
-        "auto-rows": [{
-          "auto-rows": scaleGridAutoColsRows()
-        }],
-        /**
-         * Gap
-         * @see https://tailwindcss.com/docs/gap
-         */
-        gap: [{
-          gap: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Gap X
-         * @see https://tailwindcss.com/docs/gap
-         */
-        "gap-x": [{
-          "gap-x": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Gap Y
-         * @see https://tailwindcss.com/docs/gap
-         */
-        "gap-y": [{
-          "gap-y": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Justify Content
-         * @see https://tailwindcss.com/docs/justify-content
-         */
-        "justify-content": [{
-          justify: [...scaleAlignPrimaryAxis(), "normal"]
-        }],
-        /**
-         * Justify Items
-         * @see https://tailwindcss.com/docs/justify-items
-         */
-        "justify-items": [{
-          "justify-items": [...scaleAlignSecondaryAxis(), "normal"]
-        }],
-        /**
-         * Justify Self
-         * @see https://tailwindcss.com/docs/justify-self
-         */
-        "justify-self": [{
-          "justify-self": ["auto", ...scaleAlignSecondaryAxis()]
-        }],
-        /**
-         * Align Content
-         * @see https://tailwindcss.com/docs/align-content
-         */
-        "align-content": [{
-          content: ["normal", ...scaleAlignPrimaryAxis()]
-        }],
-        /**
-         * Align Items
-         * @see https://tailwindcss.com/docs/align-items
-         */
-        "align-items": [{
-          items: [...scaleAlignSecondaryAxis(), {
-            baseline: ["", "last"]
-          }]
-        }],
-        /**
-         * Align Self
-         * @see https://tailwindcss.com/docs/align-self
-         */
-        "align-self": [{
-          self: ["auto", ...scaleAlignSecondaryAxis(), {
-            baseline: ["", "last"]
-          }]
-        }],
-        /**
-         * Place Content
-         * @see https://tailwindcss.com/docs/place-content
-         */
-        "place-content": [{
-          "place-content": scaleAlignPrimaryAxis()
-        }],
-        /**
-         * Place Items
-         * @see https://tailwindcss.com/docs/place-items
-         */
-        "place-items": [{
-          "place-items": [...scaleAlignSecondaryAxis(), "baseline"]
-        }],
-        /**
-         * Place Self
-         * @see https://tailwindcss.com/docs/place-self
-         */
-        "place-self": [{
-          "place-self": ["auto", ...scaleAlignSecondaryAxis()]
-        }],
-        // Spacing
-        /**
-         * Padding
-         * @see https://tailwindcss.com/docs/padding
-         */
-        p: [{
-          p: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Inline
-         * @see https://tailwindcss.com/docs/padding
-         */
-        px: [{
-          px: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Block
-         * @see https://tailwindcss.com/docs/padding
-         */
-        py: [{
-          py: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Inline Start
-         * @see https://tailwindcss.com/docs/padding
-         */
-        ps: [{
-          ps: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Inline End
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pe: [{
-          pe: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Block Start
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pbs: [{
-          pbs: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Block End
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pbe: [{
-          pbe: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Top
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pt: [{
-          pt: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Right
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pr: [{
-          pr: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Bottom
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pb: [{
-          pb: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Padding Left
-         * @see https://tailwindcss.com/docs/padding
-         */
-        pl: [{
-          pl: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Margin
-         * @see https://tailwindcss.com/docs/margin
-         */
-        m: [{
-          m: scaleMargin()
-        }],
-        /**
-         * Margin Inline
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mx: [{
-          mx: scaleMargin()
-        }],
-        /**
-         * Margin Block
-         * @see https://tailwindcss.com/docs/margin
-         */
-        my: [{
-          my: scaleMargin()
-        }],
-        /**
-         * Margin Inline Start
-         * @see https://tailwindcss.com/docs/margin
-         */
-        ms: [{
-          ms: scaleMargin()
-        }],
-        /**
-         * Margin Inline End
-         * @see https://tailwindcss.com/docs/margin
-         */
-        me: [{
-          me: scaleMargin()
-        }],
-        /**
-         * Margin Block Start
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mbs: [{
-          mbs: scaleMargin()
-        }],
-        /**
-         * Margin Block End
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mbe: [{
-          mbe: scaleMargin()
-        }],
-        /**
-         * Margin Top
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mt: [{
-          mt: scaleMargin()
-        }],
-        /**
-         * Margin Right
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mr: [{
-          mr: scaleMargin()
-        }],
-        /**
-         * Margin Bottom
-         * @see https://tailwindcss.com/docs/margin
-         */
-        mb: [{
-          mb: scaleMargin()
-        }],
-        /**
-         * Margin Left
-         * @see https://tailwindcss.com/docs/margin
-         */
-        ml: [{
-          ml: scaleMargin()
-        }],
-        /**
-         * Space Between X
-         * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-         */
-        "space-x": [{
-          "space-x": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Space Between X Reverse
-         * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-         */
-        "space-x-reverse": ["space-x-reverse"],
-        /**
-         * Space Between Y
-         * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-         */
-        "space-y": [{
-          "space-y": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Space Between Y Reverse
-         * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-         */
-        "space-y-reverse": ["space-y-reverse"],
-        // --------------
-        // --- Sizing ---
-        // --------------
-        /**
-         * Size
-         * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
-         */
-        size: [{
-          size: scaleSizing()
-        }],
-        /**
-         * Inline Size
-         * @see https://tailwindcss.com/docs/width
-         */
-        "inline-size": [{
-          inline: ["auto", ...scaleSizingInline()]
-        }],
-        /**
-         * Min-Inline Size
-         * @see https://tailwindcss.com/docs/min-width
-         */
-        "min-inline-size": [{
-          "min-inline": ["auto", ...scaleSizingInline()]
-        }],
-        /**
-         * Max-Inline Size
-         * @see https://tailwindcss.com/docs/max-width
-         */
-        "max-inline-size": [{
-          "max-inline": ["none", ...scaleSizingInline()]
-        }],
-        /**
-         * Block Size
-         * @see https://tailwindcss.com/docs/height
-         */
-        "block-size": [{
-          block: ["auto", ...scaleSizingBlock()]
-        }],
-        /**
-         * Min-Block Size
-         * @see https://tailwindcss.com/docs/min-height
-         */
-        "min-block-size": [{
-          "min-block": ["auto", ...scaleSizingBlock()]
-        }],
-        /**
-         * Max-Block Size
-         * @see https://tailwindcss.com/docs/max-height
-         */
-        "max-block-size": [{
-          "max-block": ["none", ...scaleSizingBlock()]
-        }],
-        /**
-         * Width
-         * @see https://tailwindcss.com/docs/width
-         */
-        w: [{
-          w: [themeContainer, "screen", ...scaleSizing()]
-        }],
-        /**
-         * Min-Width
-         * @see https://tailwindcss.com/docs/min-width
-         */
-        "min-w": [{
-          "min-w": [
-            themeContainer,
-            "screen",
-            /** Deprecated. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-            "none",
-            ...scaleSizing()
-          ]
-        }],
-        /**
-         * Max-Width
-         * @see https://tailwindcss.com/docs/max-width
-         */
-        "max-w": [{
-          "max-w": [
-            themeContainer,
-            "screen",
-            "none",
-            /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-            "prose",
-            /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-            {
-              screen: [themeBreakpoint]
-            },
-            ...scaleSizing()
-          ]
-        }],
-        /**
-         * Height
-         * @see https://tailwindcss.com/docs/height
-         */
-        h: [{
-          h: ["screen", "lh", ...scaleSizing()]
-        }],
-        /**
-         * Min-Height
-         * @see https://tailwindcss.com/docs/min-height
-         */
-        "min-h": [{
-          "min-h": ["screen", "lh", "none", ...scaleSizing()]
-        }],
-        /**
-         * Max-Height
-         * @see https://tailwindcss.com/docs/max-height
-         */
-        "max-h": [{
-          "max-h": ["screen", "lh", ...scaleSizing()]
-        }],
-        // ------------------
-        // --- Typography ---
-        // ------------------
-        /**
-         * Font Size
-         * @see https://tailwindcss.com/docs/font-size
-         */
-        "font-size": [{
-          text: ["base", themeText, isArbitraryVariableLength, isArbitraryLength]
-        }],
-        /**
-         * Font Smoothing
-         * @see https://tailwindcss.com/docs/font-smoothing
-         */
-        "font-smoothing": ["antialiased", "subpixel-antialiased"],
-        /**
-         * Font Style
-         * @see https://tailwindcss.com/docs/font-style
-         */
-        "font-style": ["italic", "not-italic"],
-        /**
-         * Font Weight
-         * @see https://tailwindcss.com/docs/font-weight
-         */
-        "font-weight": [{
-          font: [themeFontWeight, isArbitraryVariableWeight, isArbitraryWeight]
-        }],
-        /**
-         * Font Stretch
-         * @see https://tailwindcss.com/docs/font-stretch
-         */
-        "font-stretch": [{
-          "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", isPercent, isArbitraryValue]
-        }],
-        /**
-         * Font Family
-         * @see https://tailwindcss.com/docs/font-family
-         */
-        "font-family": [{
-          font: [isArbitraryVariableFamilyName, isArbitraryFamilyName, themeFont]
-        }],
-        /**
-         * Font Feature Settings
-         * @see https://tailwindcss.com/docs/font-feature-settings
-         */
-        "font-features": [{
-          "font-features": [isArbitraryValue]
-        }],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-normal": ["normal-nums"],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-ordinal": ["ordinal"],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-slashed-zero": ["slashed-zero"],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-figure": ["lining-nums", "oldstyle-nums"],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-spacing": ["proportional-nums", "tabular-nums"],
-        /**
-         * Font Variant Numeric
-         * @see https://tailwindcss.com/docs/font-variant-numeric
-         */
-        "fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
-        /**
-         * Letter Spacing
-         * @see https://tailwindcss.com/docs/letter-spacing
-         */
-        tracking: [{
-          tracking: [themeTracking, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Line Clamp
-         * @see https://tailwindcss.com/docs/line-clamp
-         */
-        "line-clamp": [{
-          "line-clamp": [isNumber, "none", isArbitraryVariable, isArbitraryNumber]
-        }],
-        /**
-         * Line Height
-         * @see https://tailwindcss.com/docs/line-height
-         */
-        leading: [{
-          leading: [
-            /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-            themeLeading,
-            ...scaleUnambiguousSpacing()
-          ]
-        }],
-        /**
-         * List Style Image
-         * @see https://tailwindcss.com/docs/list-style-image
-         */
-        "list-image": [{
-          "list-image": ["none", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * List Style Position
-         * @see https://tailwindcss.com/docs/list-style-position
-         */
-        "list-style-position": [{
-          list: ["inside", "outside"]
-        }],
-        /**
-         * List Style Type
-         * @see https://tailwindcss.com/docs/list-style-type
-         */
-        "list-style-type": [{
-          list: ["disc", "decimal", "none", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Text Alignment
-         * @see https://tailwindcss.com/docs/text-align
-         */
-        "text-alignment": [{
-          text: ["left", "center", "right", "justify", "start", "end"]
-        }],
-        /**
-         * Placeholder Color
-         * @deprecated since Tailwind CSS v3.0.0
-         * @see https://v3.tailwindcss.com/docs/placeholder-color
-         */
-        "placeholder-color": [{
-          placeholder: scaleColor()
-        }],
-        /**
-         * Text Color
-         * @see https://tailwindcss.com/docs/text-color
-         */
-        "text-color": [{
-          text: scaleColor()
-        }],
-        /**
-         * Text Decoration
-         * @see https://tailwindcss.com/docs/text-decoration
-         */
-        "text-decoration": ["underline", "overline", "line-through", "no-underline"],
-        /**
-         * Text Decoration Style
-         * @see https://tailwindcss.com/docs/text-decoration-style
-         */
-        "text-decoration-style": [{
-          decoration: [...scaleLineStyle(), "wavy"]
-        }],
-        /**
-         * Text Decoration Thickness
-         * @see https://tailwindcss.com/docs/text-decoration-thickness
-         */
-        "text-decoration-thickness": [{
-          decoration: [isNumber, "from-font", "auto", isArbitraryVariable, isArbitraryLength]
-        }],
-        /**
-         * Text Decoration Color
-         * @see https://tailwindcss.com/docs/text-decoration-color
-         */
-        "text-decoration-color": [{
-          decoration: scaleColor()
-        }],
-        /**
-         * Text Underline Offset
-         * @see https://tailwindcss.com/docs/text-underline-offset
-         */
-        "underline-offset": [{
-          "underline-offset": [isNumber, "auto", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Text Transform
-         * @see https://tailwindcss.com/docs/text-transform
-         */
-        "text-transform": ["uppercase", "lowercase", "capitalize", "normal-case"],
-        /**
-         * Text Overflow
-         * @see https://tailwindcss.com/docs/text-overflow
-         */
-        "text-overflow": ["truncate", "text-ellipsis", "text-clip"],
-        /**
-         * Text Wrap
-         * @see https://tailwindcss.com/docs/text-wrap
-         */
-        "text-wrap": [{
-          text: ["wrap", "nowrap", "balance", "pretty"]
-        }],
-        /**
-         * Text Indent
-         * @see https://tailwindcss.com/docs/text-indent
-         */
-        indent: [{
-          indent: scaleUnambiguousSpacing()
-        }],
-        /**
-         * Vertical Alignment
-         * @see https://tailwindcss.com/docs/vertical-align
-         */
-        "vertical-align": [{
-          align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Whitespace
-         * @see https://tailwindcss.com/docs/whitespace
-         */
-        whitespace: [{
-          whitespace: ["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"]
-        }],
-        /**
-         * Word Break
-         * @see https://tailwindcss.com/docs/word-break
-         */
-        break: [{
-          break: ["normal", "words", "all", "keep"]
-        }],
-        /**
-         * Overflow Wrap
-         * @see https://tailwindcss.com/docs/overflow-wrap
-         */
-        wrap: [{
-          wrap: ["break-word", "anywhere", "normal"]
-        }],
-        /**
-         * Hyphens
-         * @see https://tailwindcss.com/docs/hyphens
-         */
-        hyphens: [{
-          hyphens: ["none", "manual", "auto"]
-        }],
-        /**
-         * Content
-         * @see https://tailwindcss.com/docs/content
-         */
-        content: [{
-          content: ["none", isArbitraryVariable, isArbitraryValue]
-        }],
-        // -------------------
-        // --- Backgrounds ---
-        // -------------------
-        /**
-         * Background Attachment
-         * @see https://tailwindcss.com/docs/background-attachment
-         */
-        "bg-attachment": [{
-          bg: ["fixed", "local", "scroll"]
-        }],
-        /**
-         * Background Clip
-         * @see https://tailwindcss.com/docs/background-clip
-         */
-        "bg-clip": [{
-          "bg-clip": ["border", "padding", "content", "text"]
-        }],
-        /**
-         * Background Origin
-         * @see https://tailwindcss.com/docs/background-origin
-         */
-        "bg-origin": [{
-          "bg-origin": ["border", "padding", "content"]
-        }],
-        /**
-         * Background Position
-         * @see https://tailwindcss.com/docs/background-position
-         */
-        "bg-position": [{
-          bg: scaleBgPosition()
-        }],
-        /**
-         * Background Repeat
-         * @see https://tailwindcss.com/docs/background-repeat
-         */
-        "bg-repeat": [{
-          bg: scaleBgRepeat()
-        }],
-        /**
-         * Background Size
-         * @see https://tailwindcss.com/docs/background-size
-         */
-        "bg-size": [{
-          bg: scaleBgSize()
-        }],
-        /**
-         * Background Image
-         * @see https://tailwindcss.com/docs/background-image
-         */
-        "bg-image": [{
-          bg: ["none", {
-            linear: [{
-              to: ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-            }, isInteger, isArbitraryVariable, isArbitraryValue],
-            radial: ["", isArbitraryVariable, isArbitraryValue],
-            conic: [isInteger, isArbitraryVariable, isArbitraryValue]
-          }, isArbitraryVariableImage, isArbitraryImage]
-        }],
-        /**
-         * Background Color
-         * @see https://tailwindcss.com/docs/background-color
-         */
-        "bg-color": [{
-          bg: scaleColor()
-        }],
-        /**
-         * Gradient Color Stops From Position
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-from-pos": [{
-          from: scaleGradientStopPosition()
-        }],
-        /**
-         * Gradient Color Stops Via Position
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-via-pos": [{
-          via: scaleGradientStopPosition()
-        }],
-        /**
-         * Gradient Color Stops To Position
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-to-pos": [{
-          to: scaleGradientStopPosition()
-        }],
-        /**
-         * Gradient Color Stops From
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-from": [{
-          from: scaleColor()
-        }],
-        /**
-         * Gradient Color Stops Via
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-via": [{
-          via: scaleColor()
-        }],
-        /**
-         * Gradient Color Stops To
-         * @see https://tailwindcss.com/docs/gradient-color-stops
-         */
-        "gradient-to": [{
-          to: scaleColor()
-        }],
-        // ---------------
-        // --- Borders ---
-        // ---------------
-        /**
-         * Border Radius
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        rounded: [{
-          rounded: scaleRadius()
-        }],
-        /**
-         * Border Radius Start
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-s": [{
-          "rounded-s": scaleRadius()
-        }],
-        /**
-         * Border Radius End
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-e": [{
-          "rounded-e": scaleRadius()
-        }],
-        /**
-         * Border Radius Top
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-t": [{
-          "rounded-t": scaleRadius()
-        }],
-        /**
-         * Border Radius Right
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-r": [{
-          "rounded-r": scaleRadius()
-        }],
-        /**
-         * Border Radius Bottom
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-b": [{
-          "rounded-b": scaleRadius()
-        }],
-        /**
-         * Border Radius Left
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-l": [{
-          "rounded-l": scaleRadius()
-        }],
-        /**
-         * Border Radius Start Start
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-ss": [{
-          "rounded-ss": scaleRadius()
-        }],
-        /**
-         * Border Radius Start End
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-se": [{
-          "rounded-se": scaleRadius()
-        }],
-        /**
-         * Border Radius End End
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-ee": [{
-          "rounded-ee": scaleRadius()
-        }],
-        /**
-         * Border Radius End Start
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-es": [{
-          "rounded-es": scaleRadius()
-        }],
-        /**
-         * Border Radius Top Left
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-tl": [{
-          "rounded-tl": scaleRadius()
-        }],
-        /**
-         * Border Radius Top Right
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-tr": [{
-          "rounded-tr": scaleRadius()
-        }],
-        /**
-         * Border Radius Bottom Right
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-br": [{
-          "rounded-br": scaleRadius()
-        }],
-        /**
-         * Border Radius Bottom Left
-         * @see https://tailwindcss.com/docs/border-radius
-         */
-        "rounded-bl": [{
-          "rounded-bl": scaleRadius()
-        }],
-        /**
-         * Border Width
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w": [{
-          border: scaleBorderWidth()
-        }],
-        /**
-         * Border Width Inline
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-x": [{
-          "border-x": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Block
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-y": [{
-          "border-y": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Inline Start
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-s": [{
-          "border-s": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Inline End
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-e": [{
-          "border-e": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Block Start
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-bs": [{
-          "border-bs": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Block End
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-be": [{
-          "border-be": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Top
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-t": [{
-          "border-t": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Right
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-r": [{
-          "border-r": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Bottom
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-b": [{
-          "border-b": scaleBorderWidth()
-        }],
-        /**
-         * Border Width Left
-         * @see https://tailwindcss.com/docs/border-width
-         */
-        "border-w-l": [{
-          "border-l": scaleBorderWidth()
-        }],
-        /**
-         * Divide Width X
-         * @see https://tailwindcss.com/docs/border-width#between-children
-         */
-        "divide-x": [{
-          "divide-x": scaleBorderWidth()
-        }],
-        /**
-         * Divide Width X Reverse
-         * @see https://tailwindcss.com/docs/border-width#between-children
-         */
-        "divide-x-reverse": ["divide-x-reverse"],
-        /**
-         * Divide Width Y
-         * @see https://tailwindcss.com/docs/border-width#between-children
-         */
-        "divide-y": [{
-          "divide-y": scaleBorderWidth()
-        }],
-        /**
-         * Divide Width Y Reverse
-         * @see https://tailwindcss.com/docs/border-width#between-children
-         */
-        "divide-y-reverse": ["divide-y-reverse"],
-        /**
-         * Border Style
-         * @see https://tailwindcss.com/docs/border-style
-         */
-        "border-style": [{
-          border: [...scaleLineStyle(), "hidden", "none"]
-        }],
-        /**
-         * Divide Style
-         * @see https://tailwindcss.com/docs/border-style#setting-the-divider-style
-         */
-        "divide-style": [{
-          divide: [...scaleLineStyle(), "hidden", "none"]
-        }],
-        /**
-         * Border Color
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color": [{
-          border: scaleColor()
-        }],
-        /**
-         * Border Color Inline
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-x": [{
-          "border-x": scaleColor()
-        }],
-        /**
-         * Border Color Block
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-y": [{
-          "border-y": scaleColor()
-        }],
-        /**
-         * Border Color Inline Start
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-s": [{
-          "border-s": scaleColor()
-        }],
-        /**
-         * Border Color Inline End
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-e": [{
-          "border-e": scaleColor()
-        }],
-        /**
-         * Border Color Block Start
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-bs": [{
-          "border-bs": scaleColor()
-        }],
-        /**
-         * Border Color Block End
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-be": [{
-          "border-be": scaleColor()
-        }],
-        /**
-         * Border Color Top
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-t": [{
-          "border-t": scaleColor()
-        }],
-        /**
-         * Border Color Right
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-r": [{
-          "border-r": scaleColor()
-        }],
-        /**
-         * Border Color Bottom
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-b": [{
-          "border-b": scaleColor()
-        }],
-        /**
-         * Border Color Left
-         * @see https://tailwindcss.com/docs/border-color
-         */
-        "border-color-l": [{
-          "border-l": scaleColor()
-        }],
-        /**
-         * Divide Color
-         * @see https://tailwindcss.com/docs/divide-color
-         */
-        "divide-color": [{
-          divide: scaleColor()
-        }],
-        /**
-         * Outline Style
-         * @see https://tailwindcss.com/docs/outline-style
-         */
-        "outline-style": [{
-          outline: [...scaleLineStyle(), "none", "hidden"]
-        }],
-        /**
-         * Outline Offset
-         * @see https://tailwindcss.com/docs/outline-offset
-         */
-        "outline-offset": [{
-          "outline-offset": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Outline Width
-         * @see https://tailwindcss.com/docs/outline-width
-         */
-        "outline-w": [{
-          outline: ["", isNumber, isArbitraryVariableLength, isArbitraryLength]
-        }],
-        /**
-         * Outline Color
-         * @see https://tailwindcss.com/docs/outline-color
-         */
-        "outline-color": [{
-          outline: scaleColor()
-        }],
-        // ---------------
-        // --- Effects ---
-        // ---------------
-        /**
-         * Box Shadow
-         * @see https://tailwindcss.com/docs/box-shadow
-         */
-        shadow: [{
-          shadow: [
-            // Deprecated since Tailwind CSS v4.0.0
-            "",
-            "none",
-            themeShadow,
-            isArbitraryVariableShadow,
-            isArbitraryShadow
-          ]
-        }],
-        /**
-         * Box Shadow Color
-         * @see https://tailwindcss.com/docs/box-shadow#setting-the-shadow-color
-         */
-        "shadow-color": [{
-          shadow: scaleColor()
-        }],
-        /**
-         * Inset Box Shadow
-         * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow
-         */
-        "inset-shadow": [{
-          "inset-shadow": ["none", themeInsetShadow, isArbitraryVariableShadow, isArbitraryShadow]
-        }],
-        /**
-         * Inset Box Shadow Color
-         * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-shadow-color
-         */
-        "inset-shadow-color": [{
-          "inset-shadow": scaleColor()
-        }],
-        /**
-         * Ring Width
-         * @see https://tailwindcss.com/docs/box-shadow#adding-a-ring
-         */
-        "ring-w": [{
-          ring: scaleBorderWidth()
-        }],
-        /**
-         * Ring Width Inset
-         * @see https://v3.tailwindcss.com/docs/ring-width#inset-rings
-         * @deprecated since Tailwind CSS v4.0.0
-         * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-         */
-        "ring-w-inset": ["ring-inset"],
-        /**
-         * Ring Color
-         * @see https://tailwindcss.com/docs/box-shadow#setting-the-ring-color
-         */
-        "ring-color": [{
-          ring: scaleColor()
-        }],
-        /**
-         * Ring Offset Width
-         * @see https://v3.tailwindcss.com/docs/ring-offset-width
-         * @deprecated since Tailwind CSS v4.0.0
-         * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-         */
-        "ring-offset-w": [{
-          "ring-offset": [isNumber, isArbitraryLength]
-        }],
-        /**
-         * Ring Offset Color
-         * @see https://v3.tailwindcss.com/docs/ring-offset-color
-         * @deprecated since Tailwind CSS v4.0.0
-         * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-         */
-        "ring-offset-color": [{
-          "ring-offset": scaleColor()
-        }],
-        /**
-         * Inset Ring Width
-         * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring
-         */
-        "inset-ring-w": [{
-          "inset-ring": scaleBorderWidth()
-        }],
-        /**
-         * Inset Ring Color
-         * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-ring-color
-         */
-        "inset-ring-color": [{
-          "inset-ring": scaleColor()
-        }],
-        /**
-         * Text Shadow
-         * @see https://tailwindcss.com/docs/text-shadow
-         */
-        "text-shadow": [{
-          "text-shadow": ["none", themeTextShadow, isArbitraryVariableShadow, isArbitraryShadow]
-        }],
-        /**
-         * Text Shadow Color
-         * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
-         */
-        "text-shadow-color": [{
-          "text-shadow": scaleColor()
-        }],
-        /**
-         * Opacity
-         * @see https://tailwindcss.com/docs/opacity
-         */
-        opacity: [{
-          opacity: [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Mix Blend Mode
-         * @see https://tailwindcss.com/docs/mix-blend-mode
-         */
-        "mix-blend": [{
-          "mix-blend": [...scaleBlendMode(), "plus-darker", "plus-lighter"]
-        }],
-        /**
-         * Background Blend Mode
-         * @see https://tailwindcss.com/docs/background-blend-mode
-         */
-        "bg-blend": [{
-          "bg-blend": scaleBlendMode()
-        }],
-        /**
-         * Mask Clip
-         * @see https://tailwindcss.com/docs/mask-clip
-         */
-        "mask-clip": [{
-          "mask-clip": ["border", "padding", "content", "fill", "stroke", "view"]
-        }, "mask-no-clip"],
-        /**
-         * Mask Composite
-         * @see https://tailwindcss.com/docs/mask-composite
-         */
-        "mask-composite": [{
-          mask: ["add", "subtract", "intersect", "exclude"]
-        }],
-        /**
-         * Mask Image
-         * @see https://tailwindcss.com/docs/mask-image
-         */
-        "mask-image-linear-pos": [{
-          "mask-linear": [isNumber]
-        }],
-        "mask-image-linear-from-pos": [{
-          "mask-linear-from": scaleMaskImagePosition()
-        }],
-        "mask-image-linear-to-pos": [{
-          "mask-linear-to": scaleMaskImagePosition()
-        }],
-        "mask-image-linear-from-color": [{
-          "mask-linear-from": scaleColor()
-        }],
-        "mask-image-linear-to-color": [{
-          "mask-linear-to": scaleColor()
-        }],
-        "mask-image-t-from-pos": [{
-          "mask-t-from": scaleMaskImagePosition()
-        }],
-        "mask-image-t-to-pos": [{
-          "mask-t-to": scaleMaskImagePosition()
-        }],
-        "mask-image-t-from-color": [{
-          "mask-t-from": scaleColor()
-        }],
-        "mask-image-t-to-color": [{
-          "mask-t-to": scaleColor()
-        }],
-        "mask-image-r-from-pos": [{
-          "mask-r-from": scaleMaskImagePosition()
-        }],
-        "mask-image-r-to-pos": [{
-          "mask-r-to": scaleMaskImagePosition()
-        }],
-        "mask-image-r-from-color": [{
-          "mask-r-from": scaleColor()
-        }],
-        "mask-image-r-to-color": [{
-          "mask-r-to": scaleColor()
-        }],
-        "mask-image-b-from-pos": [{
-          "mask-b-from": scaleMaskImagePosition()
-        }],
-        "mask-image-b-to-pos": [{
-          "mask-b-to": scaleMaskImagePosition()
-        }],
-        "mask-image-b-from-color": [{
-          "mask-b-from": scaleColor()
-        }],
-        "mask-image-b-to-color": [{
-          "mask-b-to": scaleColor()
-        }],
-        "mask-image-l-from-pos": [{
-          "mask-l-from": scaleMaskImagePosition()
-        }],
-        "mask-image-l-to-pos": [{
-          "mask-l-to": scaleMaskImagePosition()
-        }],
-        "mask-image-l-from-color": [{
-          "mask-l-from": scaleColor()
-        }],
-        "mask-image-l-to-color": [{
-          "mask-l-to": scaleColor()
-        }],
-        "mask-image-x-from-pos": [{
-          "mask-x-from": scaleMaskImagePosition()
-        }],
-        "mask-image-x-to-pos": [{
-          "mask-x-to": scaleMaskImagePosition()
-        }],
-        "mask-image-x-from-color": [{
-          "mask-x-from": scaleColor()
-        }],
-        "mask-image-x-to-color": [{
-          "mask-x-to": scaleColor()
-        }],
-        "mask-image-y-from-pos": [{
-          "mask-y-from": scaleMaskImagePosition()
-        }],
-        "mask-image-y-to-pos": [{
-          "mask-y-to": scaleMaskImagePosition()
-        }],
-        "mask-image-y-from-color": [{
-          "mask-y-from": scaleColor()
-        }],
-        "mask-image-y-to-color": [{
-          "mask-y-to": scaleColor()
-        }],
-        "mask-image-radial": [{
-          "mask-radial": [isArbitraryVariable, isArbitraryValue]
-        }],
-        "mask-image-radial-from-pos": [{
-          "mask-radial-from": scaleMaskImagePosition()
-        }],
-        "mask-image-radial-to-pos": [{
-          "mask-radial-to": scaleMaskImagePosition()
-        }],
-        "mask-image-radial-from-color": [{
-          "mask-radial-from": scaleColor()
-        }],
-        "mask-image-radial-to-color": [{
-          "mask-radial-to": scaleColor()
-        }],
-        "mask-image-radial-shape": [{
-          "mask-radial": ["circle", "ellipse"]
-        }],
-        "mask-image-radial-size": [{
-          "mask-radial": [{
-            closest: ["side", "corner"],
-            farthest: ["side", "corner"]
-          }]
-        }],
-        "mask-image-radial-pos": [{
-          "mask-radial-at": scalePosition()
-        }],
-        "mask-image-conic-pos": [{
-          "mask-conic": [isNumber]
-        }],
-        "mask-image-conic-from-pos": [{
-          "mask-conic-from": scaleMaskImagePosition()
-        }],
-        "mask-image-conic-to-pos": [{
-          "mask-conic-to": scaleMaskImagePosition()
-        }],
-        "mask-image-conic-from-color": [{
-          "mask-conic-from": scaleColor()
-        }],
-        "mask-image-conic-to-color": [{
-          "mask-conic-to": scaleColor()
-        }],
-        /**
-         * Mask Mode
-         * @see https://tailwindcss.com/docs/mask-mode
-         */
-        "mask-mode": [{
-          mask: ["alpha", "luminance", "match"]
-        }],
-        /**
-         * Mask Origin
-         * @see https://tailwindcss.com/docs/mask-origin
-         */
-        "mask-origin": [{
-          "mask-origin": ["border", "padding", "content", "fill", "stroke", "view"]
-        }],
-        /**
-         * Mask Position
-         * @see https://tailwindcss.com/docs/mask-position
-         */
-        "mask-position": [{
-          mask: scaleBgPosition()
-        }],
-        /**
-         * Mask Repeat
-         * @see https://tailwindcss.com/docs/mask-repeat
-         */
-        "mask-repeat": [{
-          mask: scaleBgRepeat()
-        }],
-        /**
-         * Mask Size
-         * @see https://tailwindcss.com/docs/mask-size
-         */
-        "mask-size": [{
-          mask: scaleBgSize()
-        }],
-        /**
-         * Mask Type
-         * @see https://tailwindcss.com/docs/mask-type
-         */
-        "mask-type": [{
-          "mask-type": ["alpha", "luminance"]
-        }],
-        /**
-         * Mask Image
-         * @see https://tailwindcss.com/docs/mask-image
-         */
-        "mask-image": [{
-          mask: ["none", isArbitraryVariable, isArbitraryValue]
-        }],
-        // ---------------
-        // --- Filters ---
-        // ---------------
-        /**
-         * Filter
-         * @see https://tailwindcss.com/docs/filter
-         */
-        filter: [{
-          filter: [
-            // Deprecated since Tailwind CSS v3.0.0
-            "",
-            "none",
-            isArbitraryVariable,
-            isArbitraryValue
-          ]
-        }],
-        /**
-         * Blur
-         * @see https://tailwindcss.com/docs/blur
-         */
-        blur: [{
-          blur: scaleBlur()
-        }],
-        /**
-         * Brightness
-         * @see https://tailwindcss.com/docs/brightness
-         */
-        brightness: [{
-          brightness: [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Contrast
-         * @see https://tailwindcss.com/docs/contrast
-         */
-        contrast: [{
-          contrast: [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Drop Shadow
-         * @see https://tailwindcss.com/docs/drop-shadow
-         */
-        "drop-shadow": [{
-          "drop-shadow": [
-            // Deprecated since Tailwind CSS v4.0.0
-            "",
-            "none",
-            themeDropShadow,
-            isArbitraryVariableShadow,
-            isArbitraryShadow
-          ]
-        }],
-        /**
-         * Drop Shadow Color
-         * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
-         */
-        "drop-shadow-color": [{
-          "drop-shadow": scaleColor()
-        }],
-        /**
-         * Grayscale
-         * @see https://tailwindcss.com/docs/grayscale
-         */
-        grayscale: [{
-          grayscale: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Hue Rotate
-         * @see https://tailwindcss.com/docs/hue-rotate
-         */
-        "hue-rotate": [{
-          "hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Invert
-         * @see https://tailwindcss.com/docs/invert
-         */
-        invert: [{
-          invert: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Saturate
-         * @see https://tailwindcss.com/docs/saturate
-         */
-        saturate: [{
-          saturate: [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Sepia
-         * @see https://tailwindcss.com/docs/sepia
-         */
-        sepia: [{
-          sepia: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Filter
-         * @see https://tailwindcss.com/docs/backdrop-filter
-         */
-        "backdrop-filter": [{
-          "backdrop-filter": [
-            // Deprecated since Tailwind CSS v3.0.0
-            "",
-            "none",
-            isArbitraryVariable,
-            isArbitraryValue
-          ]
-        }],
-        /**
-         * Backdrop Blur
-         * @see https://tailwindcss.com/docs/backdrop-blur
-         */
-        "backdrop-blur": [{
-          "backdrop-blur": scaleBlur()
-        }],
-        /**
-         * Backdrop Brightness
-         * @see https://tailwindcss.com/docs/backdrop-brightness
-         */
-        "backdrop-brightness": [{
-          "backdrop-brightness": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Contrast
-         * @see https://tailwindcss.com/docs/backdrop-contrast
-         */
-        "backdrop-contrast": [{
-          "backdrop-contrast": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Grayscale
-         * @see https://tailwindcss.com/docs/backdrop-grayscale
-         */
-        "backdrop-grayscale": [{
-          "backdrop-grayscale": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Hue Rotate
-         * @see https://tailwindcss.com/docs/backdrop-hue-rotate
-         */
-        "backdrop-hue-rotate": [{
-          "backdrop-hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Invert
-         * @see https://tailwindcss.com/docs/backdrop-invert
-         */
-        "backdrop-invert": [{
-          "backdrop-invert": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Opacity
-         * @see https://tailwindcss.com/docs/backdrop-opacity
-         */
-        "backdrop-opacity": [{
-          "backdrop-opacity": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Saturate
-         * @see https://tailwindcss.com/docs/backdrop-saturate
-         */
-        "backdrop-saturate": [{
-          "backdrop-saturate": [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Backdrop Sepia
-         * @see https://tailwindcss.com/docs/backdrop-sepia
-         */
-        "backdrop-sepia": [{
-          "backdrop-sepia": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        // --------------
-        // --- Tables ---
-        // --------------
-        /**
-         * Border Collapse
-         * @see https://tailwindcss.com/docs/border-collapse
-         */
-        "border-collapse": [{
-          border: ["collapse", "separate"]
-        }],
-        /**
-         * Border Spacing
-         * @see https://tailwindcss.com/docs/border-spacing
-         */
-        "border-spacing": [{
-          "border-spacing": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Border Spacing X
-         * @see https://tailwindcss.com/docs/border-spacing
-         */
-        "border-spacing-x": [{
-          "border-spacing-x": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Border Spacing Y
-         * @see https://tailwindcss.com/docs/border-spacing
-         */
-        "border-spacing-y": [{
-          "border-spacing-y": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Table Layout
-         * @see https://tailwindcss.com/docs/table-layout
-         */
-        "table-layout": [{
-          table: ["auto", "fixed"]
-        }],
-        /**
-         * Caption Side
-         * @see https://tailwindcss.com/docs/caption-side
-         */
-        caption: [{
-          caption: ["top", "bottom"]
-        }],
-        // ---------------------------------
-        // --- Transitions and Animation ---
-        // ---------------------------------
-        /**
-         * Transition Property
-         * @see https://tailwindcss.com/docs/transition-property
-         */
-        transition: [{
-          transition: ["", "all", "colors", "opacity", "shadow", "transform", "none", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Transition Behavior
-         * @see https://tailwindcss.com/docs/transition-behavior
-         */
-        "transition-behavior": [{
-          transition: ["normal", "discrete"]
-        }],
-        /**
-         * Transition Duration
-         * @see https://tailwindcss.com/docs/transition-duration
-         */
-        duration: [{
-          duration: [isNumber, "initial", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Transition Timing Function
-         * @see https://tailwindcss.com/docs/transition-timing-function
-         */
-        ease: [{
-          ease: ["linear", "initial", themeEase, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Transition Delay
-         * @see https://tailwindcss.com/docs/transition-delay
-         */
-        delay: [{
-          delay: [isNumber, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Animation
-         * @see https://tailwindcss.com/docs/animation
-         */
-        animate: [{
-          animate: ["none", themeAnimate, isArbitraryVariable, isArbitraryValue]
-        }],
-        // ------------------
-        // --- Transforms ---
-        // ------------------
-        /**
-         * Backface Visibility
-         * @see https://tailwindcss.com/docs/backface-visibility
-         */
-        backface: [{
-          backface: ["hidden", "visible"]
-        }],
-        /**
-         * Perspective
-         * @see https://tailwindcss.com/docs/perspective
-         */
-        perspective: [{
-          perspective: [themePerspective, isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Perspective Origin
-         * @see https://tailwindcss.com/docs/perspective-origin
-         */
-        "perspective-origin": [{
-          "perspective-origin": scalePositionWithArbitrary()
-        }],
-        /**
-         * Rotate
-         * @see https://tailwindcss.com/docs/rotate
-         */
-        rotate: [{
-          rotate: scaleRotate()
-        }],
-        /**
-         * Rotate X
-         * @see https://tailwindcss.com/docs/rotate
-         */
-        "rotate-x": [{
-          "rotate-x": scaleRotate()
-        }],
-        /**
-         * Rotate Y
-         * @see https://tailwindcss.com/docs/rotate
-         */
-        "rotate-y": [{
-          "rotate-y": scaleRotate()
-        }],
-        /**
-         * Rotate Z
-         * @see https://tailwindcss.com/docs/rotate
-         */
-        "rotate-z": [{
-          "rotate-z": scaleRotate()
-        }],
-        /**
-         * Scale
-         * @see https://tailwindcss.com/docs/scale
-         */
-        scale: [{
-          scale: scaleScale()
-        }],
-        /**
-         * Scale X
-         * @see https://tailwindcss.com/docs/scale
-         */
-        "scale-x": [{
-          "scale-x": scaleScale()
-        }],
-        /**
-         * Scale Y
-         * @see https://tailwindcss.com/docs/scale
-         */
-        "scale-y": [{
-          "scale-y": scaleScale()
-        }],
-        /**
-         * Scale Z
-         * @see https://tailwindcss.com/docs/scale
-         */
-        "scale-z": [{
-          "scale-z": scaleScale()
-        }],
-        /**
-         * Scale 3D
-         * @see https://tailwindcss.com/docs/scale
-         */
-        "scale-3d": ["scale-3d"],
-        /**
-         * Skew
-         * @see https://tailwindcss.com/docs/skew
-         */
-        skew: [{
-          skew: scaleSkew()
-        }],
-        /**
-         * Skew X
-         * @see https://tailwindcss.com/docs/skew
-         */
-        "skew-x": [{
-          "skew-x": scaleSkew()
-        }],
-        /**
-         * Skew Y
-         * @see https://tailwindcss.com/docs/skew
-         */
-        "skew-y": [{
-          "skew-y": scaleSkew()
-        }],
-        /**
-         * Transform
-         * @see https://tailwindcss.com/docs/transform
-         */
-        transform: [{
-          transform: [isArbitraryVariable, isArbitraryValue, "", "none", "gpu", "cpu"]
-        }],
-        /**
-         * Transform Origin
-         * @see https://tailwindcss.com/docs/transform-origin
-         */
-        "transform-origin": [{
-          origin: scalePositionWithArbitrary()
-        }],
-        /**
-         * Transform Style
-         * @see https://tailwindcss.com/docs/transform-style
-         */
-        "transform-style": [{
-          transform: ["3d", "flat"]
-        }],
-        /**
-         * Translate
-         * @see https://tailwindcss.com/docs/translate
-         */
-        translate: [{
-          translate: scaleTranslate()
-        }],
-        /**
-         * Translate X
-         * @see https://tailwindcss.com/docs/translate
-         */
-        "translate-x": [{
-          "translate-x": scaleTranslate()
-        }],
-        /**
-         * Translate Y
-         * @see https://tailwindcss.com/docs/translate
-         */
-        "translate-y": [{
-          "translate-y": scaleTranslate()
-        }],
-        /**
-         * Translate Z
-         * @see https://tailwindcss.com/docs/translate
-         */
-        "translate-z": [{
-          "translate-z": scaleTranslate()
-        }],
-        /**
-         * Translate None
-         * @see https://tailwindcss.com/docs/translate
-         */
-        "translate-none": ["translate-none"],
-        // ---------------------
-        // --- Interactivity ---
-        // ---------------------
-        /**
-         * Accent Color
-         * @see https://tailwindcss.com/docs/accent-color
-         */
-        accent: [{
-          accent: scaleColor()
-        }],
-        /**
-         * Appearance
-         * @see https://tailwindcss.com/docs/appearance
-         */
-        appearance: [{
-          appearance: ["none", "auto"]
-        }],
-        /**
-         * Caret Color
-         * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
-         */
-        "caret-color": [{
-          caret: scaleColor()
-        }],
-        /**
-         * Color Scheme
-         * @see https://tailwindcss.com/docs/color-scheme
-         */
-        "color-scheme": [{
-          scheme: ["normal", "dark", "light", "light-dark", "only-dark", "only-light"]
-        }],
-        /**
-         * Cursor
-         * @see https://tailwindcss.com/docs/cursor
-         */
-        cursor: [{
-          cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", isArbitraryVariable, isArbitraryValue]
-        }],
-        /**
-         * Field Sizing
-         * @see https://tailwindcss.com/docs/field-sizing
-         */
-        "field-sizing": [{
-          "field-sizing": ["fixed", "content"]
-        }],
-        /**
-         * Pointer Events
-         * @see https://tailwindcss.com/docs/pointer-events
-         */
-        "pointer-events": [{
-          "pointer-events": ["auto", "none"]
-        }],
-        /**
-         * Resize
-         * @see https://tailwindcss.com/docs/resize
-         */
-        resize: [{
-          resize: ["none", "", "y", "x"]
-        }],
-        /**
-         * Scroll Behavior
-         * @see https://tailwindcss.com/docs/scroll-behavior
-         */
-        "scroll-behavior": [{
-          scroll: ["auto", "smooth"]
-        }],
-        /**
-         * Scroll Margin
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-m": [{
-          "scroll-m": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Inline
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mx": [{
-          "scroll-mx": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Block
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-my": [{
-          "scroll-my": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Inline Start
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-ms": [{
-          "scroll-ms": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Inline End
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-me": [{
-          "scroll-me": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Block Start
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mbs": [{
-          "scroll-mbs": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Block End
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mbe": [{
-          "scroll-mbe": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Top
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mt": [{
-          "scroll-mt": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Right
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mr": [{
-          "scroll-mr": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Bottom
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-mb": [{
-          "scroll-mb": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Margin Left
-         * @see https://tailwindcss.com/docs/scroll-margin
-         */
-        "scroll-ml": [{
-          "scroll-ml": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-p": [{
-          "scroll-p": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Inline
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-px": [{
-          "scroll-px": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Block
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-py": [{
-          "scroll-py": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Inline Start
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-ps": [{
-          "scroll-ps": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Inline End
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pe": [{
-          "scroll-pe": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Block Start
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pbs": [{
-          "scroll-pbs": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Block End
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pbe": [{
-          "scroll-pbe": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Top
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pt": [{
-          "scroll-pt": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Right
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pr": [{
-          "scroll-pr": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Bottom
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pb": [{
-          "scroll-pb": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Padding Left
-         * @see https://tailwindcss.com/docs/scroll-padding
-         */
-        "scroll-pl": [{
-          "scroll-pl": scaleUnambiguousSpacing()
-        }],
-        /**
-         * Scroll Snap Align
-         * @see https://tailwindcss.com/docs/scroll-snap-align
-         */
-        "snap-align": [{
-          snap: ["start", "end", "center", "align-none"]
-        }],
-        /**
-         * Scroll Snap Stop
-         * @see https://tailwindcss.com/docs/scroll-snap-stop
-         */
-        "snap-stop": [{
-          snap: ["normal", "always"]
-        }],
-        /**
-         * Scroll Snap Type
-         * @see https://tailwindcss.com/docs/scroll-snap-type
-         */
-        "snap-type": [{
-          snap: ["none", "x", "y", "both"]
-        }],
-        /**
-         * Scroll Snap Type Strictness
-         * @see https://tailwindcss.com/docs/scroll-snap-type
-         */
-        "snap-strictness": [{
-          snap: ["mandatory", "proximity"]
-        }],
-        /**
-         * Touch Action
-         * @see https://tailwindcss.com/docs/touch-action
-         */
-        touch: [{
-          touch: ["auto", "none", "manipulation"]
-        }],
-        /**
-         * Touch Action X
-         * @see https://tailwindcss.com/docs/touch-action
-         */
-        "touch-x": [{
-          "touch-pan": ["x", "left", "right"]
-        }],
-        /**
-         * Touch Action Y
-         * @see https://tailwindcss.com/docs/touch-action
-         */
-        "touch-y": [{
-          "touch-pan": ["y", "up", "down"]
-        }],
-        /**
-         * Touch Action Pinch Zoom
-         * @see https://tailwindcss.com/docs/touch-action
-         */
-        "touch-pz": ["touch-pinch-zoom"],
-        /**
-         * User Select
-         * @see https://tailwindcss.com/docs/user-select
-         */
-        select: [{
-          select: ["none", "text", "all", "auto"]
-        }],
-        /**
-         * Will Change
-         * @see https://tailwindcss.com/docs/will-change
-         */
-        "will-change": [{
-          "will-change": ["auto", "scroll", "contents", "transform", isArbitraryVariable, isArbitraryValue]
-        }],
-        // -----------
-        // --- SVG ---
-        // -----------
-        /**
-         * Fill
-         * @see https://tailwindcss.com/docs/fill
-         */
-        fill: [{
-          fill: ["none", ...scaleColor()]
-        }],
-        /**
-         * Stroke Width
-         * @see https://tailwindcss.com/docs/stroke-width
-         */
-        "stroke-w": [{
-          stroke: [isNumber, isArbitraryVariableLength, isArbitraryLength, isArbitraryNumber]
-        }],
-        /**
-         * Stroke
-         * @see https://tailwindcss.com/docs/stroke
-         */
-        stroke: [{
-          stroke: ["none", ...scaleColor()]
-        }],
-        // ---------------------
-        // --- Accessibility ---
-        // ---------------------
-        /**
-         * Forced Color Adjust
-         * @see https://tailwindcss.com/docs/forced-color-adjust
-         */
-        "forced-color-adjust": [{
-          "forced-color-adjust": ["auto", "none"]
-        }]
-      },
-      conflictingClassGroups: {
-        overflow: ["overflow-x", "overflow-y"],
-        overscroll: ["overscroll-x", "overscroll-y"],
-        inset: ["inset-x", "inset-y", "inset-bs", "inset-be", "start", "end", "top", "right", "bottom", "left"],
-        "inset-x": ["right", "left"],
-        "inset-y": ["top", "bottom"],
-        flex: ["basis", "grow", "shrink"],
-        gap: ["gap-x", "gap-y"],
-        p: ["px", "py", "ps", "pe", "pbs", "pbe", "pt", "pr", "pb", "pl"],
-        px: ["pr", "pl"],
-        py: ["pt", "pb"],
-        m: ["mx", "my", "ms", "me", "mbs", "mbe", "mt", "mr", "mb", "ml"],
-        mx: ["mr", "ml"],
-        my: ["mt", "mb"],
-        size: ["w", "h"],
-        "font-size": ["leading"],
-        "fvn-normal": ["fvn-ordinal", "fvn-slashed-zero", "fvn-figure", "fvn-spacing", "fvn-fraction"],
-        "fvn-ordinal": ["fvn-normal"],
-        "fvn-slashed-zero": ["fvn-normal"],
-        "fvn-figure": ["fvn-normal"],
-        "fvn-spacing": ["fvn-normal"],
-        "fvn-fraction": ["fvn-normal"],
-        "line-clamp": ["display", "overflow"],
-        rounded: ["rounded-s", "rounded-e", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-ss", "rounded-se", "rounded-ee", "rounded-es", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl"],
-        "rounded-s": ["rounded-ss", "rounded-es"],
-        "rounded-e": ["rounded-se", "rounded-ee"],
-        "rounded-t": ["rounded-tl", "rounded-tr"],
-        "rounded-r": ["rounded-tr", "rounded-br"],
-        "rounded-b": ["rounded-br", "rounded-bl"],
-        "rounded-l": ["rounded-tl", "rounded-bl"],
-        "border-spacing": ["border-spacing-x", "border-spacing-y"],
-        "border-w": ["border-w-x", "border-w-y", "border-w-s", "border-w-e", "border-w-bs", "border-w-be", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
-        "border-w-x": ["border-w-r", "border-w-l"],
-        "border-w-y": ["border-w-t", "border-w-b"],
-        "border-color": ["border-color-x", "border-color-y", "border-color-s", "border-color-e", "border-color-bs", "border-color-be", "border-color-t", "border-color-r", "border-color-b", "border-color-l"],
-        "border-color-x": ["border-color-r", "border-color-l"],
-        "border-color-y": ["border-color-t", "border-color-b"],
-        translate: ["translate-x", "translate-y", "translate-none"],
-        "translate-none": ["translate", "translate-x", "translate-y", "translate-z"],
-        "scroll-m": ["scroll-mx", "scroll-my", "scroll-ms", "scroll-me", "scroll-mbs", "scroll-mbe", "scroll-mt", "scroll-mr", "scroll-mb", "scroll-ml"],
-        "scroll-mx": ["scroll-mr", "scroll-ml"],
-        "scroll-my": ["scroll-mt", "scroll-mb"],
-        "scroll-p": ["scroll-px", "scroll-py", "scroll-ps", "scroll-pe", "scroll-pbs", "scroll-pbe", "scroll-pt", "scroll-pr", "scroll-pb", "scroll-pl"],
-        "scroll-px": ["scroll-pr", "scroll-pl"],
-        "scroll-py": ["scroll-pt", "scroll-pb"],
-        touch: ["touch-x", "touch-y", "touch-pz"],
-        "touch-x": ["touch"],
-        "touch-y": ["touch"],
-        "touch-pz": ["touch"]
-      },
-      conflictingClassGroupModifiers: {
-        "font-size": ["leading"]
-      },
-      orderSensitiveModifiers: ["*", "**", "after", "backdrop", "before", "details-content", "file", "first-letter", "first-line", "marker", "placeholder", "selection"]
-    };
-  };
-  var twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
-
-  // lib/utils.ts
-  function cn(...inputs) {
-    return twMerge(clsx(inputs));
-  }
-
-  // components/ui/button.tsx
-  var import_jsx_runtime2 = __toESM(require_jsx_runtime());
-  var buttonVariants = cva(
-    "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-    {
-      variants: {
-        variant: {
-          default: "bg-primary text-primary-foreground hover:bg-primary/90",
-          destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-          outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-          secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-          ghost: "hover:bg-accent hover:text-accent-foreground",
-          link: "text-primary underline-offset-4 hover:underline"
-        },
-        size: {
-          default: "h-10 px-4 py-2",
-          sm: "h-9 rounded-md px-3",
-          lg: "h-11 rounded-md px-8",
-          icon: "h-10 w-10"
-        }
-      },
-      defaultVariants: {
-        variant: "default",
-        size: "default"
-      }
-    }
-  );
-  var Button = React3.forwardRef(
-    ({ className, variant, size, asChild = false, ...props }, ref) => {
-      const Comp = asChild ? Slot : "button";
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-        Comp,
-        {
-          className: cn(buttonVariants({ variant, size, className })),
-          ref,
-          ...props
-        }
-      );
-    }
-  );
-  Button.displayName = "Button";
-
-  // components/ui/menu-toggle-icon.tsx
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
-  function MenuToggleIcon({
-    open,
-    className,
-    fill = "none",
-    stroke = "currentColor",
-    strokeWidth = 2.5,
-    strokeLinecap = "round",
-    strokeLinejoin = "round",
-    duration = 500,
-    ...props
-  }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
-      "svg",
-      {
-        strokeWidth,
-        fill,
-        stroke,
-        viewBox: "0 0 32 32",
-        strokeLinecap,
-        strokeLinejoin,
-        className: cn(
-          "transition-transform ease-in-out",
-          open && "-rotate-45",
-          className
-        ),
-        style: {
-          transitionDuration: `${duration}ms`
-        },
-        ...props,
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
-            "path",
-            {
-              className: cn(
-                "transition-all ease-in-out",
-                open ? "[stroke-dasharray:20_300] [stroke-dashoffset:-32.42px]" : "[stroke-dasharray:12_63]"
-              ),
-              style: {
-                transitionDuration: `${duration}ms`
-              },
-              d: "M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("path", { d: "M7 16 27 16" })
-        ]
-      }
-    );
-  }
-
-  // components/ui/header-3.tsx
-  var import_react_dom = __toESM(require_react_dom());
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  function Header() {
-    const [open, setOpen] = import_react.default.useState(false);
-    const scrolled = useScroll(10);
-    import_react.default.useEffect(() => {
-      if (open) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "";
-      }
-      return () => {
-        document.body.style.overflow = "";
+      _effects[name] = function(targets, vars, tl) {
+        return effect(toArray(targets), _setDefaults(vars || {}, defaults2), tl);
       };
-    }, [open]);
+      if (extendTimeline) {
+        Timeline.prototype[name] = function(targets, vars, position) {
+          return this.add(_effects[name](targets, _isObject(vars) ? vars : (position = vars) && {}, this), position);
+        };
+      }
+    },
+    registerEase: function registerEase(name, ease) {
+      _easeMap[name] = _parseEase(ease);
+    },
+    parseEase: function parseEase(ease, defaultEase) {
+      return arguments.length ? _parseEase(ease, defaultEase) : _easeMap;
+    },
+    getById: function getById(id) {
+      return _globalTimeline.getById(id);
+    },
+    exportRoot: function exportRoot(vars, includeDelayedCalls) {
+      if (vars === void 0) {
+        vars = {};
+      }
+      var tl = new Timeline(vars), child, next;
+      tl.smoothChildTiming = _isNotFalse(vars.smoothChildTiming);
+      _globalTimeline.remove(tl);
+      tl._dp = 0;
+      tl._time = tl._tTime = _globalTimeline._time;
+      child = _globalTimeline._first;
+      while (child) {
+        next = child._next;
+        if (includeDelayedCalls || !(!child._dur && child instanceof Tween && child.vars.onComplete === child._targets[0])) {
+          _addToTimeline(tl, child, child._start - child._delay);
+        }
+        child = next;
+      }
+      _addToTimeline(_globalTimeline, tl, 0);
+      return tl;
+    },
+    context: function context(func, scope) {
+      return func ? new Context(func, scope) : _context;
+    },
+    matchMedia: function matchMedia2(scope) {
+      return new MatchMedia(scope);
+    },
+    matchMediaRefresh: function matchMediaRefresh() {
+      return _media.forEach(function(c) {
+        var cond = c.conditions, found, p;
+        for (p in cond) {
+          if (cond[p]) {
+            cond[p] = false;
+            found = 1;
+          }
+        }
+        found && c.revert();
+      }) || _onMediaChange();
+    },
+    addEventListener: function addEventListener(type, callback) {
+      var a = _listeners[type] || (_listeners[type] = []);
+      ~a.indexOf(callback) || a.push(callback);
+    },
+    removeEventListener: function removeEventListener(type, callback) {
+      var a = _listeners[type], i = a && a.indexOf(callback);
+      i >= 0 && a.splice(i, 1);
+    },
+    utils: {
+      wrap,
+      wrapYoyo,
+      distribute,
+      random,
+      snap,
+      normalize,
+      getUnit,
+      clamp,
+      splitColor,
+      toArray,
+      selector,
+      mapRange,
+      pipe,
+      unitize,
+      interpolate,
+      shuffle
+    },
+    install: _install,
+    effects: _effects,
+    ticker: _ticker,
+    updateRoot: Timeline.updateRoot,
+    plugins: _plugins,
+    globalTimeline: _globalTimeline,
+    core: {
+      PropTween,
+      globals: _addGlobal,
+      Tween,
+      Timeline,
+      Animation,
+      getCache: _getCache,
+      _removeLinkedListItem,
+      reverting: function reverting() {
+        return _reverting;
+      },
+      context: function context2(toAdd) {
+        if (toAdd && _context) {
+          _context.data.push(toAdd);
+          toAdd._ctx = _context;
+        }
+        return _context;
+      },
+      suppressOverwrites: function suppressOverwrites(value) {
+        return _suppressOverwrites = value;
+      }
+    }
+  };
+  _forEachName("to,from,fromTo,delayedCall,set,killTweensOf", function(name) {
+    return _gsap[name] = Tween[name];
+  });
+  _ticker.add(Timeline.updateRoot);
+  _quickTween = _gsap.to({}, {
+    duration: 0
+  });
+  var _getPluginPropTween = function _getPluginPropTween2(plugin, prop) {
+    var pt = plugin._pt;
+    while (pt && pt.p !== prop && pt.op !== prop && pt.fp !== prop) {
+      pt = pt._next;
+    }
+    return pt;
+  };
+  var _addModifiers = function _addModifiers2(tween, modifiers) {
+    var targets = tween._targets, p, i, pt;
+    for (p in modifiers) {
+      i = targets.length;
+      while (i--) {
+        pt = tween._ptLookup[i][p];
+        if (pt && (pt = pt.d)) {
+          if (pt._pt) {
+            pt = _getPluginPropTween(pt, p);
+          }
+          pt && pt.modifier && pt.modifier(modifiers[p], tween, targets[i], p);
+        }
+      }
+    }
+  };
+  var _buildModifierPlugin = function _buildModifierPlugin2(name, modifier) {
+    return {
+      name,
+      headless: 1,
+      rawVars: 1,
+      //don't pre-process function-based values or "random()" strings.
+      init: function init4(target, vars, tween) {
+        tween._onInit = function(tween2) {
+          var temp, p;
+          if (_isString(vars)) {
+            temp = {};
+            _forEachName(vars, function(name2) {
+              return temp[name2] = 1;
+            });
+            vars = temp;
+          }
+          if (modifier) {
+            temp = {};
+            for (p in vars) {
+              temp[p] = modifier(vars[p]);
+            }
+            vars = temp;
+          }
+          _addModifiers(tween2, vars);
+        };
+      }
+    };
+  };
+  var gsap = _gsap.registerPlugin({
+    name: "attr",
+    init: function init(target, vars, tween, index, targets) {
+      var p, pt, v;
+      this.tween = tween;
+      for (p in vars) {
+        v = target.getAttribute(p) || "";
+        pt = this.add(target, "setAttribute", (v || 0) + "", vars[p], index, targets, 0, 0, p);
+        pt.op = p;
+        pt.b = v;
+        this._props.push(p);
+      }
+    },
+    render: function render(ratio, data) {
+      var pt = data._pt;
+      while (pt) {
+        _reverting ? pt.set(pt.t, pt.p, pt.b, pt) : pt.r(ratio, pt.d);
+        pt = pt._next;
+      }
+    }
+  }, {
+    name: "endArray",
+    headless: 1,
+    init: function init2(target, value) {
+      var i = value.length;
+      while (i--) {
+        this.add(target, i, target[i] || 0, value[i], 0, 0, 0, 0, 0, 1);
+      }
+    }
+  }, _buildModifierPlugin("roundProps", _roundModifier), _buildModifierPlugin("modifiers"), _buildModifierPlugin("snap", snap)) || _gsap;
+  Tween.version = Timeline.version = gsap.version = "3.14.2";
+  _coreReady = 1;
+  _windowExists() && _wake();
+  var Power0 = _easeMap.Power0;
+  var Power1 = _easeMap.Power1;
+  var Power2 = _easeMap.Power2;
+  var Power3 = _easeMap.Power3;
+  var Power4 = _easeMap.Power4;
+  var Linear = _easeMap.Linear;
+  var Quad = _easeMap.Quad;
+  var Cubic = _easeMap.Cubic;
+  var Quart = _easeMap.Quart;
+  var Quint = _easeMap.Quint;
+  var Strong = _easeMap.Strong;
+  var Elastic = _easeMap.Elastic;
+  var Back = _easeMap.Back;
+  var SteppedEase = _easeMap.SteppedEase;
+  var Bounce = _easeMap.Bounce;
+  var Sine = _easeMap.Sine;
+  var Expo = _easeMap.Expo;
+  var Circ = _easeMap.Circ;
+
+  // node_modules/gsap/CSSPlugin.js
+  var _win2;
+  var _doc2;
+  var _docElement;
+  var _pluginInitted;
+  var _tempDiv;
+  var _tempDivStyler;
+  var _recentSetterPlugin;
+  var _reverting2;
+  var _windowExists3 = function _windowExists4() {
+    return typeof window !== "undefined";
+  };
+  var _transformProps = {};
+  var _RAD2DEG = 180 / Math.PI;
+  var _DEG2RAD = Math.PI / 180;
+  var _atan2 = Math.atan2;
+  var _bigNum2 = 1e8;
+  var _capsExp = /([A-Z])/g;
+  var _horizontalExp = /(left|right|width|margin|padding|x)/i;
+  var _complexExp = /[\s,\(]\S/;
+  var _propertyAliases = {
+    autoAlpha: "opacity,visibility",
+    scale: "scaleX,scaleY",
+    alpha: "opacity"
+  };
+  var _renderCSSProp = function _renderCSSProp2(ratio, data) {
+    return data.set(data.t, data.p, Math.round((data.s + data.c * ratio) * 1e4) / 1e4 + data.u, data);
+  };
+  var _renderPropWithEnd = function _renderPropWithEnd2(ratio, data) {
+    return data.set(data.t, data.p, ratio === 1 ? data.e : Math.round((data.s + data.c * ratio) * 1e4) / 1e4 + data.u, data);
+  };
+  var _renderCSSPropWithBeginning = function _renderCSSPropWithBeginning2(ratio, data) {
+    return data.set(data.t, data.p, ratio ? Math.round((data.s + data.c * ratio) * 1e4) / 1e4 + data.u : data.b, data);
+  };
+  var _renderCSSPropWithBeginningAndEnd = function _renderCSSPropWithBeginningAndEnd2(ratio, data) {
+    return data.set(data.t, data.p, ratio === 1 ? data.e : ratio ? Math.round((data.s + data.c * ratio) * 1e4) / 1e4 + data.u : data.b, data);
+  };
+  var _renderRoundedCSSProp = function _renderRoundedCSSProp2(ratio, data) {
+    var value = data.s + data.c * ratio;
+    data.set(data.t, data.p, ~~(value + (value < 0 ? -0.5 : 0.5)) + data.u, data);
+  };
+  var _renderNonTweeningValue = function _renderNonTweeningValue2(ratio, data) {
+    return data.set(data.t, data.p, ratio ? data.e : data.b, data);
+  };
+  var _renderNonTweeningValueOnlyAtEnd = function _renderNonTweeningValueOnlyAtEnd2(ratio, data) {
+    return data.set(data.t, data.p, ratio !== 1 ? data.b : data.e, data);
+  };
+  var _setterCSSStyle = function _setterCSSStyle2(target, property, value) {
+    return target.style[property] = value;
+  };
+  var _setterCSSProp = function _setterCSSProp2(target, property, value) {
+    return target.style.setProperty(property, value);
+  };
+  var _setterTransform = function _setterTransform2(target, property, value) {
+    return target._gsap[property] = value;
+  };
+  var _setterScale = function _setterScale2(target, property, value) {
+    return target._gsap.scaleX = target._gsap.scaleY = value;
+  };
+  var _setterScaleWithRender = function _setterScaleWithRender2(target, property, value, data, ratio) {
+    var cache = target._gsap;
+    cache.scaleX = cache.scaleY = value;
+    cache.renderTransform(ratio, cache);
+  };
+  var _setterTransformWithRender = function _setterTransformWithRender2(target, property, value, data, ratio) {
+    var cache = target._gsap;
+    cache[property] = value;
+    cache.renderTransform(ratio, cache);
+  };
+  var _transformProp = "transform";
+  var _transformOriginProp = _transformProp + "Origin";
+  var _saveStyle = function _saveStyle2(property, isNotCSS) {
+    var _this = this;
+    var target = this.target, style = target.style, cache = target._gsap;
+    if (property in _transformProps && style) {
+      this.tfm = this.tfm || {};
+      if (property !== "transform") {
+        property = _propertyAliases[property] || property;
+        ~property.indexOf(",") ? property.split(",").forEach(function(a) {
+          return _this.tfm[a] = _get(target, a);
+        }) : this.tfm[property] = cache.x ? cache[property] : _get(target, property);
+        property === _transformOriginProp && (this.tfm.zOrigin = cache.zOrigin);
+      } else {
+        return _propertyAliases.transform.split(",").forEach(function(p) {
+          return _saveStyle2.call(_this, p, isNotCSS);
+        });
+      }
+      if (this.props.indexOf(_transformProp) >= 0) {
+        return;
+      }
+      if (cache.svg) {
+        this.svgo = target.getAttribute("data-svg-origin");
+        this.props.push(_transformOriginProp, isNotCSS, "");
+      }
+      property = _transformProp;
+    }
+    (style || isNotCSS) && this.props.push(property, isNotCSS, style[property]);
+  };
+  var _removeIndependentTransforms = function _removeIndependentTransforms2(style) {
+    if (style.translate) {
+      style.removeProperty("translate");
+      style.removeProperty("scale");
+      style.removeProperty("rotate");
+    }
+  };
+  var _revertStyle = function _revertStyle2() {
+    var props = this.props, target = this.target, style = target.style, cache = target._gsap, i, p;
+    for (i = 0; i < props.length; i += 3) {
+      if (!props[i + 1]) {
+        props[i + 2] ? style[props[i]] = props[i + 2] : style.removeProperty(props[i].substr(0, 2) === "--" ? props[i] : props[i].replace(_capsExp, "-$1").toLowerCase());
+      } else if (props[i + 1] === 2) {
+        target[props[i]](props[i + 2]);
+      } else {
+        target[props[i]] = props[i + 2];
+      }
+    }
+    if (this.tfm) {
+      for (p in this.tfm) {
+        cache[p] = this.tfm[p];
+      }
+      if (cache.svg) {
+        cache.renderTransform();
+        target.setAttribute("data-svg-origin", this.svgo || "");
+      }
+      i = _reverting2();
+      if ((!i || !i.isStart) && !style[_transformProp]) {
+        _removeIndependentTransforms(style);
+        if (cache.zOrigin && style[_transformOriginProp]) {
+          style[_transformOriginProp] += " " + cache.zOrigin + "px";
+          cache.zOrigin = 0;
+          cache.renderTransform();
+        }
+        cache.uncache = 1;
+      }
+    }
+  };
+  var _getStyleSaver = function _getStyleSaver2(target, properties) {
+    var saver = {
+      target,
+      props: [],
+      revert: _revertStyle,
+      save: _saveStyle
+    };
+    target._gsap || gsap.core.getCache(target);
+    properties && target.style && target.nodeType && properties.split(",").forEach(function(p) {
+      return saver.save(p);
+    });
+    return saver;
+  };
+  var _supports3D;
+  var _createElement = function _createElement2(type, ns) {
+    var e = _doc2.createElementNS ? _doc2.createElementNS((ns || "http://www.w3.org/1999/xhtml").replace(/^https/, "http"), type) : _doc2.createElement(type);
+    return e && e.style ? e : _doc2.createElement(type);
+  };
+  var _getComputedProperty = function _getComputedProperty2(target, property, skipPrefixFallback) {
+    var cs = getComputedStyle(target);
+    return cs[property] || cs.getPropertyValue(property.replace(_capsExp, "-$1").toLowerCase()) || cs.getPropertyValue(property) || !skipPrefixFallback && _getComputedProperty2(target, _checkPropPrefix(property) || property, 1) || "";
+  };
+  var _prefixes = "O,Moz,ms,Ms,Webkit".split(",");
+  var _checkPropPrefix = function _checkPropPrefix2(property, element, preferPrefix) {
+    var e = element || _tempDiv, s = e.style, i = 5;
+    if (property in s && !preferPrefix) {
+      return property;
+    }
+    property = property.charAt(0).toUpperCase() + property.substr(1);
+    while (i-- && !(_prefixes[i] + property in s)) {
+    }
+    return i < 0 ? null : (i === 3 ? "ms" : i >= 0 ? _prefixes[i] : "") + property;
+  };
+  var _initCore = function _initCore2() {
+    if (_windowExists3() && window.document) {
+      _win2 = window;
+      _doc2 = _win2.document;
+      _docElement = _doc2.documentElement;
+      _tempDiv = _createElement("div") || {
+        style: {}
+      };
+      _tempDivStyler = _createElement("div");
+      _transformProp = _checkPropPrefix(_transformProp);
+      _transformOriginProp = _transformProp + "Origin";
+      _tempDiv.style.cssText = "border-width:0;line-height:0;position:absolute;padding:0";
+      _supports3D = !!_checkPropPrefix("perspective");
+      _reverting2 = gsap.core.reverting;
+      _pluginInitted = 1;
+    }
+  };
+  var _getReparentedCloneBBox = function _getReparentedCloneBBox2(target) {
+    var owner = target.ownerSVGElement, svg = _createElement("svg", owner && owner.getAttribute("xmlns") || "http://www.w3.org/2000/svg"), clone = target.cloneNode(true), bbox;
+    clone.style.display = "block";
+    svg.appendChild(clone);
+    _docElement.appendChild(svg);
+    try {
+      bbox = clone.getBBox();
+    } catch (e) {
+    }
+    svg.removeChild(clone);
+    _docElement.removeChild(svg);
+    return bbox;
+  };
+  var _getAttributeFallbacks = function _getAttributeFallbacks2(target, attributesArray) {
+    var i = attributesArray.length;
+    while (i--) {
+      if (target.hasAttribute(attributesArray[i])) {
+        return target.getAttribute(attributesArray[i]);
+      }
+    }
+  };
+  var _getBBox = function _getBBox2(target) {
+    var bounds, cloned;
+    try {
+      bounds = target.getBBox();
+    } catch (error) {
+      bounds = _getReparentedCloneBBox(target);
+      cloned = 1;
+    }
+    bounds && (bounds.width || bounds.height) || cloned || (bounds = _getReparentedCloneBBox(target));
+    return bounds && !bounds.width && !bounds.x && !bounds.y ? {
+      x: +_getAttributeFallbacks(target, ["x", "cx", "x1"]) || 0,
+      y: +_getAttributeFallbacks(target, ["y", "cy", "y1"]) || 0,
+      width: 0,
+      height: 0
+    } : bounds;
+  };
+  var _isSVG = function _isSVG2(e) {
+    return !!(e.getCTM && (!e.parentNode || e.ownerSVGElement) && _getBBox(e));
+  };
+  var _removeProperty = function _removeProperty2(target, property) {
+    if (property) {
+      var style = target.style, first2Chars;
+      if (property in _transformProps && property !== _transformOriginProp) {
+        property = _transformProp;
+      }
+      if (style.removeProperty) {
+        first2Chars = property.substr(0, 2);
+        if (first2Chars === "ms" || property.substr(0, 6) === "webkit") {
+          property = "-" + property;
+        }
+        style.removeProperty(first2Chars === "--" ? property : property.replace(_capsExp, "-$1").toLowerCase());
+      } else {
+        style.removeAttribute(property);
+      }
+    }
+  };
+  var _addNonTweeningPT = function _addNonTweeningPT2(plugin, target, property, beginning, end, onlySetAtEnd) {
+    var pt = new PropTween(plugin._pt, target, property, 0, 1, onlySetAtEnd ? _renderNonTweeningValueOnlyAtEnd : _renderNonTweeningValue);
+    plugin._pt = pt;
+    pt.b = beginning;
+    pt.e = end;
+    plugin._props.push(property);
+    return pt;
+  };
+  var _nonConvertibleUnits = {
+    deg: 1,
+    rad: 1,
+    turn: 1
+  };
+  var _nonStandardLayouts = {
+    grid: 1,
+    flex: 1
+  };
+  var _convertToUnit = function _convertToUnit2(target, property, value, unit) {
+    var curValue = parseFloat(value) || 0, curUnit = (value + "").trim().substr((curValue + "").length) || "px", style = _tempDiv.style, horizontal = _horizontalExp.test(property), isRootSVG = target.tagName.toLowerCase() === "svg", measureProperty = (isRootSVG ? "client" : "offset") + (horizontal ? "Width" : "Height"), amount = 100, toPixels = unit === "px", toPercent = unit === "%", px, parent, cache, isSVG;
+    if (unit === curUnit || !curValue || _nonConvertibleUnits[unit] || _nonConvertibleUnits[curUnit]) {
+      return curValue;
+    }
+    curUnit !== "px" && !toPixels && (curValue = _convertToUnit2(target, property, value, "px"));
+    isSVG = target.getCTM && _isSVG(target);
+    if ((toPercent || curUnit === "%") && (_transformProps[property] || ~property.indexOf("adius"))) {
+      px = isSVG ? target.getBBox()[horizontal ? "width" : "height"] : target[measureProperty];
+      return _round(toPercent ? curValue / px * amount : curValue / 100 * px);
+    }
+    style[horizontal ? "width" : "height"] = amount + (toPixels ? curUnit : unit);
+    parent = unit !== "rem" && ~property.indexOf("adius") || unit === "em" && target.appendChild && !isRootSVG ? target : target.parentNode;
+    if (isSVG) {
+      parent = (target.ownerSVGElement || {}).parentNode;
+    }
+    if (!parent || parent === _doc2 || !parent.appendChild) {
+      parent = _doc2.body;
+    }
+    cache = parent._gsap;
+    if (cache && toPercent && cache.width && horizontal && cache.time === _ticker.time && !cache.uncache) {
+      return _round(curValue / cache.width * amount);
+    } else {
+      if (toPercent && (property === "height" || property === "width")) {
+        var v = target.style[property];
+        target.style[property] = amount + unit;
+        px = target[measureProperty];
+        v ? target.style[property] = v : _removeProperty(target, property);
+      } else {
+        (toPercent || curUnit === "%") && !_nonStandardLayouts[_getComputedProperty(parent, "display")] && (style.position = _getComputedProperty(target, "position"));
+        parent === target && (style.position = "static");
+        parent.appendChild(_tempDiv);
+        px = _tempDiv[measureProperty];
+        parent.removeChild(_tempDiv);
+        style.position = "absolute";
+      }
+      if (horizontal && toPercent) {
+        cache = _getCache(parent);
+        cache.time = _ticker.time;
+        cache.width = parent[measureProperty];
+      }
+    }
+    return _round(toPixels ? px * curValue / amount : px && curValue ? amount / px * curValue : 0);
+  };
+  var _get = function _get2(target, property, unit, uncache) {
+    var value;
+    _pluginInitted || _initCore();
+    if (property in _propertyAliases && property !== "transform") {
+      property = _propertyAliases[property];
+      if (~property.indexOf(",")) {
+        property = property.split(",")[0];
+      }
+    }
+    if (_transformProps[property] && property !== "transform") {
+      value = _parseTransform(target, uncache);
+      value = property !== "transformOrigin" ? value[property] : value.svg ? value.origin : _firstTwoOnly(_getComputedProperty(target, _transformOriginProp)) + " " + value.zOrigin + "px";
+    } else {
+      value = target.style[property];
+      if (!value || value === "auto" || uncache || ~(value + "").indexOf("calc(")) {
+        value = _specialProps[property] && _specialProps[property](target, property, unit) || _getComputedProperty(target, property) || _getProperty(target, property) || (property === "opacity" ? 1 : 0);
+      }
+    }
+    return unit && !~(value + "").trim().indexOf(" ") ? _convertToUnit(target, property, value, unit) + unit : value;
+  };
+  var _tweenComplexCSSString = function _tweenComplexCSSString2(target, prop, start, end) {
+    if (!start || start === "none") {
+      var p = _checkPropPrefix(prop, target, 1), s = p && _getComputedProperty(target, p, 1);
+      if (s && s !== start) {
+        prop = p;
+        start = s;
+      } else if (prop === "borderColor") {
+        start = _getComputedProperty(target, "borderTopColor");
+      }
+    }
+    var pt = new PropTween(this._pt, target.style, prop, 0, 1, _renderComplexString), index = 0, matchIndex = 0, a, result, startValues, startNum, color, startValue, endValue, endNum, chunk, endUnit, startUnit, endValues;
+    pt.b = start;
+    pt.e = end;
+    start += "";
+    end += "";
+    if (end.substring(0, 6) === "var(--") {
+      end = _getComputedProperty(target, end.substring(4, end.indexOf(")")));
+    }
+    if (end === "auto") {
+      startValue = target.style[prop];
+      target.style[prop] = end;
+      end = _getComputedProperty(target, prop) || end;
+      startValue ? target.style[prop] = startValue : _removeProperty(target, prop);
+    }
+    a = [start, end];
+    _colorStringFilter(a);
+    start = a[0];
+    end = a[1];
+    startValues = start.match(_numWithUnitExp) || [];
+    endValues = end.match(_numWithUnitExp) || [];
+    if (endValues.length) {
+      while (result = _numWithUnitExp.exec(end)) {
+        endValue = result[0];
+        chunk = end.substring(index, result.index);
+        if (color) {
+          color = (color + 1) % 5;
+        } else if (chunk.substr(-5) === "rgba(" || chunk.substr(-5) === "hsla(") {
+          color = 1;
+        }
+        if (endValue !== (startValue = startValues[matchIndex++] || "")) {
+          startNum = parseFloat(startValue) || 0;
+          startUnit = startValue.substr((startNum + "").length);
+          endValue.charAt(1) === "=" && (endValue = _parseRelative(startNum, endValue) + startUnit);
+          endNum = parseFloat(endValue);
+          endUnit = endValue.substr((endNum + "").length);
+          index = _numWithUnitExp.lastIndex - endUnit.length;
+          if (!endUnit) {
+            endUnit = endUnit || _config.units[prop] || startUnit;
+            if (index === end.length) {
+              end += endUnit;
+              pt.e += endUnit;
+            }
+          }
+          if (startUnit !== endUnit) {
+            startNum = _convertToUnit(target, prop, startValue, endUnit) || 0;
+          }
+          pt._pt = {
+            _next: pt._pt,
+            p: chunk || matchIndex === 1 ? chunk : ",",
+            //note: SVG spec allows omission of comma/space when a negative sign is wedged between two numbers, like 2.5-5.3 instead of 2.5,-5.3 but when tweening, the negative value may switch to positive, so we insert the comma just in case.
+            s: startNum,
+            c: endNum - startNum,
+            m: color && color < 4 || prop === "zIndex" ? Math.round : 0
+          };
+        }
+      }
+      pt.c = index < end.length ? end.substring(index, end.length) : "";
+    } else {
+      pt.r = prop === "display" && end === "none" ? _renderNonTweeningValueOnlyAtEnd : _renderNonTweeningValue;
+    }
+    _relExp.test(end) && (pt.e = 0);
+    this._pt = pt;
+    return pt;
+  };
+  var _keywordToPercent = {
+    top: "0%",
+    bottom: "100%",
+    left: "0%",
+    right: "100%",
+    center: "50%"
+  };
+  var _convertKeywordsToPercentages = function _convertKeywordsToPercentages2(value) {
+    var split = value.split(" "), x = split[0], y = split[1] || "50%";
+    if (x === "top" || x === "bottom" || y === "left" || y === "right") {
+      value = x;
+      x = y;
+      y = value;
+    }
+    split[0] = _keywordToPercent[x] || x;
+    split[1] = _keywordToPercent[y] || y;
+    return split.join(" ");
+  };
+  var _renderClearProps = function _renderClearProps2(ratio, data) {
+    if (data.tween && data.tween._time === data.tween._dur) {
+      var target = data.t, style = target.style, props = data.u, cache = target._gsap, prop, clearTransforms, i;
+      if (props === "all" || props === true) {
+        style.cssText = "";
+        clearTransforms = 1;
+      } else {
+        props = props.split(",");
+        i = props.length;
+        while (--i > -1) {
+          prop = props[i];
+          if (_transformProps[prop]) {
+            clearTransforms = 1;
+            prop = prop === "transformOrigin" ? _transformOriginProp : _transformProp;
+          }
+          _removeProperty(target, prop);
+        }
+      }
+      if (clearTransforms) {
+        _removeProperty(target, _transformProp);
+        if (cache) {
+          cache.svg && target.removeAttribute("transform");
+          style.scale = style.rotate = style.translate = "none";
+          _parseTransform(target, 1);
+          cache.uncache = 1;
+          _removeIndependentTransforms(style);
+        }
+      }
+    }
+  };
+  var _specialProps = {
+    clearProps: function clearProps(plugin, target, property, endValue, tween) {
+      if (tween.data !== "isFromStart") {
+        var pt = plugin._pt = new PropTween(plugin._pt, target, property, 0, 0, _renderClearProps);
+        pt.u = endValue;
+        pt.pr = -10;
+        pt.tween = tween;
+        plugin._props.push(property);
+        return 1;
+      }
+    }
+    /* className feature (about 0.4kb gzipped).
+    , className(plugin, target, property, endValue, tween) {
+    	let _renderClassName = (ratio, data) => {
+    			data.css.render(ratio, data.css);
+    			if (!ratio || ratio === 1) {
+    				let inline = data.rmv,
+    					target = data.t,
+    					p;
+    				target.setAttribute("class", ratio ? data.e : data.b);
+    				for (p in inline) {
+    					_removeProperty(target, p);
+    				}
+    			}
+    		},
+    		_getAllStyles = (target) => {
+    			let styles = {},
+    				computed = getComputedStyle(target),
+    				p;
+    			for (p in computed) {
+    				if (isNaN(p) && p !== "cssText" && p !== "length") {
+    					styles[p] = computed[p];
+    				}
+    			}
+    			_setDefaults(styles, _parseTransform(target, 1));
+    			return styles;
+    		},
+    		startClassList = target.getAttribute("class"),
+    		style = target.style,
+    		cssText = style.cssText,
+    		cache = target._gsap,
+    		classPT = cache.classPT,
+    		inlineToRemoveAtEnd = {},
+    		data = {t:target, plugin:plugin, rmv:inlineToRemoveAtEnd, b:startClassList, e:(endValue.charAt(1) !== "=") ? endValue : startClassList.replace(new RegExp("(?:\\s|^)" + endValue.substr(2) + "(?![\\w-])"), "") + ((endValue.charAt(0) === "+") ? " " + endValue.substr(2) : "")},
+    		changingVars = {},
+    		startVars = _getAllStyles(target),
+    		transformRelated = /(transform|perspective)/i,
+    		endVars, p;
+    	if (classPT) {
+    		classPT.r(1, classPT.d);
+    		_removeLinkedListItem(classPT.d.plugin, classPT, "_pt");
+    	}
+    	target.setAttribute("class", data.e);
+    	endVars = _getAllStyles(target, true);
+    	target.setAttribute("class", startClassList);
+    	for (p in endVars) {
+    		if (endVars[p] !== startVars[p] && !transformRelated.test(p)) {
+    			changingVars[p] = endVars[p];
+    			if (!style[p] && style[p] !== "0") {
+    				inlineToRemoveAtEnd[p] = 1;
+    			}
+    		}
+    	}
+    	cache.classPT = plugin._pt = new PropTween(plugin._pt, target, "className", 0, 0, _renderClassName, data, 0, -11);
+    	if (style.cssText !== cssText) { //only apply if things change. Otherwise, in cases like a background-image that's pulled dynamically, it could cause a refresh. See https://gsap.com/forums/topic/20368-possible-gsap-bug-switching-classnames-in-chrome/.
+    		style.cssText = cssText; //we recorded cssText before we swapped classes and ran _getAllStyles() because in cases when a className tween is overwritten, we remove all the related tweening properties from that class change (otherwise class-specific stuff can't override properties we've directly set on the target's style object due to specificity).
+    	}
+    	_parseTransform(target, true); //to clear the caching of transforms
+    	data.css = new gsap.plugins.css();
+    	data.css.init(target, changingVars, tween);
+    	plugin._props.push(...data.css._props);
+    	return 1;
+    }
+    */
+  };
+  var _identity2DMatrix = [1, 0, 0, 1, 0, 0];
+  var _rotationalProperties = {};
+  var _isNullTransform = function _isNullTransform2(value) {
+    return value === "matrix(1, 0, 0, 1, 0, 0)" || value === "none" || !value;
+  };
+  var _getComputedTransformMatrixAsArray = function _getComputedTransformMatrixAsArray2(target) {
+    var matrixString = _getComputedProperty(target, _transformProp);
+    return _isNullTransform(matrixString) ? _identity2DMatrix : matrixString.substr(7).match(_numExp).map(_round);
+  };
+  var _getMatrix = function _getMatrix2(target, force2D) {
+    var cache = target._gsap || _getCache(target), style = target.style, matrix = _getComputedTransformMatrixAsArray(target), parent, nextSibling, temp, addedToDOM;
+    if (cache.svg && target.getAttribute("transform")) {
+      temp = target.transform.baseVal.consolidate().matrix;
+      matrix = [temp.a, temp.b, temp.c, temp.d, temp.e, temp.f];
+      return matrix.join(",") === "1,0,0,1,0,0" ? _identity2DMatrix : matrix;
+    } else if (matrix === _identity2DMatrix && !target.offsetParent && target !== _docElement && !cache.svg) {
+      temp = style.display;
+      style.display = "block";
+      parent = target.parentNode;
+      if (!parent || !target.offsetParent && !target.getBoundingClientRect().width) {
+        addedToDOM = 1;
+        nextSibling = target.nextElementSibling;
+        _docElement.appendChild(target);
+      }
+      matrix = _getComputedTransformMatrixAsArray(target);
+      temp ? style.display = temp : _removeProperty(target, "display");
+      if (addedToDOM) {
+        nextSibling ? parent.insertBefore(target, nextSibling) : parent ? parent.appendChild(target) : _docElement.removeChild(target);
+      }
+    }
+    return force2D && matrix.length > 6 ? [matrix[0], matrix[1], matrix[4], matrix[5], matrix[12], matrix[13]] : matrix;
+  };
+  var _applySVGOrigin = function _applySVGOrigin2(target, origin, originIsAbsolute, smooth, matrixArray, pluginToAddPropTweensTo) {
+    var cache = target._gsap, matrix = matrixArray || _getMatrix(target, true), xOriginOld = cache.xOrigin || 0, yOriginOld = cache.yOrigin || 0, xOffsetOld = cache.xOffset || 0, yOffsetOld = cache.yOffset || 0, a = matrix[0], b = matrix[1], c = matrix[2], d = matrix[3], tx = matrix[4], ty = matrix[5], originSplit = origin.split(" "), xOrigin = parseFloat(originSplit[0]) || 0, yOrigin = parseFloat(originSplit[1]) || 0, bounds, determinant, x, y;
+    if (!originIsAbsolute) {
+      bounds = _getBBox(target);
+      xOrigin = bounds.x + (~originSplit[0].indexOf("%") ? xOrigin / 100 * bounds.width : xOrigin);
+      yOrigin = bounds.y + (~(originSplit[1] || originSplit[0]).indexOf("%") ? yOrigin / 100 * bounds.height : yOrigin);
+    } else if (matrix !== _identity2DMatrix && (determinant = a * d - b * c)) {
+      x = xOrigin * (d / determinant) + yOrigin * (-c / determinant) + (c * ty - d * tx) / determinant;
+      y = xOrigin * (-b / determinant) + yOrigin * (a / determinant) - (a * ty - b * tx) / determinant;
+      xOrigin = x;
+      yOrigin = y;
+    }
+    if (smooth || smooth !== false && cache.smooth) {
+      tx = xOrigin - xOriginOld;
+      ty = yOrigin - yOriginOld;
+      cache.xOffset = xOffsetOld + (tx * a + ty * c) - tx;
+      cache.yOffset = yOffsetOld + (tx * b + ty * d) - ty;
+    } else {
+      cache.xOffset = cache.yOffset = 0;
+    }
+    cache.xOrigin = xOrigin;
+    cache.yOrigin = yOrigin;
+    cache.smooth = !!smooth;
+    cache.origin = origin;
+    cache.originIsAbsolute = !!originIsAbsolute;
+    target.style[_transformOriginProp] = "0px 0px";
+    if (pluginToAddPropTweensTo) {
+      _addNonTweeningPT(pluginToAddPropTweensTo, cache, "xOrigin", xOriginOld, xOrigin);
+      _addNonTweeningPT(pluginToAddPropTweensTo, cache, "yOrigin", yOriginOld, yOrigin);
+      _addNonTweeningPT(pluginToAddPropTweensTo, cache, "xOffset", xOffsetOld, cache.xOffset);
+      _addNonTweeningPT(pluginToAddPropTweensTo, cache, "yOffset", yOffsetOld, cache.yOffset);
+    }
+    target.setAttribute("data-svg-origin", xOrigin + " " + yOrigin);
+  };
+  var _parseTransform = function _parseTransform2(target, uncache) {
+    var cache = target._gsap || new GSCache(target);
+    if ("x" in cache && !uncache && !cache.uncache) {
+      return cache;
+    }
+    var style = target.style, invertedScaleX = cache.scaleX < 0, px = "px", deg = "deg", cs = getComputedStyle(target), origin = _getComputedProperty(target, _transformOriginProp) || "0", x, y, z, scaleX, scaleY, rotation, rotationX, rotationY, skewX, skewY, perspective, xOrigin, yOrigin, matrix, angle, cos, sin, a, b, c, d, a12, a22, t1, t2, t3, a13, a23, a33, a42, a43, a32;
+    x = y = z = rotation = rotationX = rotationY = skewX = skewY = perspective = 0;
+    scaleX = scaleY = 1;
+    cache.svg = !!(target.getCTM && _isSVG(target));
+    if (cs.translate) {
+      if (cs.translate !== "none" || cs.scale !== "none" || cs.rotate !== "none") {
+        style[_transformProp] = (cs.translate !== "none" ? "translate3d(" + (cs.translate + " 0 0").split(" ").slice(0, 3).join(", ") + ") " : "") + (cs.rotate !== "none" ? "rotate(" + cs.rotate + ") " : "") + (cs.scale !== "none" ? "scale(" + cs.scale.split(" ").join(",") + ") " : "") + (cs[_transformProp] !== "none" ? cs[_transformProp] : "");
+      }
+      style.scale = style.rotate = style.translate = "none";
+    }
+    matrix = _getMatrix(target, cache.svg);
+    if (cache.svg) {
+      if (cache.uncache) {
+        t2 = target.getBBox();
+        origin = cache.xOrigin - t2.x + "px " + (cache.yOrigin - t2.y) + "px";
+        t1 = "";
+      } else {
+        t1 = !uncache && target.getAttribute("data-svg-origin");
+      }
+      _applySVGOrigin(target, t1 || origin, !!t1 || cache.originIsAbsolute, cache.smooth !== false, matrix);
+    }
+    xOrigin = cache.xOrigin || 0;
+    yOrigin = cache.yOrigin || 0;
+    if (matrix !== _identity2DMatrix) {
+      a = matrix[0];
+      b = matrix[1];
+      c = matrix[2];
+      d = matrix[3];
+      x = a12 = matrix[4];
+      y = a22 = matrix[5];
+      if (matrix.length === 6) {
+        scaleX = Math.sqrt(a * a + b * b);
+        scaleY = Math.sqrt(d * d + c * c);
+        rotation = a || b ? _atan2(b, a) * _RAD2DEG : 0;
+        skewX = c || d ? _atan2(c, d) * _RAD2DEG + rotation : 0;
+        skewX && (scaleY *= Math.abs(Math.cos(skewX * _DEG2RAD)));
+        if (cache.svg) {
+          x -= xOrigin - (xOrigin * a + yOrigin * c);
+          y -= yOrigin - (xOrigin * b + yOrigin * d);
+        }
+      } else {
+        a32 = matrix[6];
+        a42 = matrix[7];
+        a13 = matrix[8];
+        a23 = matrix[9];
+        a33 = matrix[10];
+        a43 = matrix[11];
+        x = matrix[12];
+        y = matrix[13];
+        z = matrix[14];
+        angle = _atan2(a32, a33);
+        rotationX = angle * _RAD2DEG;
+        if (angle) {
+          cos = Math.cos(-angle);
+          sin = Math.sin(-angle);
+          t1 = a12 * cos + a13 * sin;
+          t2 = a22 * cos + a23 * sin;
+          t3 = a32 * cos + a33 * sin;
+          a13 = a12 * -sin + a13 * cos;
+          a23 = a22 * -sin + a23 * cos;
+          a33 = a32 * -sin + a33 * cos;
+          a43 = a42 * -sin + a43 * cos;
+          a12 = t1;
+          a22 = t2;
+          a32 = t3;
+        }
+        angle = _atan2(-c, a33);
+        rotationY = angle * _RAD2DEG;
+        if (angle) {
+          cos = Math.cos(-angle);
+          sin = Math.sin(-angle);
+          t1 = a * cos - a13 * sin;
+          t2 = b * cos - a23 * sin;
+          t3 = c * cos - a33 * sin;
+          a43 = d * sin + a43 * cos;
+          a = t1;
+          b = t2;
+          c = t3;
+        }
+        angle = _atan2(b, a);
+        rotation = angle * _RAD2DEG;
+        if (angle) {
+          cos = Math.cos(angle);
+          sin = Math.sin(angle);
+          t1 = a * cos + b * sin;
+          t2 = a12 * cos + a22 * sin;
+          b = b * cos - a * sin;
+          a22 = a22 * cos - a12 * sin;
+          a = t1;
+          a12 = t2;
+        }
+        if (rotationX && Math.abs(rotationX) + Math.abs(rotation) > 359.9) {
+          rotationX = rotation = 0;
+          rotationY = 180 - rotationY;
+        }
+        scaleX = _round(Math.sqrt(a * a + b * b + c * c));
+        scaleY = _round(Math.sqrt(a22 * a22 + a32 * a32));
+        angle = _atan2(a12, a22);
+        skewX = Math.abs(angle) > 2e-4 ? angle * _RAD2DEG : 0;
+        perspective = a43 ? 1 / (a43 < 0 ? -a43 : a43) : 0;
+      }
+      if (cache.svg) {
+        t1 = target.getAttribute("transform");
+        cache.forceCSS = target.setAttribute("transform", "") || !_isNullTransform(_getComputedProperty(target, _transformProp));
+        t1 && target.setAttribute("transform", t1);
+      }
+    }
+    if (Math.abs(skewX) > 90 && Math.abs(skewX) < 270) {
+      if (invertedScaleX) {
+        scaleX *= -1;
+        skewX += rotation <= 0 ? 180 : -180;
+        rotation += rotation <= 0 ? 180 : -180;
+      } else {
+        scaleY *= -1;
+        skewX += skewX <= 0 ? 180 : -180;
+      }
+    }
+    uncache = uncache || cache.uncache;
+    cache.x = x - ((cache.xPercent = x && (!uncache && cache.xPercent || (Math.round(target.offsetWidth / 2) === Math.round(-x) ? -50 : 0))) ? target.offsetWidth * cache.xPercent / 100 : 0) + px;
+    cache.y = y - ((cache.yPercent = y && (!uncache && cache.yPercent || (Math.round(target.offsetHeight / 2) === Math.round(-y) ? -50 : 0))) ? target.offsetHeight * cache.yPercent / 100 : 0) + px;
+    cache.z = z + px;
+    cache.scaleX = _round(scaleX);
+    cache.scaleY = _round(scaleY);
+    cache.rotation = _round(rotation) + deg;
+    cache.rotationX = _round(rotationX) + deg;
+    cache.rotationY = _round(rotationY) + deg;
+    cache.skewX = skewX + deg;
+    cache.skewY = skewY + deg;
+    cache.transformPerspective = perspective + px;
+    if (cache.zOrigin = parseFloat(origin.split(" ")[2]) || !uncache && cache.zOrigin || 0) {
+      style[_transformOriginProp] = _firstTwoOnly(origin);
+    }
+    cache.xOffset = cache.yOffset = 0;
+    cache.force3D = _config.force3D;
+    cache.renderTransform = cache.svg ? _renderSVGTransforms : _supports3D ? _renderCSSTransforms : _renderNon3DTransforms;
+    cache.uncache = 0;
+    return cache;
+  };
+  var _firstTwoOnly = function _firstTwoOnly2(value) {
+    return (value = value.split(" "))[0] + " " + value[1];
+  };
+  var _addPxTranslate = function _addPxTranslate2(target, start, value) {
+    var unit = getUnit(start);
+    return _round(parseFloat(start) + parseFloat(_convertToUnit(target, "x", value + "px", unit))) + unit;
+  };
+  var _renderNon3DTransforms = function _renderNon3DTransforms2(ratio, cache) {
+    cache.z = "0px";
+    cache.rotationY = cache.rotationX = "0deg";
+    cache.force3D = 0;
+    _renderCSSTransforms(ratio, cache);
+  };
+  var _zeroDeg = "0deg";
+  var _zeroPx = "0px";
+  var _endParenthesis = ") ";
+  var _renderCSSTransforms = function _renderCSSTransforms2(ratio, cache) {
+    var _ref = cache || this, xPercent = _ref.xPercent, yPercent = _ref.yPercent, x = _ref.x, y = _ref.y, z = _ref.z, rotation = _ref.rotation, rotationY = _ref.rotationY, rotationX = _ref.rotationX, skewX = _ref.skewX, skewY = _ref.skewY, scaleX = _ref.scaleX, scaleY = _ref.scaleY, transformPerspective = _ref.transformPerspective, force3D = _ref.force3D, target = _ref.target, zOrigin = _ref.zOrigin, transforms = "", use3D = force3D === "auto" && ratio && ratio !== 1 || force3D === true;
+    if (zOrigin && (rotationX !== _zeroDeg || rotationY !== _zeroDeg)) {
+      var angle = parseFloat(rotationY) * _DEG2RAD, a13 = Math.sin(angle), a33 = Math.cos(angle), cos;
+      angle = parseFloat(rotationX) * _DEG2RAD;
+      cos = Math.cos(angle);
+      x = _addPxTranslate(target, x, a13 * cos * -zOrigin);
+      y = _addPxTranslate(target, y, -Math.sin(angle) * -zOrigin);
+      z = _addPxTranslate(target, z, a33 * cos * -zOrigin + zOrigin);
+    }
+    if (transformPerspective !== _zeroPx) {
+      transforms += "perspective(" + transformPerspective + _endParenthesis;
+    }
+    if (xPercent || yPercent) {
+      transforms += "translate(" + xPercent + "%, " + yPercent + "%) ";
+    }
+    if (use3D || x !== _zeroPx || y !== _zeroPx || z !== _zeroPx) {
+      transforms += z !== _zeroPx || use3D ? "translate3d(" + x + ", " + y + ", " + z + ") " : "translate(" + x + ", " + y + _endParenthesis;
+    }
+    if (rotation !== _zeroDeg) {
+      transforms += "rotate(" + rotation + _endParenthesis;
+    }
+    if (rotationY !== _zeroDeg) {
+      transforms += "rotateY(" + rotationY + _endParenthesis;
+    }
+    if (rotationX !== _zeroDeg) {
+      transforms += "rotateX(" + rotationX + _endParenthesis;
+    }
+    if (skewX !== _zeroDeg || skewY !== _zeroDeg) {
+      transforms += "skew(" + skewX + ", " + skewY + _endParenthesis;
+    }
+    if (scaleX !== 1 || scaleY !== 1) {
+      transforms += "scale(" + scaleX + ", " + scaleY + _endParenthesis;
+    }
+    target.style[_transformProp] = transforms || "translate(0, 0)";
+  };
+  var _renderSVGTransforms = function _renderSVGTransforms2(ratio, cache) {
+    var _ref2 = cache || this, xPercent = _ref2.xPercent, yPercent = _ref2.yPercent, x = _ref2.x, y = _ref2.y, rotation = _ref2.rotation, skewX = _ref2.skewX, skewY = _ref2.skewY, scaleX = _ref2.scaleX, scaleY = _ref2.scaleY, target = _ref2.target, xOrigin = _ref2.xOrigin, yOrigin = _ref2.yOrigin, xOffset = _ref2.xOffset, yOffset = _ref2.yOffset, forceCSS = _ref2.forceCSS, tx = parseFloat(x), ty = parseFloat(y), a11, a21, a12, a22, temp;
+    rotation = parseFloat(rotation);
+    skewX = parseFloat(skewX);
+    skewY = parseFloat(skewY);
+    if (skewY) {
+      skewY = parseFloat(skewY);
+      skewX += skewY;
+      rotation += skewY;
+    }
+    if (rotation || skewX) {
+      rotation *= _DEG2RAD;
+      skewX *= _DEG2RAD;
+      a11 = Math.cos(rotation) * scaleX;
+      a21 = Math.sin(rotation) * scaleX;
+      a12 = Math.sin(rotation - skewX) * -scaleY;
+      a22 = Math.cos(rotation - skewX) * scaleY;
+      if (skewX) {
+        skewY *= _DEG2RAD;
+        temp = Math.tan(skewX - skewY);
+        temp = Math.sqrt(1 + temp * temp);
+        a12 *= temp;
+        a22 *= temp;
+        if (skewY) {
+          temp = Math.tan(skewY);
+          temp = Math.sqrt(1 + temp * temp);
+          a11 *= temp;
+          a21 *= temp;
+        }
+      }
+      a11 = _round(a11);
+      a21 = _round(a21);
+      a12 = _round(a12);
+      a22 = _round(a22);
+    } else {
+      a11 = scaleX;
+      a22 = scaleY;
+      a21 = a12 = 0;
+    }
+    if (tx && !~(x + "").indexOf("px") || ty && !~(y + "").indexOf("px")) {
+      tx = _convertToUnit(target, "x", x, "px");
+      ty = _convertToUnit(target, "y", y, "px");
+    }
+    if (xOrigin || yOrigin || xOffset || yOffset) {
+      tx = _round(tx + xOrigin - (xOrigin * a11 + yOrigin * a12) + xOffset);
+      ty = _round(ty + yOrigin - (xOrigin * a21 + yOrigin * a22) + yOffset);
+    }
+    if (xPercent || yPercent) {
+      temp = target.getBBox();
+      tx = _round(tx + xPercent / 100 * temp.width);
+      ty = _round(ty + yPercent / 100 * temp.height);
+    }
+    temp = "matrix(" + a11 + "," + a21 + "," + a12 + "," + a22 + "," + tx + "," + ty + ")";
+    target.setAttribute("transform", temp);
+    forceCSS && (target.style[_transformProp] = temp);
+  };
+  var _addRotationalPropTween = function _addRotationalPropTween2(plugin, target, property, startNum, endValue) {
+    var cap = 360, isString = _isString(endValue), endNum = parseFloat(endValue) * (isString && ~endValue.indexOf("rad") ? _RAD2DEG : 1), change = endNum - startNum, finalValue = startNum + change + "deg", direction, pt;
+    if (isString) {
+      direction = endValue.split("_")[1];
+      if (direction === "short") {
+        change %= cap;
+        if (change !== change % (cap / 2)) {
+          change += change < 0 ? cap : -cap;
+        }
+      }
+      if (direction === "cw" && change < 0) {
+        change = (change + cap * _bigNum2) % cap - ~~(change / cap) * cap;
+      } else if (direction === "ccw" && change > 0) {
+        change = (change - cap * _bigNum2) % cap - ~~(change / cap) * cap;
+      }
+    }
+    plugin._pt = pt = new PropTween(plugin._pt, target, property, startNum, change, _renderPropWithEnd);
+    pt.e = finalValue;
+    pt.u = "deg";
+    plugin._props.push(property);
+    return pt;
+  };
+  var _assign = function _assign2(target, source) {
+    for (var p in source) {
+      target[p] = source[p];
+    }
+    return target;
+  };
+  var _addRawTransformPTs = function _addRawTransformPTs2(plugin, transforms, target) {
+    var startCache = _assign({}, target._gsap), exclude = "perspective,force3D,transformOrigin,svgOrigin", style = target.style, endCache, p, startValue, endValue, startNum, endNum, startUnit, endUnit;
+    if (startCache.svg) {
+      startValue = target.getAttribute("transform");
+      target.setAttribute("transform", "");
+      style[_transformProp] = transforms;
+      endCache = _parseTransform(target, 1);
+      _removeProperty(target, _transformProp);
+      target.setAttribute("transform", startValue);
+    } else {
+      startValue = getComputedStyle(target)[_transformProp];
+      style[_transformProp] = transforms;
+      endCache = _parseTransform(target, 1);
+      style[_transformProp] = startValue;
+    }
+    for (p in _transformProps) {
+      startValue = startCache[p];
+      endValue = endCache[p];
+      if (startValue !== endValue && exclude.indexOf(p) < 0) {
+        startUnit = getUnit(startValue);
+        endUnit = getUnit(endValue);
+        startNum = startUnit !== endUnit ? _convertToUnit(target, p, startValue, endUnit) : parseFloat(startValue);
+        endNum = parseFloat(endValue);
+        plugin._pt = new PropTween(plugin._pt, endCache, p, startNum, endNum - startNum, _renderCSSProp);
+        plugin._pt.u = endUnit || 0;
+        plugin._props.push(p);
+      }
+    }
+    _assign(endCache, startCache);
+  };
+  _forEachName("padding,margin,Width,Radius", function(name, index) {
+    var t = "Top", r = "Right", b = "Bottom", l = "Left", props = (index < 3 ? [t, r, b, l] : [t + l, t + r, b + r, b + l]).map(function(side) {
+      return index < 2 ? name + side : "border" + side + name;
+    });
+    _specialProps[index > 1 ? "border" + name : name] = function(plugin, target, property, endValue, tween) {
+      var a, vars;
+      if (arguments.length < 4) {
+        a = props.map(function(prop) {
+          return _get(plugin, prop, property);
+        });
+        vars = a.join(" ");
+        return vars.split(a[0]).length === 5 ? a[0] : vars;
+      }
+      a = (endValue + "").split(" ");
+      vars = {};
+      props.forEach(function(prop, i) {
+        return vars[prop] = a[i] = a[i] || a[(i - 1) / 2 | 0];
+      });
+      plugin.init(target, vars, tween);
+    };
+  });
+  var CSSPlugin = {
+    name: "css",
+    register: _initCore,
+    targetTest: function targetTest(target) {
+      return target.style && target.nodeType;
+    },
+    init: function init3(target, vars, tween, index, targets) {
+      var props = this._props, style = target.style, startAt = tween.vars.startAt, startValue, endValue, endNum, startNum, type, specialProp, p, startUnit, endUnit, relative, isTransformRelated, transformPropTween, cache, smooth, hasPriority, inlineProps, finalTransformValue;
+      _pluginInitted || _initCore();
+      this.styles = this.styles || _getStyleSaver(target);
+      inlineProps = this.styles.props;
+      this.tween = tween;
+      for (p in vars) {
+        if (p === "autoRound") {
+          continue;
+        }
+        endValue = vars[p];
+        if (_plugins[p] && _checkPlugin(p, vars, tween, index, target, targets)) {
+          continue;
+        }
+        type = typeof endValue;
+        specialProp = _specialProps[p];
+        if (type === "function") {
+          endValue = endValue.call(tween, index, target, targets);
+          type = typeof endValue;
+        }
+        if (type === "string" && ~endValue.indexOf("random(")) {
+          endValue = _replaceRandom(endValue);
+        }
+        if (specialProp) {
+          specialProp(this, target, p, endValue, tween) && (hasPriority = 1);
+        } else if (p.substr(0, 2) === "--") {
+          startValue = (getComputedStyle(target).getPropertyValue(p) + "").trim();
+          endValue += "";
+          _colorExp.lastIndex = 0;
+          if (!_colorExp.test(startValue)) {
+            startUnit = getUnit(startValue);
+            endUnit = getUnit(endValue);
+            endUnit ? startUnit !== endUnit && (startValue = _convertToUnit(target, p, startValue, endUnit) + endUnit) : startUnit && (endValue += startUnit);
+          }
+          this.add(style, "setProperty", startValue, endValue, index, targets, 0, 0, p);
+          props.push(p);
+          inlineProps.push(p, 0, style[p]);
+        } else if (type !== "undefined") {
+          if (startAt && p in startAt) {
+            startValue = typeof startAt[p] === "function" ? startAt[p].call(tween, index, target, targets) : startAt[p];
+            _isString(startValue) && ~startValue.indexOf("random(") && (startValue = _replaceRandom(startValue));
+            getUnit(startValue + "") || startValue === "auto" || (startValue += _config.units[p] || getUnit(_get(target, p)) || "");
+            (startValue + "").charAt(1) === "=" && (startValue = _get(target, p));
+          } else {
+            startValue = _get(target, p);
+          }
+          startNum = parseFloat(startValue);
+          relative = type === "string" && endValue.charAt(1) === "=" && endValue.substr(0, 2);
+          relative && (endValue = endValue.substr(2));
+          endNum = parseFloat(endValue);
+          if (p in _propertyAliases) {
+            if (p === "autoAlpha") {
+              if (startNum === 1 && _get(target, "visibility") === "hidden" && endNum) {
+                startNum = 0;
+              }
+              inlineProps.push("visibility", 0, style.visibility);
+              _addNonTweeningPT(this, style, "visibility", startNum ? "inherit" : "hidden", endNum ? "inherit" : "hidden", !endNum);
+            }
+            if (p !== "scale" && p !== "transform") {
+              p = _propertyAliases[p];
+              ~p.indexOf(",") && (p = p.split(",")[0]);
+            }
+          }
+          isTransformRelated = p in _transformProps;
+          if (isTransformRelated) {
+            this.styles.save(p);
+            finalTransformValue = endValue;
+            if (type === "string" && endValue.substring(0, 6) === "var(--") {
+              endValue = _getComputedProperty(target, endValue.substring(4, endValue.indexOf(")")));
+              if (endValue.substring(0, 5) === "calc(") {
+                var origPerspective = target.style.perspective;
+                target.style.perspective = endValue;
+                endValue = _getComputedProperty(target, "perspective");
+                origPerspective ? target.style.perspective = origPerspective : _removeProperty(target, "perspective");
+              }
+              endNum = parseFloat(endValue);
+            }
+            if (!transformPropTween) {
+              cache = target._gsap;
+              cache.renderTransform && !vars.parseTransform || _parseTransform(target, vars.parseTransform);
+              smooth = vars.smoothOrigin !== false && cache.smooth;
+              transformPropTween = this._pt = new PropTween(this._pt, style, _transformProp, 0, 1, cache.renderTransform, cache, 0, -1);
+              transformPropTween.dep = 1;
+            }
+            if (p === "scale") {
+              this._pt = new PropTween(this._pt, cache, "scaleY", cache.scaleY, (relative ? _parseRelative(cache.scaleY, relative + endNum) : endNum) - cache.scaleY || 0, _renderCSSProp);
+              this._pt.u = 0;
+              props.push("scaleY", p);
+              p += "X";
+            } else if (p === "transformOrigin") {
+              inlineProps.push(_transformOriginProp, 0, style[_transformOriginProp]);
+              endValue = _convertKeywordsToPercentages(endValue);
+              if (cache.svg) {
+                _applySVGOrigin(target, endValue, 0, smooth, 0, this);
+              } else {
+                endUnit = parseFloat(endValue.split(" ")[2]) || 0;
+                endUnit !== cache.zOrigin && _addNonTweeningPT(this, cache, "zOrigin", cache.zOrigin, endUnit);
+                _addNonTweeningPT(this, style, p, _firstTwoOnly(startValue), _firstTwoOnly(endValue));
+              }
+              continue;
+            } else if (p === "svgOrigin") {
+              _applySVGOrigin(target, endValue, 1, smooth, 0, this);
+              continue;
+            } else if (p in _rotationalProperties) {
+              _addRotationalPropTween(this, cache, p, startNum, relative ? _parseRelative(startNum, relative + endValue) : endValue);
+              continue;
+            } else if (p === "smoothOrigin") {
+              _addNonTweeningPT(this, cache, "smooth", cache.smooth, endValue);
+              continue;
+            } else if (p === "force3D") {
+              cache[p] = endValue;
+              continue;
+            } else if (p === "transform") {
+              _addRawTransformPTs(this, endValue, target);
+              continue;
+            }
+          } else if (!(p in style)) {
+            p = _checkPropPrefix(p) || p;
+          }
+          if (isTransformRelated || (endNum || endNum === 0) && (startNum || startNum === 0) && !_complexExp.test(endValue) && p in style) {
+            startUnit = (startValue + "").substr((startNum + "").length);
+            endNum || (endNum = 0);
+            endUnit = getUnit(endValue) || (p in _config.units ? _config.units[p] : startUnit);
+            startUnit !== endUnit && (startNum = _convertToUnit(target, p, startValue, endUnit));
+            this._pt = new PropTween(this._pt, isTransformRelated ? cache : style, p, startNum, (relative ? _parseRelative(startNum, relative + endNum) : endNum) - startNum, !isTransformRelated && (endUnit === "px" || p === "zIndex") && vars.autoRound !== false ? _renderRoundedCSSProp : _renderCSSProp);
+            this._pt.u = endUnit || 0;
+            if (isTransformRelated && finalTransformValue !== endValue) {
+              this._pt.b = startValue;
+              this._pt.e = finalTransformValue;
+              this._pt.r = _renderCSSPropWithBeginningAndEnd;
+            } else if (startUnit !== endUnit && endUnit !== "%") {
+              this._pt.b = startValue;
+              this._pt.r = _renderCSSPropWithBeginning;
+            }
+          } else if (!(p in style)) {
+            if (p in target) {
+              this.add(target, p, startValue || target[p], relative ? relative + endValue : endValue, index, targets);
+            } else if (p !== "parseTransform") {
+              _missingPlugin(p, endValue);
+              continue;
+            }
+          } else {
+            _tweenComplexCSSString.call(this, target, p, startValue, relative ? relative + endValue : endValue);
+          }
+          isTransformRelated || (p in style ? inlineProps.push(p, 0, style[p]) : typeof target[p] === "function" ? inlineProps.push(p, 2, target[p]()) : inlineProps.push(p, 1, startValue || target[p]));
+          props.push(p);
+        }
+      }
+      hasPriority && _sortPropTweensByPriority(this);
+    },
+    render: function render2(ratio, data) {
+      if (data.tween._time || !_reverting2()) {
+        var pt = data._pt;
+        while (pt) {
+          pt.r(ratio, pt.d);
+          pt = pt._next;
+        }
+      } else {
+        data.styles.revert();
+      }
+    },
+    get: _get,
+    aliases: _propertyAliases,
+    getSetter: function getSetter(target, property, plugin) {
+      var p = _propertyAliases[property];
+      p && p.indexOf(",") < 0 && (property = p);
+      return property in _transformProps && property !== _transformOriginProp && (target._gsap.x || _get(target, "x")) ? plugin && _recentSetterPlugin === plugin ? property === "scale" ? _setterScale : _setterTransform : (_recentSetterPlugin = plugin || {}) && (property === "scale" ? _setterScaleWithRender : _setterTransformWithRender) : target.style && !_isUndefined(target.style[property]) ? _setterCSSStyle : ~property.indexOf("-") ? _setterCSSProp : _getSetter(target, property);
+    },
+    core: {
+      _removeProperty,
+      _getMatrix
+    }
+  };
+  gsap.utils.checkPrefix = _checkPropPrefix;
+  gsap.core.getStyleSaver = _getStyleSaver;
+  (function(positionAndScale, rotation, others, aliases) {
+    var all = _forEachName(positionAndScale + "," + rotation + "," + others, function(name) {
+      _transformProps[name] = 1;
+    });
+    _forEachName(rotation, function(name) {
+      _config.units[name] = "deg";
+      _rotationalProperties[name] = 1;
+    });
+    _propertyAliases[all[13]] = positionAndScale + "," + rotation;
+    _forEachName(aliases, function(name) {
+      var split = name.split(":");
+      _propertyAliases[split[1]] = all[split[0]];
+    });
+  })("x,y,z,scale,scaleX,scaleY,xPercent,yPercent", "rotation,rotationX,rotationY,skewX,skewY", "transform,transformOrigin,svgOrigin,force3D,smoothOrigin,transformPerspective", "0:translateX,1:translateY,2:translateZ,8:rotate,8:rotationZ,8:rotateZ,9:rotateX,10:rotateY");
+  _forEachName("x,y,z,top,right,bottom,left,width,height,fontSize,padding,margin,perspective", function(name) {
+    _config.units[name] = "px";
+  });
+  gsap.registerPlugin(CSSPlugin);
+
+  // node_modules/gsap/index.js
+  var gsapWithCSS = gsap.registerPlugin(CSSPlugin) || gsap;
+  var TweenMaxWithCSS = gsapWithCSS.core.Tween;
+
+  // components/PillNav/PillNav.jsx
+  var import_jsx_runtime = __toESM(require_jsx_runtime());
+  var PillNav = ({
+    logo,
+    logoAlt = "Logo",
+    items,
+    activeHref,
+    className = "",
+    ease = "power3.easeOut",
+    baseColor = "#fff",
+    pillColor = "#060010",
+    hoveredPillTextColor = "#060010",
+    pillTextColor,
+    onMobileMenuClick,
+    initialLoadAnimation = true
+  }) => {
+    const resolvedPillTextColor = pillTextColor ?? baseColor;
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = (0, import_react.useState)(false);
+    const [isScrolled, setIsScrolled] = (0, import_react.useState)(false);
+    const circleRefs = (0, import_react.useRef)([]);
+    const tlRefs = (0, import_react.useRef)([]);
+    const activeTweenRefs = (0, import_react.useRef)([]);
+    const logoImgRef = (0, import_react.useRef)(null);
+    const logoTweenRef = (0, import_react.useRef)(null);
+    const hamburgerRef = (0, import_react.useRef)(null);
+    const mobileMenuRef = (0, import_react.useRef)(null);
+    const navItemsRef = (0, import_react.useRef)(null);
+    const logoRef = (0, import_react.useRef)(null);
     const getActiveHref = () => {
-      if (typeof window === "undefined") return "/";
+      if (typeof window === "undefined") return "";
       const currentPath = window.location.pathname;
-      const pathSegments = currentPath.split("/").filter(Boolean);
-      const fileName = pathSegments[pathSegments.length - 1] || "";
-      if (fileName.startsWith("blog-") || pathSegments[0] === "blog") {
-        return "/resources";
+      const fileName = currentPath.split("/").pop() || "";
+      if (fileName.startsWith("blog-") && fileName.endsWith(".html")) {
+        return "resources";
       }
-      if (currentPath === "/case-studies" || currentPath === "/case-studies/" || pathSegments[0] === "case-studies" || fileName.startsWith("case-study-")) {
-        return "/case-studies/";
+      if (fileName.startsWith("case-study-") && fileName.endsWith(".html")) {
+        return "case-studies";
       }
-      if (currentPath === "/" || currentPath === "/index.html" || fileName === "index.html" || fileName === "") {
+      if (currentPath === "/" || currentPath === "/index.html" || currentPath === "/index" || fileName === "index.html" || fileName === "") {
         return "/";
       }
+      const pathSegments = currentPath.split("/").filter(Boolean);
       if (pathSegments.length > 0) {
-        const segment = pathSegments[0].replace(".html", "");
-        return "/" + segment;
+        const firstSegment = pathSegments[pathSegments.length - 1].replace(".html", "");
+        if (firstSegment === "index") {
+          return "/";
+        }
+        return firstSegment;
       }
       return "/";
     };
-    const activeHref = getActiveHref();
-    const navLinks = [
-      { label: "Home", href: "/" },
-      { label: "Process", href: "/process" },
-      { label: "AI Software", href: "/software" },
-      { label: "Resources", href: "/resources" },
-      { label: "Case Studies", href: "/case-studies/" },
-      { label: "About Us", href: "/about" }
-    ];
-    const getCtaUrl = () => {
-      if (typeof window === "undefined") return "https://go.growaiagency.io/w-app";
-      const pageName = window.location.pathname.split("/").pop()?.replace(".html", "") || "index";
-      return `https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=${pageName}&el=Website-${pageName}`;
-    };
-    const isLinkActive = (href) => {
-      if (href === "/") {
-        return activeHref === "/";
+    const resolvedActiveHref = activeHref || getActiveHref();
+    (0, import_react.useEffect)(() => {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 10);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+    (0, import_react.useEffect)(() => {
+      const layout = () => {
+        circleRefs.current.forEach((circle) => {
+          if (!circle?.parentElement) return;
+          const pill = circle.parentElement;
+          const rect = pill.getBoundingClientRect();
+          const { width: w, height: h } = rect;
+          const R = (w * w / 4 + h * h) / (2 * h);
+          const D = Math.ceil(2 * R) + 2;
+          const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - w * w / 4))) + 1;
+          const originY = D - delta;
+          circle.style.width = `${D}px`;
+          circle.style.height = `${D}px`;
+          circle.style.bottom = `-${delta}px`;
+          gsapWithCSS.set(circle, {
+            xPercent: -50,
+            scale: 0,
+            transformOrigin: `50% ${originY}px`
+          });
+          const label = pill.querySelector(".pill-label");
+          const white = pill.querySelector(".pill-label-hover");
+          if (label) gsapWithCSS.set(label, { y: 0 });
+          if (white) gsapWithCSS.set(white, { y: h + 12, opacity: 0 });
+          const index = circleRefs.current.indexOf(circle);
+          if (index === -1) return;
+          tlRefs.current[index]?.kill();
+          const tl = gsapWithCSS.timeline({ paused: true });
+          tl.to(circle, { scale: 1.2, xPercent: -50, duration: 2, ease, overwrite: "auto" }, 0);
+          if (label) {
+            tl.to(label, { y: -(h + 8), duration: 2, ease, overwrite: "auto" }, 0);
+          }
+          if (white) {
+            gsapWithCSS.set(white, { y: Math.ceil(h + 100), opacity: 0 });
+            tl.to(white, { y: 0, opacity: 1, duration: 2, ease, overwrite: "auto" }, 0);
+          }
+          tlRefs.current[index] = tl;
+        });
+      };
+      layout();
+      const onResize = () => layout();
+      window.addEventListener("resize", onResize);
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(layout).catch(() => {
+        });
       }
-      return activeHref === href || activeHref.startsWith(href);
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
-      "header",
-      {
-        className: cn("sticky top-0 z-50 w-full border-b border-transparent", {
-          "bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg": scrolled
-        }),
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("nav", { className: "mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-6", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/", className: "hover:bg-accent rounded-md p-1 transition-colors flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-                "img",
-                {
-                  src: "/assets/images/logos/white%20and%20green.png",
-                  alt: "Grow AI",
-                  className: "h-6"
-                }
-              ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "hidden md:flex md:gap-1", children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-                "a",
-                {
-                  href: link.href,
-                  className: cn(
-                    "px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap",
-                    isLinkActive(link.href) ? "bg-accent text-accent-foreground" : "text-foreground hover:bg-accent hover:text-accent-foreground"
-                  ),
-                  children: link.label
-                },
-                link.href
-              )) })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "hidden items-center gap-2 md:flex", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-              Button,
-              {
-                size: "icon",
-                variant: "outline",
-                onClick: () => setOpen(!open),
-                className: "md:hidden",
-                "aria-expanded": open,
-                "aria-controls": "mobile-menu",
-                "aria-label": "Toggle menu",
-                children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuToggleIcon, { open, className: "size-5", duration: 300 })
-              }
-            )
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(MobileMenu, { open, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex flex-col gap-y-2 pb-4", children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-              "a",
-              {
-                href: link.href,
-                className: cn(
-                  "px-4 py-2 text-sm font-medium rounded-md transition-colors",
-                  isLinkActive(link.href) ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
-                ),
-                onClick: () => setOpen(false),
-                children: link.label
-              },
-              link.href
-            )) }),
-            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex flex-col gap-2 border-t border-border pt-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button, { asChild: true, className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) })
-          ] })
-        ]
+      const menu = mobileMenuRef.current;
+      if (menu) {
+        gsapWithCSS.set(menu, { visibility: "hidden", opacity: 0, scaleY: 1 });
       }
-    );
-  }
-  function MobileMenu({ open, children, className, ...props }) {
-    if (!open || typeof window === "undefined") return null;
-    return (0, import_react_dom.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-        "div",
-        {
-          id: "mobile-menu",
-          className: cn(
-            "bg-background/95 supports-[backdrop-filter]:bg-background/50 backdrop-blur-lg",
-            "fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y md:hidden"
-          ),
-          children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
-            "div",
-            {
-              "data-slot": open ? "open" : "closed",
-              className: cn(
-                "data-[slot=open]:animate-in data-[slot=open]:zoom-in-97 ease-out",
-                "size-full p-4 flex flex-col justify-between",
-                className
-              ),
-              ...props,
-              children
-            }
-          )
+      if (initialLoadAnimation) {
+        const logo2 = logoRef.current;
+        const navItems = navItemsRef.current;
+        if (logo2) {
+          gsapWithCSS.set(logo2, { scale: 0 });
+          gsapWithCSS.to(logo2, {
+            scale: 1,
+            duration: 0.6,
+            ease
+          });
         }
-      ),
-      document.body
-    );
-  }
-  function useScroll(threshold) {
-    const [scrolled, setScrolled] = import_react.default.useState(false);
-    const onScroll = import_react.default.useCallback(() => {
-      setScrolled(window.scrollY > threshold);
-    }, [threshold]);
-    import_react.default.useEffect(() => {
-      window.addEventListener("scroll", onScroll);
-      return () => window.removeEventListener("scroll", onScroll);
-    }, [onScroll]);
-    import_react.default.useEffect(() => {
-      onScroll();
-    }, [onScroll]);
-    return scrolled;
-  }
+        if (navItems) {
+          gsapWithCSS.set(navItems, { width: 0, overflow: "hidden" });
+          gsapWithCSS.to(navItems, {
+            width: "auto",
+            duration: 0.6,
+            ease
+          });
+        }
+      }
+      return () => window.removeEventListener("resize", onResize);
+    }, [items, ease, initialLoadAnimation]);
+    const handleEnter = (i) => {
+      const tl = tlRefs.current[i];
+      if (!tl) return;
+      activeTweenRefs.current[i]?.kill();
+      activeTweenRefs.current[i] = tl.tweenTo(tl.duration(), {
+        duration: 0.3,
+        ease,
+        overwrite: "auto"
+      });
+    };
+    const handleLeave = (i) => {
+      const tl = tlRefs.current[i];
+      if (!tl) return;
+      activeTweenRefs.current[i]?.kill();
+      activeTweenRefs.current[i] = tl.tweenTo(0, {
+        duration: 0.2,
+        ease,
+        overwrite: "auto"
+      });
+    };
+    const handleLogoEnter = () => {
+      const img = logoImgRef.current;
+      if (!img) return;
+      logoTweenRef.current?.kill();
+      gsapWithCSS.set(img, { rotate: 0 });
+      logoTweenRef.current = gsapWithCSS.to(img, {
+        rotate: 360,
+        duration: 0.2,
+        ease,
+        overwrite: "auto"
+      });
+    };
+    const toggleMobileMenu = () => {
+      const newState = !isMobileMenuOpen;
+      setIsMobileMenuOpen(newState);
+      const hamburger = hamburgerRef.current;
+      const menu = mobileMenuRef.current;
+      if (hamburger) {
+        const lines = hamburger.querySelectorAll(".hamburger-line");
+        if (newState) {
+          gsapWithCSS.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
+          gsapWithCSS.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
+        } else {
+          gsapWithCSS.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
+          gsapWithCSS.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+        }
+      }
+      if (menu) {
+        if (newState) {
+          gsapWithCSS.set(menu, { visibility: "visible" });
+          gsapWithCSS.fromTo(
+            menu,
+            { opacity: 0, y: 10, scaleY: 1 },
+            {
+              opacity: 1,
+              y: 0,
+              scaleY: 1,
+              duration: 0.3,
+              ease,
+              transformOrigin: "top center"
+            }
+          );
+        } else {
+          gsapWithCSS.to(menu, {
+            opacity: 0,
+            y: 10,
+            scaleY: 1,
+            duration: 0.2,
+            ease,
+            transformOrigin: "top center",
+            onComplete: () => {
+              gsapWithCSS.set(menu, { visibility: "hidden" });
+            }
+          });
+        }
+      }
+      onMobileMenuClick?.();
+    };
+    const isExternalLink = (href) => href.startsWith("http://") || href.startsWith("https://") || href.startsWith("//") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("#");
+    const cssVars = {
+      ["--base"]: baseColor,
+      ["--pill-bg"]: pillColor,
+      ["--hover-text"]: hoveredPillTextColor,
+      ["--pill-text"]: resolvedPillTextColor
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "pill-nav-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", { className: `pill-nav ${isScrolled ? "pill-nav-scrolled" : ""} ${className}`, "aria-label": "Primary", style: cssVars, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+          "a",
+          {
+            className: "pill-logo",
+            href: items?.[0]?.href || "/",
+            "aria-label": "Home",
+            ref: (el) => {
+              logoRef.current = el;
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", { src: logo, alt: logoAlt, ref: logoImgRef })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "pill-nav-items desktop-only", ref: navItemsRef, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "pill-list", role: "menubar", children: items.map((item, i) => {
+          const isCTA = item.label?.toLowerCase().includes("get in touch") || isExternalLink(item.href);
+          const itemHref = item.href.replace(/\/$/, "") || "/";
+          const normalizedItemHref = itemHref === "/" ? "/" : itemHref.split("/").filter(Boolean)[0];
+          const activeNorm = (resolvedActiveHref || "").replace(/\/$/, "") || "/";
+          const itemNorm = itemHref.replace(/\/$/, "") || "/";
+          const isActive = !isCTA && (resolvedActiveHref === normalizedItemHref || resolvedActiveHref === "/" && itemHref === "/" || resolvedActiveHref !== "/" && itemHref.includes(resolvedActiveHref) || activeNorm !== "/" && activeNorm === itemNorm);
+          return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { role: "none", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+            "a",
+            {
+              role: "menuitem",
+              href: item.href,
+              className: `pill${isActive ? " is-active" : ""}${isCTA ? " pill-cta" : ""}`,
+              "aria-label": item.ariaLabel || item.label,
+              onMouseEnter: () => !isCTA && !isActive && handleEnter(i),
+              onMouseLeave: () => !isCTA && !isActive && handleLeave(i),
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+                  "span",
+                  {
+                    className: "hover-circle",
+                    "aria-hidden": "true",
+                    ref: (el) => {
+                      circleRefs.current[i] = el;
+                    }
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", { className: "label-stack", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "pill-label", children: item.label }),
+                  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "pill-label-hover", "aria-hidden": "true", children: item.label })
+                ] })
+              ]
+            }
+          ) }, item.href || `item-${i}`);
+        }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(
+          "button",
+          {
+            className: "mobile-menu-button mobile-only",
+            onClick: toggleMobileMenu,
+            "aria-label": "Toggle menu",
+            ref: hamburgerRef,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "hamburger-line" }),
+              /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "hamburger-line" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "mobile-menu-popover mobile-only", ref: mobileMenuRef, style: cssVars, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { className: "mobile-menu-list", children: items.map((item, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+        "a",
+        {
+          href: item.href,
+          className: `mobile-menu-link${resolvedActiveHref === item.href ? " is-active" : ""}`,
+          onClick: () => setIsMobileMenuOpen(false),
+          children: item.label
+        }
+      ) }, item.href || `mobile-item-${i}`)) }) })
+    ] });
+  };
+  var PillNav_default = PillNav;
 
-  // header-nav.tsx
+  // pill-nav.js
   if (typeof window !== "undefined") {
     window.React = import_react2.default;
   }
-  (function initHeader() {
-    function init() {
+  (function initPillNav() {
+    function init4() {
       if (document.getElementById("pill-nav-container")) {
         return;
       }
@@ -25382,20 +26328,64 @@
           body.appendChild(navContainer);
         }
       }
+      const currentPath = window.location.pathname;
+      const pathSegments = currentPath.split("/").filter(Boolean);
+      const fileName = pathSegments[pathSegments.length - 1] || "";
+      let activeHref;
+      if (fileName.startsWith("blog-") && (fileName.endsWith(".html") || pathSegments[0] === "blog")) {
+        activeHref = "/resources";
+      } else if (currentPath === "/case-studies" || currentPath === "/case-studies/" || pathSegments[0] === "case-studies" || fileName.startsWith("case-study-")) {
+        activeHref = "/case-studies";
+      } else if (currentPath === "/" || currentPath === "/index.html" || currentPath === "/index" || fileName === "index.html" || fileName === "") {
+        activeHref = "/";
+      } else {
+        if (pathSegments.length > 0) {
+          const firstSegment = pathSegments[pathSegments.length - 1].replace(".html", "");
+          if (firstSegment === "index") {
+            activeHref = "/";
+          } else {
+            activeHref = "/" + firstSegment;
+          }
+        } else {
+          activeHref = "/";
+        }
+      }
+      const pageName = currentPath.split("/").pop().replace(".html", "") || "index";
+      const ctaUrl = `https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=${pageName}&el=Website-${pageName}`;
       try {
-        console.log("Initializing Header...");
+        console.log("Initializing PillNav...");
         const root = import_client.default.createRoot(navContainer);
-        root.render(import_react2.default.createElement(Header));
-        console.log("\u2705 Header initialized successfully");
+        root.render(import_react2.default.createElement(PillNav_default, {
+          logo: "https://growaiagency.io/assets/images/logos/white%20and%20green.png",
+          logoAlt: "Grow AI",
+          items: [
+            { label: "Home", href: "/" },
+            { label: "Process", href: "/process" },
+            { label: "AI Software", href: "/software" },
+            { label: "Resources", href: "/resources" },
+            { label: "Case Studies", href: "/case-studies/" },
+            { label: "About Us", href: "/about" },
+            { label: "Get in Touch", href: ctaUrl }
+          ],
+          activeHref,
+          initialLoadAnimation: true,
+          baseColor: "#FAFBFF",
+          pillColor: "#5CC49D",
+          hoveredPillTextColor: "#FAFBFF",
+          pillTextColor: "#FAFBFF",
+          ease: "power3.easeOut",
+          className: "custom-nav"
+        }));
+        console.log("\u2705 PillNav initialized successfully");
       } catch (error) {
-        console.error("\u274C Error initializing Header:", error);
-        setTimeout(init, 200);
+        console.error("\u274C Error initializing PillNav:", error);
+        setTimeout(init4, 200);
       }
     }
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", init);
+      document.addEventListener("DOMContentLoaded", init4);
     } else {
-      setTimeout(init, 200);
+      setTimeout(init4, 200);
     }
   })();
 })();
@@ -25455,4 +26445,24 @@ react/cjs/react-jsx-runtime.development.js:
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    *)
+
+gsap/gsap-core.js:
+  (*!
+   * GSAP 3.14.2
+   * https://gsap.com
+   *
+   * @license Copyright 2008-2025, GreenSock. All rights reserved.
+   * Subject to the terms at https://gsap.com/standard-license
+   * @author: Jack Doyle, jack@greensock.com
+  *)
+
+gsap/CSSPlugin.js:
+  (*!
+   * CSSPlugin 3.14.2
+   * https://gsap.com
+   *
+   * Copyright 2008-2025, GreenSock. All rights reserved.
+   * Subject to the terms at https://gsap.com/standard-license
+   * @author: Jack Doyle, jack@greensock.com
+  *)
 */
