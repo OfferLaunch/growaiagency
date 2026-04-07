@@ -1,137 +1,48 @@
-# Robots.txt for Grow AI Agency
-# Optimized for maximum SEO and search engine crawling
+# Grow AI Agency — allow all crawlers; explicit allow for common AI bots
 
-# Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
 
-# Specific directives for major search engines
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 0
-
-# Allow AI training bots to crawl blog posts for indexing
-# Blog posts are in root directory (blog-*.html format)
 User-agent: GPTBot
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
 User-agent: ChatGPT-User
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
-User-agent: CCBot
+User-agent: ClaudeBot
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
-
-User-agent: anthropic-ai
-Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
 User-agent: Claude-Web
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
-# Additional AI training bots
-User-agent: Google-Extended
+User-agent: anthropic-ai
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
 User-agent: PerplexityBot
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
 User-agent: Applebot-Extended
 Allow: /
-Allow: /*.html
-Crawl-delay: 0
 
-# Allow crawling of all important content areas
-Allow: /assets/
-Allow: /blog/
-Allow: /resources/
-Allow: /case-studies/
-Allow: /process/
-Allow: /software/
-Allow: /about/
+User-agent: Google-Extended
+Allow: /
 
-# Sitemap location (corrected domain)
+User-agent: CCBot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://growaiagency.io/sitemap.xml
-
-# Additional sitemaps for better organization (if you want to split later)
-# Sitemap: https://growaiagency.io/blog-sitemap.xml
-# Sitemap: https://growaiagency.io/resources-sitemap.xml
-
-# Host directive for canonical domain
-Host: https://growaiagency.io
-
-# Clean-param directive to avoid duplicate content issues
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
-
-# Allow all file types that are important for SEO
-Allow: /*.html
-Allow: /*.css
-Allow: /*.js
-Allow: /*.png
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.gif
-Allow: /*.svg
-Allow: /*.ico
-Allow: /*.xml
-
-# Block unnecessary file types
-Disallow: /*.pdf
-Disallow: /*.doc
-Disallow: /*.docx
-Disallow: /*.xls
-Disallow: /*.xlsx
-Disallow: /*.zip
-Disallow: /*.rar
-
-# Block admin and private areas (uncomment if you add them later)
-# Disallow: /admin/
-# Disallow: /private/
-# Disallow: /temp/
-# Disallow: /cache/
-# Disallow: /logs/
-
-# Block search and filter URLs to prevent duplicate content
-Disallow: /*?*
-Disallow: /*&*
-Disallow: /search?
-Disallow: /filter?
-
-# Allow important query parameters
-Allow: /*?page=
-Allow: /*?category=
-Allow: /*?tag=
-
-# Block common spam and bot patterns
-User-agent: *
-Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /wp-content/plugins/
-Disallow: /wp-content/themes/
-Disallow: /administrator/
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /temp/
-Disallow: /logs/
-Disallow: /error_log
-Disallow: /access_log
