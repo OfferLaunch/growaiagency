@@ -240,9 +240,9 @@
           return newKey;
         }
         function validateChildKeys(node) {
-          isValidElement4(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement4(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+          isValidElement2(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement2(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
         }
-        function isValidElement4(object) {
+        function isValidElement2(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
         function escape(key) {
@@ -311,13 +311,13 @@
             var childKey = "" === nameSoFar ? "." + getElementKey(invokeCallback, 0) : nameSoFar;
             isArrayImpl(callback) ? (escapedPrefix = "", null != childKey && (escapedPrefix = childKey.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
               return c;
-            })) : null != callback && (isValidElement4(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
+            })) : null != callback && (isValidElement2(callback) && (null != callback.key && (invokeCallback && invokeCallback.key === callback.key || checkKeyStringCoercion(callback.key)), escapedPrefix = cloneAndReplaceKey(
               callback,
               escapedPrefix + (null == callback.key || invokeCallback && invokeCallback.key === callback.key ? "" : ("" + callback.key).replace(
                 userProvidedKeyEscapeRegex,
                 "$&/"
               ) + "/") + childKey
-            ), "" !== nameSoFar && null != invokeCallback && isValidElement4(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
+            ), "" !== nameSoFar && null != invokeCallback && isValidElement2(invokeCallback) && null == invokeCallback.key && invokeCallback._store && !invokeCallback._store.validated && (escapedPrefix._store.validated = 2), callback = escapedPrefix), array.push(callback));
             return 1;
           }
           invokeCallback = 0;
@@ -360,9 +360,9 @@
         }
         function mapChildren(children, func, context) {
           if (null == children) return children;
-          var result = [], count2 = 0;
+          var result = [], count = 0;
           mapIntoArray(children, result, "", "", function(child) {
-            return func.call(context, child, count2++);
+            return func.call(context, child, count++);
           });
           return result;
         }
@@ -614,7 +614,7 @@
             }) || [];
           },
           only: function(children) {
-            if (!isValidElement4(children))
+            if (!isValidElement2(children))
               throw Error(
                 "React.Children.only expected to receive a single React element child."
               );
@@ -848,7 +848,7 @@
           });
           return elementType;
         };
-        exports.isValidElement = isValidElement4;
+        exports.isValidElement = isValidElement2;
         exports.lazy = function(ctor) {
           ctor = { _status: -1, _result: ctor };
           var lazyType = {
@@ -1329,7 +1329,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React26 = require_react(), Internals = {
+        var React6 = require_react(), Internals = {
           d: {
             f: noop,
             r: function() {
@@ -1347,7 +1347,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React26.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -2882,7 +2882,7 @@
           "number" === type && getActiveElement(node.ownerDocument) === node || node.defaultValue === "" + value || (node.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React26.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React6.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -4035,7 +4035,7 @@
           return "input" === nodeName ? !!supportedInputTypes[elem.type] : "textarea" === nodeName ? true : false;
         }
         function isEventSupported(eventNameSuffix) {
-          if (!canUseDOM2) return false;
+          if (!canUseDOM) return false;
           eventNameSuffix = "on" + eventNameSuffix;
           var isSupported = eventNameSuffix in document;
           isSupported || (isSupported = document.createElement("div"), isSupported.setAttribute(eventNameSuffix, "return;"), isSupported = "function" === typeof isSupported[eventNameSuffix]);
@@ -17056,7 +17056,7 @@
         }
         function estimateBandwidth() {
           if ("function" === typeof performance.getEntriesByType) {
-            for (var count2 = 0, bits = 0, resourceEntries = performance.getEntriesByType("resource"), i = 0; i < resourceEntries.length; i++) {
+            for (var count = 0, bits = 0, resourceEntries = performance.getEntriesByType("resource"), i = 0; i < resourceEntries.length; i++) {
               var entry = resourceEntries[i], transferSize = entry.transferSize, initiatorType = entry.initiatorType, duration = entry.duration;
               if (transferSize && duration && isLikelyStaticResource(initiatorType)) {
                 initiatorType = 0;
@@ -17069,13 +17069,13 @@
                 }
                 --i;
                 bits += 8 * (transferSize + initiatorType) / (entry.duration / 1e3);
-                count2++;
-                if (10 < count2) break;
+                count++;
+                if (10 < count) break;
               }
             }
-            if (0 < count2) return bits / count2 / 1e6;
+            if (0 < count) return bits / count / 1e6;
           }
-          return navigator.connection && (count2 = navigator.connection.downlink, "number" === typeof count2) ? count2 : 5;
+          return navigator.connection && (count = navigator.connection.downlink, "number" === typeof count) ? count : 5;
         }
         function getOwnerDocumentFromRootContainer(rootContainerElement) {
           return 9 === rootContainerElement.nodeType ? rootContainerElement : rootContainerElement.ownerDocument;
@@ -18514,14 +18514,14 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React26 = require_react(), ReactDOM4 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React6 = require_react(), ReactDOM2 = require_react_dom(), assign = Object.assign, REACT_LEGACY_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element"), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy");
         /* @__PURE__ */ Symbol.for("react.scope");
         var REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity");
         /* @__PURE__ */ Symbol.for("react.legacy_hidden");
         /* @__PURE__ */ Symbol.for("react.tracing_marker");
         var REACT_MEMO_CACHE_SENTINEL = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
         /* @__PURE__ */ Symbol.for("react.view_transition");
-        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React26.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM4.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
+        var MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, ReactDOMSharedInternals = ReactDOM2.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, NotPending = Object.freeze({
           pending: false,
           data: null,
           method: null,
@@ -19327,8 +19327,8 @@
           "^(aria)-[:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
         ), rARIACamel = RegExp(
           "^(aria)[A-Z][:A-Z_a-z\\u00C0-\\u00D6\\u00D8-\\u00F6\\u00F8-\\u02FF\\u0370-\\u037D\\u037F-\\u1FFF\\u200C-\\u200D\\u2070-\\u218F\\u2C00-\\u2FEF\\u3001-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFFD\\-.0-9\\u00B7\\u0300-\\u036F\\u203F-\\u2040]*$"
-        ), isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, currentReplayingEvent = null, restoreTarget = null, restoreQueue = null, isInsideEventHandler = false, canUseDOM2 = !("undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement), passiveBrowserEventsSupported = false;
-        if (canUseDOM2)
+        ), isJavaScriptProtocol = /^[\u0000-\u001F ]*j[\r\n\t]*a[\r\n\t]*v[\r\n\t]*a[\r\n\t]*s[\r\n\t]*c[\r\n\t]*r[\r\n\t]*i[\r\n\t]*p[\r\n\t]*t[\r\n\t]*:/i, currentReplayingEvent = null, restoreTarget = null, restoreQueue = null, isInsideEventHandler = false, canUseDOM = !("undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement), passiveBrowserEventsSupported = false;
+        if (canUseDOM)
           try {
             var options$jscomp$0 = {};
             Object.defineProperty(options$jscomp$0, "passive", {
@@ -19502,9 +19502,9 @@
         }), SyntheticWheelEvent = createSyntheticEvent(WheelEventInterface), ToggleEventInterface = assign({}, EventInterface, {
           newState: 0,
           oldState: 0
-        }), SyntheticToggleEvent = createSyntheticEvent(ToggleEventInterface), END_KEYCODES = [9, 13, 27, 32], START_KEYCODE = 229, canUseCompositionEvent = canUseDOM2 && "CompositionEvent" in window, documentMode = null;
-        canUseDOM2 && "documentMode" in document && (documentMode = document.documentMode);
-        var canUseTextInputEvent = canUseDOM2 && "TextEvent" in window && !documentMode, useFallbackCompositionData = canUseDOM2 && (!canUseCompositionEvent || documentMode && 8 < documentMode && 11 >= documentMode), SPACEBAR_CODE = 32, SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE), hasSpaceKeypress = false, isComposing = false, supportedInputTypes = {
+        }), SyntheticToggleEvent = createSyntheticEvent(ToggleEventInterface), END_KEYCODES = [9, 13, 27, 32], START_KEYCODE = 229, canUseCompositionEvent = canUseDOM && "CompositionEvent" in window, documentMode = null;
+        canUseDOM && "documentMode" in document && (documentMode = document.documentMode);
+        var canUseTextInputEvent = canUseDOM && "TextEvent" in window && !documentMode, useFallbackCompositionData = canUseDOM && (!canUseCompositionEvent || documentMode && 8 < documentMode && 11 >= documentMode), SPACEBAR_CODE = 32, SPACEBAR_CHAR = String.fromCharCode(SPACEBAR_CODE), hasSpaceKeypress = false, isComposing = false, supportedInputTypes = {
           color: true,
           date: true,
           datetime: true,
@@ -19521,8 +19521,8 @@
           url: true,
           week: true
         }, activeElement$1 = null, activeElementInst$1 = null, isInputEventSupported = false;
-        canUseDOM2 && (isInputEventSupported = isEventSupported("input") && (!document.documentMode || 9 < document.documentMode));
-        var objectIs = "function" === typeof Object.is ? Object.is : is, skipSelectionChangeEvent = canUseDOM2 && "documentMode" in document && 11 >= document.documentMode, activeElement = null, activeElementInst = null, lastSelection = null, mouseDown = false, vendorPrefixes = {
+        canUseDOM && (isInputEventSupported = isEventSupported("input") && (!document.documentMode || 9 < document.documentMode));
+        var objectIs = "function" === typeof Object.is ? Object.is : is, skipSelectionChangeEvent = canUseDOM && "documentMode" in document && 11 >= document.documentMode, activeElement = null, activeElementInst = null, lastSelection = null, mouseDown = false, vendorPrefixes = {
           animationend: makePrefixMap("Animation", "AnimationEnd"),
           animationiteration: makePrefixMap("Animation", "AnimationIteration"),
           animationstart: makePrefixMap("Animation", "AnimationStart"),
@@ -19531,7 +19531,7 @@
           transitioncancel: makePrefixMap("Transition", "TransitionCancel"),
           transitionend: makePrefixMap("Transition", "TransitionEnd")
         }, prefixedEventNames = {}, style = {};
-        canUseDOM2 && (style = document.createElement("div").style, "AnimationEvent" in window || (delete vendorPrefixes.animationend.animation, delete vendorPrefixes.animationiteration.animation, delete vendorPrefixes.animationstart.animation), "TransitionEvent" in window || delete vendorPrefixes.transitionend.transition);
+        canUseDOM && (style = document.createElement("div").style, "AnimationEvent" in window || (delete vendorPrefixes.animationend.animation, delete vendorPrefixes.animationiteration.animation, delete vendorPrefixes.animationstart.animation), "TransitionEvent" in window || delete vendorPrefixes.transitionend.transition);
         var ANIMATION_END = getVendorPrefixedEventName("animationend"), ANIMATION_ITERATION = getVendorPrefixedEventName("animationiteration"), ANIMATION_START = getVendorPrefixedEventName("animationstart"), TRANSITION_RUN = getVendorPrefixedEventName("transitionrun"), TRANSITION_START = getVendorPrefixedEventName("transitionstart"), TRANSITION_CANCEL = getVendorPrefixedEventName("transitioncancel"), TRANSITION_END = getVendorPrefixedEventName("transitionend"), topLevelEventsToReactNames = /* @__PURE__ */ new Map(), simpleEventPluginEvents = "abort auxClick beforeToggle cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll toggle touchMove waiting wheel".split(
           " "
         );
@@ -21309,7 +21309,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React26.version;
+          var isomorphicReactPackageVersion = React6.version;
           if ("19.2.3" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.2.3\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21356,7 +21356,7 @@
           internals.setRefreshHandler = setRefreshHandler;
           internals.getCurrentFiber = getCurrentFiberForDevTools;
           return injectInternals(internals);
-        })() && canUseDOM2 && window.top === window.self && (-1 < navigator.userAgent.indexOf("Chrome") && -1 === navigator.userAgent.indexOf("Edge") || -1 < navigator.userAgent.indexOf("Firefox"))) {
+        })() && canUseDOM && window.top === window.self && (-1 < navigator.userAgent.indexOf("Chrome") && -1 === navigator.userAgent.indexOf("Edge") || -1 < navigator.userAgent.indexOf("Firefox"))) {
           var protocol = window.location.protocol;
           /^(https?|file):$/.test(protocol) && console.info(
             "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools" + ("file:" === protocol ? "\nYou might need to use a local HTTP server (instead of file://): https://react.dev/link/react-devtools-faq" : ""),
@@ -21658,23 +21658,23 @@
           );
         }
         function validateChildKeys(node) {
-          isValidElement4(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement4(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
+          isValidElement2(node) ? node._store && (node._store.validated = 1) : "object" === typeof node && null !== node && node.$$typeof === REACT_LAZY_TYPE2 && ("fulfilled" === node._payload.status ? isValidElement2(node._payload.value) && node._payload.value._store && (node._payload.value._store.validated = 1) : node._store && (node._store.validated = 1));
         }
-        function isValidElement4(object) {
+        function isValidElement2(object) {
           return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
         }
-        var React26 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React26.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
+        var React6 = require_react(), REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = /* @__PURE__ */ Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = /* @__PURE__ */ Symbol.for("react.profiler"), REACT_CONSUMER_TYPE = /* @__PURE__ */ Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = /* @__PURE__ */ Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = /* @__PURE__ */ Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = /* @__PURE__ */ Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = /* @__PURE__ */ Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = /* @__PURE__ */ Symbol.for("react.memo"), REACT_LAZY_TYPE2 = /* @__PURE__ */ Symbol.for("react.lazy"), REACT_ACTIVITY_TYPE = /* @__PURE__ */ Symbol.for("react.activity"), REACT_CLIENT_REFERENCE = /* @__PURE__ */ Symbol.for("react.client.reference"), ReactSharedInternals = React6.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, isArrayImpl = Array.isArray, createTask = console.createTask ? console.createTask : function() {
           return null;
         };
-        React26 = {
+        React6 = {
           react_stack_bottom_frame: function(callStackForError) {
             return callStackForError();
           }
         };
         var specialPropKeyWarningShown;
         var didWarnAboutElementRef = {};
-        var unknownOwnerDebugStack = React26.react_stack_bottom_frame.bind(
-          React26,
+        var unknownOwnerDebugStack = React6.react_stack_bottom_frame.bind(
+          React6,
           UnknownOwner
         )();
         var unknownOwnerDebugTask = createTask(getTaskName(UnknownOwner));
@@ -21719,11 +21719,11 @@
   });
 
   // header-nav.tsx
-  var import_react5 = __toESM(require_react());
+  var import_react2 = __toESM(require_react());
   var import_client = __toESM(require_client());
 
   // components/ui/header-3.tsx
-  var import_react4 = __toESM(require_react());
+  var import_react = __toESM(require_react());
 
   // components/ui/button.tsx
   var React3 = __toESM(require_react());
@@ -21763,9 +21763,6 @@
         };
       }
     };
-  }
-  function useComposedRefs(...refs) {
-    return React.useCallback(composeRefs(...refs), refs);
   }
 
   // node_modules/@radix-ui/react-slot/dist/index.mjs
@@ -25198,1767 +25195,12 @@
   }
 
   // components/ui/header-3.tsx
-  var import_react_dom2 = __toESM(require_react_dom());
-
-  // components/ui/navigation-menu.tsx
-  var React20 = __toESM(require_react());
-
-  // node_modules/@radix-ui/react-icons/dist/react-icons.esm.js
-  var import_react = __toESM(require_react());
-  function _objectWithoutPropertiesLoose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for (i = 0; i < sourceKeys.length; i++) {
-      key = sourceKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      target[key] = source[key];
-    }
-    return target;
-  }
-  var _excluded$W = ["color"];
-  var ChevronDownIcon = /* @__PURE__ */ (0, import_react.forwardRef)(function(_ref, forwardedRef) {
-    var _ref$color = _ref.color, color = _ref$color === void 0 ? "currentColor" : _ref$color, props = _objectWithoutPropertiesLoose(_ref, _excluded$W);
-    return (0, import_react.createElement)("svg", Object.assign({
-      width: "15",
-      height: "15",
-      viewBox: "0 0 15 15",
-      fill: "none",
-      xmlns: "http://www.w3.org/2000/svg"
-    }, props, {
-      ref: forwardedRef
-    }), (0, import_react.createElement)("path", {
-      d: "M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z",
-      fill: color,
-      fillRule: "evenodd",
-      clipRule: "evenodd"
-    }));
-  });
-
-  // node_modules/@radix-ui/react-navigation-menu/dist/index.mjs
-  var React19 = __toESM(require_react(), 1);
-  var import_react_dom = __toESM(require_react_dom(), 1);
-
-  // node_modules/@radix-ui/react-context/dist/index.mjs
-  var React4 = __toESM(require_react(), 1);
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1);
-  function createContextScope(scopeName, createContextScopeDeps = []) {
-    let defaultContexts = [];
-    function createContext32(rootComponentName, defaultContext) {
-      const BaseContext = React4.createContext(defaultContext);
-      const index = defaultContexts.length;
-      defaultContexts = [...defaultContexts, defaultContext];
-      const Provider = (props) => {
-        const { scope, children, ...context } = props;
-        const Context = scope?.[scopeName]?.[index] || BaseContext;
-        const value = React4.useMemo(() => context, Object.values(context));
-        return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Context.Provider, { value, children });
-      };
-      Provider.displayName = rootComponentName + "Provider";
-      function useContext22(consumerName, scope) {
-        const Context = scope?.[scopeName]?.[index] || BaseContext;
-        const context = React4.useContext(Context);
-        if (context) return context;
-        if (defaultContext !== void 0) return defaultContext;
-        throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
-      }
-      return [Provider, useContext22];
-    }
-    const createScope = () => {
-      const scopeContexts = defaultContexts.map((defaultContext) => {
-        return React4.createContext(defaultContext);
-      });
-      return function useScope(scope) {
-        const contexts = scope?.[scopeName] || scopeContexts;
-        return React4.useMemo(
-          () => ({ [`__scope${scopeName}`]: { ...scope, [scopeName]: contexts } }),
-          [scope, contexts]
-        );
-      };
-    };
-    createScope.scopeName = scopeName;
-    return [createContext32, composeContextScopes(createScope, ...createContextScopeDeps)];
-  }
-  function composeContextScopes(...scopes) {
-    const baseScope = scopes[0];
-    if (scopes.length === 1) return baseScope;
-    const createScope = () => {
-      const scopeHooks = scopes.map((createScope2) => ({
-        useScope: createScope2(),
-        scopeName: createScope2.scopeName
-      }));
-      return function useComposedScopes(overrideScopes) {
-        const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
-          const scopeProps = useScope(overrideScopes);
-          const currentScope = scopeProps[`__scope${scopeName}`];
-          return { ...nextScopes2, ...currentScope };
-        }, {});
-        return React4.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
-      };
-    };
-    createScope.scopeName = baseScope.scopeName;
-    return createScope;
-  }
-
-  // node_modules/@radix-ui/primitive/dist/index.mjs
-  var canUseDOM = !!(typeof window !== "undefined" && window.document && window.document.createElement);
-  function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
-    return function handleEvent(event) {
-      originalEventHandler?.(event);
-      if (checkForDefaultPrevented === false || !event.defaultPrevented) {
-        return ourEventHandler?.(event);
-      }
-    };
-  }
-
-  // node_modules/@radix-ui/react-primitive/dist/index.mjs
-  var React6 = __toESM(require_react(), 1);
-  var ReactDOM = __toESM(require_react_dom(), 1);
-
-  // node_modules/@radix-ui/react-primitive/node_modules/@radix-ui/react-slot/dist/index.mjs
-  var React5 = __toESM(require_react(), 1);
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime(), 1);
-  // @__NO_SIDE_EFFECTS__
-  function createSlot2(ownerName) {
-    const SlotClone = /* @__PURE__ */ createSlotClone2(ownerName);
-    const Slot2 = React5.forwardRef((props, forwardedRef) => {
-      const { children, ...slotProps } = props;
-      const childrenArray = React5.Children.toArray(children);
-      const slottable = childrenArray.find(isSlottable2);
-      if (slottable) {
-        const newElement = slottable.props.children;
-        const newChildren = childrenArray.map((child) => {
-          if (child === slottable) {
-            if (React5.Children.count(newElement) > 1) return React5.Children.only(null);
-            return React5.isValidElement(newElement) ? newElement.props.children : null;
-          } else {
-            return child;
-          }
-        });
-        return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children: React5.isValidElement(newElement) ? React5.cloneElement(newElement, void 0, newChildren) : null });
-      }
-      return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children });
-    });
-    Slot2.displayName = `${ownerName}.Slot`;
-    return Slot2;
-  }
-  // @__NO_SIDE_EFFECTS__
-  function createSlotClone2(ownerName) {
-    const SlotClone = React5.forwardRef((props, forwardedRef) => {
-      const { children, ...slotProps } = props;
-      if (React5.isValidElement(children)) {
-        const childrenRef = getElementRef2(children);
-        const props2 = mergeProps2(slotProps, children.props);
-        if (children.type !== React5.Fragment) {
-          props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-        }
-        return React5.cloneElement(children, props2);
-      }
-      return React5.Children.count(children) > 1 ? React5.Children.only(null) : null;
-    });
-    SlotClone.displayName = `${ownerName}.SlotClone`;
-    return SlotClone;
-  }
-  var SLOTTABLE_IDENTIFIER2 = /* @__PURE__ */ Symbol("radix.slottable");
-  function isSlottable2(child) {
-    return React5.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER2;
-  }
-  function mergeProps2(slotProps, childProps) {
-    const overrideProps = { ...childProps };
-    for (const propName in childProps) {
-      const slotPropValue = slotProps[propName];
-      const childPropValue = childProps[propName];
-      const isHandler = /^on[A-Z]/.test(propName);
-      if (isHandler) {
-        if (slotPropValue && childPropValue) {
-          overrideProps[propName] = (...args) => {
-            const result = childPropValue(...args);
-            slotPropValue(...args);
-            return result;
-          };
-        } else if (slotPropValue) {
-          overrideProps[propName] = slotPropValue;
-        }
-      } else if (propName === "style") {
-        overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-      } else if (propName === "className") {
-        overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-      }
-    }
-    return { ...slotProps, ...overrideProps };
-  }
-  function getElementRef2(element) {
-    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.ref;
-    }
-    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.props.ref;
-    }
-    return element.props.ref || element.ref;
-  }
-
-  // node_modules/@radix-ui/react-primitive/dist/index.mjs
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1);
-  var NODES = [
-    "a",
-    "button",
-    "div",
-    "form",
-    "h2",
-    "h3",
-    "img",
-    "input",
-    "label",
-    "li",
-    "nav",
-    "ol",
-    "p",
-    "select",
-    "span",
-    "svg",
-    "ul"
-  ];
-  var Primitive = NODES.reduce((primitive, node) => {
-    const Slot2 = createSlot2(`Primitive.${node}`);
-    const Node2 = React6.forwardRef((props, forwardedRef) => {
-      const { asChild, ...primitiveProps } = props;
-      const Comp = asChild ? Slot2 : node;
-      if (typeof window !== "undefined") {
-        window[/* @__PURE__ */ Symbol.for("radix-ui")] = true;
-      }
-      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(Comp, { ...primitiveProps, ref: forwardedRef });
-    });
-    Node2.displayName = `Primitive.${node}`;
-    return { ...primitive, [node]: Node2 };
-  }, {});
-  function dispatchDiscreteCustomEvent(target, event) {
-    if (target) ReactDOM.flushSync(() => target.dispatchEvent(event));
-  }
-
-  // node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
-  var React8 = __toESM(require_react(), 1);
-
-  // node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
-  var React7 = __toESM(require_react(), 1);
-  var useLayoutEffect2 = globalThis?.document ? React7.useLayoutEffect : () => {
-  };
-
-  // node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
-  var React22 = __toESM(require_react(), 1);
-  var useInsertionEffect = React8[" useInsertionEffect ".trim().toString()] || useLayoutEffect2;
-  function useControllableState({
-    prop,
-    defaultProp,
-    onChange = () => {
-    },
-    caller
-  }) {
-    const [uncontrolledProp, setUncontrolledProp, onChangeRef] = useUncontrolledState({
-      defaultProp,
-      onChange
-    });
-    const isControlled = prop !== void 0;
-    const value = isControlled ? prop : uncontrolledProp;
-    if (true) {
-      const isControlledRef = React8.useRef(prop !== void 0);
-      React8.useEffect(() => {
-        const wasControlled = isControlledRef.current;
-        if (wasControlled !== isControlled) {
-          const from = wasControlled ? "controlled" : "uncontrolled";
-          const to = isControlled ? "controlled" : "uncontrolled";
-          console.warn(
-            `${caller} is changing from ${from} to ${to}. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.`
-          );
-        }
-        isControlledRef.current = isControlled;
-      }, [isControlled, caller]);
-    }
-    const setValue = React8.useCallback(
-      (nextValue) => {
-        if (isControlled) {
-          const value2 = isFunction(nextValue) ? nextValue(prop) : nextValue;
-          if (value2 !== prop) {
-            onChangeRef.current?.(value2);
-          }
-        } else {
-          setUncontrolledProp(nextValue);
-        }
-      },
-      [isControlled, prop, setUncontrolledProp, onChangeRef]
-    );
-    return [value, setValue];
-  }
-  function useUncontrolledState({
-    defaultProp,
-    onChange
-  }) {
-    const [value, setValue] = React8.useState(defaultProp);
-    const prevValueRef = React8.useRef(value);
-    const onChangeRef = React8.useRef(onChange);
-    useInsertionEffect(() => {
-      onChangeRef.current = onChange;
-    }, [onChange]);
-    React8.useEffect(() => {
-      if (prevValueRef.current !== value) {
-        onChangeRef.current?.(value);
-        prevValueRef.current = value;
-      }
-    }, [value, prevValueRef]);
-    return [value, setValue, onChangeRef];
-  }
-  function isFunction(value) {
-    return typeof value === "function";
-  }
-
-  // node_modules/@radix-ui/react-direction/dist/index.mjs
-  var React9 = __toESM(require_react(), 1);
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime(), 1);
-  var DirectionContext = React9.createContext(void 0);
-  function useDirection(localDir) {
-    const globalDir = React9.useContext(DirectionContext);
-    return localDir || globalDir || "ltr";
-  }
-
-  // node_modules/@radix-ui/react-presence/dist/index.mjs
-  var React23 = __toESM(require_react(), 1);
-  var React10 = __toESM(require_react(), 1);
-  function useStateMachine(initialState, machine) {
-    return React10.useReducer((state, event) => {
-      const nextState = machine[state][event];
-      return nextState ?? state;
-    }, initialState);
-  }
-  var Presence = (props) => {
-    const { present, children } = props;
-    const presence = usePresence(present);
-    const child = typeof children === "function" ? children({ present: presence.isPresent }) : React23.Children.only(children);
-    const ref = useComposedRefs(presence.ref, getElementRef3(child));
-    const forceMount = typeof children === "function";
-    return forceMount || presence.isPresent ? React23.cloneElement(child, { ref }) : null;
-  };
-  Presence.displayName = "Presence";
-  function usePresence(present) {
-    const [node, setNode] = React23.useState();
-    const stylesRef = React23.useRef(null);
-    const prevPresentRef = React23.useRef(present);
-    const prevAnimationNameRef = React23.useRef("none");
-    const initialState = present ? "mounted" : "unmounted";
-    const [state, send] = useStateMachine(initialState, {
-      mounted: {
-        UNMOUNT: "unmounted",
-        ANIMATION_OUT: "unmountSuspended"
-      },
-      unmountSuspended: {
-        MOUNT: "mounted",
-        ANIMATION_END: "unmounted"
-      },
-      unmounted: {
-        MOUNT: "mounted"
-      }
-    });
-    React23.useEffect(() => {
-      const currentAnimationName = getAnimationName(stylesRef.current);
-      prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
-    }, [state]);
-    useLayoutEffect2(() => {
-      const styles = stylesRef.current;
-      const wasPresent = prevPresentRef.current;
-      const hasPresentChanged = wasPresent !== present;
-      if (hasPresentChanged) {
-        const prevAnimationName = prevAnimationNameRef.current;
-        const currentAnimationName = getAnimationName(styles);
-        if (present) {
-          send("MOUNT");
-        } else if (currentAnimationName === "none" || styles?.display === "none") {
-          send("UNMOUNT");
-        } else {
-          const isAnimating = prevAnimationName !== currentAnimationName;
-          if (wasPresent && isAnimating) {
-            send("ANIMATION_OUT");
-          } else {
-            send("UNMOUNT");
-          }
-        }
-        prevPresentRef.current = present;
-      }
-    }, [present, send]);
-    useLayoutEffect2(() => {
-      if (node) {
-        let timeoutId;
-        const ownerWindow = node.ownerDocument.defaultView ?? window;
-        const handleAnimationEnd = (event) => {
-          const currentAnimationName = getAnimationName(stylesRef.current);
-          const isCurrentAnimation = currentAnimationName.includes(CSS.escape(event.animationName));
-          if (event.target === node && isCurrentAnimation) {
-            send("ANIMATION_END");
-            if (!prevPresentRef.current) {
-              const currentFillMode = node.style.animationFillMode;
-              node.style.animationFillMode = "forwards";
-              timeoutId = ownerWindow.setTimeout(() => {
-                if (node.style.animationFillMode === "forwards") {
-                  node.style.animationFillMode = currentFillMode;
-                }
-              });
-            }
-          }
-        };
-        const handleAnimationStart = (event) => {
-          if (event.target === node) {
-            prevAnimationNameRef.current = getAnimationName(stylesRef.current);
-          }
-        };
-        node.addEventListener("animationstart", handleAnimationStart);
-        node.addEventListener("animationcancel", handleAnimationEnd);
-        node.addEventListener("animationend", handleAnimationEnd);
-        return () => {
-          ownerWindow.clearTimeout(timeoutId);
-          node.removeEventListener("animationstart", handleAnimationStart);
-          node.removeEventListener("animationcancel", handleAnimationEnd);
-          node.removeEventListener("animationend", handleAnimationEnd);
-        };
-      } else {
-        send("ANIMATION_END");
-      }
-    }, [node, send]);
-    return {
-      isPresent: ["mounted", "unmountSuspended"].includes(state),
-      ref: React23.useCallback((node2) => {
-        stylesRef.current = node2 ? getComputedStyle(node2) : null;
-        setNode(node2);
-      }, [])
-    };
-  }
-  function getAnimationName(styles) {
-    return styles?.animationName || "none";
-  }
-  function getElementRef3(element) {
-    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.ref;
-    }
-    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.props.ref;
-    }
-    return element.props.ref || element.ref;
-  }
-
-  // node_modules/@radix-ui/react-id/dist/index.mjs
-  var React11 = __toESM(require_react(), 1);
-  var useReactId = React11[" useId ".trim().toString()] || (() => void 0);
-  var count = 0;
-  function useId(deterministicId) {
-    const [id, setId] = React11.useState(useReactId());
-    useLayoutEffect2(() => {
-      if (!deterministicId) setId((reactId) => reactId ?? String(count++));
-    }, [deterministicId]);
-    return deterministicId || (id ? `radix-${id}` : "");
-  }
-
-  // node_modules/@radix-ui/react-collection/dist/index.mjs
-  var import_react2 = __toESM(require_react(), 1);
-
-  // node_modules/@radix-ui/react-collection/node_modules/@radix-ui/react-slot/dist/index.mjs
-  var React12 = __toESM(require_react(), 1);
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime(), 1);
-  // @__NO_SIDE_EFFECTS__
-  function createSlot3(ownerName) {
-    const SlotClone = /* @__PURE__ */ createSlotClone3(ownerName);
-    const Slot2 = React12.forwardRef((props, forwardedRef) => {
-      const { children, ...slotProps } = props;
-      const childrenArray = React12.Children.toArray(children);
-      const slottable = childrenArray.find(isSlottable3);
-      if (slottable) {
-        const newElement = slottable.props.children;
-        const newChildren = childrenArray.map((child) => {
-          if (child === slottable) {
-            if (React12.Children.count(newElement) > 1) return React12.Children.only(null);
-            return React12.isValidElement(newElement) ? newElement.props.children : null;
-          } else {
-            return child;
-          }
-        });
-        return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children: React12.isValidElement(newElement) ? React12.cloneElement(newElement, void 0, newChildren) : null });
-      }
-      return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SlotClone, { ...slotProps, ref: forwardedRef, children });
-    });
-    Slot2.displayName = `${ownerName}.Slot`;
-    return Slot2;
-  }
-  // @__NO_SIDE_EFFECTS__
-  function createSlotClone3(ownerName) {
-    const SlotClone = React12.forwardRef((props, forwardedRef) => {
-      const { children, ...slotProps } = props;
-      if (React12.isValidElement(children)) {
-        const childrenRef = getElementRef4(children);
-        const props2 = mergeProps3(slotProps, children.props);
-        if (children.type !== React12.Fragment) {
-          props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
-        }
-        return React12.cloneElement(children, props2);
-      }
-      return React12.Children.count(children) > 1 ? React12.Children.only(null) : null;
-    });
-    SlotClone.displayName = `${ownerName}.SlotClone`;
-    return SlotClone;
-  }
-  var SLOTTABLE_IDENTIFIER3 = /* @__PURE__ */ Symbol("radix.slottable");
-  function isSlottable3(child) {
-    return React12.isValidElement(child) && typeof child.type === "function" && "__radixId" in child.type && child.type.__radixId === SLOTTABLE_IDENTIFIER3;
-  }
-  function mergeProps3(slotProps, childProps) {
-    const overrideProps = { ...childProps };
-    for (const propName in childProps) {
-      const slotPropValue = slotProps[propName];
-      const childPropValue = childProps[propName];
-      const isHandler = /^on[A-Z]/.test(propName);
-      if (isHandler) {
-        if (slotPropValue && childPropValue) {
-          overrideProps[propName] = (...args) => {
-            const result = childPropValue(...args);
-            slotPropValue(...args);
-            return result;
-          };
-        } else if (slotPropValue) {
-          overrideProps[propName] = slotPropValue;
-        }
-      } else if (propName === "style") {
-        overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-      } else if (propName === "className") {
-        overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-      }
-    }
-    return { ...slotProps, ...overrideProps };
-  }
-  function getElementRef4(element) {
-    let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-    let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.ref;
-    }
-    getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-    mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-    if (mayWarn) {
-      return element.props.ref;
-    }
-    return element.props.ref || element.ref;
-  }
-
-  // node_modules/@radix-ui/react-collection/dist/index.mjs
-  var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1);
-  var import_react3 = __toESM(require_react(), 1);
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1);
-  function createCollection(name) {
-    const PROVIDER_NAME = name + "CollectionProvider";
-    const [createCollectionContext, createCollectionScope2] = createContextScope(PROVIDER_NAME);
-    const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(
-      PROVIDER_NAME,
-      { collectionRef: { current: null }, itemMap: /* @__PURE__ */ new Map() }
-    );
-    const CollectionProvider = (props) => {
-      const { scope, children } = props;
-      const ref = import_react2.default.useRef(null);
-      const itemMap = import_react2.default.useRef(/* @__PURE__ */ new Map()).current;
-      return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
-    };
-    CollectionProvider.displayName = PROVIDER_NAME;
-    const COLLECTION_SLOT_NAME = name + "CollectionSlot";
-    const CollectionSlotImpl = createSlot3(COLLECTION_SLOT_NAME);
-    const CollectionSlot = import_react2.default.forwardRef(
-      (props, forwardedRef) => {
-        const { scope, children } = props;
-        const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
-        const composedRefs = useComposedRefs(forwardedRef, context.collectionRef);
-        return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollectionSlotImpl, { ref: composedRefs, children });
-      }
-    );
-    CollectionSlot.displayName = COLLECTION_SLOT_NAME;
-    const ITEM_SLOT_NAME = name + "CollectionItemSlot";
-    const ITEM_DATA_ATTR = "data-radix-collection-item";
-    const CollectionItemSlotImpl = createSlot3(ITEM_SLOT_NAME);
-    const CollectionItemSlot = import_react2.default.forwardRef(
-      (props, forwardedRef) => {
-        const { scope, children, ...itemData } = props;
-        const ref = import_react2.default.useRef(null);
-        const composedRefs = useComposedRefs(forwardedRef, ref);
-        const context = useCollectionContext(ITEM_SLOT_NAME, scope);
-        import_react2.default.useEffect(() => {
-          context.itemMap.set(ref, { ref, ...itemData });
-          return () => void context.itemMap.delete(ref);
-        });
-        return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollectionItemSlotImpl, { ...{ [ITEM_DATA_ATTR]: "" }, ref: composedRefs, children });
-      }
-    );
-    CollectionItemSlot.displayName = ITEM_SLOT_NAME;
-    function useCollection2(scope) {
-      const context = useCollectionContext(name + "CollectionConsumer", scope);
-      const getItems = import_react2.default.useCallback(() => {
-        const collectionNode = context.collectionRef.current;
-        if (!collectionNode) return [];
-        const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
-        const items = Array.from(context.itemMap.values());
-        const orderedItems = items.sort(
-          (a, b) => orderedNodes.indexOf(a.ref.current) - orderedNodes.indexOf(b.ref.current)
-        );
-        return orderedItems;
-      }, [context.collectionRef, context.itemMap]);
-      return getItems;
-    }
-    return [
-      { Provider: CollectionProvider, Slot: CollectionSlot, ItemSlot: CollectionItemSlot },
-      useCollection2,
-      createCollectionScope2
-    ];
-  }
-
-  // node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
-  var React16 = __toESM(require_react(), 1);
-
-  // node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
-  var React14 = __toESM(require_react(), 1);
-  function useCallbackRef(callback) {
-    const callbackRef = React14.useRef(callback);
-    React14.useEffect(() => {
-      callbackRef.current = callback;
-    });
-    return React14.useMemo(() => (...args) => callbackRef.current?.(...args), []);
-  }
-
-  // node_modules/@radix-ui/react-use-escape-keydown/dist/index.mjs
-  var React15 = __toESM(require_react(), 1);
-  function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis?.document) {
-    const onEscapeKeyDown = useCallbackRef(onEscapeKeyDownProp);
-    React15.useEffect(() => {
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          onEscapeKeyDown(event);
-        }
-      };
-      ownerDocument.addEventListener("keydown", handleKeyDown, { capture: true });
-      return () => ownerDocument.removeEventListener("keydown", handleKeyDown, { capture: true });
-    }, [onEscapeKeyDown, ownerDocument]);
-  }
-
-  // node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime(), 1);
-  var DISMISSABLE_LAYER_NAME = "DismissableLayer";
-  var CONTEXT_UPDATE = "dismissableLayer.update";
-  var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
-  var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
-  var originalBodyPointerEvents;
-  var DismissableLayerContext = React16.createContext({
-    layers: /* @__PURE__ */ new Set(),
-    layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
-    branches: /* @__PURE__ */ new Set()
-  });
-  var DismissableLayer = React16.forwardRef(
-    (props, forwardedRef) => {
-      const {
-        disableOutsidePointerEvents = false,
-        onEscapeKeyDown,
-        onPointerDownOutside,
-        onFocusOutside,
-        onInteractOutside,
-        onDismiss,
-        ...layerProps
-      } = props;
-      const context = React16.useContext(DismissableLayerContext);
-      const [node, setNode] = React16.useState(null);
-      const ownerDocument = node?.ownerDocument ?? globalThis?.document;
-      const [, force] = React16.useState({});
-      const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
-      const layers = Array.from(context.layers);
-      const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
-      const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
-      const index = node ? layers.indexOf(node) : -1;
-      const isBodyPointerEventsDisabled = context.layersWithOutsidePointerEventsDisabled.size > 0;
-      const isPointerEventsEnabled = index >= highestLayerWithOutsidePointerEventsDisabledIndex;
-      const pointerDownOutside = usePointerDownOutside((event) => {
-        const target = event.target;
-        const isPointerDownOnBranch = [...context.branches].some((branch) => branch.contains(target));
-        if (!isPointerEventsEnabled || isPointerDownOnBranch) return;
-        onPointerDownOutside?.(event);
-        onInteractOutside?.(event);
-        if (!event.defaultPrevented) onDismiss?.();
-      }, ownerDocument);
-      const focusOutside = useFocusOutside((event) => {
-        const target = event.target;
-        const isFocusInBranch = [...context.branches].some((branch) => branch.contains(target));
-        if (isFocusInBranch) return;
-        onFocusOutside?.(event);
-        onInteractOutside?.(event);
-        if (!event.defaultPrevented) onDismiss?.();
-      }, ownerDocument);
-      useEscapeKeydown((event) => {
-        const isHighestLayer = index === context.layers.size - 1;
-        if (!isHighestLayer) return;
-        onEscapeKeyDown?.(event);
-        if (!event.defaultPrevented && onDismiss) {
-          event.preventDefault();
-          onDismiss();
-        }
-      }, ownerDocument);
-      React16.useEffect(() => {
-        if (!node) return;
-        if (disableOutsidePointerEvents) {
-          if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
-            originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
-            ownerDocument.body.style.pointerEvents = "none";
-          }
-          context.layersWithOutsidePointerEventsDisabled.add(node);
-        }
-        context.layers.add(node);
-        dispatchUpdate();
-        return () => {
-          if (disableOutsidePointerEvents && context.layersWithOutsidePointerEventsDisabled.size === 1) {
-            ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
-          }
-        };
-      }, [node, ownerDocument, disableOutsidePointerEvents, context]);
-      React16.useEffect(() => {
-        return () => {
-          if (!node) return;
-          context.layers.delete(node);
-          context.layersWithOutsidePointerEventsDisabled.delete(node);
-          dispatchUpdate();
-        };
-      }, [node, context]);
-      React16.useEffect(() => {
-        const handleUpdate = () => force({});
-        document.addEventListener(CONTEXT_UPDATE, handleUpdate);
-        return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
-      }, []);
-      return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
-        Primitive.div,
-        {
-          ...layerProps,
-          ref: composedRefs,
-          style: {
-            pointerEvents: isBodyPointerEventsDisabled ? isPointerEventsEnabled ? "auto" : "none" : void 0,
-            ...props.style
-          },
-          onFocusCapture: composeEventHandlers(props.onFocusCapture, focusOutside.onFocusCapture),
-          onBlurCapture: composeEventHandlers(props.onBlurCapture, focusOutside.onBlurCapture),
-          onPointerDownCapture: composeEventHandlers(
-            props.onPointerDownCapture,
-            pointerDownOutside.onPointerDownCapture
-          )
-        }
-      );
-    }
-  );
-  DismissableLayer.displayName = DISMISSABLE_LAYER_NAME;
-  var BRANCH_NAME = "DismissableLayerBranch";
-  var DismissableLayerBranch = React16.forwardRef((props, forwardedRef) => {
-    const context = React16.useContext(DismissableLayerContext);
-    const ref = React16.useRef(null);
-    const composedRefs = useComposedRefs(forwardedRef, ref);
-    React16.useEffect(() => {
-      const node = ref.current;
-      if (node) {
-        context.branches.add(node);
-        return () => {
-          context.branches.delete(node);
-        };
-      }
-    }, [context.branches]);
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Primitive.div, { ...props, ref: composedRefs });
-  });
-  DismissableLayerBranch.displayName = BRANCH_NAME;
-  function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis?.document) {
-    const handlePointerDownOutside = useCallbackRef(onPointerDownOutside);
-    const isPointerInsideReactTreeRef = React16.useRef(false);
-    const handleClickRef = React16.useRef(() => {
-    });
-    React16.useEffect(() => {
-      const handlePointerDown = (event) => {
-        if (event.target && !isPointerInsideReactTreeRef.current) {
-          let handleAndDispatchPointerDownOutsideEvent2 = function() {
-            handleAndDispatchCustomEvent(
-              POINTER_DOWN_OUTSIDE,
-              handlePointerDownOutside,
-              eventDetail,
-              { discrete: true }
-            );
-          };
-          var handleAndDispatchPointerDownOutsideEvent = handleAndDispatchPointerDownOutsideEvent2;
-          const eventDetail = { originalEvent: event };
-          if (event.pointerType === "touch") {
-            ownerDocument.removeEventListener("click", handleClickRef.current);
-            handleClickRef.current = handleAndDispatchPointerDownOutsideEvent2;
-            ownerDocument.addEventListener("click", handleClickRef.current, { once: true });
-          } else {
-            handleAndDispatchPointerDownOutsideEvent2();
-          }
-        } else {
-          ownerDocument.removeEventListener("click", handleClickRef.current);
-        }
-        isPointerInsideReactTreeRef.current = false;
-      };
-      const timerId = window.setTimeout(() => {
-        ownerDocument.addEventListener("pointerdown", handlePointerDown);
-      }, 0);
-      return () => {
-        window.clearTimeout(timerId);
-        ownerDocument.removeEventListener("pointerdown", handlePointerDown);
-        ownerDocument.removeEventListener("click", handleClickRef.current);
-      };
-    }, [ownerDocument, handlePointerDownOutside]);
-    return {
-      // ensures we check React component tree (not just DOM tree)
-      onPointerDownCapture: () => isPointerInsideReactTreeRef.current = true
-    };
-  }
-  function useFocusOutside(onFocusOutside, ownerDocument = globalThis?.document) {
-    const handleFocusOutside = useCallbackRef(onFocusOutside);
-    const isFocusInsideReactTreeRef = React16.useRef(false);
-    React16.useEffect(() => {
-      const handleFocus = (event) => {
-        if (event.target && !isFocusInsideReactTreeRef.current) {
-          const eventDetail = { originalEvent: event };
-          handleAndDispatchCustomEvent(FOCUS_OUTSIDE, handleFocusOutside, eventDetail, {
-            discrete: false
-          });
-        }
-      };
-      ownerDocument.addEventListener("focusin", handleFocus);
-      return () => ownerDocument.removeEventListener("focusin", handleFocus);
-    }, [ownerDocument, handleFocusOutside]);
-    return {
-      onFocusCapture: () => isFocusInsideReactTreeRef.current = true,
-      onBlurCapture: () => isFocusInsideReactTreeRef.current = false
-    };
-  }
-  function dispatchUpdate() {
-    const event = new CustomEvent(CONTEXT_UPDATE);
-    document.dispatchEvent(event);
-  }
-  function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
-    const target = detail.originalEvent.target;
-    const event = new CustomEvent(name, { bubbles: false, cancelable: true, detail });
-    if (handler) target.addEventListener(name, handler, { once: true });
-    if (discrete) {
-      dispatchDiscreteCustomEvent(target, event);
-    } else {
-      target.dispatchEvent(event);
-    }
-  }
-
-  // node_modules/@radix-ui/react-use-previous/dist/index.mjs
-  var React17 = __toESM(require_react(), 1);
-  function usePrevious(value) {
-    const ref = React17.useRef({ value, previous: value });
-    return React17.useMemo(() => {
-      if (ref.current.value !== value) {
-        ref.current.previous = ref.current.value;
-        ref.current.value = value;
-      }
-      return ref.current.previous;
-    }, [value]);
-  }
-
-  // node_modules/@radix-ui/react-visually-hidden/dist/index.mjs
-  var React18 = __toESM(require_react(), 1);
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime(), 1);
-  var VISUALLY_HIDDEN_STYLES = Object.freeze({
-    // See: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_visually-hidden.scss
-    position: "absolute",
-    border: 0,
-    width: 1,
-    height: 1,
-    padding: 0,
-    margin: -1,
-    overflow: "hidden",
-    clip: "rect(0, 0, 0, 0)",
-    whiteSpace: "nowrap",
-    wordWrap: "normal"
-  });
-  var NAME = "VisuallyHidden";
-  var VisuallyHidden = React18.forwardRef(
-    (props, forwardedRef) => {
-      return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
-        Primitive.span,
-        {
-          ...props,
-          ref: forwardedRef,
-          style: { ...VISUALLY_HIDDEN_STYLES, ...props.style }
-        }
-      );
-    }
-  );
-  VisuallyHidden.displayName = NAME;
-  var Root = VisuallyHidden;
-
-  // node_modules/@radix-ui/react-navigation-menu/dist/index.mjs
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime(), 1);
-  var NAVIGATION_MENU_NAME = "NavigationMenu";
-  var [Collection, useCollection, createCollectionScope] = createCollection(NAVIGATION_MENU_NAME);
-  var [FocusGroupCollection, useFocusGroupCollection, createFocusGroupCollectionScope] = createCollection(NAVIGATION_MENU_NAME);
-  var [createNavigationMenuContext, createNavigationMenuScope] = createContextScope(
-    NAVIGATION_MENU_NAME,
-    [createCollectionScope, createFocusGroupCollectionScope]
-  );
-  var [NavigationMenuProviderImpl, useNavigationMenuContext] = createNavigationMenuContext(NAVIGATION_MENU_NAME);
-  var [ViewportContentProvider, useViewportContentContext] = createNavigationMenuContext(NAVIGATION_MENU_NAME);
-  var NavigationMenu = React19.forwardRef(
-    (props, forwardedRef) => {
-      const {
-        __scopeNavigationMenu,
-        value: valueProp,
-        onValueChange,
-        defaultValue,
-        delayDuration = 200,
-        skipDelayDuration = 300,
-        orientation = "horizontal",
-        dir,
-        ...NavigationMenuProps
-      } = props;
-      const [navigationMenu, setNavigationMenu] = React19.useState(null);
-      const composedRef = useComposedRefs(forwardedRef, (node) => setNavigationMenu(node));
-      const direction = useDirection(dir);
-      const openTimerRef = React19.useRef(0);
-      const closeTimerRef = React19.useRef(0);
-      const skipDelayTimerRef = React19.useRef(0);
-      const [isOpenDelayed, setIsOpenDelayed] = React19.useState(true);
-      const [value, setValue] = useControllableState({
-        prop: valueProp,
-        onChange: (value2) => {
-          const isOpen = value2 !== "";
-          const hasSkipDelayDuration = skipDelayDuration > 0;
-          if (isOpen) {
-            window.clearTimeout(skipDelayTimerRef.current);
-            if (hasSkipDelayDuration) setIsOpenDelayed(false);
-          } else {
-            window.clearTimeout(skipDelayTimerRef.current);
-            skipDelayTimerRef.current = window.setTimeout(
-              () => setIsOpenDelayed(true),
-              skipDelayDuration
-            );
-          }
-          onValueChange?.(value2);
-        },
-        defaultProp: defaultValue ?? "",
-        caller: NAVIGATION_MENU_NAME
-      });
-      const startCloseTimer = React19.useCallback(() => {
-        window.clearTimeout(closeTimerRef.current);
-        closeTimerRef.current = window.setTimeout(() => setValue(""), 150);
-      }, [setValue]);
-      const handleOpen = React19.useCallback(
-        (itemValue) => {
-          window.clearTimeout(closeTimerRef.current);
-          setValue(itemValue);
-        },
-        [setValue]
-      );
-      const handleDelayedOpen = React19.useCallback(
-        (itemValue) => {
-          const isOpenItem = value === itemValue;
-          if (isOpenItem) {
-            window.clearTimeout(closeTimerRef.current);
-          } else {
-            openTimerRef.current = window.setTimeout(() => {
-              window.clearTimeout(closeTimerRef.current);
-              setValue(itemValue);
-            }, delayDuration);
-          }
-        },
-        [value, setValue, delayDuration]
-      );
-      React19.useEffect(() => {
-        return () => {
-          window.clearTimeout(openTimerRef.current);
-          window.clearTimeout(closeTimerRef.current);
-          window.clearTimeout(skipDelayTimerRef.current);
-        };
-      }, []);
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        NavigationMenuProvider,
-        {
-          scope: __scopeNavigationMenu,
-          isRootMenu: true,
-          value,
-          dir: direction,
-          orientation,
-          rootNavigationMenu: navigationMenu,
-          onTriggerEnter: (itemValue) => {
-            window.clearTimeout(openTimerRef.current);
-            if (isOpenDelayed) handleDelayedOpen(itemValue);
-            else handleOpen(itemValue);
-          },
-          onTriggerLeave: () => {
-            window.clearTimeout(openTimerRef.current);
-            startCloseTimer();
-          },
-          onContentEnter: () => window.clearTimeout(closeTimerRef.current),
-          onContentLeave: startCloseTimer,
-          onItemSelect: (itemValue) => {
-            setValue((prevValue) => prevValue === itemValue ? "" : itemValue);
-          },
-          onItemDismiss: () => setValue(""),
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            Primitive.nav,
-            {
-              "aria-label": "Main",
-              "data-orientation": orientation,
-              dir: direction,
-              ...NavigationMenuProps,
-              ref: composedRef
-            }
-          )
-        }
-      );
-    }
-  );
-  NavigationMenu.displayName = NAVIGATION_MENU_NAME;
-  var SUB_NAME = "NavigationMenuSub";
-  var NavigationMenuSub = React19.forwardRef(
-    (props, forwardedRef) => {
-      const {
-        __scopeNavigationMenu,
-        value: valueProp,
-        onValueChange,
-        defaultValue,
-        orientation = "horizontal",
-        ...subProps
-      } = props;
-      const context = useNavigationMenuContext(SUB_NAME, __scopeNavigationMenu);
-      const [value, setValue] = useControllableState({
-        prop: valueProp,
-        onChange: onValueChange,
-        defaultProp: defaultValue ?? "",
-        caller: SUB_NAME
-      });
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        NavigationMenuProvider,
-        {
-          scope: __scopeNavigationMenu,
-          isRootMenu: false,
-          value,
-          dir: context.dir,
-          orientation,
-          rootNavigationMenu: context.rootNavigationMenu,
-          onTriggerEnter: (itemValue) => setValue(itemValue),
-          onItemSelect: (itemValue) => setValue(itemValue),
-          onItemDismiss: () => setValue(""),
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Primitive.div, { "data-orientation": orientation, ...subProps, ref: forwardedRef })
-        }
-      );
-    }
-  );
-  NavigationMenuSub.displayName = SUB_NAME;
-  var NavigationMenuProvider = (props) => {
-    const {
-      scope,
-      isRootMenu,
-      rootNavigationMenu,
-      dir,
-      orientation,
-      children,
-      value,
-      onItemSelect,
-      onItemDismiss,
-      onTriggerEnter,
-      onTriggerLeave,
-      onContentEnter,
-      onContentLeave
-    } = props;
-    const [viewport, setViewport] = React19.useState(null);
-    const [viewportContent, setViewportContent] = React19.useState(/* @__PURE__ */ new Map());
-    const [indicatorTrack, setIndicatorTrack] = React19.useState(null);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-      NavigationMenuProviderImpl,
-      {
-        scope,
-        isRootMenu,
-        rootNavigationMenu,
-        value,
-        previousValue: usePrevious(value),
-        baseId: useId(),
-        dir,
-        orientation,
-        viewport,
-        onViewportChange: setViewport,
-        indicatorTrack,
-        onIndicatorTrackChange: setIndicatorTrack,
-        onTriggerEnter: useCallbackRef(onTriggerEnter),
-        onTriggerLeave: useCallbackRef(onTriggerLeave),
-        onContentEnter: useCallbackRef(onContentEnter),
-        onContentLeave: useCallbackRef(onContentLeave),
-        onItemSelect: useCallbackRef(onItemSelect),
-        onItemDismiss: useCallbackRef(onItemDismiss),
-        onViewportContentChange: React19.useCallback((contentValue, contentData) => {
-          setViewportContent((prevContent) => {
-            prevContent.set(contentValue, contentData);
-            return new Map(prevContent);
-          });
-        }, []),
-        onViewportContentRemove: React19.useCallback((contentValue) => {
-          setViewportContent((prevContent) => {
-            if (!prevContent.has(contentValue)) return prevContent;
-            prevContent.delete(contentValue);
-            return new Map(prevContent);
-          });
-        }, []),
-        children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Collection.Provider, { scope, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ViewportContentProvider, { scope, items: viewportContent, children }) })
-      }
-    );
-  };
-  var LIST_NAME = "NavigationMenuList";
-  var NavigationMenuList = React19.forwardRef(
-    (props, forwardedRef) => {
-      const { __scopeNavigationMenu, ...listProps } = props;
-      const context = useNavigationMenuContext(LIST_NAME, __scopeNavigationMenu);
-      const list = /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Primitive.ul, { "data-orientation": context.orientation, ...listProps, ref: forwardedRef });
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Primitive.div, { style: { position: "relative" }, ref: context.onIndicatorTrackChange, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Collection.Slot, { scope: __scopeNavigationMenu, children: context.isRootMenu ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroup, { asChild: true, children: list }) : list }) });
-    }
-  );
-  NavigationMenuList.displayName = LIST_NAME;
-  var ITEM_NAME = "NavigationMenuItem";
-  var [NavigationMenuItemContextProvider, useNavigationMenuItemContext] = createNavigationMenuContext(ITEM_NAME);
-  var NavigationMenuItem = React19.forwardRef(
-    (props, forwardedRef) => {
-      const { __scopeNavigationMenu, value: valueProp, ...itemProps } = props;
-      const autoValue = useId();
-      const value = valueProp || autoValue || "LEGACY_REACT_AUTO_VALUE";
-      const contentRef = React19.useRef(null);
-      const triggerRef = React19.useRef(null);
-      const focusProxyRef = React19.useRef(null);
-      const restoreContentTabOrderRef = React19.useRef(() => {
-      });
-      const wasEscapeCloseRef = React19.useRef(false);
-      const handleContentEntry = React19.useCallback((side = "start") => {
-        if (contentRef.current) {
-          restoreContentTabOrderRef.current();
-          const candidates = getTabbableCandidates(contentRef.current);
-          if (candidates.length) focusFirst(side === "start" ? candidates : candidates.reverse());
-        }
-      }, []);
-      const handleContentExit = React19.useCallback(() => {
-        if (contentRef.current) {
-          const candidates = getTabbableCandidates(contentRef.current);
-          if (candidates.length) restoreContentTabOrderRef.current = removeFromTabOrder(candidates);
-        }
-      }, []);
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        NavigationMenuItemContextProvider,
-        {
-          scope: __scopeNavigationMenu,
-          value,
-          triggerRef,
-          contentRef,
-          focusProxyRef,
-          wasEscapeCloseRef,
-          onEntryKeyDown: handleContentEntry,
-          onFocusProxyEnter: handleContentEntry,
-          onRootContentClose: handleContentExit,
-          onContentFocusOutside: handleContentExit,
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Primitive.li, { ...itemProps, ref: forwardedRef })
-        }
-      );
-    }
-  );
-  NavigationMenuItem.displayName = ITEM_NAME;
-  var TRIGGER_NAME = "NavigationMenuTrigger";
-  var NavigationMenuTrigger = React19.forwardRef((props, forwardedRef) => {
-    const { __scopeNavigationMenu, disabled, ...triggerProps } = props;
-    const context = useNavigationMenuContext(TRIGGER_NAME, props.__scopeNavigationMenu);
-    const itemContext = useNavigationMenuItemContext(TRIGGER_NAME, props.__scopeNavigationMenu);
-    const ref = React19.useRef(null);
-    const composedRefs = useComposedRefs(ref, itemContext.triggerRef, forwardedRef);
-    const triggerId = makeTriggerId(context.baseId, itemContext.value);
-    const contentId = makeContentId(context.baseId, itemContext.value);
-    const hasPointerMoveOpenedRef = React19.useRef(false);
-    const wasClickCloseRef = React19.useRef(false);
-    const open = itemContext.value === context.value;
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Collection.ItemSlot, { scope: __scopeNavigationMenu, value: itemContext.value, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroupItem, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        Primitive.button,
-        {
-          id: triggerId,
-          disabled,
-          "data-disabled": disabled ? "" : void 0,
-          "data-state": getOpenState(open),
-          "aria-expanded": open,
-          "aria-controls": contentId,
-          ...triggerProps,
-          ref: composedRefs,
-          onPointerEnter: composeEventHandlers(props.onPointerEnter, () => {
-            wasClickCloseRef.current = false;
-            itemContext.wasEscapeCloseRef.current = false;
-          }),
-          onPointerMove: composeEventHandlers(
-            props.onPointerMove,
-            whenMouse(() => {
-              if (disabled || wasClickCloseRef.current || itemContext.wasEscapeCloseRef.current || hasPointerMoveOpenedRef.current)
-                return;
-              context.onTriggerEnter(itemContext.value);
-              hasPointerMoveOpenedRef.current = true;
-            })
-          ),
-          onPointerLeave: composeEventHandlers(
-            props.onPointerLeave,
-            whenMouse(() => {
-              if (disabled) return;
-              context.onTriggerLeave();
-              hasPointerMoveOpenedRef.current = false;
-            })
-          ),
-          onClick: composeEventHandlers(props.onClick, () => {
-            context.onItemSelect(itemContext.value);
-            wasClickCloseRef.current = open;
-          }),
-          onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
-            const verticalEntryKey = context.dir === "rtl" ? "ArrowLeft" : "ArrowRight";
-            const entryKey = { horizontal: "ArrowDown", vertical: verticalEntryKey }[context.orientation];
-            if (open && event.key === entryKey) {
-              itemContext.onEntryKeyDown();
-              event.preventDefault();
-            }
-          })
-        }
-      ) }) }),
-      open && /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_jsx_runtime13.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-          Root,
-          {
-            "aria-hidden": true,
-            tabIndex: 0,
-            ref: itemContext.focusProxyRef,
-            onFocus: (event) => {
-              const content = itemContext.contentRef.current;
-              const prevFocusedElement = event.relatedTarget;
-              const wasTriggerFocused = prevFocusedElement === ref.current;
-              const wasFocusFromContent = content?.contains(prevFocusedElement);
-              if (wasTriggerFocused || !wasFocusFromContent) {
-                itemContext.onFocusProxyEnter(wasTriggerFocused ? "start" : "end");
-              }
-            }
-          }
-        ),
-        context.viewport && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { "aria-owns": contentId })
-      ] })
-    ] });
-  });
-  NavigationMenuTrigger.displayName = TRIGGER_NAME;
-  var LINK_NAME = "NavigationMenuLink";
-  var LINK_SELECT = "navigationMenu.linkSelect";
-  var NavigationMenuLink = React19.forwardRef(
-    (props, forwardedRef) => {
-      const { __scopeNavigationMenu, active, onSelect, ...linkProps } = props;
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroupItem, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        Primitive.a,
-        {
-          "data-active": active ? "" : void 0,
-          "aria-current": active ? "page" : void 0,
-          ...linkProps,
-          ref: forwardedRef,
-          onClick: composeEventHandlers(
-            props.onClick,
-            (event) => {
-              const target = event.target;
-              const linkSelectEvent = new CustomEvent(LINK_SELECT, {
-                bubbles: true,
-                cancelable: true
-              });
-              target.addEventListener(LINK_SELECT, (event2) => onSelect?.(event2), { once: true });
-              dispatchDiscreteCustomEvent(target, linkSelectEvent);
-              if (!linkSelectEvent.defaultPrevented && !event.metaKey) {
-                const rootContentDismissEvent = new CustomEvent(ROOT_CONTENT_DISMISS, {
-                  bubbles: true,
-                  cancelable: true
-                });
-                dispatchDiscreteCustomEvent(target, rootContentDismissEvent);
-              }
-            },
-            { checkForDefaultPrevented: false }
-          )
-        }
-      ) });
-    }
-  );
-  NavigationMenuLink.displayName = LINK_NAME;
-  var INDICATOR_NAME = "NavigationMenuIndicator";
-  var NavigationMenuIndicator = React19.forwardRef((props, forwardedRef) => {
-    const { forceMount, ...indicatorProps } = props;
-    const context = useNavigationMenuContext(INDICATOR_NAME, props.__scopeNavigationMenu);
-    const isVisible = Boolean(context.value);
-    return context.indicatorTrack ? import_react_dom.default.createPortal(
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Presence, { present: forceMount || isVisible, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(NavigationMenuIndicatorImpl, { ...indicatorProps, ref: forwardedRef }) }),
-      context.indicatorTrack
-    ) : null;
-  });
-  NavigationMenuIndicator.displayName = INDICATOR_NAME;
-  var NavigationMenuIndicatorImpl = React19.forwardRef((props, forwardedRef) => {
-    const { __scopeNavigationMenu, ...indicatorProps } = props;
-    const context = useNavigationMenuContext(INDICATOR_NAME, __scopeNavigationMenu);
-    const getItems = useCollection(__scopeNavigationMenu);
-    const [activeTrigger, setActiveTrigger] = React19.useState(
-      null
-    );
-    const [position, setPosition] = React19.useState(null);
-    const isHorizontal = context.orientation === "horizontal";
-    const isVisible = Boolean(context.value);
-    React19.useEffect(() => {
-      const items = getItems();
-      const triggerNode = items.find((item) => item.value === context.value)?.ref.current;
-      if (triggerNode) setActiveTrigger(triggerNode);
-    }, [getItems, context.value]);
-    const handlePositionChange = () => {
-      if (activeTrigger) {
-        setPosition({
-          size: isHorizontal ? activeTrigger.offsetWidth : activeTrigger.offsetHeight,
-          offset: isHorizontal ? activeTrigger.offsetLeft : activeTrigger.offsetTop
-        });
-      }
-    };
-    useResizeObserver(activeTrigger, handlePositionChange);
-    useResizeObserver(context.indicatorTrack, handlePositionChange);
-    return position ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-      Primitive.div,
-      {
-        "aria-hidden": true,
-        "data-state": isVisible ? "visible" : "hidden",
-        "data-orientation": context.orientation,
-        ...indicatorProps,
-        ref: forwardedRef,
-        style: {
-          position: "absolute",
-          ...isHorizontal ? {
-            left: 0,
-            width: position.size + "px",
-            transform: `translateX(${position.offset}px)`
-          } : {
-            top: 0,
-            height: position.size + "px",
-            transform: `translateY(${position.offset}px)`
-          },
-          ...indicatorProps.style
-        }
-      }
-    ) : null;
-  });
-  var CONTENT_NAME = "NavigationMenuContent";
-  var NavigationMenuContent = React19.forwardRef((props, forwardedRef) => {
-    const { forceMount, ...contentProps } = props;
-    const context = useNavigationMenuContext(CONTENT_NAME, props.__scopeNavigationMenu);
-    const itemContext = useNavigationMenuItemContext(CONTENT_NAME, props.__scopeNavigationMenu);
-    const composedRefs = useComposedRefs(itemContext.contentRef, forwardedRef);
-    const open = itemContext.value === context.value;
-    const commonProps = {
-      value: itemContext.value,
-      triggerRef: itemContext.triggerRef,
-      focusProxyRef: itemContext.focusProxyRef,
-      wasEscapeCloseRef: itemContext.wasEscapeCloseRef,
-      onContentFocusOutside: itemContext.onContentFocusOutside,
-      onRootContentClose: itemContext.onRootContentClose,
-      ...contentProps
-    };
-    return !context.viewport ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Presence, { present: forceMount || open, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-      NavigationMenuContentImpl,
-      {
-        "data-state": getOpenState(open),
-        ...commonProps,
-        ref: composedRefs,
-        onPointerEnter: composeEventHandlers(props.onPointerEnter, context.onContentEnter),
-        onPointerLeave: composeEventHandlers(
-          props.onPointerLeave,
-          whenMouse(context.onContentLeave)
-        ),
-        style: {
-          // Prevent interaction when animating out
-          pointerEvents: !open && context.isRootMenu ? "none" : void 0,
-          ...commonProps.style
-        }
-      }
-    ) }) : /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ViewportContentMounter, { forceMount, ...commonProps, ref: composedRefs });
-  });
-  NavigationMenuContent.displayName = CONTENT_NAME;
-  var ViewportContentMounter = React19.forwardRef((props, forwardedRef) => {
-    const context = useNavigationMenuContext(CONTENT_NAME, props.__scopeNavigationMenu);
-    const { onViewportContentChange, onViewportContentRemove } = context;
-    useLayoutEffect2(() => {
-      onViewportContentChange(props.value, {
-        ref: forwardedRef,
-        ...props
-      });
-    }, [props, forwardedRef, onViewportContentChange]);
-    useLayoutEffect2(() => {
-      return () => onViewportContentRemove(props.value);
-    }, [props.value, onViewportContentRemove]);
-    return null;
-  });
-  var ROOT_CONTENT_DISMISS = "navigationMenu.rootContentDismiss";
-  var NavigationMenuContentImpl = React19.forwardRef((props, forwardedRef) => {
-    const {
-      __scopeNavigationMenu,
-      value,
-      triggerRef,
-      focusProxyRef,
-      wasEscapeCloseRef,
-      onRootContentClose,
-      onContentFocusOutside,
-      ...contentProps
-    } = props;
-    const context = useNavigationMenuContext(CONTENT_NAME, __scopeNavigationMenu);
-    const ref = React19.useRef(null);
-    const composedRefs = useComposedRefs(ref, forwardedRef);
-    const triggerId = makeTriggerId(context.baseId, value);
-    const contentId = makeContentId(context.baseId, value);
-    const getItems = useCollection(__scopeNavigationMenu);
-    const prevMotionAttributeRef = React19.useRef(null);
-    const { onItemDismiss } = context;
-    React19.useEffect(() => {
-      const content = ref.current;
-      if (context.isRootMenu && content) {
-        const handleClose = () => {
-          onItemDismiss();
-          onRootContentClose();
-          if (content.contains(document.activeElement)) triggerRef.current?.focus();
-        };
-        content.addEventListener(ROOT_CONTENT_DISMISS, handleClose);
-        return () => content.removeEventListener(ROOT_CONTENT_DISMISS, handleClose);
-      }
-    }, [context.isRootMenu, props.value, triggerRef, onItemDismiss, onRootContentClose]);
-    const motionAttribute = React19.useMemo(() => {
-      const items = getItems();
-      const values = items.map((item) => item.value);
-      if (context.dir === "rtl") values.reverse();
-      const index = values.indexOf(context.value);
-      const prevIndex = values.indexOf(context.previousValue);
-      const isSelected = value === context.value;
-      const wasSelected = prevIndex === values.indexOf(value);
-      if (!isSelected && !wasSelected) return prevMotionAttributeRef.current;
-      const attribute = (() => {
-        if (index !== prevIndex) {
-          if (isSelected && prevIndex !== -1) return index > prevIndex ? "from-end" : "from-start";
-          if (wasSelected && index !== -1) return index > prevIndex ? "to-start" : "to-end";
-        }
-        return null;
-      })();
-      prevMotionAttributeRef.current = attribute;
-      return attribute;
-    }, [context.previousValue, context.value, context.dir, getItems, value]);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroup, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-      DismissableLayer,
-      {
-        id: contentId,
-        "aria-labelledby": triggerId,
-        "data-motion": motionAttribute,
-        "data-orientation": context.orientation,
-        ...contentProps,
-        ref: composedRefs,
-        disableOutsidePointerEvents: false,
-        onDismiss: () => {
-          const rootContentDismissEvent = new Event(ROOT_CONTENT_DISMISS, {
-            bubbles: true,
-            cancelable: true
-          });
-          ref.current?.dispatchEvent(rootContentDismissEvent);
-        },
-        onFocusOutside: composeEventHandlers(props.onFocusOutside, (event) => {
-          onContentFocusOutside();
-          const target = event.target;
-          if (context.rootNavigationMenu?.contains(target)) event.preventDefault();
-        }),
-        onPointerDownOutside: composeEventHandlers(props.onPointerDownOutside, (event) => {
-          const target = event.target;
-          const isTrigger = getItems().some((item) => item.ref.current?.contains(target));
-          const isRootViewport = context.isRootMenu && context.viewport?.contains(target);
-          if (isTrigger || isRootViewport || !context.isRootMenu) event.preventDefault();
-        }),
-        onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
-          const isMetaKey = event.altKey || event.ctrlKey || event.metaKey;
-          const isTabKey = event.key === "Tab" && !isMetaKey;
-          if (isTabKey) {
-            const candidates = getTabbableCandidates(event.currentTarget);
-            const focusedElement = document.activeElement;
-            const index = candidates.findIndex((candidate) => candidate === focusedElement);
-            const isMovingBackwards = event.shiftKey;
-            const nextCandidates = isMovingBackwards ? candidates.slice(0, index).reverse() : candidates.slice(index + 1, candidates.length);
-            if (focusFirst(nextCandidates)) {
-              event.preventDefault();
-            } else {
-              focusProxyRef.current?.focus();
-            }
-          }
-        }),
-        onEscapeKeyDown: composeEventHandlers(props.onEscapeKeyDown, (_event) => {
-          wasEscapeCloseRef.current = true;
-        })
-      }
-    ) });
-  });
-  var VIEWPORT_NAME = "NavigationMenuViewport";
-  var NavigationMenuViewport = React19.forwardRef((props, forwardedRef) => {
-    const { forceMount, ...viewportProps } = props;
-    const context = useNavigationMenuContext(VIEWPORT_NAME, props.__scopeNavigationMenu);
-    const open = Boolean(context.value);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Presence, { present: forceMount || open, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(NavigationMenuViewportImpl, { ...viewportProps, ref: forwardedRef }) });
-  });
-  NavigationMenuViewport.displayName = VIEWPORT_NAME;
-  var NavigationMenuViewportImpl = React19.forwardRef((props, forwardedRef) => {
-    const { __scopeNavigationMenu, children, ...viewportImplProps } = props;
-    const context = useNavigationMenuContext(VIEWPORT_NAME, __scopeNavigationMenu);
-    const composedRefs = useComposedRefs(forwardedRef, context.onViewportChange);
-    const viewportContentContext = useViewportContentContext(
-      CONTENT_NAME,
-      props.__scopeNavigationMenu
-    );
-    const [size, setSize] = React19.useState(null);
-    const [content, setContent] = React19.useState(null);
-    const viewportWidth = size ? size?.width + "px" : void 0;
-    const viewportHeight = size ? size?.height + "px" : void 0;
-    const open = Boolean(context.value);
-    const activeContentValue = open ? context.value : context.previousValue;
-    const handleSizeChange = () => {
-      if (content) setSize({ width: content.offsetWidth, height: content.offsetHeight });
-    };
-    useResizeObserver(content, handleSizeChange);
-    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-      Primitive.div,
-      {
-        "data-state": getOpenState(open),
-        "data-orientation": context.orientation,
-        ...viewportImplProps,
-        ref: composedRefs,
-        style: {
-          // Prevent interaction when animating out
-          pointerEvents: !open && context.isRootMenu ? "none" : void 0,
-          ["--radix-navigation-menu-viewport-width"]: viewportWidth,
-          ["--radix-navigation-menu-viewport-height"]: viewportHeight,
-          ...viewportImplProps.style
-        },
-        onPointerEnter: composeEventHandlers(props.onPointerEnter, context.onContentEnter),
-        onPointerLeave: composeEventHandlers(props.onPointerLeave, whenMouse(context.onContentLeave)),
-        children: Array.from(viewportContentContext.items).map(([value, { ref, forceMount, ...props2 }]) => {
-          const isActive = activeContentValue === value;
-          return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Presence, { present: forceMount || isActive, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            NavigationMenuContentImpl,
-            {
-              ...props2,
-              ref: composeRefs(ref, (node) => {
-                if (isActive && node) setContent(node);
-              })
-            }
-          ) }, value);
-        })
-      }
-    );
-  });
-  var FOCUS_GROUP_NAME = "FocusGroup";
-  var FocusGroup = React19.forwardRef(
-    (props, forwardedRef) => {
-      const { __scopeNavigationMenu, ...groupProps } = props;
-      const context = useNavigationMenuContext(FOCUS_GROUP_NAME, __scopeNavigationMenu);
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroupCollection.Provider, { scope: __scopeNavigationMenu, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroupCollection.Slot, { scope: __scopeNavigationMenu, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Primitive.div, { dir: context.dir, ...groupProps, ref: forwardedRef }) }) });
-    }
-  );
-  var ARROW_KEYS = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
-  var FOCUS_GROUP_ITEM_NAME = "FocusGroupItem";
-  var FocusGroupItem = React19.forwardRef(
-    (props, forwardedRef) => {
-      const { __scopeNavigationMenu, ...groupProps } = props;
-      const getItems = useFocusGroupCollection(__scopeNavigationMenu);
-      const context = useNavigationMenuContext(FOCUS_GROUP_ITEM_NAME, __scopeNavigationMenu);
-      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(FocusGroupCollection.ItemSlot, { scope: __scopeNavigationMenu, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        Primitive.button,
-        {
-          ...groupProps,
-          ref: forwardedRef,
-          onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
-            const isFocusNavigationKey = ["Home", "End", ...ARROW_KEYS].includes(event.key);
-            if (isFocusNavigationKey) {
-              let candidateNodes = getItems().map((item) => item.ref.current);
-              const prevItemKey = context.dir === "rtl" ? "ArrowRight" : "ArrowLeft";
-              const prevKeys = [prevItemKey, "ArrowUp", "End"];
-              if (prevKeys.includes(event.key)) candidateNodes.reverse();
-              if (ARROW_KEYS.includes(event.key)) {
-                const currentIndex = candidateNodes.indexOf(event.currentTarget);
-                candidateNodes = candidateNodes.slice(currentIndex + 1);
-              }
-              setTimeout(() => focusFirst(candidateNodes));
-              event.preventDefault();
-            }
-          })
-        }
-      ) });
-    }
-  );
-  function getTabbableCandidates(container) {
-    const nodes = [];
-    const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
-      acceptNode: (node) => {
-        const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
-        if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
-        return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-      }
-    });
-    while (walker.nextNode()) nodes.push(walker.currentNode);
-    return nodes;
-  }
-  function focusFirst(candidates) {
-    const previouslyFocusedElement = document.activeElement;
-    return candidates.some((candidate) => {
-      if (candidate === previouslyFocusedElement) return true;
-      candidate.focus();
-      return document.activeElement !== previouslyFocusedElement;
-    });
-  }
-  function removeFromTabOrder(candidates) {
-    candidates.forEach((candidate) => {
-      candidate.dataset.tabindex = candidate.getAttribute("tabindex") || "";
-      candidate.setAttribute("tabindex", "-1");
-    });
-    return () => {
-      candidates.forEach((candidate) => {
-        const prevTabIndex = candidate.dataset.tabindex;
-        candidate.setAttribute("tabindex", prevTabIndex);
-      });
-    };
-  }
-  function useResizeObserver(element, onResize) {
-    const handleResize = useCallbackRef(onResize);
-    useLayoutEffect2(() => {
-      let rAF = 0;
-      if (element) {
-        const resizeObserver = new ResizeObserver(() => {
-          cancelAnimationFrame(rAF);
-          rAF = window.requestAnimationFrame(handleResize);
-        });
-        resizeObserver.observe(element);
-        return () => {
-          window.cancelAnimationFrame(rAF);
-          resizeObserver.unobserve(element);
-        };
-      }
-    }, [element, handleResize]);
-  }
-  function getOpenState(open) {
-    return open ? "open" : "closed";
-  }
-  function makeTriggerId(baseId, value) {
-    return `${baseId}-trigger-${value}`;
-  }
-  function makeContentId(baseId, value) {
-    return `${baseId}-content-${value}`;
-  }
-  function whenMouse(handler) {
-    return (event) => event.pointerType === "mouse" ? handler(event) : void 0;
-  }
-  var Root2 = NavigationMenu;
-  var List = NavigationMenuList;
-  var Trigger = NavigationMenuTrigger;
-  var Link = NavigationMenuLink;
-  var Indicator = NavigationMenuIndicator;
-  var Content = NavigationMenuContent;
-  var Viewport = NavigationMenuViewport;
-
-  // components/ui/navigation-menu.tsx
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
-  var NavigationMenu2 = React20.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
-    Root2,
-    {
-      ref,
-      className: cn(
-        "relative z-10 flex max-w-max flex-1 items-center justify-center",
-        className
-      ),
-      ...props,
-      children: [
-        children,
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(NavigationMenuViewport2, {})
-      ]
-    }
-  ));
-  NavigationMenu2.displayName = Root2.displayName;
-  var NavigationMenuList2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-    List,
-    {
-      ref,
-      className: cn(
-        "group flex flex-1 list-none items-center justify-center space-x-1",
-        className
-      ),
-      ...props
-    }
-  ));
-  NavigationMenuList2.displayName = List.displayName;
-  var navigationMenuTriggerStyle = cva(
-    "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50"
-  );
-  var NavigationMenuTrigger2 = React20.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
-    Trigger,
-    {
-      ref,
-      className: cn(navigationMenuTriggerStyle(), "group", className),
-      ...props,
-      children: [
-        children,
-        " ",
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-          ChevronDownIcon,
-          {
-            className: "relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180",
-            "aria-hidden": "true"
-          }
-        )
-      ]
-    }
-  ));
-  NavigationMenuTrigger2.displayName = Trigger.displayName;
-  var NavigationMenuContent2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-    Content,
-    {
-      ref,
-      className: cn(
-        "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ",
-        className
-      ),
-      ...props
-    }
-  ));
-  NavigationMenuContent2.displayName = Content.displayName;
-  var NavigationMenuLink2 = Link;
-  var NavigationMenuViewport2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: cn("absolute left-0 top-full flex justify-center"), children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-    Viewport,
-    {
-      className: cn(
-        "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",
-        className
-      ),
-      ref,
-      ...props
-    }
-  ) }));
-  NavigationMenuViewport2.displayName = Viewport.displayName;
-  var NavigationMenuIndicator2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-    Indicator,
-    {
-      ref,
-      className: cn(
-        "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in",
-        className
-      ),
-      ...props,
-      children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" })
-    }
-  ));
-  NavigationMenuIndicator2.displayName = Indicator.displayName;
-
-  // components/ui/header-3.tsx
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var import_react_dom = __toESM(require_react_dom());
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   function Header() {
-    const [open, setOpen] = import_react4.default.useState(false);
+    const [open, setOpen] = import_react.default.useState(false);
     const scrolled = useScroll(10);
-    import_react4.default.useEffect(() => {
+    import_react.default.useEffect(() => {
       if (open) {
         document.body.style.overflow = "hidden";
       } else {
@@ -27008,16 +25250,16 @@
       }
       return activeHref === href || activeHref.startsWith(href);
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
       "header",
       {
         className: cn("sticky top-0 z-50 w-full border-b border-transparent", {
           "bg-background/95 supports-[backdrop-filter]:bg-background/50 border-border backdrop-blur-lg": scrolled
         }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("nav", { className: "mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex items-center gap-6", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: "/", className: "hover:bg-accent rounded-md p-1 transition-colors", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("nav", { className: "mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "flex items-center gap-6", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: "/", className: "hover:bg-accent rounded-md p-1 transition-colors flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
                 "img",
                 {
                   src: "/assets/images/logos/white%20and%20green.png",
@@ -27025,20 +25267,21 @@
                   className: "h-6"
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(NavigationMenu2, { className: "hidden md:flex", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(NavigationMenuList2, { children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(NavigationMenuLink2, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "hidden md:flex md:gap-1", children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
                 "a",
                 {
                   href: link.href,
                   className: cn(
-                    "px-4 py-2 text-sm font-medium rounded-md transition-colors",
-                    isLinkActive(link.href) ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
+                    "px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap",
+                    isLinkActive(link.href) ? "bg-accent text-accent-foreground" : "text-foreground hover:bg-accent hover:text-accent-foreground"
                   ),
                   children: link.label
-                }
-              ) }, link.href)) }) })
+                },
+                link.href
+              )) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "hidden items-center gap-2 md:flex", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "hidden items-center gap-2 md:flex", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
               Button,
               {
                 size: "icon",
@@ -27048,12 +25291,12 @@
                 "aria-expanded": open,
                 "aria-controls": "mobile-menu",
                 "aria-label": "Toggle menu",
-                children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(MenuToggleIcon, { open, className: "size-5", duration: 300 })
+                children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(MenuToggleIcon, { open, className: "size-5", duration: 300 })
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(MobileMenu, { open, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex flex-col gap-y-2 pb-4", children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(MobileMenu, { open, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex flex-col gap-y-2 pb-4", children: navLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
               "a",
               {
                 href: link.href,
@@ -27066,7 +25309,7 @@
               },
               link.href
             )) }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex flex-col gap-2 border-t border-border pt-4", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button, { asChild: true, className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) })
+            /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "flex flex-col gap-2 border-t border-border pt-4", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Button, { asChild: true, className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("a", { href: getCtaUrl(), children: "Get in Touch" }) }) })
           ] })
         ]
       }
@@ -27074,8 +25317,8 @@
   }
   function MobileMenu({ open, children, className, ...props }) {
     if (!open || typeof window === "undefined") return null;
-    return (0, import_react_dom2.createPortal)(
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+    return (0, import_react_dom.createPortal)(
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         "div",
         {
           id: "mobile-menu",
@@ -27083,7 +25326,7 @@
             "bg-background/95 supports-[backdrop-filter]:bg-background/50 backdrop-blur-lg",
             "fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y md:hidden"
           ),
-          children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
             "div",
             {
               "data-slot": open ? "open" : "closed",
@@ -27102,15 +25345,15 @@
     );
   }
   function useScroll(threshold) {
-    const [scrolled, setScrolled] = import_react4.default.useState(false);
-    const onScroll = import_react4.default.useCallback(() => {
+    const [scrolled, setScrolled] = import_react.default.useState(false);
+    const onScroll = import_react.default.useCallback(() => {
       setScrolled(window.scrollY > threshold);
     }, [threshold]);
-    import_react4.default.useEffect(() => {
+    import_react.default.useEffect(() => {
       window.addEventListener("scroll", onScroll);
       return () => window.removeEventListener("scroll", onScroll);
     }, [onScroll]);
-    import_react4.default.useEffect(() => {
+    import_react.default.useEffect(() => {
       onScroll();
     }, [onScroll]);
     return scrolled;
@@ -27118,7 +25361,7 @@
 
   // header-nav.tsx
   if (typeof window !== "undefined") {
-    window.React = import_react5.default;
+    window.React = import_react2.default;
   }
   (function initHeader() {
     function init() {
@@ -27142,7 +25385,7 @@
       try {
         console.log("Initializing Header...");
         const root = import_client.default.createRoot(navContainer);
-        root.render(import_react5.default.createElement(Header));
+        root.render(import_react2.default.createElement(Header));
         console.log("\u2705 Header initialized successfully");
       } catch (error) {
         console.error("\u274C Error initializing Header:", error);

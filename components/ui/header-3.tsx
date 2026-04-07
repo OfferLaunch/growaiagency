@@ -3,11 +3,6 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { createPortal } from 'react-dom';
-import {
-    NavigationMenu,
-    NavigationMenuLink,
-    NavigationMenuList,
-} from '@/components/ui/navigation-menu';
 
 export function Header() {
     const [open, setOpen] = React.useState(false);
@@ -95,32 +90,29 @@ export function Header() {
         >
             <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4">
                 <div className="flex items-center gap-6">
-                    <a href="/" className="hover:bg-accent rounded-md p-1 transition-colors">
+                    <a href="/" className="hover:bg-accent rounded-md p-1 transition-colors flex-shrink-0">
                         <img
                             src="/assets/images/logos/white%20and%20green.png"
                             alt="Grow AI"
                             className="h-6"
                         />
                     </a>
-                    <NavigationMenu className="hidden md:flex">
-                        <NavigationMenuList>
-                            {navLinks.map((link) => (
-                                <NavigationMenuLink key={link.href} asChild>
-                                    <a
-                                        href={link.href}
-                                        className={cn(
-                                            'px-4 py-2 text-sm font-medium rounded-md transition-colors',
-                                            isLinkActive(link.href)
-                                                ? 'bg-accent text-accent-foreground'
-                                                : 'hover:bg-accent hover:text-accent-foreground',
-                                        )}
-                                    >
-                                        {link.label}
-                                    </a>
-                                </NavigationMenuLink>
-                            ))}
-                        </NavigationMenuList>
-                    </NavigationMenu>
+                    <div className="hidden md:flex md:gap-1">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.href}
+                                href={link.href}
+                                className={cn(
+                                    'px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap',
+                                    isLinkActive(link.href)
+                                        ? 'bg-accent text-accent-foreground'
+                                        : 'text-foreground hover:bg-accent hover:text-accent-foreground',
+                                )}
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
                 </div>
                 <div className="hidden items-center gap-2 md:flex">
                     <Button asChild>
