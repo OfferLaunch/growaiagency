@@ -312,9 +312,6 @@
 .mobile-cta-button:hover {
   background: #FAFBFF;
 }
-.desktop-only {
-  display: block;
-}
 .mobile-only {
   display: none;
 }

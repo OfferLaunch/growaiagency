@@ -104,16 +104,10 @@ function injectStyles() {
         logoAlt: 'Grow AI',
         items: [
           { label: 'Home', href: '/' },
-          {
-            label: 'Learn',
-            href: '/resources',
-            submenu: [
-              { label: 'Process', href: '/process', description: 'Our proven methodology' },
-              { label: 'Resources', href: '/resources', description: 'Content & guides' },
-              { label: 'Case Studies', href: '/case-studies/', description: 'Real client results' }
-            ]
-          },
+          { label: 'Process', href: '/process' },
           { label: 'AI Software', href: '/software' },
+          { label: 'Resources', href: '/resources' },
+          { label: 'Case Studies', href: '/case-studies/' },
           { label: 'About Us', href: '/about' }
         ],
         ctaButton: {

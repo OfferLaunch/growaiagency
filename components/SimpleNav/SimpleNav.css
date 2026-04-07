@@ -361,10 +361,7 @@
   background: #FAFBFF;
 }
 
-/* Desktop only */
-.desktop-only {
-  display: block;
-}
+/* .desktop-only: no display rule — a previous `display: block` broke flex on .nav-menu / .nav-right */
 
 .mobile-only {
   display: none;

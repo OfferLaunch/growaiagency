@@ -1,0 +1,93 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes agb-gradient-rotate {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.gradient-border-component.gradient-border-auto {
+  animation: agb-gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-component.gradient-border-hover {
+  animation: agb-gradient-rotate var(--animation-duration, 5s) linear infinite;
+  animation-play-state: paused;
+}
+
+.gradient-border-component.gradient-border-hover:hover {
+  animation-play-state: running;
+}
+
+.gradient-border-component.gradient-border-stop-hover {
+  animation: agb-gradient-rotate var(--animation-duration, 5s) linear infinite;
+}
+
+.gradient-border-component.gradient-border-stop-hover:hover {
+  animation-play-state: paused;
+}
+
+/* Homepage hero: thin white/silver rotating border only — no hover affordance */
+.hero-video-gradient-border {
+  --gradient-primary: #f5f5f5;
+  --gradient-secondary: #a1a1aa;
+  --gradient-accent: #ffffff;
+  --bg-color: #000000;
+  --border-width: 2px;
+  --border-radius: 16px;
+  --animation-duration: 10s;
+  width: 100%;
+  max-width: 1100px;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius);
+  background-image: linear-gradient(var(--bg-color), var(--bg-color)),
+    conic-gradient(
+      from var(--gradient-angle, 0deg),
+      var(--gradient-primary) 0%,
+      var(--gradient-secondary) 37%,
+      var(--gradient-accent) 50%,
+      var(--gradient-secondary) 63%,
+      var(--gradient-primary) 100%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  animation: agb-gradient-rotate var(--animation-duration, 10s) linear infinite;
+  cursor: default;
+  pointer-events: none;
+}
+
+.hero-video-gradient-border:hover {
+  transform: none;
+  filter: none;
+  box-shadow: none;
+}
+
+.hero-video-gradient-border .hero-video-gradient-inner {
+  width: 100%;
+  border-radius: calc(var(--border-radius) - var(--border-width));
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.hero-video-gradient-border .hero-video-gradient-inner iframe,
+.hero-video-gradient-border .hero-video-gradient-inner video {
+  pointer-events: auto;
+}
+
+.hero-video-gradient-border .hero-video-gradient-inner > div {
+  border-radius: inherit;
+  pointer-events: auto;
+}
