@@ -3,164 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The GROW Method - Grow AI Agency</title>
-    <meta name="description" content="Our proprietary 4-step AI arbitrage process for compounding growth.">
-    
-    <!-- PWA Meta Tags -->
+    <title>How It Works — Grow AI Agency</title>
+    <meta name="description" content="The simplest path to recurring income in the AI era. How the Grow AI partner model works — opportunity, steps, support, and results.">
+
     <meta name="theme-color" content="#5CC49D">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Grow AI">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="The GROW Method - Grow AI Agency">
-    <meta property="og:description" content="Our proprietary 4-step AI arbitrage process for compounding growth.">
+
+    <meta property="og:title" content="How It Works — Grow AI Agency">
+    <meta property="og:description" content="The simplest path to recurring income in the AI era. See how the model works.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://growai.com/process">
+    <meta property="og:url" content="https://growaiagency.io/process">
     <meta property="og:image" content="https://growaiagency.io/assets/images/photos/aiagenc.jpg">
-    
-    <!-- Favicon -->
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logos/white%20and%20green.png">
-    
-    <!-- PWA Manifest -->
+
     <link rel="manifest" href="manifest.json">
-    
-    <!-- Preload Critical Resources -->
+
     <link rel="preload" href="styles.css?v=1759850000" as="style">
     <link rel="preload" href="script.js?v=1759850000" as="script">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" as="style" crossorigin>
-    
-    <!-- Critical CSS - Inline for faster rendering -->
+
     <style>
-        /* Critical above-the-fold styles */
-        body { font-family: 'Manrope', sans-serif; background: #0a0a0a; color: #FAFBFF; margin: 0; padding: 0; }
+        body { font-family: 'Manrope', sans-serif; background: var(--bg-primary, #0a0a0a); color: var(--text-primary, #FAFBFF); margin: 0; padding: 0; }
         .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .nav-logo-img { height: 40px; width: auto; }
         .hamburger { display: none; flex-direction: column; cursor: pointer; }
-        .hamburger span { width: 25px; height: 3px; background: #FAFBFF; margin: 3px 0; transition: 0.3s; }
+        .hamburger span { width: 25px; height: 3px; background: var(--text-primary, #FAFBFF); margin: 3px 0; transition: 0.3s; }
         @media (max-width: 768px) { .hamburger { display: flex; } }
-    
-        /* Final CTA Section */
-        .final-cta {
-            padding: 6rem 0;
-            background: transparent;
-            position: relative;
-        }
-
-        .final-cta .container {
-            position: relative;
-            z-index: 1;
-            max-width: 100%;
-            padding: 0 20px;
-        }
-
-        .final-cta .cta-content {
-            background: transparent;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 4rem 3rem;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 100%;
-            margin: 0;
-            text-align: center;
-        }
-
-        .final-cta .cta-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .final-cta .cta-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .final-cta .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .final-cta .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #5CC49D 0%, #4a9d7d 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(92, 196, 157, 0.3);
-        }
-
-        .final-cta .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(92, 196, 157, 0.4);
-            background: linear-gradient(135deg, #6dd4ad 0%, #5bb08c 100%);
-        }
-
-        @media (max-width: 768px) {
-            .final-cta {
-                padding: 4rem 0;
-            }
-            
-            .final-cta .cta-content {
-                padding: 3rem 2rem;
-                border-radius: 20px;
-            }
-            
-            .final-cta .cta-content h2 {
-                font-size: 2rem;
-            }
-        }
-
     </style>
-    
-    <!-- Non-critical CSS - Load asynchronously -->
+
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
-    
+
     <link rel="stylesheet" href="styles.css?v=1759850000">
     <link rel="stylesheet" href="process-styles.css">
     <link rel="stylesheet" href="/pill-nav-bundle.css?v=1759850000">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-    
-    <!-- AOS Animation Library -->
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Tracking Script -->
     <script src="https://tr.growaiagency.io/api/v1/tracking.js"></script>
     <script>
     (function(){function c(){var s=window.location.search;if(!s)return;var p=new URLSearchParams(s),r=[];p.forEach(function(_,k){var l=k.toLowerCase();if(l.indexOf('utm_')===0||l==='fbclid'||l==='gclid'||l==='aaid')r.push(k);});if(!r.length)return;r.forEach(function(k){p.delete(k);});var u=window.location.pathname+(p.toString()?'?'+p.toString():'')+(window.location.hash||'');history.replaceState({},document.title,u);}setTimeout(c,900);})();
     </script>
 </head>
 <body>
-    <!-- Silk Background for all pages -->
     <div class="page-background">
-        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;">
-            <!-- Silk background will be rendered here -->
-        </div>
+        <div id="silk-background" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; overflow: visible; pointer-events: none;"></div>
     </div>
-    <!-- Navigation -->
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -178,172 +75,209 @@
                 <li><a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&el=Website-Process" class="cta-button">Get in touch</a></li>
             </ul>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="process-hero">
+    <section class="process-page-hero">
         <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1>The GROW Method</h1>
-                <p class="hero-subtitle">The only system built specifically for entrepreneurs ready to master AI arbitrage.</p>
+            <p class="process-page-eyebrow">
+                <span class="process-page-eyebrow-line" aria-hidden="true"></span>
+                <span>How It Works</span>
+            </p>
+            <h1 data-aos="fade-up">The simplest path to recurring income in the AI era.</h1>
+            <p class="process-page-lead" data-aos="fade-up" data-aos-delay="80">You don't need tech skills, a team, or a background in AI. You need the right vehicle — and a system that does the heavy lifting behind the scenes.</p>
+        </div>
+    </section>
+
+    <section class="process-page-statbar" aria-label="Key statistics">
+        <div class="process-page-statbar-inner">
+            <div class="process-page-stat" data-aos="fade-up">
+                <span class="process-page-stat-value">94%</span>
+                <p>of business owners say they need AI — but only 30% have done anything with it.</p>
+            </div>
+            <div class="process-page-stat" data-aos="fade-up" data-aos-delay="60">
+                <span class="process-page-stat-value">$2T</span>
+                <p>in global AI investment expected by end of 2026. The wave is here.</p>
+            </div>
+            <div class="process-page-stat" data-aos="fade-up" data-aos-delay="120">
+                <span class="process-page-stat-value">75%+</span>
+                <p>average profit margin on AI services delivered through our model.</p>
             </div>
         </div>
     </section>
 
-    <!-- CEO Quote Section -->
-    <section class="why-matters">
+    <section class="process-page-section">
         <div class="container">
-            <div class="why-content" data-aos="fade-up">
-                <blockquote>
-                    <p>"The future belongs to entrepreneurs who know how to leverage AI. The GROW Method is how we equip them to lead. It's a structured path to generate clients, refine offers, optimize delivery, and win in the market with confidence."</p>
-                    <cite>
-                        <img src="assets/images/photos/jake headshot.jpg" alt="Jacob Arnold" class="quote-headshot">
-                        - Jacob Arnold, CEO of Grow AI
-                    </cite>
-                </blockquote>
-            </div>
-        </div>
-    </section>
-
-    <!-- The 4 Steps Section -->
-    <section class="grow-steps">
-        <div class="container">
-            <div class="steps-grid">
-                <!-- G - Generate -->
-                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-header">
-                        <div class="step-letter">G</div>
-                        <h3>Generate</h3>
-                    </div>
-                    <p>Build unstoppable momentum by filling your pipeline with opportunities.</p>
-                    <ul class="step-bullets">
-                        <li><i class="fas fa-check"></i> Learn how to consistently book meetings even with zero prior experience</li>
-                        <li><i class="fas fa-check"></i> Discover the fastest, lowest-cost strategies for launching and scaling outreach</li>
-                        <li><i class="fas fa-check"></i> Master a repeatable system that takes you from no clients to predictable deal flow</li>
-                    </ul>
+            <header class="process-page-section-header">
+                <p class="process-page-eyebrow">
+                    <span class="process-page-eyebrow-line" aria-hidden="true"></span>
+                    <span>The Opportunity</span>
+                </p>
+                <h2 data-aos="fade-up">Why right now is the window.</h2>
+                <p class="process-page-section-intro" data-aos="fade-up" data-aos-delay="60">Every major technology shift creates a brief period where early movers win disproportionately. AI is that shift — and most businesses haven't moved yet.</p>
+            </header>
+            <div class="process-page-opp-grid">
+                <div class="process-page-opp-cell" data-aos="fade-up">
+                    <div class="process-page-opp-stat">64%</div>
+                    <h3>The execution gap</h3>
+                    <p>Nearly two-thirds of business owners who want AI haven't implemented it. Not because they don't want to — but because they don't have time, knowledge, or a trusted partner to do it for them. That gap is your business.</p>
                 </div>
-
-                <!-- Arrow 1 -->
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
+                <div class="process-page-opp-cell" data-aos="fade-up" data-aos-delay="80">
+                    <div class="process-page-opp-word">Now</div>
+                    <h3>Why now matters</h3>
+                    <p>Most local markets are wide open. Your competition isn't other agencies — it's inaction. The businesses that adopt AI tools now will outpace those that don't. And the operators who help them get there will build real, recurring income in the process.</p>
                 </div>
-
-                <!-- R - Refine -->
-                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-header">
-                        <div class="step-letter">R</div>
-                        <h3>Refine</h3>
-                    </div>
-                    <p>Turn raw opportunity into a sharp, irresistible offer.</p>
-                    <ul class="step-bullets">
-                        <li><i class="fas fa-check"></i> Learn how to position yourself so clients see you as a partner, not a commodity</li>
-                        <li><i class="fas fa-check"></i> Build a value-driven offer that commands premium pricing</li>
-                        <li><i class="fas fa-check"></i> Develop the confidence and clarity to sell to any business owner</li>
-                    </ul>
+                <div class="process-page-opp-cell" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Why businesses don't do it themselves</h3>
+                    <p>They're running a business. They don't have the hours to research tools, test workflows, and troubleshoot integrations. They need someone who's already figured it out — and they're willing to pay a monthly retainer for it. That's the model.</p>
                 </div>
-
-                <!-- Arrow 2 -->
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-
-                <!-- O - Optimize -->
-                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-header">
-                        <div class="step-letter">O</div>
-                        <h3>Optimize</h3>
-                    </div>
-                    <p>Deliver with impact and scale beyond yourself using AI leverage.</p>
-                    <ul class="step-bullets">
-                        <li><i class="fas fa-check"></i> Learn how to onboard and manage clients without chaos or confusion</li>
-                        <li><i class="fas fa-check"></i> Access our library of AI agents and automations to deliver real value for other businesses</li>
-                        <li><i class="fas fa-check"></i> Set up the systems that let you scale from a one-person shop into a true agency</li>
-                    </ul>
-                </div>
-
-                <!-- Arrow 3 -->
-                <div class="step-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-
-                <!-- W - Win -->
-                <div class="step-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="step-header">
-                        <div class="step-letter">W</div>
-                        <h3>Win</h3>
-                    </div>
-                    <p>Stack the wins that compound into freedom and scale.</p>
-                    <ul class="step-bullets">
-                        <li><i class="fas fa-check"></i> Learn how to close bigger clients with less resistance</li>
-                        <li><i class="fas fa-check"></i> Discover how to expand accounts and increase lifetime value</li>
-                        <li><i class="fas fa-check"></i> Master the fundamentals of cash flow, taxes, and business growth</li>
-                    </ul>
+                <div class="process-page-opp-cell" data-aos="fade-up" data-aos-delay="120">
+                    <h3>Three problems, infinite clients</h3>
+                    <p>Every business pain point falls into one of three buckets: more leads, better conversion, or smoother operations. If you solve any one of these — you're not an expense. You're an investment. That's a very easy sell.</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <!-- What You Get Section -->
-    <section class="what-you-get">
+    <section class="process-page-section alt">
         <div class="container">
-            <div class="benefits-grid">
-                <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="benefit-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h4>More Meetings</h4>
+            <header class="process-page-section-header">
+                <p class="process-page-eyebrow">
+                    <span class="process-page-eyebrow-line" aria-hidden="true"></span>
+                    <span>The Model</span>
+                </p>
+                <h2 data-aos="fade-up">How this business actually works.</h2>
+                <p class="process-page-section-intro" data-aos="fade-up" data-aos-delay="60">This isn't software. It's not dropshipping. It's a simple service business with recurring revenue — and a backend team already built for you.</p>
+            </header>
+            <div class="process-page-steps">
+                <div class="process-page-step" data-aos="fade-up">
+                    <div class="process-page-step-num">01</div>
+                    <h3>Identify the problem</h3>
+                    <p>You find a business with a clear, fixable pain — missed calls, slow follow-ups, manual admin work. You don't need to be technical to spot these. You just need to ask the right questions.</p>
                 </div>
-                <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="benefit-icon">
-                        <i class="fas fa-percentage"></i>
-                    </div>
-                    <h4>Higher Close Rate</h4>
+                <div class="process-page-step" data-aos="fade-up" data-aos-delay="80">
+                    <div class="process-page-step-num">02</div>
+                    <h3>Present the solution</h3>
+                    <p>You present a simple AI-powered system that solves their specific problem. More booked jobs, faster response times, fewer leads slipping through the cracks. Our team builds it.</p>
                 </div>
-                <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h4>Faster Fulfillment</h4>
+                <div class="process-page-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-page-step-num">03</div>
+                    <h3>Collect your retainer</h3>
+                    <p>You charge a setup fee and a monthly retainer. We handle fulfillment. You keep the majority of the revenue — with high margins and almost no overhead.</p>
                 </div>
-                <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="benefit-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <h4>Higher LTV</h4>
+            </div>
+            <div class="process-page-example" data-aos="fade-up" data-aos-delay="120">
+                <div class="process-page-example-copy">
+                    <span class="process-page-tag">Real Example</span>
+                    <h3>HVAC Owner — AI Receptionist</h3>
+                    <p>HVAC owners lose an average of $500–$1,000 every time they miss an after-hours call. An AI receptionist answers, qualifies the lead, and books the job automatically — 24/7, no staff required. This is one client. Three clients like this = $6,000/month. Five = $10,000/month. And you didn't write a line of code.</p>
+                </div>
+                <div class="process-page-breakdown">
+                    <h4>Financial breakdown</h4>
+                    <ul>
+                        <li><span class="label">Setup</span><span>$3,000</span></li>
+                        <li><span class="label">Monthly retainer</span><span>$2,000</span></li>
+                        <li><span class="label">Software + fulfillment</span><span>~$650</span></li>
+                        <li><span class="label">Net monthly profit</span><span>~$1,350/mo</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta">
+    <section class="process-page-section">
+        <div class="container">
+            <header class="process-page-section-header">
+                <p class="process-page-eyebrow">
+                    <span class="process-page-eyebrow-line" aria-hidden="true"></span>
+                    <span>What We Do</span>
+                </p>
+                <h2 data-aos="fade-up">You sell. We build. Everyone wins.</h2>
+                <p class="process-page-section-intro" data-aos="fade-up" data-aos-delay="60">When you partner with Grow AI, you're not starting from scratch. You're plugging into an operation that's already built — so you can focus entirely on what makes you money.</p>
+            </header>
+            <div class="process-page-cards">
+                <div class="process-page-card" data-aos="fade-up">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-robot"></i></div>
+                    <h3>AI Sales Rep (SDR)</h3>
+                    <p>Works 24/7 to qualify inbound leads and book calls directly onto your calendar. Your pipeline doesn't stop when you sleep.</p>
+                </div>
+                <div class="process-page-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-handshake"></i></div>
+                    <h3>Trained Sales Closer</h3>
+                    <p>A seasoned closer placed inside your business to convert deals. We handle the recruiting — you pay commission on results only.</p>
+                </div>
+                <div class="process-page-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-screwdriver-wrench"></i></div>
+                    <h3>Fulfillment Team</h3>
+                    <p>Our backend team handles every technical build and integration. You close the deal — we deliver the solution to your client.</p>
+                </div>
+                <div class="process-page-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-palette"></i></div>
+                    <h3>Branding &amp; Web Team</h3>
+                    <p>Custom website, logo, and LinkedIn built for you before your first meeting. You show up looking like an established operator.</p>
+                </div>
+                <div class="process-page-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Marketing Team</h3>
+                    <p>Ad creative, funnel architecture, and VSL optimization. Your lead generation machine runs consistently, not in bursts.</p>
+                </div>
+                <div class="process-page-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="process-page-card-icon" aria-hidden="true"><i class="fas fa-user-tie"></i></div>
+                    <h3>Direct Access to Your Coach</h3>
+                    <p>1:1 guidance on deal structuring, pricing, and growth strategy. Weekly war rooms to stay ahead of tools, trends, and opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-page-section alt">
+        <div class="container">
+            <header class="process-page-section-header">
+                <p class="process-page-eyebrow">
+                    <span class="process-page-eyebrow-line" aria-hidden="true"></span>
+                    <span>Results</span>
+                </p>
+                <h2 data-aos="fade-up">People just like you are already doing this.</h2>
+                <p class="process-page-section-intro" data-aos="fade-up" data-aos-delay="60">No technical backgrounds. No prior experience. Just the right system and the willingness to follow it.</p>
+            </header>
+            <div class="process-page-testimonials">
+                <div class="process-page-quote" data-aos="fade-up">
+                    <blockquote>“Grow AI has been transformative for me. The courses, materials, and support have been top notch. I have experienced quite a learning curve starting an agency from scratch. Jake and his team are very responsive to questions and have been there every step of the way. I recently landed my first client and feel confident about signing even more. Grow AI is a great learning community to be a part of.”</blockquote>
+                    <cite>Cherise Black — Educational consultant, NYC</cite>
+                </div>
+                <div class="process-page-quote" data-aos="fade-up" data-aos-delay="80">
+                    <blockquote>
+                        <p>“I purchased Grow AI’s largest package and the experience has been outstanding. Jake and his team have been extremely attentive from day one. They are always available to help with lead generation, managing more complex customer questions, coordinating with tech VAs, and optimizing workflows.</p>
+                        <p>It truly feels like having a full AI &amp; automation team in-house. Communication is excellent, execution is strong, and support is constant. Highly recommend Grow AI for anyone serious about scaling with AI.”</p>
+                    </blockquote>
+                    <cite>John Dellafiora — Insurance brokerage founder &amp; CFA, NYC</cite>
+                </div>
+            </div>
+            <div class="process-page-callout" data-aos="fade-up" data-aos-delay="100">
+                <div class="process-page-callout-num" aria-hidden="true">33</div>
+                <p><strong class="process-page-callout-lead">Days to first client.</strong> John signed his first deal 33 days after starting — generating $2,000/month plus a $4,500 setup fee. These aren't outliers. They're what happens when you follow a proven system with the right support behind you.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="final-cta">
         <div class="container">
             <div class="cta-content" data-aos="fade-up">
-                <span class="cta-badge" style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(92, 196, 157, 0.2); border: 1px solid rgba(92, 196, 157, 0.3); border-radius: 50px; color: #5CC49D; font-size: 0.9rem; font-weight: 600; margin-bottom: 1.5rem;">The Clock Is Ticking</span>
-                <h2>The cost of missing the AI wave will be bigger than the cost of starting.</h2>
-                <h2 style="font-size: 2rem; margin-top: 0.5rem; margin-bottom: 1.5rem;"><span style="color: #5CC49D;">Don't miss it.</span></h2>
-                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.6;">Entrepreneurs are already closing clients with the Grow AI model. <strong>The longer you wait, the harder it becomes to catch up.</strong></p>
+                <h2>Ready to see if this is a fit?</h2>
+                <p>We only accept a small number of new agency owners each month to ensure every partner gets the support they need.</p>
                 <div class="cta-buttons">
-                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&el=Website-Process" class="btn btn-primary">
-                        <span>See Grow AI in Action</span>
-                        <i class="fas fa-arrow-right"></i>
+                    <a href="https://go.growaiagency.io/w-vsl?utm_source=Website&utm_medium=web&utm_content=process&el=Website-Process-CTA" class="btn btn-primary">
+                        <span>Schedule Your Call</span>
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
-                <p style="font-size: 0.85rem; color: rgba(250, 251, 255, 0.6); margin-top: 2rem; margin-bottom: 0;">GROW is a proprietary method of Grow AI.</p>
             </div>
         </div>
     </section>
 
-
-    <!-- Footer -->
-        <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -395,54 +329,25 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js?v=1759850000"></script>
     <script src="performance-optimization.js?v=1759850000"></script>
-    
-    <!-- Initialize AOS -->
     <script>
-        // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS after a short delay to ensure all elements are rendered
             setTimeout(function() {
                 if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 800,
-                        easing: 'ease-in-out',
-                        once: true,
-                        offset: 100
-                    });
-                    console.log('AOS initialized successfully');
-                } else {
-                    console.error('AOS library not loaded');
+                    AOS.init({ duration: 800, easing: 'ease-in-out', once: true, offset: 100 });
                 }
             }, 100);
         });
     </script>
-    
-    <!-- Service Worker Registration -->
     <script>
-        // Prevent multiple service worker registrations
         if ('serviceWorker' in navigator && !window.serviceWorkerRegistered) {
             window.serviceWorkerRegistered = true;
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js?v=1759850000')
-                    .then(function(registration) {
-                        console.log('SW registered: ', registration);
-                        // Only check for updates, don't auto-reload
-                        registration.addEventListener('updatefound', function() {
-                            console.log('Service worker update found, but not auto-reloading');
-                        });
-                    })
-                    .catch(function(registrationError) {
-                        console.log('SW registration failed: ', registrationError);
-                    });
+                navigator.serviceWorker.register('/sw.js?v=1759850000').catch(function() {});
             });
         }
     </script>
-    
-    <!-- PillNav Bundle (built with npm run build:pillnav) -->
     <script src="/pill-nav-bundle.js?v=1759850000"></script>
-    
-    <!-- Silk Background Bundle -->
     <script src="silk-background-bundle.js"></script>
     <script src="elevenlabs-widget.js"></script>
 </body>
-</html> 
+</html>
