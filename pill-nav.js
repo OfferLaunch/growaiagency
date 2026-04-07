@@ -10,14 +10,29 @@ if (typeof window !== 'undefined') {
   window.React = React;
 }
 
-// Initialize PillNav to replace the existing navbar
+// Inject SimpleNav CSS into the page
+function injectStyles() {
+  if (document.getElementById('simple-nav-styles')) {
+    return;
+  }
+  const link = document.createElement('link');
+  link.id = 'simple-nav-styles';
+  link.rel = 'stylesheet';
+  link.href = '/pill-nav-bundle.css';
+  document.head.appendChild(link);
+}
+
+// Initialize SimpleNav to replace the existing navbar
 (function initPillNav() {
   function init() {
-    // Check if PillNav is already initialized
+    // Inject styles first
+    injectStyles();
+
+    // Check if SimpleNav is already initialized
     if (document.getElementById('pill-nav-container')) {
       return;
     }
-    
+
     // Find the existing navbar (if it exists)
     const existingNav = document.querySelector('.navbar');
     

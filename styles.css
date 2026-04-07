@@ -446,6 +446,11 @@ body.menu-open {
     padding-bottom: 2rem;
 }
 
+.hero-buttons .btn,
+.cta-buttons .btn {
+    font-weight: 700;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -507,6 +512,27 @@ body.menu-open {
 .btn-secondary:hover {
     background: var(--primary-color);
     transform: translateY(-2px);
+}
+
+.btn-glass-black {
+    background: rgba(0, 0, 0, 0.45);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.btn-glass-black:hover {
+    background: rgba(0, 0, 0, 0.58);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .hero-visual {

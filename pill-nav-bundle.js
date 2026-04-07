@@ -21821,8 +21821,19 @@
   if (typeof window !== "undefined") {
     window.React = import_react2.default;
   }
+  function injectStyles() {
+    if (document.getElementById("simple-nav-styles")) {
+      return;
+    }
+    const link = document.createElement("link");
+    link.id = "simple-nav-styles";
+    link.rel = "stylesheet";
+    link.href = "/pill-nav-bundle.css";
+    document.head.appendChild(link);
+  }
   (function initPillNav() {
     function init() {
+      injectStyles();
       if (document.getElementById("pill-nav-container")) {
         return;
       }

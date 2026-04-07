@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:silk": "esbuild silk-background.js --bundle --format=iife --outfile=silk-background-bundle.js --jsx=automatic",
     "build:gradient": "esbuild gradient-text.js --bundle --format=iife --outfile=gradient-text-bundle.js --jsx=automatic",
-    "build:pillnav": "esbuild pill-nav.js --bundle --format=iife --outfile=pill-nav-bundle.js --jsx=automatic",
+    "build:pillnav": "esbuild pill-nav.js --bundle --format=iife --outfile=pill-nav-bundle.js --jsx=automatic --loader:.css=css",
     "build:spotlight": "esbuild spotlight-card.js --bundle --format=iife --outfile=spotlight-card-bundle.js --jsx=automatic",
     "build:chroma": "esbuild chroma-grid.js --bundle --format=iife --outfile=chroma-grid-bundle.js --jsx=automatic --loader:.css=css"
   },
