@@ -21985,8 +21985,7 @@
           activeHref = "/";
         }
       }
-      const pageName = currentPath.split("/").pop().replace(".html", "") || "index";
-      const ctaUrl = `https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=${pageName}&el=Website-${pageName}`;
+      const ctaUrl = "/onboarding";
       try {
         console.log("Initializing SimpleNav...");
         const root = import_client.default.createRoot(navContainer);

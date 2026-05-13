@@ -52,12 +52,12 @@ FileETag None
     RewriteRule ^case-studies\.html$ /case-studies/ [L,R=301]
     RewriteRule ^case-study-john-d\.html$ /case-studies/case-study-john-d [L,R=301]
     # Root-level pages: redirect .html to clean URL
-    RewriteCond %{THE_REQUEST} \s/(process|software|resources|about|team)\.html [NC]
-    RewriteRule ^(process|software|resources|about|team)\.html$ /$1 [L,R=301]
+    RewriteCond %{THE_REQUEST} \s/(process|software|resources|about|team|onboarding)\.html [NC]
+    RewriteRule ^(process|software|resources|about|team|onboarding)\.html$ /$1 [L,R=301]
     # Root-level pages: serve .html when clean URL is requested
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(process|software|resources|about|team)/?$ $1.html [L]
+    RewriteRule ^(process|software|resources|about|team|onboarding)/?$ $1.html [L]
     # Legal: redirect old /legal/* URLs to clean root URLs
     RewriteRule ^legal/privacy-policy\.html?$ /privacy-policy [L,R=301]
     RewriteRule ^legal/terms-of-service\.html?$ /terms-of-service [L,R=301]

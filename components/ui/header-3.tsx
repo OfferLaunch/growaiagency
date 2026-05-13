@@ -67,12 +67,7 @@ export function Header() {
         { label: 'About Us', href: '/about' },
     ];
 
-    // Generate CTA URL with page tracking
-    const getCtaUrl = () => {
-        if (typeof window === 'undefined') return 'https://go.growaiagency.io/w-app';
-        const pageName = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
-        return `https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=${pageName}&el=Website-${pageName}`;
-    };
+    const getCtaUrl = () => '/onboarding';
 
     const isLinkActive = (href: string) => {
         if (href === '/') {

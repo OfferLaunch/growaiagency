@@ -37,7 +37,7 @@ import logo from 'assets/images/logos/white and green.png';
   ]}
   ctaButton={{
     label: 'Get in touch',
-    href: 'https://go.growaiagency.io/w-app?utm_source=Website&utm_medium=web&utm_content=index&EL=Website-Homepage'
+    href: '/onboarding'
   }}
 />
 ```
